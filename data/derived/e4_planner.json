@@ -1,0 +1,132 @@
+{
+  "eval": "E4",
+  "rows": {
+    "train": 1271,
+    "valid": 272,
+    "test": 273,
+    "gap": 184,
+    "prospective": 300,
+    "band": 129
+  },
+  "models": {
+    "served_share": {
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 5,
+        "reg_lambda": 1.0
+      },
+      "trees": 322,
+      "cv_mae": 0.01425,
+      "train_mae": 0.00265,
+      "valid_mae": 0.01281,
+      "test_mae": 0.01402,
+      "gap_mae": 0.01441
+    },
+    "kwh_per_vehicle_day": {
+      "params": {
+        "max_depth": 4,
+        "min_child_weight": 5,
+        "reg_lambda": 1.0
+      },
+      "trees": 1110,
+      "cv_mae": 2.89644,
+      "train_mae": 0.32087,
+      "valid_mae": 2.66054,
+      "test_mae": 2.90132,
+      "gap_mae": 2.74901
+    },
+    "peak_period_share": {
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 5,
+        "reg_lambda": 5.0
+      },
+      "trees": 610,
+      "cv_mae": 0.00617,
+      "train_mae": 0.00028,
+      "valid_mae": 0.0062,
+      "test_mae": 0.00648,
+      "gap_mae": 0.00504
+    }
+  },
+  "prospective_mae": 0.01343,
+  "prospective_band_mae": 0.00676,
+  "prospective_spreadsheet_mae": 0.04787,
+  "margin": 0.01346,
+  "noise_floor_served": 0.00234,
+  "search": [
+    {
+      "case": {
+        "size": 400.0,
+        "site_limit_kw": 2750.0
+      },
+      "offered": 0,
+      "regret": 1.0,
+      "top50_serving_99pct": 0,
+      "top50_worst_served": 0.0,
+      "simulated_served": 0.0
+    },
+    {
+      "case": {
+        "size": 600.0,
+        "site_limit_kw": 2750.0
+      },
+      "offered": 0,
+      "regret": 1.0,
+      "top50_serving_99pct": 0,
+      "top50_worst_served": 0.0,
+      "simulated_served": 0.0
+    },
+    {
+      "case": {
+        "size": 1000.0,
+        "site_limit_kw": 5500.0
+      },
+      "offered": 0,
+      "regret": 1.0,
+      "top50_serving_99pct": 0,
+      "top50_worst_served": 0.0,
+      "simulated_served": 0.0
+    }
+  ],
+  "robust": [
+    {
+      "case": {
+        "size": 400.0,
+        "site_limit_kw": 2750.0
+      },
+      "expected": null,
+      "robust": null
+    },
+    {
+      "case": {
+        "size": 600.0,
+        "site_limit_kw": 2750.0
+      },
+      "expected": null,
+      "robust": null
+    },
+    {
+      "case": {
+        "size": 1000.0,
+        "site_limit_kw": 5500.0
+      },
+      "expected": null,
+      "robust": null
+    }
+  ],
+  "bars": {
+    "1_prospective_mae_at_most_1.5pt_overall_and_in_the_95_to_99.9_band": true,
+    "2_prospective_at_most_1.3x_validation": true,
+    "3_gap_mae_at_most_2.5pt": true,
+    "4_regret_and_top50_hold_in_every_case": false,
+    "5_no_design_offered_for_the_infeasible_case": true,
+    "6_robust_design_holds_in_18_of_20": false,
+    "7_predictions_inside_physical_range": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "driver": "03dd8a8db7a1"
+  }
+}

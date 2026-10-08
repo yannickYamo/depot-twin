@@ -1,0 +1,83 @@
+{
+  "start": "2024-03-18",
+  "rows": [
+    {
+      "case": "as modelled",
+      "served_600": 1.0,
+      "served_700": 1.0,
+      "served_800": 0.9867,
+      "served_1000": 0.8719,
+      "kwh_per_mile": 0.529,
+      "visits_per_day": 1.32
+    },
+    {
+      "case": "rides per vehicle: 21.5",
+      "served_600": 1.0,
+      "served_700": 1.0,
+      "served_800": 1.0,
+      "served_1000": 0.9526,
+      "kwh_per_mile": 0.559,
+      "visits_per_day": 1.29
+    },
+    {
+      "case": "rides per vehicle: 18",
+      "served_600": 1.0,
+      "served_700": 1.0,
+      "served_800": 1.0,
+      "served_1000": 0.9993,
+      "kwh_per_mile": 0.595,
+      "visits_per_day": 1.26
+    },
+    {
+      "case": "energy per mile: 10% lower",
+      "served_600": 1.0,
+      "served_700": 1.0,
+      "served_800": 1.0,
+      "served_1000": 0.9362,
+      "kwh_per_mile": 0.487,
+      "visits_per_day": 1.23
+    },
+    {
+      "case": "energy per mile: 10% higher",
+      "served_600": 0.999,
+      "served_700": 0.9908,
+      "served_800": 0.9393,
+      "served_1000": 0.8152,
+      "kwh_per_mile": 0.565,
+      "visits_per_day": 1.33
+    },
+    {
+      "case": "called in at 40% charge",
+      "served_600": 0.9941,
+      "served_700": 0.9873,
+      "served_800": 0.9523,
+      "served_1000": 0.8492,
+      "kwh_per_mile": 0.522,
+      "visits_per_day": 1.85
+    },
+    {
+      "case": "called in at 55% charge",
+      "served_600": 0.8676,
+      "served_700": 0.8695,
+      "served_800": 0.883,
+      "served_1000": 0.8106,
+      "kwh_per_mile": 0.508,
+      "visits_per_day": 2.35
+    },
+    {
+      "case": "twice the people",
+      "served_600": 1.0,
+      "served_700": 1.0,
+      "served_800": 0.9867,
+      "served_1000": 0.8719,
+      "kwh_per_mile": 0.529,
+      "visits_per_day": 1.32
+    }
+  ],
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "252a77b61f66"
+  }
+}

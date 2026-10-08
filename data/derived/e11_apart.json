@@ -1,0 +1,89 @@
+{
+  "eval": "E11",
+  "start": "2024-05-13",
+  "seeds": [
+    321,
+    322,
+    323
+  ],
+  "table": {
+    "threshold+need_first_500": {
+      "served": 0.9999,
+      "on_road_when_busiest": 0.8114,
+      "grid_variation": 0.4055,
+      "stranded": 0.0
+    },
+    "threshold+need_first_1000": {
+      "served": 0.8292,
+      "on_road_when_busiest": 0.4243,
+      "grid_variation": 0.2603,
+      "stranded": 0.0
+    },
+    "threshold+slot_power_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.8476,
+      "grid_variation": 0.2469,
+      "stranded": 0.0
+    },
+    "threshold+slot_power_1000": {
+      "served": 0.8878,
+      "on_road_when_busiest": 0.4909,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    "headroom+need_first_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.8169,
+      "grid_variation": 0.5743,
+      "stranded": 0.0
+    },
+    "headroom+need_first_1000": {
+      "served": 0.8415,
+      "on_road_when_busiest": 0.434,
+      "grid_variation": 0.1973,
+      "stranded": 0.0
+    },
+    "headroom+slot_power_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.778,
+      "grid_variation": 0.3975,
+      "stranded": 0.0
+    },
+    "headroom+slot_power_1000": {
+      "served": 0.8602,
+      "on_road_when_busiest": 0.4647,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    "heartbeat+need_first_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.8634,
+      "grid_variation": 0.2235,
+      "stranded": 0.0
+    },
+    "heartbeat+need_first_1000": {
+      "served": 0.8555,
+      "on_road_when_busiest": 0.4523,
+      "grid_variation": 0.0682,
+      "stranded": 0.0
+    },
+    "heartbeat+slot_power_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.8723,
+      "grid_variation": 0.2112,
+      "stranded": 0.0
+    },
+    "heartbeat+slot_power_1000": {
+      "served": 0.8856,
+      "on_road_when_busiest": 0.4882,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    }
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "252a77b61f66"
+  }
+}

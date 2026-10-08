@@ -1,0 +1,74 @@
+{
+  "scope": "Waymo driverless deployment, California, all service areas combined",
+  "months": [
+    {
+      "year": 2025,
+      "month": 10,
+      "trips": 1217872,
+      "miles": 7902019.3
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "trips": 1273473,
+      "miles": 8414102.0
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "trips": 1257187,
+      "miles": 8420126.8
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "trips": 1322645,
+      "miles": 9092739.3
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "trips": 1220222,
+      "miles": 8191719.6
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "trips": 1363067,
+      "miles": 9105108.3
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "trips": 1416158,
+      "miles": 9414525.1
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "trips": 1454991,
+      "miles": 9704968.3
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "trips": 1348926,
+      "miles": 9023791.3
+    }
+  ],
+  "targets_quarter": "2026q2",
+  "targets": {
+    "months": 3,
+    "trips": 4220075,
+    "miles": 28143284.699999996,
+    "miles_per_trip": 6.668906287210534,
+    "passenger_miles_per_trip": 3.928774943573277,
+    "idle_share": 0.26267977454671454,
+    "to_pickup_share": 0.14820189414492901,
+    "with_passenger_share": 0.5891183313083566,
+    "waiting_minutes_per_trip": 16.57398032025497
+  },
+  "source": "CPUC autonomous vehicle quarterly reports, monthly table",
+  "source_url": "https://www.cpuc.ca.gov/-/media/cpuc-website/divisions/consumer-protection-and-enforcement-division/documents/tlab/av-programs/",
+  "fetched": "2026-10-04"
+}

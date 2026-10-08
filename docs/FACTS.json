@@ -1,0 +1,43 @@
+{
+ "tests_run": 23,
+ "bars_passed": 54,
+ "bars_total": 95,
+ "capacity_one_feeder_at_99": 600,
+ "capacity_one_feeder_at_99_long_sessions": 700,
+ "cadence_call_below": 0.55,
+ "cadence_clean_every": 4,
+ "cadence_leg_minutes": 5,
+ "power_rule_in_order": 0.861,
+ "power_rule_emptiest_first": 0.77,
+ "power_rule_long_sessions_in_order": 0.888,
+ "power_rule_long_sessions_emptiest_first": 0.829,
+ "energy_saving": 0.069,
+ "energy_saving_long_sessions": 0.122,
+ "energy_saving_long_sessions_clock_only": 0.123,
+ "best_design": {
+  "feeder": "two_feeders",
+  "fleet": 1200,
+  "chargers": 1.0,
+  "control": "plan_tariff",
+  "contribution_per_day": 219700.0,
+  "contribution_per_vehicle_day": 183.1,
+  "rides_served_share": 1.0
+ },
+ "best_design_one_feeder": {
+  "feeder": "one_feeder",
+  "fleet": 700,
+  "chargers": 1.0,
+  "control": "threshold",
+  "contribution_per_day": 126200.0,
+  "contribution_per_vehicle_day": 180.3,
+  "rides_served_share": 0.9998
+ },
+ "pretrained_error": 0.0765,
+ "trained_here_error": 0.0964,
+ "pretrained_reserve_vehicles": 35.7,
+ "trained_here_reserve_vehicles": 40.7,
+ "penetration_trips_per_resident_month": 0.17,
+ "east_bay_vehicles_today": 241,
+ "months_to_second_feeder": 19,
+ "months_to_second_feeder_at_half_growth": 36
+}

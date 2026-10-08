@@ -1,0 +1,42 @@
+{
+  "eval": "E6",
+  "vehicles": 500,
+  "days": 7.0,
+  "readings_per_vehicle_median": 1627,
+  "using_the_type_figure": {
+    "drive_median_error": 0.0535,
+    "always_on_median_error": 0.0524
+  },
+  "identified": {
+    "day_1": {
+      "drive_median_error": 0.0417,
+      "always_on_median_error": 0.0482
+    },
+    "day_7": {
+      "drive_median_error": 0.0221,
+      "always_on_median_error": 0.0303
+    }
+  },
+  "share_within_8pct_on_both": 0.914,
+  "charge_curves": {
+    "ipace": {
+      "bands": 16,
+      "mean_abs_error_kw": 0.04
+    },
+    "ojai": {
+      "bands": 15,
+      "mean_abs_error_kw": 0.0
+    }
+  },
+  "bars": {
+    "1_driving_energy_median_error_at_most_3pct_and_half_the_nominal": true,
+    "2_always_on_median_error_at_most_5pct_and_half_the_nominal": false,
+    "3_nine_in_ten_vehicles_within_8pct_on_both": true,
+    "4_charge_curves_within_3kw": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "driver": "03dd8a8db7a1"
+  }
+}

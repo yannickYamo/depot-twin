@@ -1,0 +1,82 @@
+{
+  "eval": "E10",
+  "start": "2024-05-13",
+  "seeds": [
+    311,
+    312,
+    313
+  ],
+  "table": {
+    "sound_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "sound_1000": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "sound_guarded_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "sound_guarded_1000": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "fault_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "fault_1000": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "fault_guarded_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 3,
+      "hours_to_fall_back_worst": 6.0
+    },
+    "fault_guarded_1000": {
+      "served": 0.8744,
+      "stranded": 0.0,
+      "runs_that_fell_back": 3,
+      "hours_to_fall_back_worst": 6.0
+    },
+    "threshold_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "threshold_1000": {
+      "served": 0.8894,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    }
+  },
+  "bars": {
+    "1_no_false_alarm": true,
+    "2_falls_back_within_12_hours_every_run": true,
+    "3_guarded_serves_at_least_as_many_under_the_fault": false
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "252a77b61f66"
+  }
+}

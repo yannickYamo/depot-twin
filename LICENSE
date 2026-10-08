@@ -1,0 +1,47 @@
+depot-twin Source-Available License
+
+Copyright (c) 2026 Yannick Maurice. All rights reserved.
+
+This software and its accompanying documentation, data files and recorded
+results (the "Work") are made available for viewing and use under the terms
+below. The Work is not open source.
+
+1. Permitted use
+   You may download, install and run the Work, in unmodified form, for your
+   own evaluation, research, teaching and internal, non-commercial purposes.
+   You may read the source code and the documentation.
+
+2. What you may not do
+   Without prior written permission from the copyright holder you may not:
+   (a) modify, adapt, translate or create derivative works of the Work;
+   (b) redistribute, publish, sublicense, sell, rent or otherwise make the
+       Work or any part of it available to third parties, in source or
+       binary form, including as a hosted service;
+   (c) use the Work, or any output of it, in a commercial product or
+       service;
+   (d) remove or alter this notice, the copyright notice, or the statement
+       that the project is independent of and not affiliated with or
+       endorsed by Waymo.
+
+3. Contributions
+   This project does not accept contributions. Pull requests, patches and
+   issues proposing changes to the Work will not be merged, and submitting
+   them grants no rights to the submitter.
+
+4. Third-party material
+   Public data fetched by the Work's loaders (ride records, grid data,
+   tariffs, filings, census tables) remains subject to the terms of its
+   publishers, listed in docs/DATA.md. Third-party packages the Work depends
+   on remain under their own licenses. The pretrained model referred to in
+   the documentation is not distributed with the Work.
+
+5. No warranty
+   THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+   THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
+   ARISING FROM OR IN CONNECTION WITH THE WORK OR ITS USE. The Work is a
+   simulation built on public data; nothing in it is operational advice.
+
+6. Permission requests
+   For any use beyond section 1, contact the copyright holder.

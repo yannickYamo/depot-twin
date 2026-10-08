@@ -1,0 +1,80 @@
+{
+  "eval": "E5",
+  "rounds": [
+    {
+      "designs": 0,
+      "over_prediction_before_training_on_them": 0.0
+    },
+    {
+      "designs": 0,
+      "over_prediction_before_training_on_them": 0.0
+    }
+  ],
+  "margin": 0.01346,
+  "margin_designs": 0,
+  "acceptable_candidates": [
+    0,
+    0,
+    0
+  ],
+  "train_rows": 1271,
+  "served_model": {
+    "params": {
+      "max_depth": 6,
+      "min_child_weight": 5,
+      "reg_lambda": 1.0
+    },
+    "trees": 322,
+    "cv_mae": 0.01425,
+    "train_mae": 0.00265,
+    "valid_mae": 0.01281,
+    "test_mae": 0.01402,
+    "gap_mae": 0.01441
+  },
+  "prospective_mae": 0.01343,
+  "search": [
+    {
+      "case": {
+        "size": 400.0,
+        "site_limit_kw": 2750.0
+      },
+      "offered": 0,
+      "regret": 1.0,
+      "top50_serving_99pct": 0,
+      "top50_worst_served": 0.0,
+      "simulated_served": 0.0
+    },
+    {
+      "case": {
+        "size": 600.0,
+        "site_limit_kw": 2750.0
+      },
+      "offered": 0,
+      "regret": 1.0,
+      "top50_serving_99pct": 0,
+      "top50_worst_served": 0.0,
+      "simulated_served": 0.0
+    },
+    {
+      "case": {
+        "size": 1000.0,
+        "site_limit_kw": 5500.0
+      },
+      "offered": 0,
+      "regret": 1.0,
+      "top50_serving_99pct": 0,
+      "top50_worst_served": 0.0,
+      "simulated_served": 0.0
+    }
+  ],
+  "bars": {
+    "1_regret_and_top50_hold_in_every_case": false,
+    "2_first_pick_truly_serves_99pct": false,
+    "3_prospective_accuracy_kept": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "driver": "03dd8a8db7a1"
+  }
+}

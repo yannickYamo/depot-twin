@@ -1,0 +1,101 @@
+{
+  "eval": "E9",
+  "start": "2024-05-13",
+  "seeds": [
+    301,
+    302,
+    303,
+    304,
+    305
+  ],
+  "table": {
+    "headroom_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.8168,
+      "stranded": 0.0,
+      "grid_variation": 0.5794,
+      "kwh_per_charger_hour": 26.4689,
+      "sessions_per_vehicle_day": 1.7044,
+      "kwh_per_session": 49.2021,
+      "upper_bound_held": 0.9341,
+      "upper_bound_held_when_expected_busy": 1.0,
+      "trips_per_visit": 13.9159,
+      "visits_per_vehicle_day": 1.7157,
+      "visits_per_charger_day": 12.9978,
+      "arrived_at_floor_share": 0.0,
+      "forced_call_share": 0.0,
+      "inspected_share": 0.0839
+    },
+    "headroom_1000": {
+      "served": 0.8426,
+      "on_road_when_busiest": 0.439,
+      "stranded": 0.0,
+      "grid_variation": 0.1927,
+      "kwh_per_charger_hour": 17.1485,
+      "sessions_per_vehicle_day": 0.9179,
+      "kwh_per_session": 59.1917,
+      "upper_bound_held": 0.9341,
+      "upper_bound_held_when_expected_busy": 1.0,
+      "trips_per_visit": 21.6207,
+      "visits_per_vehicle_day": 0.9304,
+      "visits_per_charger_day": 7.0483,
+      "arrived_at_floor_share": 1.0,
+      "forced_call_share": 0.0,
+      "inspected_share": 0.084
+    },
+    "heartbeat_500": {
+      "served": 1.0,
+      "on_road_when_busiest": 0.8736,
+      "stranded": 0.0,
+      "grid_variation": 0.2144,
+      "kwh_per_charger_hour": 27.8731,
+      "sessions_per_vehicle_day": 1.5915,
+      "kwh_per_session": 55.4819,
+      "upper_bound_held": 0.9341,
+      "upper_bound_held_when_expected_busy": 1.0,
+      "trips_per_visit": 14.935,
+      "visits_per_vehicle_day": 1.5986,
+      "visits_per_charger_day": 12.1104,
+      "arrived_at_floor_share": 0.0,
+      "forced_call_share": 0.0,
+      "inspected_share": 0.0873,
+      "ledger_kept": 0.9796,
+      "ledger_promised_share": 0.9367,
+      "tick_ms_median": 0.3946,
+      "tick_ms_p99": 18.7526
+    },
+    "heartbeat_1000": {
+      "served": 0.8857,
+      "on_road_when_busiest": 0.4882,
+      "stranded": 0.0,
+      "grid_variation": 0.0,
+      "kwh_per_charger_hour": 18.0823,
+      "sessions_per_vehicle_day": 1.0229,
+      "kwh_per_session": 56.0,
+      "upper_bound_held": 0.9341,
+      "upper_bound_held_when_expected_busy": 1.0,
+      "trips_per_visit": 20.4161,
+      "visits_per_vehicle_day": 1.0355,
+      "visits_per_charger_day": 7.845,
+      "arrived_at_floor_share": 1.0,
+      "forced_call_share": 0.9768,
+      "inspected_share": 0.138,
+      "ledger_kept": 0.9653,
+      "ledger_promised_share": 0.9732,
+      "tick_ms_median": 0.7359,
+      "tick_ms_p99": 18.8953
+    }
+  },
+  "bars": {
+    "1_ledger_kept_95pct_of_hours": true,
+    "2_promises_at_least_90pct_of_what_was_delivered": true,
+    "3_serves_1pt_more_at_1000_and_no_worse_at_500": true,
+    "4_no_vehicle_stranded": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "252a77b61f66"
+  }
+}

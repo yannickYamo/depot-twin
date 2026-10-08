@@ -1,0 +1,165 @@
+{
+  "eval": "E7b",
+  "san_francisco": {
+    "1h": {
+      "rows": {
+        "train": 40789,
+        "stop": 8041,
+        "calibrate": 8041,
+        "holdout": 17257
+      },
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 1
+      },
+      "trees": 725,
+      "model_wape": 0.1137,
+      "baseline": "same_time_last_day",
+      "baseline_wape": 0.1539,
+      "all_baselines_wape": {
+        "last_hour": 0.2339,
+        "same_time_last_day": 0.1539,
+        "same_time_last_week": 0.1487
+      },
+      "error_removed": 0.2613,
+      "upper_95_coverage": 0.9284,
+      "interval_90_coverage": 0.8762,
+      "peak_signed_error": -0.0779,
+      "top_features": [
+        [
+          "running_vs_last_week",
+          0.182
+        ],
+        [
+          "target_slot_last_day",
+          0.181
+        ],
+        [
+          "target_slot_last_week",
+          0.153
+        ],
+        [
+          "hour",
+          0.046
+        ],
+        [
+          "rate_now",
+          0.045
+        ]
+      ],
+      "without_weather_wape": 0.1057
+    },
+    "6h": {
+      "rows": {
+        "train": 40769,
+        "stop": 7981,
+        "calibrate": 7981,
+        "holdout": 17197
+      },
+      "params": {
+        "max_depth": 4,
+        "min_child_weight": 1
+      },
+      "trees": 587,
+      "model_wape": 0.1186,
+      "baseline": "same_time_last_day",
+      "baseline_wape": 0.1537,
+      "all_baselines_wape": {
+        "last_hour": 0.6366,
+        "same_time_last_day": 0.1537,
+        "same_time_last_week": 0.1487
+      },
+      "error_removed": 0.2286,
+      "upper_95_coverage": 0.9331,
+      "interval_90_coverage": 0.9152,
+      "peak_signed_error": -0.1085,
+      "top_features": [
+        [
+          "target_slot_last_day",
+          0.285
+        ],
+        [
+          "target_slot_last_week",
+          0.076
+        ],
+        [
+          "running_vs_last_week",
+          0.067
+        ],
+        [
+          "rate_mean_24h",
+          0.065
+        ],
+        [
+          "weekday",
+          0.054
+        ]
+      ],
+      "without_weather_wape": 0.1284
+    },
+    "24h": {
+      "rows": {
+        "train": 40697,
+        "stop": 7765,
+        "calibrate": 7765,
+        "holdout": 16981
+      },
+      "params": {
+        "max_depth": 4,
+        "min_child_weight": 1
+      },
+      "trees": 719,
+      "model_wape": 0.123,
+      "baseline": "same_time_last_week",
+      "baseline_wape": 0.149,
+      "all_baselines_wape": {
+        "last_hour": 0.1938,
+        "same_time_last_day": 0.2087,
+        "same_time_last_week": 0.149
+      },
+      "error_removed": 0.1739,
+      "upper_95_coverage": 0.9378,
+      "interval_90_coverage": 0.9282,
+      "peak_signed_error": -0.0797,
+      "top_features": [
+        [
+          "rate_now",
+          0.22
+        ],
+        [
+          "target_slot_last_day",
+          0.113
+        ],
+        [
+          "target_slot_last_week",
+          0.07
+        ],
+        [
+          "weekend",
+          0.057
+        ],
+        [
+          "weekday",
+          0.05
+        ]
+      ],
+      "without_weather_wape": 0.1157
+    }
+  },
+  "bars": {
+    "1h_1_removes_15pct_of_best_baseline_error": true,
+    "1h_2_upper_bound_holds_93_to_97pct": false,
+    "1h_3_not_low_by_more_than_3pct_at_peak": false,
+    "6h_1_removes_15pct_of_best_baseline_error": true,
+    "6h_2_upper_bound_holds_93_to_97pct": true,
+    "6h_3_not_low_by_more_than_3pct_at_peak": false,
+    "24h_1_removes_15pct_of_best_baseline_error": true,
+    "24h_2_upper_bound_holds_93_to_97pct": true,
+    "24h_3_not_low_by_more_than_3pct_at_peak": false
+  },
+  "run": "2026-10-08",
+  "code": {
+    "forecast": "0bc6598ed01b",
+    "driver": "e3415983dcf6"
+  }
+}

@@ -1,0 +1,63 @@
+{
+ "500_slot_power": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 1.4663,
+  "grid_kwh_per_vehicle_day": 96.2423
+ },
+ "500_slot_power_cadence": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 3.1031,
+  "grid_kwh_per_vehicle_day": 94.6912
+ },
+ "500_slot_power_few_people": {
+  "rides_served_share": 0.9119,
+  "visits_per_vehicle_day": 0.9473,
+  "grid_kwh_per_vehicle_day": 63.4992
+ },
+ "500_need_first": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 1.3997,
+  "grid_kwh_per_vehicle_day": 91.4892
+ },
+ "500_need_first_cadence": {
+  "rides_served_share": 0.991,
+  "visits_per_vehicle_day": 2.8436,
+  "grid_kwh_per_vehicle_day": 87.0624
+ },
+ "500_need_first_few_people": {
+  "rides_served_share": 0.8976,
+  "visits_per_vehicle_day": 0.9432,
+  "grid_kwh_per_vehicle_day": 63.9638
+ },
+ "1000_slot_power": {
+  "rides_served_share": 0.8985,
+  "visits_per_vehicle_day": 0.9525,
+  "grid_kwh_per_vehicle_day": 62.7
+ },
+ "1000_slot_power_cadence": {
+  "rides_served_share": 0.8511,
+  "visits_per_vehicle_day": 2.0524,
+  "grid_kwh_per_vehicle_day": 62.7
+ },
+ "1000_slot_power_few_people": {
+  "rides_served_share": 0.4745,
+  "visits_per_vehicle_day": 0.4484,
+  "grid_kwh_per_vehicle_day": 34.4739
+ },
+ "1000_need_first": {
+  "rides_served_share": 0.816,
+  "visits_per_vehicle_day": 0.8868,
+  "grid_kwh_per_vehicle_day": 58.0374
+ },
+ "1000_need_first_cadence": {
+  "rides_served_share": 0.7552,
+  "visits_per_vehicle_day": 1.8073,
+  "grid_kwh_per_vehicle_day": 55.053
+ },
+ "1000_need_first_few_people": {
+  "rides_served_share": 0.4608,
+  "visits_per_vehicle_day": 0.4622,
+  "grid_kwh_per_vehicle_day": 33.893
+ },
+ "_made_by": "web/scripts/reference.py: seeds 1 to 3, seven days less the first, weekly shape"
+}

@@ -1,0 +1,11 @@
+{
+  "rides": 2969339,
+  "first": "2022-12-01 00:00:00",
+  "last": "2024-05-31 23:55:00",
+  "rides_per_day": 5419,
+  "miles_mean": 7.17,
+  "miles_median": 3.2,
+  "miles_p90": 15.33,
+  "fare_mean": 33.64,
+  "airport_pickup_share": 0.3144
+}

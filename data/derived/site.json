@@ -1,0 +1,46 @@
+{
+  "site": {
+    "name": "East Oakland",
+    "address": "7825 San Leandro St, Oakland, CA 94621",
+    "lat": 37.75055,
+    "lon": -122.1935
+  },
+  "radius_m": 150.0,
+  "feeders": [
+    {
+      "name": "EDES 1101",
+      "feeder_id": "013681101",
+      "voltage_kv": 12.0,
+      "min_kw": 2751.0,
+      "max_kw": 2759.0,
+      "sections": 2
+    },
+    {
+      "name": "OAKLAND J 1110",
+      "feeder_id": "012091110",
+      "voltage_kv": 12.0,
+      "min_kw": 2744.0,
+      "max_kw": 2756.0,
+      "sections": 6
+    },
+    {
+      "name": "EDES 1114",
+      "feeder_id": "013681114",
+      "voltage_kv": 12.0,
+      "min_kw": 912.0,
+      "max_kw": 2334.0,
+      "sections": 9
+    },
+    {
+      "name": "OAKLAND J 1104",
+      "feeder_id": "012091104",
+      "voltage_kv": 12.0,
+      "min_kw": 1158.0,
+      "max_kw": 1158.0,
+      "sections": 7
+    }
+  ],
+  "source": "PG&E Integration Capacity Analysis, LineDetail layer, LoadCapacity_kW",
+  "source_url": "https://services2.arcgis.com/mJaJSax0KPHoCNB6/ArcGIS/rest/services/DRPComplianceRelProd/FeatureServer/3/query",
+  "fetched": "2026-10-04"
+}

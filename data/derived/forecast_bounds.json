@@ -1,0 +1,83 @@
+{
+  "1h": {
+    "upper_95": 7.00390072939248,
+    "lower_05": -3.3041149775146677,
+    "features": [
+      "rate_now",
+      "rate_1h_ago",
+      "rate_24h_ago",
+      "rate_7d_ago",
+      "target_slot_last_day",
+      "target_slot_last_week",
+      "step_std_1h",
+      "rate_mean_24h",
+      "rate_max_24h",
+      "rate_min_24h",
+      "running_vs_last_week",
+      "hour",
+      "weekday",
+      "weekend",
+      "holiday",
+      "month",
+      "minute_of_day",
+      "temperature_now",
+      "rain_now",
+      "temperature_target",
+      "rain_target"
+    ]
+  },
+  "6h": {
+    "upper_95": 10.801561979344008,
+    "lower_05": -3.348259255944125,
+    "features": [
+      "rate_now",
+      "rate_1h_ago",
+      "rate_24h_ago",
+      "rate_7d_ago",
+      "target_slot_last_day",
+      "target_slot_last_week",
+      "step_std_1h",
+      "rate_mean_24h",
+      "rate_max_24h",
+      "rate_min_24h",
+      "running_vs_last_week",
+      "hour",
+      "weekday",
+      "weekend",
+      "holiday",
+      "month",
+      "minute_of_day",
+      "temperature_now",
+      "rain_now",
+      "temperature_target",
+      "rain_target"
+    ]
+  },
+  "24h": {
+    "upper_95": 10.21285673123417,
+    "lower_05": -3.918454580049011,
+    "features": [
+      "rate_now",
+      "rate_1h_ago",
+      "rate_24h_ago",
+      "rate_7d_ago",
+      "target_slot_last_day",
+      "target_slot_last_week",
+      "step_std_1h",
+      "rate_mean_24h",
+      "rate_max_24h",
+      "rate_min_24h",
+      "running_vs_last_week",
+      "hour",
+      "weekday",
+      "weekend",
+      "holiday",
+      "month",
+      "minute_of_day",
+      "temperature_now",
+      "rain_now",
+      "temperature_target",
+      "rain_target"
+    ]
+  }
+}

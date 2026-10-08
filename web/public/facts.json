@@ -1,0 +1,38 @@
+{
+ "forecast": [
+  {
+   "hours_ahead": 1,
+   "error": 0.1137,
+   "same_hour_last_week": 0.1487,
+   "upper_bound_held": 0.9284,
+   "no_history_error_against_last_week": [
+    0.768,
+    0.928
+   ]
+  },
+  {
+   "hours_ahead": 6,
+   "error": 0.1186,
+   "same_hour_last_week": 0.1487,
+   "upper_bound_held": 0.9331,
+   "no_history_error_against_last_week": [
+    0.885,
+    1.0
+   ]
+  },
+  {
+   "hours_ahead": 24,
+   "error": 0.123,
+   "same_hour_last_week": 0.149,
+   "upper_bound_held": 0.9378,
+   "no_history_error_against_last_week": [
+    0.933,
+    1.0
+   ]
+  }
+ ],
+ "tests": [
+  "E7b",
+  "E13"
+ ]
+}

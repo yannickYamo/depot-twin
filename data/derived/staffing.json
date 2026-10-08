@@ -1,0 +1,84 @@
+{
+  "start": "2024-03-18",
+  "size": 1000,
+  "rows": [
+    {
+      "staff": 25,
+      "power": "need_first",
+      "served": 0.8067,
+      "grid_kw": 2414.9,
+      "charging": 117.7,
+      "between_stations": 32.5,
+      "queued": 383.7
+    },
+    {
+      "staff": 25,
+      "power": "slot_power",
+      "served": 0.8719,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.1
+    },
+    {
+      "staff": 50,
+      "power": "need_first",
+      "served": 0.8312,
+      "grid_kw": 2516.7,
+      "charging": 124.9,
+      "between_stations": 21.0,
+      "queued": 363.3
+    },
+    {
+      "staff": 50,
+      "power": "slot_power",
+      "served": 0.8719,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.1
+    },
+    {
+      "staff": 100,
+      "power": "need_first",
+      "served": 0.8416,
+      "grid_kw": 2558.7,
+      "charging": 128.4,
+      "between_stations": 16.4,
+      "queued": 354.3
+    },
+    {
+      "staff": 100,
+      "power": "slot_power",
+      "served": 0.8719,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.1
+    },
+    {
+      "staff": 200,
+      "power": "need_first",
+      "served": 0.8426,
+      "grid_kw": 2566.3,
+      "charging": 129.5,
+      "between_stations": 15.4,
+      "queued": 351.7
+    },
+    {
+      "staff": 200,
+      "power": "slot_power",
+      "served": 0.8719,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.1
+    }
+  ],
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "252a77b61f66"
+  }
+}

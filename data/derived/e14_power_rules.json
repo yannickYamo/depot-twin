@@ -1,0 +1,54 @@
+{
+  "eval": "E14",
+  "days": "2026-03-02",
+  "table": {
+    "need_first_25": {
+      "served": 0.7798,
+      "grid_share_used": 0.9243,
+      "between_stations": 32.9463,
+      "stranded": 0.0
+    },
+    "need_first_100": {
+      "served": 0.8186,
+      "grid_share_used": 0.9795,
+      "between_stations": 16.5829,
+      "stranded": 0.0
+    },
+    "slot_power_25": {
+      "served": 0.8528,
+      "grid_share_used": 0.9998,
+      "between_stations": 2.6421,
+      "stranded": 0.0
+    },
+    "slot_power_100": {
+      "served": 0.8528,
+      "grid_share_used": 0.9998,
+      "between_stations": 2.6421,
+      "stranded": 0.0
+    },
+    "least_left_25": {
+      "served": 0.8542,
+      "grid_share_used": 0.9998,
+      "between_stations": 2.6631,
+      "stranded": 0.0
+    },
+    "least_left_100": {
+      "served": 0.8542,
+      "grid_share_used": 0.9998,
+      "between_stations": 2.6631,
+      "stranded": 0.0
+    }
+  },
+  "bars": {
+    "in_order_beats_emptiest_by_2_points_at_25_staff": true,
+    "gap_smaller_but_positive_at_100_staff": true,
+    "emptiest_leaves_4pct_of_power_unused_in_order_under_1pct": true,
+    "least_left_serves_no_fewer_than_in_order": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "252a77b61f66"
+  }
+}

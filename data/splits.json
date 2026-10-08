@@ -1,0 +1,202 @@
+{
+  "written": "2026-10-05",
+  "rule": "A window is used for one purpose. Development windows are looked at freely; a test window is scored by the tests registered for it. A window listed as test for one question may serve as training data for another model, never as its test. Windows read by more than one test say so.",
+  "windows": [
+    {
+      "id": "sf_dev",
+      "series": "sf_taxi",
+      "from": "2024-03-18",
+      "to": "2024-03-31",
+      "purpose": "development",
+      "used_by": [
+        "E8 development",
+        "E12 development",
+        "session-length study",
+        "staffing study",
+        "sensitivity study",
+        "first-hour study"
+      ]
+    },
+    {
+      "id": "sf_forecast_holdout",
+      "series": "sf_taxi",
+      "from": "2024-04-02",
+      "to": "2024-05-31",
+      "purpose": "test",
+      "used_by": [
+        "E7",
+        "E7b",
+        "model workbench",
+        "model lab development (recipes later confirmed in E17)"
+      ],
+      "note": "the last 60 days of the series; the forecast models' held-out block",
+      "earlier_looks": "The lab's recipes were developed on San Francisco with this block in view, which is why E17 tests them on other cities."
+    },
+    {
+      "id": "sf_e8",
+      "series": "sf_taxi",
+      "from": "2024-04-15",
+      "to": "2024-04-28",
+      "purpose": "test",
+      "used_by": [
+        "E8",
+        "growth study v2",
+        "E13 bar 4",
+        "model workbench depot runs",
+        "first-hour study",
+        "replay page",
+        "grid week",
+        "E16",
+        "E19",
+        "E20",
+        "E22"
+      ]
+    },
+    {
+      "id": "sf_e12",
+      "series": "sf_taxi",
+      "from": "2024-04-29",
+      "to": "2024-05-12",
+      "purpose": "test",
+      "used_by": [
+        "E12",
+        "first-hour study"
+      ]
+    },
+    {
+      "id": "sf_e9",
+      "series": "sf_taxi",
+      "from": "2024-05-13",
+      "to": "2024-05-26",
+      "purpose": "test",
+      "used_by": [
+        "E9",
+        "E10",
+        "E11",
+        "first-hour study"
+      ]
+    },
+    {
+      "id": "nyc_e13_dev",
+      "series": "nyc_ridehail_city",
+      "from": "2026-03-02",
+      "to": "2026-04-30",
+      "purpose": "development",
+      "used_by": [
+        "E13 development"
+      ]
+    },
+    {
+      "id": "nyc_e13_test",
+      "series": "nyc_ridehail_city",
+      "from": "2026-05-01",
+      "to": "2026-06-30",
+      "purpose": "test",
+      "used_by": [
+        "E13"
+      ]
+    },
+    {
+      "id": "chicago_e13_dev",
+      "series": "chicago_ridehail_city",
+      "from": "2026-05-03",
+      "to": "2026-07-01",
+      "purpose": "development",
+      "used_by": [
+        "E13 development",
+        "E1 (walk-forward windows and holdout)"
+      ],
+      "earlier_looks": "E1's walk-forward windows ending 4 May and 1 June 2026 (7 April to 1 June) cover 3 May to 1 June; E1's holdout, 2 June to 31 August 2026, covers 2 June to 1 July."
+    },
+    {
+      "id": "chicago_e13_test",
+      "series": "chicago_ridehail_city",
+      "from": "2026-07-02",
+      "to": "2026-08-31",
+      "purpose": "test",
+      "used_by": [
+        "E13",
+        "E7 (Chicago table)",
+        "E1 (holdout)"
+      ],
+      "earlier_looks": "E7's Chicago table scored the last 60 days of the series, which are these days, and E1's holdout (2 June to 31 August 2026) covers them too. E13 is not the only test to have read them."
+    },
+    {
+      "id": "sf_e13_test",
+      "series": "sf_taxi_city",
+      "from": "2024-04-01",
+      "to": "2024-05-31",
+      "purpose": "test",
+      "used_by": [
+        "E13"
+      ]
+    },
+    {
+      "id": "chicago_depot",
+      "series": "chicago_ridehail_city",
+      "from": "2026-03-02",
+      "to": "2026-03-15",
+      "purpose": "test",
+      "used_by": [
+        "E14",
+        "E15"
+      ],
+      "note": "depot runs only. E1's walk-forward windows ending 9 March and 6 April 2026 (10 February to 6 April) scored a week-ahead forecast on these days"
+    },
+    {
+      "id": "nyc_depot",
+      "series": "nyc_ridehail_city",
+      "from": "2026-03-02",
+      "to": "2026-03-15",
+      "purpose": "test",
+      "used_by": [
+        "E15"
+      ],
+      "note": "depot runs only",
+      "accepted_overlap": {
+        "with": "nyc_e13_dev",
+        "why": "E15 ran the depot on these days with no forecast involved; E13 used the same days to develop a forecast. Different questions, recorded here because the rule says a window has one purpose."
+      }
+    },
+    {
+      "id": "chicago_forecast_confirm",
+      "series": "chicago_ridehail_city",
+      "from": "2026-01-05",
+      "to": "2026-03-01",
+      "purpose": "test",
+      "used_by": [
+        "E17",
+        "E18 (a second look, labelled exploratory)",
+        "E1 walk-forward (10 February to 1 March 2026)"
+      ],
+      "note": "scored by E17. A pretrained model scored here later (E18) would be a second look at the same days, and must be said to be one",
+      "earlier_looks": "One of E1's walk-forward windows scored 10 February to 1 March 2026, inside this window. The window is held back from the forecast models of E7b onward, not from the project as a whole."
+    },
+    {
+      "id": "nyc_forecast_confirm",
+      "series": "nyc_ridehail_city",
+      "from": "2026-01-05",
+      "to": "2026-03-01",
+      "purpose": "test",
+      "used_by": [
+        "E17",
+        "E18 (a second look, labelled exploratory)",
+        "E13 development (in-city arm: stopping and calibration)"
+      ],
+      "note": "scored by E17; New York taxi series appear in public pretraining corpora, so a pretrained model's score here is a benchmark, not a transfer result",
+      "earlier_looks": "In E13's development run the in-city New York arm stopped and calibrated on 5 January to 1 March 2026, these days. No model in E17 or E18 was chosen on that arm."
+    },
+    {
+      "id": "nyc_yellow_confirm",
+      "series": "nyc_yellow_city",
+      "from": "2026-01-05",
+      "to": "2026-03-01",
+      "purpose": "test",
+      "used_by": [
+        "E18"
+      ],
+      "note": "scored by E18 as its confirmation series; no earlier test scored this series"
+    }
+  ],
+  "checked": "Every date used in src/depot_twin is listed here; windows read by more than one test say so under 'earlier_looks'. tests/test_contracts.py holds the dates in code to the dates here."
+}

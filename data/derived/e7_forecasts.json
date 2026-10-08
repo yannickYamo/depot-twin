@@ -1,0 +1,191 @@
+{
+  "eval": "E7",
+  "san_francisco": {
+    "1h": {
+      "rows": {
+        "train": 40789,
+        "stop": 8041,
+        "calibrate": 8041,
+        "holdout": 17257
+      },
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 1
+      },
+      "trees": 188,
+      "model_wape": 0.1547,
+      "baseline": "same_time_last_day",
+      "baseline_wape": 0.1539,
+      "all_baselines_wape": {
+        "last_hour": 0.2339,
+        "same_time_last_day": 0.1539,
+        "same_time_last_week": 0.1487
+      },
+      "error_removed": -0.0056,
+      "upper_95_coverage": 0.9174,
+      "interval_90_coverage": 0.8944,
+      "peak_signed_error": -0.2435,
+      "top_features": [
+        [
+          "target_slot_last_day",
+          0.521
+        ],
+        [
+          "minute_of_day",
+          0.15
+        ],
+        [
+          "target_slot_last_week",
+          0.126
+        ],
+        [
+          "hour",
+          0.091
+        ],
+        [
+          "rate_now",
+          0.033
+        ]
+      ],
+      "without_weather_wape": 0.1542
+    },
+    "6h": {
+      "rows": {
+        "train": 40769,
+        "stop": 7981,
+        "calibrate": 7981,
+        "holdout": 17197
+      },
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 1
+      },
+      "trees": 202,
+      "model_wape": 0.2425,
+      "baseline": "same_time_last_day",
+      "baseline_wape": 0.1537,
+      "all_baselines_wape": {
+        "last_hour": 0.6366,
+        "same_time_last_day": 0.1537,
+        "same_time_last_week": 0.1487
+      },
+      "error_removed": -0.5776,
+      "upper_95_coverage": 0.9038,
+      "interval_90_coverage": 0.8921,
+      "peak_signed_error": -0.4038,
+      "top_features": [
+        [
+          "target_slot_last_day",
+          0.512
+        ],
+        [
+          "minute_of_day",
+          0.167
+        ],
+        [
+          "target_slot_last_week",
+          0.106
+        ],
+        [
+          "hour",
+          0.094
+        ],
+        [
+          "weekend",
+          0.022
+        ]
+      ],
+      "without_weather_wape": 0.2379
+    },
+    "24h": {
+      "rows": {
+        "train": 40697,
+        "stop": 7765,
+        "calibrate": 7765,
+        "holdout": 16981
+      },
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 1
+      },
+      "trees": 558,
+      "model_wape": 0.2427,
+      "baseline": "same_time_last_week",
+      "baseline_wape": 0.149,
+      "all_baselines_wape": {
+        "last_hour": 0.1938,
+        "same_time_last_day": 0.2087,
+        "same_time_last_week": 0.149
+      },
+      "error_removed": -0.6291,
+      "upper_95_coverage": 0.8882,
+      "interval_90_coverage": 0.8747,
+      "peak_signed_error": -0.4313,
+      "top_features": [
+        [
+          "target_slot_last_week",
+          0.356
+        ],
+        [
+          "hour",
+          0.272
+        ],
+        [
+          "minute_of_day",
+          0.189
+        ],
+        [
+          "rate_now",
+          0.027
+        ],
+        [
+          "weekend",
+          0.025
+        ]
+      ],
+      "without_weather_wape": 0.2677
+    }
+  },
+  "chicago": {
+    "1h": {
+      "model_wape": 0.0409,
+      "baseline": "same_time_last_week",
+      "baseline_wape": 0.0644,
+      "error_removed": 0.3644,
+      "upper_95_coverage": 0.9507,
+      "peak_signed_error": -0.0114
+    },
+    "6h": {
+      "model_wape": 0.0462,
+      "baseline": "same_time_last_week",
+      "baseline_wape": 0.0643,
+      "error_removed": 0.2808,
+      "upper_95_coverage": 0.9526,
+      "peak_signed_error": -0.0053
+    },
+    "24h": {
+      "model_wape": 0.0492,
+      "baseline": "same_time_last_week",
+      "baseline_wape": 0.0634,
+      "error_removed": 0.2235,
+      "upper_95_coverage": 0.9739,
+      "peak_signed_error": -0.004
+    }
+  },
+  "bars": {
+    "1h_1_removes_15pct_of_best_baseline_error": false,
+    "1h_2_upper_bound_holds_93_to_97pct": false,
+    "1h_3_not_low_by_more_than_3pct_at_peak": false,
+    "6h_1_removes_15pct_of_best_baseline_error": false,
+    "6h_2_upper_bound_holds_93_to_97pct": false,
+    "6h_3_not_low_by_more_than_3pct_at_peak": false,
+    "24h_1_removes_15pct_of_best_baseline_error": false,
+    "24h_2_upper_bound_holds_93_to_97pct": false,
+    "24h_3_not_low_by_more_than_3pct_at_peak": false
+  },
+  "run": "2026-10-08",
+  "code": {
+    "forecast": "0bc6598ed01b",
+    "driver": "e3415983dcf6"
+  }
+}

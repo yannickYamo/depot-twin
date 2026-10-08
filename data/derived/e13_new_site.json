@@ -1,0 +1,880 @@
+{
+  "eval": "E13",
+  "cells": [
+    {
+      "city": "new_york",
+      "series": "nyc_ridehail_city",
+      "horizon": 1,
+      "rides_per_hour": null,
+      "test_days": [
+        "2026-05-01",
+        "2026-06-30"
+      ],
+      "donor_groups": {
+        "chicago": 3,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.2202,
+        "same_time_last_day": 0.1494,
+        "same_time_last_week": 0.0821
+      },
+      "best_naive": 0.0821,
+      "in_city": 0.0435,
+      "donors_only": {
+        "wape": 0.0769,
+        "upper_coverage": 0.9729,
+        "lower_coverage": 0.9646
+      },
+      "donors_and_generated": {
+        "wape": 0.0762,
+        "upper_coverage": 0.9715,
+        "lower_coverage": 0.9687
+      },
+      "generated_only": {
+        "wape": 0.0907,
+        "upper_coverage": 0.4587,
+        "lower_coverage": 0.6227
+      },
+      "bounds": {
+        "upper_relative": 0.238,
+        "lower_relative": 0.1942,
+        "trust": {
+          "donors_only": 0.1,
+          "donors_and_generated": 0.1,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1926,
+        "spread_real": 0.1344,
+        "spread_generated": 0.2338,
+        "hour_to_hour_real": 0.67,
+        "hour_to_hour_generated": 0.63,
+        "day_to_day_real": 0.239,
+        "day_to_day_generated": 0.301,
+        "week_to_week_real": 0.089,
+        "week_to_week_generated": -0.029
+      }
+    },
+    {
+      "city": "new_york",
+      "series": "nyc_ridehail_city",
+      "horizon": 6,
+      "rides_per_hour": null,
+      "test_days": [
+        "2026-05-01",
+        "2026-06-30"
+      ],
+      "donor_groups": {
+        "chicago": 3,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.4822,
+        "same_time_last_day": 0.1487,
+        "same_time_last_week": 0.0823
+      },
+      "best_naive": 0.0823,
+      "in_city": 0.0526,
+      "donors_only": {
+        "wape": 0.079,
+        "upper_coverage": 0.9679,
+        "lower_coverage": 0.9623
+      },
+      "donors_and_generated": {
+        "wape": 0.0823,
+        "upper_coverage": 0.9735,
+        "lower_coverage": 0.9603
+      },
+      "generated_only": {
+        "wape": 0.1076,
+        "upper_coverage": 0.5418,
+        "lower_coverage": 0.5237
+      },
+      "bounds": {
+        "upper_relative": 0.254,
+        "lower_relative": 0.1977,
+        "trust": {
+          "donors_only": 0.1,
+          "donors_and_generated": 0.0,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1926,
+        "spread_real": 0.1344,
+        "spread_generated": 0.2338,
+        "hour_to_hour_real": 0.67,
+        "hour_to_hour_generated": 0.63,
+        "day_to_day_real": 0.239,
+        "day_to_day_generated": 0.301,
+        "week_to_week_real": 0.089,
+        "week_to_week_generated": -0.029
+      }
+    },
+    {
+      "city": "new_york",
+      "series": "nyc_ridehail_city",
+      "horizon": 24,
+      "rides_per_hour": null,
+      "test_days": [
+        "2026-05-01",
+        "2026-06-29"
+      ],
+      "donor_groups": {
+        "chicago": 3,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.1898,
+        "same_time_last_day": 0.2402,
+        "same_time_last_week": 0.0809
+      },
+      "best_naive": 0.0809,
+      "in_city": 0.0604,
+      "donors_only": {
+        "wape": 0.0809,
+        "upper_coverage": 0.9732,
+        "lower_coverage": 0.964
+      },
+      "donors_and_generated": {
+        "wape": 0.0809,
+        "upper_coverage": 0.9732,
+        "lower_coverage": 0.964
+      },
+      "generated_only": {
+        "wape": 0.1301,
+        "upper_coverage": 0.4915,
+        "lower_coverage": 0.5607
+      },
+      "bounds": {
+        "upper_relative": 0.254,
+        "lower_relative": 0.1977,
+        "trust": {
+          "donors_only": 0.0,
+          "donors_and_generated": 0.0,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1926,
+        "spread_real": 0.1344,
+        "spread_generated": 0.2338,
+        "hour_to_hour_real": 0.67,
+        "hour_to_hour_generated": 0.63,
+        "day_to_day_real": 0.239,
+        "day_to_day_generated": 0.301,
+        "week_to_week_real": 0.089,
+        "week_to_week_generated": -0.029
+      }
+    },
+    {
+      "city": "chicago",
+      "series": "chicago_ridehail_city",
+      "horizon": 1,
+      "rides_per_hour": null,
+      "test_days": [
+        "2026-07-02",
+        "2026-08-31"
+      ],
+      "donor_groups": {
+        "new_york": 24,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.2132,
+        "same_time_last_day": 0.1744,
+        "same_time_last_week": 0.0644
+      },
+      "best_naive": 0.0644,
+      "in_city": 0.0406,
+      "donors_only": {
+        "wape": 0.0515,
+        "upper_coverage": 0.9917,
+        "lower_coverage": 0.9882
+      },
+      "donors_and_generated": {
+        "wape": 0.0539,
+        "upper_coverage": 0.9903,
+        "lower_coverage": 0.9882
+      },
+      "generated_only": {
+        "wape": 0.05,
+        "upper_coverage": 0.6477,
+        "lower_coverage": 0.5949
+      },
+      "bounds": {
+        "upper_relative": 0.2535,
+        "lower_relative": 0.2094,
+        "trust": {
+          "donors_only": 0.4,
+          "donors_and_generated": 0.3,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1276,
+        "spread_real": 0.1597,
+        "spread_generated": 0.2813,
+        "hour_to_hour_real": 0.403,
+        "hour_to_hour_generated": 0.74,
+        "day_to_day_real": 0.232,
+        "day_to_day_generated": 0.398,
+        "week_to_week_real": 0.062,
+        "week_to_week_generated": 0.001
+      }
+    },
+    {
+      "city": "chicago",
+      "series": "chicago_ridehail_city",
+      "horizon": 6,
+      "rides_per_hour": null,
+      "test_days": [
+        "2026-07-02",
+        "2026-08-31"
+      ],
+      "donor_groups": {
+        "new_york": 24,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.528,
+        "same_time_last_day": 0.1741,
+        "same_time_last_week": 0.0643
+      },
+      "best_naive": 0.0643,
+      "in_city": 0.0483,
+      "donors_only": {
+        "wape": 0.0568,
+        "upper_coverage": 0.9909,
+        "lower_coverage": 0.9868
+      },
+      "donors_and_generated": {
+        "wape": 0.0569,
+        "upper_coverage": 0.9909,
+        "lower_coverage": 0.9874
+      },
+      "generated_only": {
+        "wape": 0.0618,
+        "upper_coverage": 0.6227,
+        "lower_coverage": 0.5837
+      },
+      "bounds": {
+        "upper_relative": 0.2785,
+        "lower_relative": 0.2261,
+        "trust": {
+          "donors_only": 0.3,
+          "donors_and_generated": 0.3,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1276,
+        "spread_real": 0.1597,
+        "spread_generated": 0.2813,
+        "hour_to_hour_real": 0.403,
+        "hour_to_hour_generated": 0.74,
+        "day_to_day_real": 0.232,
+        "day_to_day_generated": 0.398,
+        "week_to_week_real": 0.062,
+        "week_to_week_generated": 0.001
+      }
+    },
+    {
+      "city": "chicago",
+      "series": "chicago_ridehail_city",
+      "horizon": 24,
+      "rides_per_hour": null,
+      "test_days": [
+        "2026-07-02",
+        "2026-08-30"
+      ],
+      "donor_groups": {
+        "new_york": 24,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.1975,
+        "same_time_last_day": 0.296,
+        "same_time_last_week": 0.0634
+      },
+      "best_naive": 0.0634,
+      "in_city": 0.0768,
+      "donors_only": {
+        "wape": 0.059,
+        "upper_coverage": 0.9894,
+        "lower_coverage": 0.988
+      },
+      "donors_and_generated": {
+        "wape": 0.0609,
+        "upper_coverage": 0.9894,
+        "lower_coverage": 0.9873
+      },
+      "generated_only": {
+        "wape": 0.0628,
+        "upper_coverage": 0.613,
+        "lower_coverage": 0.5798
+      },
+      "bounds": {
+        "upper_relative": 0.3055,
+        "lower_relative": 0.2336,
+        "trust": {
+          "donors_only": 0.2,
+          "donors_and_generated": 0.1,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1276,
+        "spread_real": 0.1597,
+        "spread_generated": 0.2813,
+        "hour_to_hour_real": 0.403,
+        "hour_to_hour_generated": 0.74,
+        "day_to_day_real": 0.232,
+        "day_to_day_generated": 0.398,
+        "week_to_week_real": 0.062,
+        "week_to_week_generated": 0.001
+      }
+    },
+    {
+      "city": "san_francisco",
+      "series": "sf_taxi_city",
+      "horizon": 1,
+      "rides_per_hour": null,
+      "test_days": [
+        "2024-04-01",
+        "2024-05-31"
+      ],
+      "donor_groups": {
+        "ridehail": 16,
+        "yellow": 7
+      },
+      "naive": {
+        "last_hour": 0.2341,
+        "same_time_last_day": 0.1552,
+        "same_time_last_week": 0.149
+      },
+      "best_naive": 0.149,
+      "in_city": 0.1077,
+      "donors_only": {
+        "wape": 0.1116,
+        "upper_coverage": 0.9104,
+        "lower_coverage": 0.9291
+      },
+      "donors_and_generated": {
+        "wape": 0.1144,
+        "upper_coverage": 0.9243,
+        "lower_coverage": 0.9138
+      },
+      "generated_only": {
+        "wape": 0.1428,
+        "upper_coverage": 0.706,
+        "lower_coverage": 0.6949
+      },
+      "bounds": {
+        "upper_relative": 0.2512,
+        "lower_relative": 0.1581,
+        "trust": {
+          "donors_only": 0.7,
+          "donors_and_generated": 0.6,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.2145,
+        "spread_real": 0.2246,
+        "spread_generated": 0.245,
+        "hour_to_hour_real": 0.639,
+        "hour_to_hour_generated": 0.761,
+        "day_to_day_real": 0.254,
+        "day_to_day_generated": 0.472,
+        "week_to_week_real": 0.02,
+        "week_to_week_generated": -0.004
+      }
+    },
+    {
+      "city": "san_francisco",
+      "series": "sf_taxi_city",
+      "horizon": 6,
+      "rides_per_hour": null,
+      "test_days": [
+        "2024-04-01",
+        "2024-05-31"
+      ],
+      "donor_groups": {
+        "ridehail": 16,
+        "yellow": 7
+      },
+      "naive": {
+        "last_hour": 0.6354,
+        "same_time_last_day": 0.1549,
+        "same_time_last_week": 0.149
+      },
+      "best_naive": 0.149,
+      "in_city": 0.1489,
+      "donors_only": {
+        "wape": 0.1315,
+        "upper_coverage": 0.8724,
+        "lower_coverage": 0.947
+      },
+      "donors_and_generated": {
+        "wape": 0.132,
+        "upper_coverage": 0.8801,
+        "lower_coverage": 0.9484
+      },
+      "generated_only": {
+        "wape": 0.1695,
+        "upper_coverage": 0.7399,
+        "lower_coverage": 0.6095
+      },
+      "bounds": {
+        "upper_relative": 0.2171,
+        "lower_relative": 0.2135,
+        "trust": {
+          "donors_only": 0.3,
+          "donors_and_generated": 0.3,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.2145,
+        "spread_real": 0.2246,
+        "spread_generated": 0.245,
+        "hour_to_hour_real": 0.639,
+        "hour_to_hour_generated": 0.761,
+        "day_to_day_real": 0.254,
+        "day_to_day_generated": 0.472,
+        "week_to_week_real": 0.02,
+        "week_to_week_generated": -0.004
+      }
+    },
+    {
+      "city": "san_francisco",
+      "series": "sf_taxi_city",
+      "horizon": 24,
+      "rides_per_hour": null,
+      "test_days": [
+        "2024-04-01",
+        "2024-05-30"
+      ],
+      "donor_groups": {
+        "ridehail": 16,
+        "yellow": 7
+      },
+      "naive": {
+        "last_hour": 0.1941,
+        "same_time_last_day": 0.2094,
+        "same_time_last_week": 0.1494
+      },
+      "best_naive": 0.1494,
+      "in_city": 0.1299,
+      "donors_only": {
+        "wape": 0.1353,
+        "upper_coverage": 0.8686,
+        "lower_coverage": 0.9428
+      },
+      "donors_and_generated": {
+        "wape": 0.1394,
+        "upper_coverage": 0.8637,
+        "lower_coverage": 0.947
+      },
+      "generated_only": {
+        "wape": 0.1633,
+        "upper_coverage": 0.7154,
+        "lower_coverage": 0.6547
+      },
+      "bounds": {
+        "upper_relative": 0.217,
+        "lower_relative": 0.2065,
+        "trust": {
+          "donors_only": 0.3,
+          "donors_and_generated": 0.2,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.2145,
+        "spread_real": 0.2246,
+        "spread_generated": 0.245,
+        "hour_to_hour_real": 0.639,
+        "hour_to_hour_generated": 0.761,
+        "day_to_day_real": 0.254,
+        "day_to_day_generated": 0.472,
+        "week_to_week_real": 0.02,
+        "week_to_week_generated": -0.004
+      }
+    }
+  ],
+  "at_depot_scale": [
+    {
+      "city": "new_york",
+      "series": "nyc_ridehail_city",
+      "horizon": 1,
+      "rides_per_hour": 500.0,
+      "test_days": [
+        "2026-05-01",
+        "2026-06-30"
+      ],
+      "donor_groups": {
+        "chicago": 3,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.228,
+        "same_time_last_day": 0.1596,
+        "same_time_last_week": 0.0983
+      },
+      "best_naive": 0.0983,
+      "in_city": 0.0611,
+      "donors_only": {
+        "wape": 0.0789,
+        "upper_coverage": 0.9729,
+        "lower_coverage": 0.9764
+      },
+      "donors_and_generated": {
+        "wape": 0.081,
+        "upper_coverage": 0.9625,
+        "lower_coverage": 0.9812
+      },
+      "generated_only": {
+        "wape": 0.1004,
+        "upper_coverage": 0.6762,
+        "lower_coverage": 0.7672
+      },
+      "bounds": {
+        "upper_relative": 0.2052,
+        "lower_relative": 0.2037,
+        "trust": {
+          "donors_only": 0.5,
+          "donors_and_generated": 0.4,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.2059,
+        "spread_real": 0.1323,
+        "spread_generated": 0.2321,
+        "hour_to_hour_real": 0.583,
+        "hour_to_hour_generated": 0.658,
+        "day_to_day_real": 0.201,
+        "day_to_day_generated": 0.357,
+        "week_to_week_real": 0.069,
+        "week_to_week_generated": -0.058
+      }
+    },
+    {
+      "city": "new_york",
+      "series": "nyc_ridehail_city",
+      "horizon": 6,
+      "rides_per_hour": 500.0,
+      "test_days": [
+        "2026-05-01",
+        "2026-06-30"
+      ],
+      "donor_groups": {
+        "chicago": 3,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.4842,
+        "same_time_last_day": 0.1587,
+        "same_time_last_week": 0.0968
+      },
+      "best_naive": 0.0968,
+      "in_city": 0.0651,
+      "donors_only": {
+        "wape": 0.0874,
+        "upper_coverage": 0.9582,
+        "lower_coverage": 0.9742
+      },
+      "donors_and_generated": {
+        "wape": 0.0894,
+        "upper_coverage": 0.9589,
+        "lower_coverage": 0.9763
+      },
+      "generated_only": {
+        "wape": 0.1152,
+        "upper_coverage": 0.7043,
+        "lower_coverage": 0.6897
+      },
+      "bounds": {
+        "upper_relative": 0.23,
+        "lower_relative": 0.214,
+        "trust": {
+          "donors_only": 0.3,
+          "donors_and_generated": 0.2,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.2057,
+        "spread_real": 0.1318,
+        "spread_generated": 0.2321,
+        "hour_to_hour_real": 0.603,
+        "hour_to_hour_generated": 0.658,
+        "day_to_day_real": 0.209,
+        "day_to_day_generated": 0.357,
+        "week_to_week_real": 0.076,
+        "week_to_week_generated": -0.058
+      }
+    },
+    {
+      "city": "new_york",
+      "series": "nyc_ridehail_city",
+      "horizon": 24,
+      "rides_per_hour": 500.0,
+      "test_days": [
+        "2026-05-01",
+        "2026-06-29"
+      ],
+      "donor_groups": {
+        "chicago": 3,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.1962,
+        "same_time_last_day": 0.2477,
+        "same_time_last_week": 0.0965
+      },
+      "best_naive": 0.0965,
+      "in_city": 0.0807,
+      "donors_only": {
+        "wape": 0.091,
+        "upper_coverage": 0.959,
+        "lower_coverage": 0.9647
+      },
+      "donors_and_generated": {
+        "wape": 0.0895,
+        "upper_coverage": 0.9576,
+        "lower_coverage": 0.9689
+      },
+      "generated_only": {
+        "wape": 0.1216,
+        "upper_coverage": 0.6836,
+        "lower_coverage": 0.6836
+      },
+      "bounds": {
+        "upper_relative": 0.2363,
+        "lower_relative": 0.2091,
+        "trust": {
+          "donors_only": 0.2,
+          "donors_and_generated": 0.2,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.2057,
+        "spread_real": 0.1305,
+        "spread_generated": 0.2321,
+        "hour_to_hour_real": 0.603,
+        "hour_to_hour_generated": 0.658,
+        "day_to_day_real": 0.209,
+        "day_to_day_generated": 0.357,
+        "week_to_week_real": 0.08,
+        "week_to_week_generated": -0.058
+      }
+    },
+    {
+      "city": "chicago",
+      "series": "chicago_ridehail_city",
+      "horizon": 1,
+      "rides_per_hour": 500.0,
+      "test_days": [
+        "2026-07-02",
+        "2026-08-31"
+      ],
+      "donor_groups": {
+        "new_york": 24,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.2207,
+        "same_time_last_day": 0.184,
+        "same_time_last_week": 0.0822
+      },
+      "best_naive": 0.0822,
+      "in_city": 0.0582,
+      "donors_only": {
+        "wape": 0.0646,
+        "upper_coverage": 0.9931,
+        "lower_coverage": 0.9875
+      },
+      "donors_and_generated": {
+        "wape": 0.066,
+        "upper_coverage": 0.9917,
+        "lower_coverage": 0.9882
+      },
+      "generated_only": {
+        "wape": 0.076,
+        "upper_coverage": 0.7603,
+        "lower_coverage": 0.804
+      },
+      "bounds": {
+        "upper_relative": 0.2595,
+        "lower_relative": 0.2126,
+        "trust": {
+          "donors_only": 0.6,
+          "donors_and_generated": 0.5,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1545,
+        "spread_real": 0.1343,
+        "spread_generated": 0.2684,
+        "hour_to_hour_real": 0.472,
+        "hour_to_hour_generated": 0.681,
+        "day_to_day_real": 0.259,
+        "day_to_day_generated": 0.383,
+        "week_to_week_real": 0.069,
+        "week_to_week_generated": -0.004
+      }
+    },
+    {
+      "city": "chicago",
+      "series": "chicago_ridehail_city",
+      "horizon": 6,
+      "rides_per_hour": 500.0,
+      "test_days": [
+        "2026-07-02",
+        "2026-08-31"
+      ],
+      "donor_groups": {
+        "new_york": 24,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.5289,
+        "same_time_last_day": 0.1829,
+        "same_time_last_week": 0.0806
+      },
+      "best_naive": 0.0806,
+      "in_city": 0.0608,
+      "donors_only": {
+        "wape": 0.0707,
+        "upper_coverage": 0.9909,
+        "lower_coverage": 0.9826
+      },
+      "donors_and_generated": {
+        "wape": 0.0704,
+        "upper_coverage": 0.9888,
+        "lower_coverage": 0.9833
+      },
+      "generated_only": {
+        "wape": 0.0879,
+        "upper_coverage": 0.7608,
+        "lower_coverage": 0.7608
+      },
+      "bounds": {
+        "upper_relative": 0.2788,
+        "lower_relative": 0.2295,
+        "trust": {
+          "donors_only": 0.4,
+          "donors_and_generated": 0.4,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.154,
+        "spread_real": 0.1349,
+        "spread_generated": 0.2684,
+        "hour_to_hour_real": 0.474,
+        "hour_to_hour_generated": 0.681,
+        "day_to_day_real": 0.265,
+        "day_to_day_generated": 0.383,
+        "week_to_week_real": 0.063,
+        "week_to_week_generated": -0.004
+      }
+    },
+    {
+      "city": "chicago",
+      "series": "chicago_ridehail_city",
+      "horizon": 24,
+      "rides_per_hour": 500.0,
+      "test_days": [
+        "2026-07-02",
+        "2026-08-30"
+      ],
+      "donor_groups": {
+        "new_york": 24,
+        "san_francisco": 4
+      },
+      "naive": {
+        "last_hour": 0.2058,
+        "same_time_last_day": 0.3014,
+        "same_time_last_week": 0.0826
+      },
+      "best_naive": 0.0826,
+      "in_city": 0.0656,
+      "donors_only": {
+        "wape": 0.076,
+        "upper_coverage": 0.9887,
+        "lower_coverage": 0.9887
+      },
+      "donors_and_generated": {
+        "wape": 0.0757,
+        "upper_coverage": 0.9873,
+        "lower_coverage": 0.9901
+      },
+      "generated_only": {
+        "wape": 0.0999,
+        "upper_coverage": 0.721,
+        "lower_coverage": 0.7585
+      },
+      "bounds": {
+        "upper_relative": 0.304,
+        "lower_relative": 0.2361,
+        "trust": {
+          "donors_only": 0.3,
+          "donors_and_generated": 0.3,
+          "generated_only": 1.0
+        }
+      },
+      "likeness": {
+        "shape_error": 0.1545,
+        "spread_real": 0.1352,
+        "spread_generated": 0.2684,
+        "hour_to_hour_real": 0.474,
+        "hour_to_hour_generated": 0.681,
+        "day_to_day_real": 0.262,
+        "day_to_day_generated": 0.383,
+        "week_to_week_real": 0.069,
+        "week_to_week_generated": -0.004
+      }
+    }
+  ],
+  "depot": {
+    "500": {
+      "real": 1.0,
+      "generated": 1.0,
+      "generated_low": 1.0,
+      "generated_high": 1.0
+    },
+    "1000": {
+      "real": 0.8815,
+      "generated": 0.8796,
+      "generated_low": 0.8617,
+      "generated_high": 0.9069
+    }
+  },
+  "worst_cell": {
+    "city": "new_york",
+    "horizon": 6,
+    "wape": 0.0823,
+    "upper_coverage": 0.9735,
+    "lower_coverage": 0.9603
+  },
+  "bars": {
+    "beats_best_naive_in_all_9": false,
+    "within_1.25x_in_city_in_7_of_9": false,
+    "upper_bound_holds_90_to_99_in_all_9": false,
+    "depot_within_1.5_points": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "e3415983dcf6"
+  }
+}

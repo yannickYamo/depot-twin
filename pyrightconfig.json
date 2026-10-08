@@ -1,0 +1,19 @@
+{
+  "include": [
+    "src/depot_twin/interfaces.py",
+    "src/depot_twin/ledger.py",
+    "src/depot_twin/steering.py",
+    "src/depot_twin/resources.py",
+    "src/depot_twin/grid.py",
+    "src/depot_twin/control.py",
+    "src/depot_twin/sim.py",
+    "src/depot_twin/fleet.py",
+    "src/depot_twin/heartbeat.py",
+    "src/depot_twin/fares.py",
+    "src/depot_twin/finance.py"
+  ],
+  "typeCheckingMode": "basic",
+  "pythonVersion": "3.11",
+  "reportMissingImports": "error",
+  "reportMissingModuleSource": "none"
+}

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" role="img" aria-label="How the twin is put together: public data feeds a forecast, the forecast feeds an hourly plan, the plan steers a simulated depot, and the depot's state comes back to the plan every hour" font-family="Outfit, 'Segoe UI', system-ui, sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#050f1e"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#006fee"/></marker>
+  </defs>
+
+  <!-- public data -->
+  <rect x="20" y="96" width="176" height="176" rx="14" fill="#f4f6f9" stroke="#ccd3dc"/>
+  <text x="108" y="124" text-anchor="middle" font-size="16" font-weight="500" fill="#050f1e">Public data</text>
+  <text x="108" y="152" text-anchor="middle" font-size="13" fill="#5d6e83">ride records, three cities</text>
+  <text x="108" y="174" text-anchor="middle" font-size="13" fill="#5d6e83">weather as forecast</text>
+  <text x="108" y="196" text-anchor="middle" font-size="13" fill="#5d6e83">tariff and grid prices</text>
+  <text x="108" y="218" text-anchor="middle" font-size="13" fill="#5d6e83">utility grid headroom</text>
+  <text x="108" y="240" text-anchor="middle" font-size="13" fill="#5d6e83">fleet filings</text>
+
+  <!-- forecast -->
+  <rect x="252" y="96" width="176" height="176" rx="14" fill="#e6f0ff" stroke="#006fee"/>
+  <text x="340" y="124" text-anchor="middle" font-size="16" font-weight="500" fill="#050f1e">Forecast</text>
+  <text x="340" y="146" text-anchor="middle" font-size="13" font-weight="500" fill="#006fee">XGBoost</text>
+  <text x="340" y="172" text-anchor="middle" font-size="13" fill="#5d6e83">rides 1, 6 and 24 h ahead</text>
+  <text x="340" y="194" text-anchor="middle" font-size="13" fill="#5d6e83">with an upper bound</text>
+  <text x="340" y="216" text-anchor="middle" font-size="13" fill="#5d6e83">measured on held-back days</text>
+  <text x="340" y="248" text-anchor="middle" font-size="12" fill="#5d6e83">small, tabular, noisy: trees</text>
+
+  <!-- plan -->
+  <rect x="484" y="96" width="176" height="176" rx="14" fill="#e3fbf2" stroke="#007068"/>
+  <text x="572" y="124" text-anchor="middle" font-size="16" font-weight="500" fill="#050f1e">Plan</text>
+  <text x="572" y="146" text-anchor="middle" font-size="13" font-weight="500" fill="#007068">MPC, a linear program</text>
+  <text x="572" y="172" text-anchor="middle" font-size="13" fill="#5d6e83">plans the next 24 hours</text>
+  <text x="572" y="194" text-anchor="middle" font-size="13" fill="#5d6e83">acts on the first hour</text>
+  <text x="572" y="216" text-anchor="middle" font-size="13" fill="#5d6e83">plans again an hour later</text>
+  <text x="572" y="248" text-anchor="middle" font-size="12" fill="#5d6e83">hard limits, solved exactly</text>
+
+  <!-- twin -->
+  <rect x="716" y="96" width="224" height="176" rx="14" fill="#050f1e"/>
+  <text x="828" y="124" text-anchor="middle" font-size="16" font-weight="500" fill="#ffffff">Depot twin</text>
+  <text x="828" y="146" text-anchor="middle" font-size="13" font-weight="500" fill="#00e89d">every vehicle, every minute</text>
+  <text x="828" y="172" text-anchor="middle" font-size="13" fill="#a2abb9">rides, batteries, the drive in</text>
+  <text x="828" y="194" text-anchor="middle" font-size="13" fill="#a2abb9">chargers, people, cleaning bays</text>
+  <text x="828" y="216" text-anchor="middle" font-size="13" fill="#a2abb9">the site's power limit</text>
+  <text x="828" y="248" text-anchor="middle" font-size="12" fill="#a2abb9">queues the arithmetic cannot see</text>
+
+  <!-- forward arrows -->
+  <line x1="196" y1="184" x2="248" y2="184" stroke="#050f1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="428" y1="184" x2="480" y2="184" stroke="#050f1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="660" y1="184" x2="712" y2="184" stroke="#050f1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="454" y="174" text-anchor="middle" font-size="11" fill="#5d6e83">bound</text>
+  <text x="686" y="174" text-anchor="middle" font-size="11" fill="#5d6e83">call-ins</text>
+
+  <!-- feedback: state back to the plan every hour -->
+  <path d="M828 272 L828 330 L572 330 L572 276" fill="none" stroke="#006fee" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="586" y="322" font-size="13" fill="#006fee">each hour: fleet state and energy use</text>
+
+  <!-- guard -->
+  <path d="M340 272 L340 372 L548 372 L548 276" fill="none" stroke="#5d6e83" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="340" y="392" font-size="12" fill="#5d6e83">a guard hands control to a simple rule if the bound keeps breaking</text>
+
+  <!-- outcomes -->
+  <text x="940" y="50" text-anchor="end" font-size="13" fill="#050f1e">rides served · energy cost · vehicles in reserve</text>
+  <line x1="828" y1="92" x2="828" y2="62" stroke="#050f1e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="20" y="424" font-size="13" fill="#5d6e83">Each part is tested on its own: the forecast on held-out days, the plan against simpler rules, the twin against public fleet totals.</text>
+</svg>

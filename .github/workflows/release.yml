@@ -1,0 +1,33 @@
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build && pip install -e ".[data,ml,opt,dev]"
+      # A release is cut only from a tree that passes everything CI checks.
+      - run: ruff check src tests && pytest -q
+      - run: python -m build
+      - run: depot-twin report --out out/report.html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: cd web && npm ci && npm test && npm run build && cd dist && zip -r ../../out/web.zip .
+      # The models are built by the registered tests, which need the public data; a release ships the model
+      # card and whatever model files the checkout holds, and the notes say which commit they came from.
+      - run: depot-twin package --out out/release && cd out && zip -r models.zip release
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*
+            out/report.html
+            out/web.zip
+            out/models.zip

@@ -1,0 +1,162 @@
+{
+  "eval": "E16",
+  "window": "sf_e8",
+  "table": {
+    "perfect_foresight_slack": {
+      "served": 1.0,
+      "fares_less_energy_per_vehicle_day": 482.2005,
+      "cost_per_kwh": 0.1659,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "perfect_foresight_edge": {
+      "served": 0.9986,
+      "fares_less_energy_per_vehicle_day": 480.6389,
+      "cost_per_kwh": 0.1901,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "perfect_foresight_energy_bound": {
+      "served": 0.8771,
+      "fares_less_energy_per_vehicle_day": 425.1451,
+      "cost_per_kwh": 0.1899,
+      "promises_kept": 0.9641,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "perfect_foresight_vehicles_bound": {
+      "served": 0.997,
+      "fares_less_energy_per_vehicle_day": 616.9762,
+      "cost_per_kwh": 0.1796,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "model_slack": {
+      "served": 1.0,
+      "fares_less_energy_per_vehicle_day": 481.9776,
+      "cost_per_kwh": 0.1683,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 49.5511,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "model_edge": {
+      "served": 0.9986,
+      "fares_less_energy_per_vehicle_day": 480.6389,
+      "cost_per_kwh": 0.1901,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 69.3715,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "model_energy_bound": {
+      "served": 0.8771,
+      "fares_less_energy_per_vehicle_day": 425.1451,
+      "cost_per_kwh": 0.1899,
+      "promises_kept": 0.9641,
+      "reserve_vehicles": 99.1022,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "model_vehicles_bound": {
+      "served": 0.9953,
+      "fares_less_energy_per_vehicle_day": 616.2623,
+      "cost_per_kwh": 0.1765,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 63.4254,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "last_week_slack": {
+      "served": 1.0,
+      "fares_less_energy_per_vehicle_day": 481.6414,
+      "cost_per_kwh": 0.1718,
+      "promises_kept": 0.978,
+      "reserve_vehicles": 64.0849,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "last_week_edge": {
+      "served": 0.9986,
+      "fares_less_energy_per_vehicle_day": 480.6389,
+      "cost_per_kwh": 0.1901,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 89.7189,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "last_week_energy_bound": {
+      "served": 0.8771,
+      "fares_less_energy_per_vehicle_day": 425.1451,
+      "cost_per_kwh": 0.1899,
+      "promises_kept": 0.9641,
+      "reserve_vehicles": 128.1698,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "last_week_vehicles_bound": {
+      "served": 0.9953,
+      "fares_less_energy_per_vehicle_day": 616.2293,
+      "cost_per_kwh": 0.1764,
+      "promises_kept": 0.982,
+      "reserve_vehicles": 82.0287,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "broken_feed_slack": {
+      "served": 1.0,
+      "fares_less_energy_per_vehicle_day": 482.2132,
+      "cost_per_kwh": 0.1659,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "broken_feed_edge": {
+      "served": 0.9986,
+      "fares_less_energy_per_vehicle_day": 480.6389,
+      "cost_per_kwh": 0.1901,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "broken_feed_energy_bound": {
+      "served": 0.8771,
+      "fares_less_energy_per_vehicle_day": 425.1451,
+      "cost_per_kwh": 0.1899,
+      "promises_kept": 0.9641,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    },
+    "broken_feed_vehicles_bound": {
+      "served": 0.9956,
+      "fares_less_energy_per_vehicle_day": 616.5262,
+      "cost_per_kwh": 0.1754,
+      "promises_kept": 0.976,
+      "reserve_vehicles": 0.0,
+      "peak_grid_kw": 2612.5,
+      "stranded": 0.0
+    }
+  },
+  "bars": {
+    "1_energy_bound_rides_within_half_a_point_across_arms": true,
+    "2_vehicles_bound_foresight_worth_1_point_and_model_recovers_half": false,
+    "3_model_money_regret_at_most_2pct_everywhere": true,
+    "4_broken_feed_hurts_more_where_vehicles_bind": true
+  },
+  "run": "2026-10-08",
+  "code": {
+    "sim": "8a42f2fee481",
+    "forecast": "0bc6598ed01b",
+    "driver": "e3415983dcf6"
+  }
+}

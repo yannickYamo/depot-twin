@@ -1,0 +1,32 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+out/
+# Third-party data is fetched by the loaders and never committed.
+data/raw/
+data/cache/
+# Trained models and raw simulation sweeps are published as release artifacts, not kept in git.
+# The small result files next to them are kept: they are what the documents quote.
+data/derived/*_model.json
+data/derived/demand_model.json
+data/derived/forecast_*h.json
+data/derived/planner_*.json
+data/derived/surrogate/
+data/derived/recall_policy.zip
+data/derived/*_runs.json
+data/derived/e4_prospective.json
+data/derived/e5_round*.json
+data/derived/e5_margin.json
+data/derived/replay_*.npz
+data/derived/sf_taxi_5min.parquet
+data/derived/donor_panel.parquet
+data/derived/e13_development.json
+data/derived/e14_development.json
+data/derived/workbench/*.npz
+web/public/readme.html
+web/public/story.html
+web/public/story-body.html
+web/public/architecture.svg
+.impeccable/

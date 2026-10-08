@@ -1,0 +1,20 @@
+{
+  "eval": "E1",
+  "data": {
+    "first": "2025-01-01 00:00:00",
+    "last": "2026-08-31 23:00:00",
+    "hours": 14592
+  },
+  "train_cutoff": "2026-06-01 23:00:00",
+  "holdout_hours": 2184,
+  "model_wape": 0.0624,
+  "naive_wape": 0.0629,
+  "error_removed": 0.0071,
+  "bar": 0.15,
+  "passed": false,
+  "run": "2026-10-08",
+  "code": {
+    "forecast": "0bc6598ed01b",
+    "driver": "03dd8a8db7a1"
+  }
+}

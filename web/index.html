@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050f1e" />
+    <title>Depot twin: watch a robotaxi depot run</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='1' width='10' height='14' rx='2' fill='%23050f1e'/%3E%3Crect x='4.5' y='7' width='7' height='6.5' rx='1' fill='%2300e89d'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="masthead">
+      <h1>A robotaxi depot in East Oakland, running</h1>
+      <p>A simulation of one depot on a real parcel: vehicles leave the road to charge and be cleaned, then go back out to the riders. Change the fleet, the grid, the chargers or the rules and watch what backs up.</p>
+      <div class="modes" role="tablist" aria-label="Mode">
+        <button id="mode-play" role="tab" aria-selected="true">Depot</button>
+        <button id="mode-replay" role="tab" aria-selected="false">Recorded run</button>
+        <button id="mode-model" role="tab" aria-selected="false">Forecast</button>
+        <button id="mode-money" role="tab" aria-selected="false">Money</button>
+        <button id="mode-story" role="tab" aria-selected="false">Story</button>
+      </div>
+    </header>
+
+    <section id="workbench" class="workbench" aria-label="Forecast model workbench" hidden></section>
+    <section id="money" class="workbench" aria-label="The depot's account" hidden></section>
+    <section id="story" class="workbench story" aria-label="The story of the depot twin" hidden></section>
+
+    <main class="bench">
+      <div class="main">
+        <section class="stage" aria-label="The depot">
+          <canvas id="floor" width="1040" height="560" role="img" aria-label="Plan of the depot: vehicles on the road, driving in, queueing, on chargers, being cleaned and driving out"></canvas>
+          <div id="tip" class="tip" hidden></div>
+          <canvas id="pulse" width="1040" height="170" role="img" aria-label="Arrivals at the depot every five minutes, and grid draw against what the site may use, over the last day"></canvas>
+          <div class="transport">
+            <button id="play" class="primary">Pause</button>
+            <button id="reset">Start again</button>
+            <div class="dial" role="radiogroup" aria-label="Speed" id="speed">
+            <button type="button" role="radio" aria-checked="true" data-speed="1">1×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="2">2×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="5">5×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="20">20×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="60">60×</button>
+          </div>
+            <label class="scrub" id="scrub-box" hidden>Move through the run
+              <input id="scrub" type="range" min="0" max="100" value="0" />
+            </label>
+            <output id="clock" aria-live="off"></output>
+          </div>
+        </section>
+        <section id="mpc" class="chain" aria-label="The plan, hour by hour" hidden>
+          <h2>The plan, hour by hour</h2>
+          <p class="wb-note">Every hour the controller draws a plan for the next 24 hours, acts on its first hour, and draws it again an hour later from where the fleet then stands. This is that plan as it stands now, over the plans that came before it.</p>
+          <dl id="plan-figures" class="readouts four"></dl>
+          <div class="charts">
+            <figure>
+              <figcaption>Vehicles the plan calls in, each coming hour</figcaption>
+              <canvas id="plan-visits" width="1040" height="220" role="img" aria-label="Visits the plan calls for in each of the next 24 hours"></canvas>
+              <p class="probe">Bars are the plan in force. Grey lines are the plans made in the hours before, lined up by the hour they were about. Dark marks are the arrivals that came.</p>
+            </figure>
+            <figure>
+              <figcaption>Vehicles the plan expects on the road</figcaption>
+              <canvas id="plan-road" width="1040" height="220" role="img" aria-label="Vehicles on the road as the plan expects and as they are"></canvas>
+              <p class="probe">The dashed line is what the plan expects hour by hour; the short red line is what it promised for this hour; blue is what the fleet has done since the plan was made.</p>
+            </figure>
+          </div>
+          <h2 id="compare-head">The same days with a fixed threshold instead</h2>
+          <div id="compare"></div>
+          <p class="wb-note" id="compare-note"></p>
+        </section>
+
+        <section class="chain" aria-label="Vehicles in the depot, by station">
+          <details id="chain-open" class="chain-open">
+            <summary aria-label="Every vehicle through the depot, the list by station"><h2>Every vehicle through the depot</h2><span class="hint" aria-hidden="true"></span></summary>
+            <div class="chain-body">
+              <div id="chain" aria-live="off"></div>
+              <div id="followed" class="followed"></div>
+            </div>
+          </details>
+        </section>
+
+        <section class="charts">
+          <figure>
+            <figcaption>Rides offered and rides served, per hour</figcaption>
+            <canvas id="rides" width="1040" height="220" role="img" aria-label="Rides offered and served per hour"></canvas>
+            <p class="probe" id="rides-probe">Point at the chart to read an hour.</p>
+          </figure>
+          <figure>
+            <figcaption>Vehicles on the road</figcaption>
+            <canvas id="road" width="1040" height="220" role="img" aria-label="Vehicles on the road over time"></canvas>
+            <p class="probe" id="road-probe">Point at the chart to read an hour.</p>
+          </figure>
+          <figure>
+            <figcaption>Rides in the coming hour: forecast, and what came</figcaption>
+            <canvas id="outlook" width="1040" height="220" role="img" aria-label="Forecast of rides for each coming hour against the rides that came"></canvas>
+            <p class="probe" id="outlook-probe"></p>
+            <div id="facts"></div>
+          </figure>
+          <figure>
+            <figcaption>The depot's draw against the California grid</figcaption>
+            <canvas id="strain" width="1040" height="220" role="img" aria-label="California grid net demand with the depot's power draw beneath it"></canvas>
+            <p class="probe" id="strain-probe"></p>
+          </figure>
+        </section>
+      </div>
+
+      <aside class="side">
+        <dl class="readouts" id="readouts"></dl>
+        <div id="alerts" class="alerts" aria-live="polite"></div>
+        <section id="demand-box" class="controls demand" aria-label="Where the rides come from" hidden></section>
+        <form id="controls" class="controls" aria-label="The depot's settings"></form>
+        <div id="replay-box" class="controls" hidden>
+          <label>Recorded run
+            <select id="replay-pick" aria-label="Which recorded run to play"></select>
+          </label>
+          <p id="replay-note"></p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="colophon">
+      <h2>What is running, and on what data</h2>
+      <table id="running"></table>
+      <p id="mode-note"></p>
+      <p>An independent project built on public data. Not affiliated with or endorsed by Waymo. Method, sources and every test are in the repository; <a href="readme.html">how it was built</a> is the README, rendered here.</p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

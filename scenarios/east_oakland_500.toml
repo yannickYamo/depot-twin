@@ -1,0 +1,34 @@
+# A hypothetical depot at 7825 San Leandro Street, Oakland, serving 500 vehicles.
+# Sources and assumptions for every figure are in docs/SITE.md.
+
+[depot]
+name = "East Oakland, 500 vehicles"
+site_limit_kw = 2750        # one service on a 12 kV feeder with about 2.75 MW of published headroom
+staff = 12
+plug_minutes = 2
+cleaning_bays = 12
+clean_minutes = 8
+inspect_minutes = 20
+inspect_every = 10
+charger_efficiency = 0.93
+
+[[depot.chargers]]
+kind = "dc"
+count = 66
+kw = 60
+
+[models.ipace]
+capacity_kwh = 90
+max_dc_kw = 104
+max_ac_kw = 11
+dc_curve = [[0.0, 100], [0.4, 100], [0.6, 70], [0.8, 50], [0.9, 35], [1.0, 10]]
+
+[models.ojai]
+capacity_kwh = 93
+max_dc_kw = 150
+max_ac_kw = 11
+
+[fleet]
+size = 500
+mix = { ipace = 0.6, ojai = 0.4 }
+rides_per_vehicle_day = 25
