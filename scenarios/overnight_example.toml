@@ -1,0 +1,69 @@
+# A small depot on a constrained grid connection, used by the tests and as a format reference.
+# Vehicles come back in waves late at night and are wanted again before the morning peak.
+
+[depot]
+name = "example depot"
+site_limit_kw = 600
+staff = 5
+plug_minutes = 2
+cleaning_bays = 4
+clean_minutes = 10
+inspect_minutes = 20
+inspect_every = 10
+charger_efficiency = 0.93
+
+[[depot.chargers]]
+kind = "dc"
+count = 8
+kw = 120
+
+[[depot.chargers]]
+kind = "ac"
+count = 40
+kw = 11
+
+[depot.buffer]
+energy_kwh = 500
+power_kw = 250
+
+# Battery sizes are the published pack sizes. Charging limits are assumptions until the charge-time model
+# replaces them.
+[models.ipace]
+capacity_kwh = 90
+max_dc_kw = 100
+max_ac_kw = 11
+
+[models.ojai]
+capacity_kwh = 93
+max_dc_kw = 150
+max_ac_kw = 11
+
+[[waves]]
+model = "ipace"
+count = 30
+arrive = "23:00"
+spread_minutes = 30
+due = "05:00"
+soc_in = [0.10, 0.40]
+target_soc = 0.85
+
+[[waves]]
+model = "ojai"
+count = 20
+arrive = "00:30"
+spread_minutes = 45
+due = "05:30"
+soc_in = [0.10, 0.40]
+target_soc = 0.85
+
+[[waves]]
+model = "ipace"
+count = 10
+arrive = "02:00"
+spread_minutes = 20
+due = "04:00"
+soc_in = [0.15, 0.30]
+target_soc = 0.70
+
+[control]
+policy = "need_first"

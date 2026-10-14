@@ -1,0 +1,27 @@
+{
+  "eval": "E15",
+  "table": {
+    "chicago_ridehail_city": {
+      "real": 0.8544,
+      "generated_mean": 0.8923,
+      "generated_worst": 0.8235,
+      "generated_best": 0.9668
+    },
+    "nyc_ridehail_city": {
+      "real": 0.9136,
+      "generated_mean": 0.9221,
+      "generated_worst": 0.8841,
+      "generated_best": 0.9695
+    }
+  },
+  "bars": {
+    "chicago_ridehail_city_real_no_worse_than_worst_scenario_less_half_a_point": true,
+    "nyc_ridehail_city_real_no_worse_than_worst_scenario_less_half_a_point": true
+  },
+  "run": "2026-10-15",
+  "code": {
+    "sim": "510ce2129e59",
+    "forecast": "bc107405120f",
+    "driver": "86eee38bf069"
+  }
+}

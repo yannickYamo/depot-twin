@@ -1,0 +1,37 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 880 440' role='img' aria-label='When the area outgrows one feeder'>
+<rect width='880' height='440' fill='#ffffff'/>
+<text x='72.0' y='26.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='17' font-weight='600' fill='#050f1e' text-anchor='start'>When the area outgrows one feeder</text>
+<text x='72.0' y='44.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>East Bay within 20 km: 241 to 280 vehicles today; curves start from the lower. A scenario from public filings, not a forecast. E21.</text>
+<rect x='384.0' y='56' width='312.0' height='320' fill='#e5e9f0' fill-opacity='0.55'/>
+<text x='540.0' y='366.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>a feeder applied for at signing arrives here (assumed)</text>
+<line x1='72' x2='852' y1='376.0' y2='376.0' stroke='#e5e9f0'/>
+<text x='64.0' y='380.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>0</text>
+<line x1='72' x2='852' y1='233.1' y2='233.1' stroke='#e5e9f0'/>
+<text x='64.0' y='237.1' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>600</text>
+<line x1='72' x2='852' y1='90.3' y2='90.3' stroke='#e5e9f0'/>
+<text x='64.0' y='94.3' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>1,200</text>
+<text x='72.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>lease signed</text>
+<text x='228.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>1 y</text>
+<text x='384.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>2 y</text>
+<text x='540.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>3 y</text>
+<text x='696.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>4 y</text>
+<text x='852.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>5 y</text>
+<line x1='72' x2='852' y1='376' y2='376' stroke='#050f1e'/>
+<text x='462.0' y='416.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>Time from lease signing</text>
+<path d='M72.0,233.1 L852.0,233.1' fill='none' stroke='#050f1e' stroke-width='1' stroke-dasharray='4 4'/>
+<text x='78.0' y='227.1' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>one feeder is planned for 600 vehicles</text>
+<path d='M72.0,90.3 L852.0,90.3' fill='none' stroke='#050f1e' stroke-width='1' stroke-dasharray='4 4'/>
+<text x='78.0' y='84.3' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>twice that, as a guide to two feeders: 1,200 vehicles</text>
+<path d='M72.0,318.6 L85.0,315.6 L98.0,312.5 L111.0,309.2 L124.0,305.7 L137.0,302.1 L150.0,298.3 L163.0,294.2 L176.0,290.0 L189.0,285.5 L202.0,280.8 L215.0,275.9 L228.0,270.7 L241.0,265.2 L254.0,259.4 L267.0,253.4 L280.0,247.0 L293.0,240.3 L306.0,233.3 L319.0,225.9 L332.0,218.1 L345.0,209.9 L358.0,201.3 L371.0,192.2 L384.0,182.6 L397.0,172.6 L410.0,162.0 L423.0,150.9 L436.0,139.3 L449.0,127.0 L462.0,114.0 L475.0,100.4' fill='none' stroke='#d92626' stroke-width='2.5' stroke-dasharray=''/>
+<rect x='397.0' y='305.3' width='14' height='3' fill='#d92626'/>
+<text x='417.0' y='310.3' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>first quarter to last: 5.2% a month, full in 16 to 19 months</text>
+<circle cx='319.0' cy='233.1' r='5.5' fill='#d92626' stroke='#ffffff' stroke-width='2'/>
+<path d='M72.0,318.6 L85.0,315.9 L98.0,313.0 L111.0,309.9 L124.0,306.8 L137.0,303.4 L150.0,300.0 L163.0,296.3 L176.0,292.5 L189.0,288.5 L202.0,284.2 L215.0,279.8 L228.0,275.2 L241.0,270.4 L254.0,265.3 L267.0,260.0 L280.0,254.4 L293.0,248.6 L306.0,242.4 L319.0,236.0 L332.0,229.3 L345.0,222.2 L358.0,214.8 L371.0,207.1 L384.0,199.0 L397.0,190.5 L410.0,181.6 L423.0,172.2 L436.0,162.4 L449.0,152.2 L462.0,141.4 L475.0,130.1 L488.0,118.3 L501.0,105.9 L514.0,92.9' fill='none' stroke='#b76e00' stroke-width='2.5' stroke-dasharray=''/>
+<rect x='397.0' y='322.4' width='14' height='3' fill='#b76e00'/>
+<text x='417.0' y='327.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>line through all quarters: 4.8% a month, full in 17 to 20 months</text>
+<circle cx='332.0' cy='233.1' r='5.5' fill='#b76e00' stroke='#ffffff' stroke-width='2'/>
+<path d='M72.0,318.6 L85.0,317.5 L98.0,316.3 L111.0,315.1 L124.0,313.9 L137.0,312.7 L150.0,311.4 L163.0,310.1 L176.0,308.8 L189.0,307.4 L202.0,306.1 L215.0,304.7 L228.0,303.2 L241.0,301.8 L254.0,300.3 L267.0,298.8 L280.0,297.2 L293.0,295.7 L306.0,294.1 L319.0,292.4 L332.0,290.8 L345.0,289.1 L358.0,287.3 L371.0,285.5 L384.0,283.7 L397.0,281.9 L410.0,280.0 L423.0,278.1 L436.0,276.1 L449.0,274.1 L462.0,272.1 L475.0,270.0 L488.0,267.9 L501.0,265.7 L514.0,263.5 L527.0,261.3 L540.0,259.0 L553.0,256.7 L566.0,254.3 L579.0,251.8 L592.0,249.4 L605.0,246.8 L618.0,244.3 L631.0,241.6 L644.0,238.9 L657.0,236.2 L670.0,233.4 L683.0,230.5 L696.0,227.6 L709.0,224.7 L722.0,221.7 L735.0,218.6 L748.0,215.4 L761.0,212.2 L774.0,208.9 L787.0,205.6 L800.0,202.2 L813.0,198.7 L826.0,195.2 L839.0,191.6 L852.0,187.9' fill='none' stroke='#006fee' stroke-width='2.5' stroke-dasharray=''/>
+<rect x='397.0' y='339.6' width='14' height='3' fill='#006fee'/>
+<text x='417.0' y='344.6' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>last six months: 2.0% a month, full in 39 to 47 months</text>
+<circle cx='683.0' cy='233.1' r='5.5' fill='#006fee' stroke='#ffffff' stroke-width='2'/>
+</svg>

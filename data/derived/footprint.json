@@ -1,0 +1,255 @@
+{
+ "source": "Waymo quarterly filings to the CPUC, driverless deployment; Census Bureau 2020 tract populations and 2023 gazetteer",
+ "note": "Trips by tract, charger power and session length are redacted in the filings; only the served tracts, the counts of chargers and sessions, and monthly trip totals are read. Charging data covers the whole passenger fleet, pilot and deployment.",
+ "quarters": [
+  {
+   "quarter": "2025q1",
+   "months": [
+    {
+     "year": 2025,
+     "month": 1,
+     "trips": 550457
+    },
+    {
+     "year": 2025,
+     "month": 2,
+     "trips": 559569
+    },
+    {
+     "year": 2025,
+     "month": 3,
+     "trips": 708180
+    }
+   ],
+   "trips": 1818206,
+   "trips_per_day": 20202.0,
+   "tracts": 1496,
+   "tracts_by_county": {
+    "Los Angeles": 997,
+    "San Francisco": 241,
+    "Santa Clara": 94,
+    "San Mateo": 164
+   },
+   "residents": 5727760,
+   "density": 2762.9,
+   "trips_per_resident_month": 0.1058,
+   "chargers": 138,
+   "sessions": 194590,
+   "sessions_per_day": 2162.0,
+   "trips_per_session": 9.34,
+   "sessions_per_charger_day": 15.7
+  },
+  {
+   "quarter": "2025q2",
+   "months": [
+    {
+     "year": 2025,
+     "month": 4,
+     "trips": 776058
+    },
+    {
+     "year": 2025,
+     "month": 5,
+     "trips": 875592
+    },
+    {
+     "year": 2025,
+     "month": 6,
+     "trips": 583262
+    }
+   ],
+   "trips": 2234912,
+   "trips_per_day": 24559.0,
+   "tracts": 1496,
+   "tracts_by_county": {
+    "Los Angeles": 997,
+    "San Francisco": 241,
+    "Santa Clara": 94,
+    "San Mateo": 164
+   },
+   "residents": 5727760,
+   "density": 2762.9,
+   "trips_per_resident_month": 0.1301,
+   "chargers": 155,
+   "sessions": 237982,
+   "sessions_per_day": 2615.0,
+   "trips_per_session": 9.39,
+   "sessions_per_charger_day": 16.9
+  },
+  {
+   "quarter": "2025q3",
+   "months": [
+    {
+     "year": 2025,
+     "month": 7,
+     "trips": 778812
+    },
+    {
+     "year": 2025,
+     "month": 8,
+     "trips": 880643
+    },
+    {
+     "year": 2025,
+     "month": 9,
+     "trips": 1016546
+    }
+   ],
+   "trips": 2676001,
+   "trips_per_day": 29087.0,
+   "tracts": 1796,
+   "tracts_by_county": {
+    "Los Angeles": 997,
+    "San Francisco": 241,
+    "Santa Clara": 385,
+    "San Mateo": 172,
+    "087": 1
+   },
+   "residents": 7158541,
+   "density": 1323.6,
+   "trips_per_resident_month": 0.1246,
+   "chargers": 226,
+   "sessions": 299684,
+   "sessions_per_day": 3257.0,
+   "trips_per_session": 8.93,
+   "sessions_per_charger_day": 14.4
+  },
+  {
+   "quarter": "2025q4",
+   "months": [
+    {
+     "year": 2025,
+     "month": 10,
+     "trips": 1217872
+    },
+    {
+     "year": 2025,
+     "month": 11,
+     "trips": 1273473
+    },
+    {
+     "year": 2025,
+     "month": 12,
+     "trips": 1257187
+    }
+   ],
+   "trips": 3748532,
+   "trips_per_day": 40745.0,
+   "tracts": 1796,
+   "tracts_by_county": {
+    "Los Angeles": 997,
+    "San Francisco": 241,
+    "Santa Clara": 385,
+    "San Mateo": 172,
+    "087": 1
+   },
+   "residents": 7158541,
+   "density": 1323.6,
+   "trips_per_resident_month": 0.1745,
+   "chargers": 251,
+   "sessions": 445616,
+   "sessions_per_day": 4844.0,
+   "trips_per_session": 8.41,
+   "sessions_per_charger_day": 19.3
+  },
+  {
+   "quarter": "2026q1",
+   "months": [
+    {
+     "year": 2026,
+     "month": 1,
+     "trips": 1322645
+    },
+    {
+     "year": 2026,
+     "month": 2,
+     "trips": 1220222
+    },
+    {
+     "year": 2026,
+     "month": 3,
+     "trips": 1363067
+    }
+   ],
+   "trips": 3905934,
+   "trips_per_day": 43399.0,
+   "tracts": 1796,
+   "tracts_by_county": {
+    "Los Angeles": 997,
+    "San Francisco": 241,
+    "Santa Clara": 385,
+    "San Mateo": 172,
+    "087": 1
+   },
+   "residents": 7158541,
+   "density": 1323.6,
+   "trips_per_resident_month": 0.1819,
+   "chargers": 263,
+   "sessions": 498185,
+   "sessions_per_day": 5535.0,
+   "trips_per_session": 7.84,
+   "sessions_per_charger_day": 21.0
+  },
+  {
+   "quarter": "2026q2",
+   "months": [
+    {
+     "year": 2026,
+     "month": 4,
+     "trips": 1416158
+    },
+    {
+     "year": 2026,
+     "month": 5,
+     "trips": 1454991
+    },
+    {
+     "year": 2026,
+     "month": 6,
+     "trips": 1348926
+    }
+   ],
+   "trips": 4220075,
+   "trips_per_day": 46374.0,
+   "tracts": 1796,
+   "tracts_by_county": {
+    "Los Angeles": 997,
+    "San Francisco": 241,
+    "Santa Clara": 385,
+    "San Mateo": 172,
+    "087": 1
+   },
+   "residents": 7158541,
+   "density": 1323.6,
+   "trips_per_resident_month": 0.1965,
+   "chargers": 324,
+   "sessions": 566282,
+   "sessions_per_day": 6223.0,
+   "trips_per_session": 7.45,
+   "sessions_per_charger_day": 19.2
+  }
+ ],
+ "service_areas": {
+  "oakland_8km": {
+   "radius_km": 8.0,
+   "tracts": 94,
+   "population": 421463,
+   "land_km2": 139.6,
+   "density": 3018.3
+  },
+  "east_bay_15km": {
+   "radius_km": 15.0,
+   "tracts": 217,
+   "population": 912199,
+   "land_km2": 390.3,
+   "density": 2337.0
+  },
+  "east_bay_20km": {
+   "radius_km": 20.0,
+   "tracts": 262,
+   "population": 1081910,
+   "land_km2": 548.4,
+   "density": 1972.7
+  }
+ }
+}

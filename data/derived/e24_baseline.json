@@ -1,0 +1,408 @@
+{
+  "study": "E24's models against a naive forecast that averages past weeks and follows the hours just gone",
+  "chosen_on": "the 26 weeks before E24's first test week",
+  "weeks": 26,
+  "series": {
+    "chicago": {
+      "1h": {
+        "weeks_in_the_mean": 8,
+        "recent_hours_scaled_by": 24,
+        "error_on_the_weeks_it_was_chosen_on": 0.0952,
+        "error_by_week": [
+          0.0599,
+          0.0949,
+          0.0754,
+          0.0694,
+          0.0581,
+          0.0506,
+          0.0517,
+          0.0533,
+          0.0513,
+          0.0549,
+          0.0507,
+          0.0726,
+          0.0935,
+          0.0597,
+          0.0674,
+          0.0644,
+          0.0506,
+          0.0834,
+          0.0565,
+          0.0504,
+          0.0479,
+          0.0713,
+          0.0511,
+          0.0563,
+          0.0521,
+          0.0589
+        ],
+        "error": {
+          "mean": 0.0618,
+          "low": 0.0578,
+          "high": 0.0664
+        },
+        "last_week_made_again_matches_the_record": true,
+        "difference": {
+          "last_week_less_baseline": {
+            "mean": 0.0245,
+            "low": 0.0184,
+            "high": 0.0309,
+            "median": 0.017,
+            "weeks_the_model_is_better": 0,
+            "weeks": 26
+          },
+          "trained_here_less_baseline": {
+            "mean": -0.0033,
+            "low": -0.0067,
+            "high": -0.0002,
+            "median": -0.0015,
+            "weeks_the_model_is_better": 15,
+            "weeks": 26
+          },
+          "pretrained_less_baseline": {
+            "mean": -0.0078,
+            "low": -0.0106,
+            "high": -0.0055,
+            "median": -0.0054,
+            "weeks_the_model_is_better": 24,
+            "weeks": 26
+          }
+        }
+      },
+      "24h": {
+        "weeks_in_the_mean": 8,
+        "recent_hours_scaled_by": 24,
+        "error_on_the_weeks_it_was_chosen_on": 0.1076,
+        "error_by_week": [
+          0.0654,
+          0.1057,
+          0.0995,
+          0.0811,
+          0.0661,
+          0.0619,
+          0.051,
+          0.0558,
+          0.055,
+          0.0696,
+          0.0535,
+          0.0796,
+          0.1073,
+          0.0621,
+          0.0696,
+          0.0682,
+          0.0529,
+          0.0898,
+          0.0656,
+          0.0523,
+          0.0475,
+          0.071,
+          0.0527,
+          0.0593,
+          0.0564,
+          0.0633
+        ],
+        "error": {
+          "mean": 0.0678,
+          "low": 0.0628,
+          "high": 0.0736
+        },
+        "last_week_made_again_matches_the_record": true,
+        "difference": {
+          "last_week_less_baseline": {
+            "mean": 0.0185,
+            "low": 0.0131,
+            "high": 0.0242,
+            "median": 0.0119,
+            "weeks_the_model_is_better": 2,
+            "weeks": 26
+          },
+          "trained_here_less_baseline": {
+            "mean": -0.0002,
+            "low": -0.0035,
+            "high": 0.0027,
+            "median": -0.0008,
+            "weeks_the_model_is_better": 14,
+            "weeks": 26
+          },
+          "pretrained_less_baseline": {
+            "mean": -0.0062,
+            "low": -0.009,
+            "high": -0.0039,
+            "median": -0.0047,
+            "weeks_the_model_is_better": 21,
+            "weeks": 26
+          }
+        }
+      }
+    },
+    "nyc_ridehail": {
+      "1h": {
+        "weeks_in_the_mean": 8,
+        "recent_hours_scaled_by": 24,
+        "error_on_the_weeks_it_was_chosen_on": 0.0705,
+        "error_by_week": [
+          0.2413,
+          0.0958,
+          0.0908,
+          0.1699,
+          0.1105,
+          0.0897,
+          0.0898,
+          0.1228,
+          0.1665,
+          0.0766,
+          0.0711,
+          0.086,
+          0.0678,
+          0.0743,
+          0.0539,
+          0.0559,
+          0.0772,
+          0.0575,
+          0.0604,
+          0.0482,
+          0.0823,
+          0.0746,
+          0.0594,
+          0.073,
+          0.0802,
+          0.059
+        ],
+        "error": {
+          "mean": 0.0898,
+          "low": 0.0769,
+          "high": 0.1043
+        },
+        "last_week_made_again_matches_the_record": true,
+        "difference": {
+          "last_week_less_baseline": {
+            "mean": 0.0277,
+            "low": 0.0153,
+            "high": 0.0414,
+            "median": 0.021,
+            "weeks_the_model_is_better": 3,
+            "weeks": 26
+          },
+          "trained_here_less_baseline": {
+            "mean": -0.0198,
+            "low": -0.0316,
+            "high": -0.0096,
+            "median": -0.0144,
+            "weeks_the_model_is_better": 23,
+            "weeks": 26
+          },
+          "pretrained_less_baseline": {
+            "mean": -0.0296,
+            "low": -0.0408,
+            "high": -0.0194,
+            "median": -0.0161,
+            "weeks_the_model_is_better": 26,
+            "weeks": 26
+          }
+        }
+      },
+      "24h": {
+        "weeks_in_the_mean": 8,
+        "recent_hours_scaled_by": 24,
+        "error_on_the_weeks_it_was_chosen_on": 0.0762,
+        "error_by_week": [
+          0.2871,
+          0.1111,
+          0.1101,
+          0.2143,
+          0.1865,
+          0.1147,
+          0.11,
+          0.1323,
+          0.2966,
+          0.1102,
+          0.0815,
+          0.1076,
+          0.0957,
+          0.0879,
+          0.0603,
+          0.0661,
+          0.0974,
+          0.0721,
+          0.0656,
+          0.0551,
+          0.0948,
+          0.0722,
+          0.0582,
+          0.0832,
+          0.0874,
+          0.0717
+        ],
+        "error": {
+          "mean": 0.1127,
+          "low": 0.0933,
+          "high": 0.1337
+        },
+        "last_week_made_again_matches_the_record": true,
+        "difference": {
+          "last_week_less_baseline": {
+            "mean": 0.0048,
+            "low": -0.011,
+            "high": 0.0197,
+            "median": 0.0063,
+            "weeks_the_model_is_better": 10,
+            "weeks": 26
+          },
+          "trained_here_less_baseline": {
+            "mean": -0.022,
+            "low": -0.0319,
+            "high": -0.0136,
+            "median": -0.0163,
+            "weeks_the_model_is_better": 23,
+            "weeks": 26
+          },
+          "pretrained_less_baseline": {
+            "mean": -0.0312,
+            "low": -0.0421,
+            "high": -0.0214,
+            "median": -0.0198,
+            "weeks_the_model_is_better": 24,
+            "weeks": 26
+          }
+        }
+      }
+    },
+    "nyc_yellow": {
+      "1h": {
+        "weeks_in_the_mean": 8,
+        "recent_hours_scaled_by": 24,
+        "error_on_the_weeks_it_was_chosen_on": 0.0882,
+        "error_by_week": [
+          0.2544,
+          0.1107,
+          0.0992,
+          0.1873,
+          0.1405,
+          0.0999,
+          0.1171,
+          0.142,
+          0.1719,
+          0.1105,
+          0.0905,
+          0.1133,
+          0.0885,
+          0.1247,
+          0.0703,
+          0.0785,
+          0.086,
+          0.0753,
+          0.096,
+          0.0555,
+          0.1026,
+          0.1021,
+          0.0853,
+          0.1012,
+          0.0947,
+          0.0936
+        ],
+        "error": {
+          "mean": 0.1112,
+          "low": 0.0987,
+          "high": 0.1248
+        },
+        "last_week_made_again_matches_the_record": true,
+        "difference": {
+          "last_week_less_baseline": {
+            "mean": 0.0396,
+            "low": 0.0259,
+            "high": 0.0541,
+            "median": 0.0352,
+            "weeks_the_model_is_better": 4,
+            "weeks": 26
+          },
+          "trained_here_less_baseline": {
+            "mean": -0.0206,
+            "low": -0.0322,
+            "high": -0.01,
+            "median": -0.0135,
+            "weeks_the_model_is_better": 22,
+            "weeks": 26
+          },
+          "pretrained_less_baseline": {
+            "mean": -0.034,
+            "low": -0.0441,
+            "high": -0.0245,
+            "median": -0.0258,
+            "weeks_the_model_is_better": 25,
+            "weeks": 26
+          }
+        }
+      },
+      "24h": {
+        "weeks_in_the_mean": 8,
+        "recent_hours_scaled_by": 24,
+        "error_on_the_weeks_it_was_chosen_on": 0.1033,
+        "error_by_week": [
+          0.2554,
+          0.12,
+          0.1152,
+          0.2216,
+          0.224,
+          0.1049,
+          0.1412,
+          0.1674,
+          0.3143,
+          0.1407,
+          0.0978,
+          0.1184,
+          0.1129,
+          0.1347,
+          0.079,
+          0.082,
+          0.1056,
+          0.0804,
+          0.0951,
+          0.0766,
+          0.1298,
+          0.1192,
+          0.081,
+          0.1116,
+          0.1115,
+          0.1131
+        ],
+        "error": {
+          "mean": 0.1328,
+          "low": 0.1148,
+          "high": 0.152
+        },
+        "last_week_made_again_matches_the_record": true,
+        "difference": {
+          "last_week_less_baseline": {
+            "mean": 0.018,
+            "low": 0.0019,
+            "high": 0.0347,
+            "median": 0.0143,
+            "weeks_the_model_is_better": 9,
+            "weeks": 26
+          },
+          "trained_here_less_baseline": {
+            "mean": -0.0151,
+            "low": -0.0228,
+            "high": -0.0079,
+            "median": -0.0123,
+            "weeks_the_model_is_better": 20,
+            "weeks": 26
+          },
+          "pretrained_less_baseline": {
+            "mean": -0.0294,
+            "low": -0.04,
+            "high": -0.0197,
+            "median": -0.0224,
+            "weeks_the_model_is_better": 24,
+            "weeks": 26
+          }
+        }
+      }
+    }
+  },
+  "code": {
+    "forecast": "bc107405120f",
+    "driver": "b9917a15c647",
+    "upstream": "83b78453592f"
+  }
+}

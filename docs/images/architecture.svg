@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-label="How the twin is put together: a site file goes into the planner, the planner runs the simulator on replayed ride days, and a one-page brief comes out. A ride forecast and an hourly charging schedule sit beside the simulator, the page runs a second simulator held to the first by test, and every result is tested against bars fixed before the run and stamped with its code." font-family="Outfit, 'Segoe UI', system-ui, sans-serif">
+  <rect width="960" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#050f1e"/></marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5d6e83"/></marker>
+  </defs>
+
+  <!-- the main line: site file, planner, simulator, brief -->
+  <rect x="20" y="40" width="190" height="150" rx="14" fill="#f4f6f9" stroke="#ccd3dc"/>
+  <text x="115" y="70" text-anchor="middle" font-size="16" font-weight="500" fill="#050f1e">Site file</text>
+  <text x="115" y="98" text-anchor="middle" font-size="13" fill="#5d6e83">grid connection</text>
+  <text x="115" y="120" text-anchor="middle" font-size="13" fill="#5d6e83">vehicles and their energy use</text>
+  <text x="115" y="142" text-anchor="middle" font-size="13" fill="#5d6e83">depot and its rules</text>
+  <text x="115" y="164" text-anchor="middle" font-size="13" fill="#5d6e83">weeks of ride demand</text>
+
+  <rect x="258" y="40" width="190" height="150" rx="14" fill="#f4f6f9" stroke="#ccd3dc"/>
+  <text x="353" y="70" text-anchor="middle" font-size="16" font-weight="500" fill="#050f1e">Planner</text>
+  <text x="353" y="98" text-anchor="middle" font-size="13" fill="#5d6e83">checks the file</text>
+  <text x="353" y="120" text-anchor="middle" font-size="13" fill="#5d6e83">searches fleet sizes</text>
+  <text x="353" y="142" text-anchor="middle" font-size="13" fill="#5d6e83">moves the energy estimate</text>
+  <text x="353" y="164" text-anchor="middle" font-size="13" fill="#5d6e83">tries one change at a time</text>
+
+  <rect x="496" y="40" width="206" height="150" rx="14" fill="#050f1e"/>
+  <text x="599" y="70" text-anchor="middle" font-size="16" font-weight="500" fill="#ffffff">Simulator</text>
+  <text x="599" y="98" text-anchor="middle" font-size="13" fill="#c8d2df">every vehicle, charger,</text>
+  <text x="599" y="120" text-anchor="middle" font-size="13" fill="#c8d2df">person and cleaning bay</text>
+  <text x="599" y="142" text-anchor="middle" font-size="13" fill="#c8d2df">real ride days, replayed</text>
+  <text x="599" y="164" text-anchor="middle" font-size="13" fill="#00e89d">the site's power limit</text>
+
+  <rect x="750" y="40" width="190" height="150" rx="14" fill="#f4f6f9" stroke="#ccd3dc"/>
+  <text x="845" y="70" text-anchor="middle" font-size="16" font-weight="500" fill="#050f1e">One-page brief</text>
+  <text x="845" y="98" text-anchor="middle" font-size="13" fill="#5d6e83">the fleet to plan for</text>
+  <text x="845" y="120" text-anchor="middle" font-size="13" fill="#5d6e83">what binds past it</text>
+  <text x="845" y="142" text-anchor="middle" font-size="13" fill="#5d6e83">what each change is worth</text>
+  <text x="845" y="164" text-anchor="middle" font-size="13" fill="#5d6e83">which inputs are assumed</text>
+
+  <line x1="212" y1="115" x2="254" y2="115" stroke="#050f1e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="115" x2="492" y2="115" stroke="#050f1e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="704" y1="115" x2="746" y2="115" stroke="#050f1e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- beside the simulator -->
+  <rect x="258" y="250" width="190" height="110" rx="14" fill="#ffffff" stroke="#ccd3dc"/>
+  <text x="353" y="280" text-anchor="middle" font-size="15" font-weight="500" fill="#050f1e">Ride forecast</text>
+  <text x="353" y="306" text-anchor="middle" font-size="13" fill="#5d6e83">1, 6 and 24 hours ahead</text>
+  <text x="353" y="328" text-anchor="middle" font-size="13" fill="#5d6e83">with an upper bound</text>
+
+  <rect x="496" y="250" width="206" height="110" rx="14" fill="#ffffff" stroke="#ccd3dc"/>
+  <text x="599" y="280" text-anchor="middle" font-size="15" font-weight="500" fill="#050f1e">Hourly charging schedule</text>
+  <text x="599" y="306" text-anchor="middle" font-size="13" fill="#5d6e83">re-solved every hour</text>
+  <text x="599" y="328" text-anchor="middle" font-size="13" fill="#5d6e83">buys cheaper energy, not rides</text>
+
+  <rect x="750" y="250" width="190" height="110" rx="14" fill="#ffffff" stroke="#ccd3dc"/>
+  <text x="845" y="280" text-anchor="middle" font-size="15" font-weight="500" fill="#050f1e">The page</text>
+  <text x="845" y="306" text-anchor="middle" font-size="13" fill="#5d6e83">a second simulator, in the</text>
+  <text x="845" y="328" text-anchor="middle" font-size="13" fill="#5d6e83">browser, held to it by test</text>
+
+  <line x1="450" y1="305" x2="492" y2="305" stroke="#5d6e83" stroke-width="1.5" marker-end="url(#arrow-soft)"/>
+  <line x1="599" y1="248" x2="599" y2="194" stroke="#5d6e83" stroke-width="1.5" marker-end="url(#arrow-soft)"/>
+  <path d="M 845 248 L 845 220 L 660 220 L 660 194" fill="none" stroke="#5d6e83" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-soft)"/>
+
+  <!-- what holds the numbers -->
+  <rect x="20" y="400" width="920" height="50" rx="14" fill="#f4f6f9" stroke="#ccd3dc"/>
+  <text x="480" y="431" text-anchor="middle" font-size="14" fill="#050f1e">Every result: pass bars fixed before the run, a stamp of the code that produced it, and a check against the documents that quote it.</text>
+</svg>

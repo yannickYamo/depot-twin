@@ -1,0 +1,85 @@
+{
+  "eval": "E2",
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110
+  ],
+  "table": {
+    "threshold_500": {
+      "served_mean": 0.977,
+      "served_min": 0.9738,
+      "served_max": 0.9797,
+      "at_peak_mean": 0.651,
+      "stranded": 0
+    },
+    "threshold_1000": {
+      "served_mean": 0.7466,
+      "served_min": 0.743,
+      "served_max": 0.749,
+      "at_peak_mean": 0.3229,
+      "stranded": 0
+    },
+    "headroom_500": {
+      "served_mean": 0.99,
+      "served_min": 0.9859,
+      "served_max": 0.9924,
+      "at_peak_mean": 0.7254,
+      "stranded": 0
+    },
+    "headroom_1000": {
+      "served_mean": 0.7645,
+      "served_min": 0.7586,
+      "served_max": 0.77,
+      "at_peak_mean": 0.3506,
+      "stranded": 0
+    },
+    "plan_500": {
+      "served_mean": 0.9918,
+      "served_min": 0.9899,
+      "served_max": 0.9937,
+      "at_peak_mean": 0.7508,
+      "stranded": 0
+    },
+    "plan_1000": {
+      "served_mean": 0.7591,
+      "served_min": 0.755,
+      "served_max": 0.7617,
+      "at_peak_mean": 0.3245,
+      "stranded": 0
+    },
+    "learned_500": {
+      "served_mean": 0.963,
+      "served_min": 0.9483,
+      "served_max": 0.9693,
+      "at_peak_mean": 0.6174,
+      "stranded": 0
+    },
+    "learned_1000": {
+      "served_mean": 0.7653,
+      "served_min": 0.7613,
+      "served_max": 0.7698,
+      "at_peak_mean": 0.3295,
+      "stranded": 0
+    }
+  },
+  "bars": {
+    "1_headroom_beats_threshold_by_2pt_at_1000": false,
+    "2a_plan_no_worse_than_headroom_at_500": true,
+    "2b_plan_within_half_pt_of_headroom_at_1000": false,
+    "3_learned_beats_threshold_at_1000": true,
+    "4_learned_within_1pt_of_best_hand_rule_at_1000": true
+  },
+  "run": "2026-10-15",
+  "code": {
+    "sim": "510ce2129e59",
+    "driver": "03dd8a8db7a1"
+  }
+}

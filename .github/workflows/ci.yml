@@ -1,0 +1,115 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check src tests
+      - run: ruff format --check src tests
+
+  types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[opt,dev]"
+      # The simulator, the controller and the account are type-checked; the interfaces between them are Protocols.
+      - run: pyright
+
+  test:
+    # Unit tests, pinned regression cases, the invariants behind the headline findings, and the check that
+    # the documents agree with the result files.
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -e ".[data,ml,opt,dev]"
+      - run: pytest -q --durations=10
+
+  learned-policy:
+    # The reinforcement-learning stack is heavy, so its tests run once, on one version.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -e ".[data,ml,opt,rl,dev]"
+      - run: pytest -q tests/test_dispatch.py
+
+  smoke:
+    # The commands a visitor would type must work from a clean checkout.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[data,ml,opt,dev]"
+      - run: depot-twin run scenarios/overnight_example.toml --seed 1
+      - run: depot-twin fleet scenarios/east_oakland_200.toml --days 2 --seed 1
+      - run: depot-twin scoreboard --out /tmp/scoreboard.md && diff /tmp/scoreboard.md docs/SCOREBOARD.md
+      # The page's files that are built from records alone must rebuild to exactly what is committed.
+      # So must the documents' figures, the block ranges and the claim ledger, and the documents must agree with it.
+      - run: depot-twin data money account spread demand outcome facts blocks figures
+      - run: depot-twin facts
+      - run: git diff --exit-code -- web/public/money.json web/public/demand.json web/public/outcome.json web/public/facts.json data/derived/account_study.json data/derived/capacity_spread.json data/derived/e24_blocks.json docs/images docs/FACTS.json
+      - run: depot-twin stale
+      # Six published runs, again, from the inputs committed in the repository.
+      - run: depot-twin reproduce
+      - run: depot-twin report --out out/report.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: report
+          path: out/report.html
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      # The parity test holds the browser simulator to numbers recorded from the Python simulator.
+      - run: npm test
+      - run: npm run build
+      # The page's own promises, measured on the built site: target sizes, no overlaps, no overflow, no console errors.
+      - run: npx playwright install --with-deps chromium
+      - run: npx vite preview --port 4001 --strictPort & npx wait-on@9.5.1 -t 30000 http://localhost:4001/ && npm run measure -- http://localhost:4001/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: web/dist
+

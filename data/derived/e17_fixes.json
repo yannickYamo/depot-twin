@@ -1,0 +1,616 @@
+{
+  "eval": "E17",
+  "window": [
+    "2026-01-05",
+    "2026-03-02"
+  ],
+  "seeds": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "table": {
+    "chicago_reference_1h": {
+      "error": 0.0796,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.9571,
+      "bound_above_forecast": 0.1761,
+      "reserve_vehicles": 36.85,
+      "trees": 481.0,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_four_weeks_1h": {
+      "error": 0.0823,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.936,
+      "bound_above_forecast": 0.1652,
+      "reserve_vehicles": 32.2,
+      "trees": 310.0,
+      "against_reference": {
+        "mean": 0.002,
+        "low": -0.0039,
+        "high": 0.0119
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_rolling_1h": {
+      "error": 0.0802,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.9566,
+      "bound_above_forecast": 0.1749,
+      "reserve_vehicles": 36.5667,
+      "trees": 244.5,
+      "against_reference": {
+        "mean": 0.0007,
+        "low": -0.0,
+        "high": 0.001
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_level_1h": {
+      "error": 0.0795,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.9508,
+      "bound_above_forecast": 0.1731,
+      "reserve_vehicles": 34.8,
+      "trees": 306.0,
+      "against_reference": {
+        "mean": -0.0002,
+        "low": -0.0025,
+        "high": 0.003
+      },
+      "draws_with_lower_error_than_reference": 3
+    },
+    "chicago_quantile_1h": {
+      "error": 0.0796,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.9459,
+      "bound_above_forecast": 0.1882,
+      "reserve_vehicles": 39.4833,
+      "trees": 481.0,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_bagged_1h": {
+      "error": 0.079,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.9548,
+      "bound_above_forecast": 0.1693,
+      "reserve_vehicles": 35.55,
+      "trees": 449.3333,
+      "against_reference": {
+        "mean": -0.0007,
+        "low": -0.0009,
+        "high": -0.0004
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "chicago_all_1h": {
+      "error": 0.0823,
+      "same_hour_last_week": 0.1266,
+      "upper_bound_held": 0.9331,
+      "bound_above_forecast": 0.1643,
+      "reserve_vehicles": 31.7667,
+      "trees": 205.0,
+      "against_reference": {
+        "mean": 0.0019,
+        "low": -0.0043,
+        "high": 0.0121
+      },
+      "draws_with_lower_error_than_reference": 1
+    },
+    "chicago_reference_6h": {
+      "error": 0.0827,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9551,
+      "bound_above_forecast": 0.1982,
+      "reserve_vehicles": 39.9833,
+      "trees": 847.5,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_four_weeks_6h": {
+      "error": 0.0939,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9372,
+      "bound_above_forecast": 0.1935,
+      "reserve_vehicles": 36.5667,
+      "trees": 310.5,
+      "against_reference": {
+        "mean": 0.0111,
+        "low": 0.001,
+        "high": 0.0234
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_rolling_6h": {
+      "error": 0.0839,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9527,
+      "bound_above_forecast": 0.1967,
+      "reserve_vehicles": 39.4833,
+      "trees": 457.5,
+      "against_reference": {
+        "mean": 0.0016,
+        "low": 0.0002,
+        "high": 0.002
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_level_6h": {
+      "error": 0.0862,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9523,
+      "bound_above_forecast": 0.1984,
+      "reserve_vehicles": 39.1333,
+      "trees": 839.1667,
+      "against_reference": {
+        "mean": 0.0034,
+        "low": -0.0002,
+        "high": 0.0065
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_quantile_6h": {
+      "error": 0.0827,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9402,
+      "bound_above_forecast": 0.2104,
+      "reserve_vehicles": 42.7167,
+      "trees": 847.5,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_bagged_6h": {
+      "error": 0.0825,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9522,
+      "bound_above_forecast": 0.1903,
+      "reserve_vehicles": 38.5333,
+      "trees": 741.1667,
+      "against_reference": {
+        "mean": -0.0002,
+        "low": -0.0007,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 4
+    },
+    "chicago_all_6h": {
+      "error": 0.0955,
+      "same_hour_last_week": 0.1265,
+      "upper_bound_held": 0.9332,
+      "bound_above_forecast": 0.1967,
+      "reserve_vehicles": 36.7833,
+      "trees": 179.0,
+      "against_reference": {
+        "mean": 0.0129,
+        "low": 0.0019,
+        "high": 0.0259
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_reference_24h": {
+      "error": 0.0883,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.9615,
+      "bound_above_forecast": 0.236,
+      "reserve_vehicles": 46.5167,
+      "trees": 857.5,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_four_weeks_24h": {
+      "error": 0.0953,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.9376,
+      "bound_above_forecast": 0.1952,
+      "reserve_vehicles": 36.9333,
+      "trees": 576.0,
+      "against_reference": {
+        "mean": 0.0066,
+        "low": -0.0027,
+        "high": 0.0218
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_rolling_24h": {
+      "error": 0.0908,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.9594,
+      "bound_above_forecast": 0.2336,
+      "reserve_vehicles": 46.0167,
+      "trees": 391.1667,
+      "against_reference": {
+        "mean": 0.0029,
+        "low": 0.001,
+        "high": 0.0038
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_level_24h": {
+      "error": 0.095,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.947,
+      "bound_above_forecast": 0.2115,
+      "reserve_vehicles": 41.2,
+      "trees": 597.6667,
+      "against_reference": {
+        "mean": 0.0076,
+        "low": 0.0025,
+        "high": 0.0113
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_quantile_24h": {
+      "error": 0.0883,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.9457,
+      "bound_above_forecast": 0.2483,
+      "reserve_vehicles": 49.2167,
+      "trees": 857.5,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "chicago_bagged_24h": {
+      "error": 0.0876,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.9582,
+      "bound_above_forecast": 0.2288,
+      "reserve_vehicles": 45.0333,
+      "trees": 898.3333,
+      "against_reference": {
+        "mean": -0.0008,
+        "low": -0.0008,
+        "high": -0.0003
+      },
+      "draws_with_lower_error_than_reference": 4
+    },
+    "chicago_all_24h": {
+      "error": 0.1019,
+      "same_hour_last_week": 0.1252,
+      "upper_bound_held": 0.9331,
+      "bound_above_forecast": 0.215,
+      "reserve_vehicles": 38.6833,
+      "trees": 70.6667,
+      "against_reference": {
+        "mean": 0.0133,
+        "low": 0.0019,
+        "high": 0.0297
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_reference_1h": {
+      "error": 0.0885,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9242,
+      "bound_above_forecast": 0.147,
+      "reserve_vehicles": 31.4,
+      "trees": 672.1667,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_four_weeks_1h": {
+      "error": 0.0821,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9242,
+      "bound_above_forecast": 0.1378,
+      "reserve_vehicles": 28.8167,
+      "trees": 559.3333,
+      "against_reference": {
+        "mean": -0.0097,
+        "low": -0.0216,
+        "high": 0.0006
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_rolling_1h": {
+      "error": 0.0888,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9223,
+      "bound_above_forecast": 0.1461,
+      "reserve_vehicles": 31.2,
+      "trees": 471.8333,
+      "against_reference": {
+        "mean": 0.0006,
+        "low": -0.0,
+        "high": 0.0013
+      },
+      "draws_with_lower_error_than_reference": 2
+    },
+    "new_york_level_1h": {
+      "error": 0.0847,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9259,
+      "bound_above_forecast": 0.141,
+      "reserve_vehicles": 30.0167,
+      "trees": 617.5,
+      "against_reference": {
+        "mean": -0.0006,
+        "low": -0.0139,
+        "high": 0.0154
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_quantile_1h": {
+      "error": 0.0885,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9105,
+      "bound_above_forecast": 0.1574,
+      "reserve_vehicles": 33.6667,
+      "trees": 672.1667,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_bagged_1h": {
+      "error": 0.088,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9222,
+      "bound_above_forecast": 0.1458,
+      "reserve_vehicles": 31.05,
+      "trees": 668.5,
+      "against_reference": {
+        "mean": -0.0013,
+        "low": -0.0037,
+        "high": -0.0001
+      },
+      "draws_with_lower_error_than_reference": 4
+    },
+    "new_york_all_1h": {
+      "error": 0.083,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9223,
+      "bound_above_forecast": 0.139,
+      "reserve_vehicles": 28.95,
+      "trees": 401.0,
+      "against_reference": {
+        "mean": -0.0081,
+        "low": -0.019,
+        "high": 0.0016
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_reference_6h": {
+      "error": 0.1191,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9068,
+      "bound_above_forecast": 0.1851,
+      "reserve_vehicles": 39.25,
+      "trees": 1569.5,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_four_weeks_6h": {
+      "error": 0.1107,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.8899,
+      "bound_above_forecast": 0.1679,
+      "reserve_vehicles": 34.4833,
+      "trees": 1261.1667,
+      "against_reference": {
+        "mean": -0.0126,
+        "low": -0.0254,
+        "high": 0.0012
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_rolling_6h": {
+      "error": 0.1219,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9056,
+      "bound_above_forecast": 0.1834,
+      "reserve_vehicles": 38.8333,
+      "trees": 925.8333,
+      "against_reference": {
+        "mean": 0.0055,
+        "low": 0.001,
+        "high": 0.01
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_level_6h": {
+      "error": 0.1113,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.9204,
+      "bound_above_forecast": 0.1755,
+      "reserve_vehicles": 38.6,
+      "trees": 1480.5,
+      "against_reference": {
+        "mean": -0.0029,
+        "low": -0.0171,
+        "high": 0.0111
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_quantile_6h": {
+      "error": 0.1191,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.904,
+      "bound_above_forecast": 0.2114,
+      "reserve_vehicles": 43.85,
+      "trees": 1569.5,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_bagged_6h": {
+      "error": 0.1189,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.907,
+      "bound_above_forecast": 0.1831,
+      "reserve_vehicles": 38.95,
+      "trees": 1582.5,
+      "against_reference": {
+        "mean": 0.0002,
+        "low": -0.0011,
+        "high": 0.0022
+      },
+      "draws_with_lower_error_than_reference": 4
+    },
+    "new_york_all_6h": {
+      "error": 0.1132,
+      "same_hour_last_week": 0.1616,
+      "upper_bound_held": 0.8858,
+      "bound_above_forecast": 0.1662,
+      "reserve_vehicles": 33.9,
+      "trees": 688.0,
+      "against_reference": {
+        "mean": -0.009,
+        "low": -0.0214,
+        "high": 0.0041
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_reference_24h": {
+      "error": 0.128,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8961,
+      "bound_above_forecast": 0.1822,
+      "reserve_vehicles": 40.0333,
+      "trees": 1522.0,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_four_weeks_24h": {
+      "error": 0.1239,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8872,
+      "bound_above_forecast": 0.1789,
+      "reserve_vehicles": 37.6833,
+      "trees": 1124.5,
+      "against_reference": {
+        "mean": -0.0081,
+        "low": -0.0211,
+        "high": 0.0056
+      },
+      "draws_with_lower_error_than_reference": 5
+    },
+    "new_york_rolling_24h": {
+      "error": 0.1285,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8928,
+      "bound_above_forecast": 0.1803,
+      "reserve_vehicles": 39.6,
+      "trees": 863.6667,
+      "against_reference": {
+        "mean": 0.0005,
+        "low": -0.0014,
+        "high": 0.0016
+      },
+      "draws_with_lower_error_than_reference": 1
+    },
+    "new_york_level_24h": {
+      "error": 0.1231,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8956,
+      "bound_above_forecast": 0.1822,
+      "reserve_vehicles": 38.6667,
+      "trees": 1515.0,
+      "against_reference": {
+        "mean": -0.0057,
+        "low": -0.0113,
+        "high": 0.0022
+      },
+      "draws_with_lower_error_than_reference": 6
+    },
+    "new_york_quantile_24h": {
+      "error": 0.128,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8826,
+      "bound_above_forecast": 0.1977,
+      "reserve_vehicles": 42.7667,
+      "trees": 1522.0,
+      "against_reference": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      },
+      "draws_with_lower_error_than_reference": 0
+    },
+    "new_york_bagged_24h": {
+      "error": 0.1274,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8939,
+      "bound_above_forecast": 0.1811,
+      "reserve_vehicles": 39.75,
+      "trees": 1425.0,
+      "against_reference": {
+        "mean": -0.0009,
+        "low": -0.0017,
+        "high": -0.0002
+      },
+      "draws_with_lower_error_than_reference": 4
+    },
+    "new_york_all_24h": {
+      "error": 0.1245,
+      "same_hour_last_week": 0.1618,
+      "upper_bound_held": 0.8792,
+      "bound_above_forecast": 0.1779,
+      "reserve_vehicles": 37.0,
+      "trees": 703.8333,
+      "against_reference": {
+        "mean": -0.0081,
+        "low": -0.0219,
+        "high": 0.0065
+      },
+      "draws_with_lower_error_than_reference": 5
+    }
+  },
+  "bars": {
+    "1_all_fixes_lower_error_1h_both_cities_interval_excludes_zero": false,
+    "2_all_fixes_coverage_93_to_97_both_cities": false,
+    "3_all_fixes_fewer_reserve_vehicles_at_no_lower_coverage_both_cities": false,
+    "4_all_fixes_lower_error_at_6h_and_24h_both_cities": false
+  },
+  "run": "2026-10-15",
+  "code": {
+    "forecast": "bc107405120f",
+    "driver": "86eee38bf069"
+  }
+}
