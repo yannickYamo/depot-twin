@@ -1,0 +1,42 @@
+{
+ "forecast": [
+  {
+   "hours_ahead": 1,
+   "error": 0.1068,
+   "same_hour_last_week": 0.1487,
+   "upper_bound_held": 0.9436,
+   "no_history_error_against_last_week": [
+    0.756,
+    0.929
+   ]
+  },
+  {
+   "hours_ahead": 6,
+   "error": 0.1237,
+   "same_hour_last_week": 0.1487,
+   "upper_bound_held": 0.927,
+   "no_history_error_against_last_week": [
+    0.876,
+    0.959
+   ]
+  },
+  {
+   "hours_ahead": 24,
+   "error": 0.1178,
+   "same_hour_last_week": 0.149,
+   "upper_bound_held": 0.9464,
+   "no_history_error_against_last_week": [
+    0.927,
+    1.0
+   ]
+  }
+ ],
+ "tests": [
+  "E7b",
+  "E13"
+ ],
+ "code": {
+  "driver": "0aec6bf37d92",
+  "upstream": "fb2f87f274e8"
+ }
+}

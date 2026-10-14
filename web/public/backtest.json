@@ -1,0 +1,44 @@
+{
+ "eval": "E24",
+ "weeks": 26,
+ "hours_ahead": 1,
+ "series": {
+  "chicago": {
+   "last_week": {
+    "error": 0.0862
+   },
+   "reference": {
+    "error": 0.0585
+   },
+   "chronos": {
+    "error": 0.054
+   }
+  },
+  "nyc_ridehail": {
+   "last_week": {
+    "error": 0.1175
+   },
+   "reference": {
+    "error": 0.07
+   },
+   "chronos": {
+    "error": 0.0602
+   }
+  },
+  "nyc_yellow": {
+   "last_week": {
+    "error": 0.1508
+   },
+   "reference": {
+    "error": 0.0906
+   },
+   "chronos": {
+    "error": 0.0772
+   }
+  }
+ },
+ "code": {
+  "driver": "38417faaaa70",
+  "upstream": "9adf0dd168c4"
+ }
+}

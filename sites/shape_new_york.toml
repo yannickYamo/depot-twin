@@ -1,0 +1,50 @@
+# The East Oakland depot offered another city's demand: the same site, a different shape and four seasons.
+# Every field left out takes the default in docs/SITES.md.
+
+[site]
+name = "The East Oakland depot on New York ride-hail weeks, four seasons"
+
+[grid]
+kw = 2750              # published headroom on one 12 kV feeder (utility capacity map), not a connection offer
+services = 1
+usable_share = 0.95    # what the site's load manager lets the chargers draw
+
+[vehicles.ipace]
+share = 0.6
+capacity_kwh = 90
+max_dc_kw = 104
+max_ac_kw = 11
+drive_kwh_per_mile = 0.30
+always_on_kw = 2.0
+dc_curve = [[0.0, 100], [0.4, 100], [0.6, 70], [0.8, 50], [0.9, 35], [1.0, 10]]
+
+[vehicles.ojai]
+share = 0.4
+capacity_kwh = 93
+max_dc_kw = 150
+max_ac_kw = 11
+drive_kwh_per_mile = 0.27
+always_on_kw = 1.8
+
+[fleet]
+rides_per_vehicle_day = 25
+parked_load = "off"       # this file asks one question, what the demand does to the fleet carried, so one case is run
+
+[policy]
+energy_margin = 1.0
+
+[sweep]
+changes = false
+
+[demand]
+# Four fortnights of city-wide ride-hail counts by the hour, one from each season (docs/DATA.md).
+windows = ["demand/new_york_2025-07-14.csv", "demand/new_york_2025-10-13.csv", "demand/new_york_2026-01-12.csv", "demand/new_york_2026-04-13.csv"]
+
+[sources]
+grid = "published map reading"
+energy = "assumed"
+parked_load = "assumed"
+rides = "assumed"
+ride = "assumed"
+demand = "measured, in another city, by the hour"
+policy = "chosen"

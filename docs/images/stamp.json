@@ -1,0 +1,13 @@
+{
+ "figures": [
+  "capacity",
+  "energy_margin",
+  "feeder_timeline",
+  "power_rule",
+  "tornado"
+ ],
+ "code": {
+  "driver": "3721e414959e",
+  "upstream": "1c0d4b1563b6"
+ }
+}

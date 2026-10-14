@@ -1,0 +1,170 @@
+{
+  "eval": "E3",
+  "rows": {
+    "train": 1019,
+    "valid": 219,
+    "test": 219,
+    "gap": 143
+  },
+  "models": {
+    "served_share": {
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 5,
+        "reg_lambda": 5.0
+      },
+      "trees": 135,
+      "cv_mae": 0.00573,
+      "train_mae": 0.00219,
+      "valid_mae": 0.00435,
+      "test_mae": 0.00682,
+      "gap_mae": 0.00774
+    },
+    "kwh_per_vehicle_day": {
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 1,
+        "reg_lambda": 5.0
+      },
+      "trees": 1037,
+      "cv_mae": 3.94181,
+      "train_mae": 0.01202,
+      "valid_mae": 4.19309,
+      "test_mae": 3.92018,
+      "gap_mae": 3.22576
+    },
+    "peak_kw_share": {
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 5,
+        "reg_lambda": 1.0
+      },
+      "trees": 281,
+      "cv_mae": 0.01707,
+      "train_mae": 0.00209,
+      "valid_mae": 0.01728,
+      "test_mae": 0.01361,
+      "gap_mae": 0.00517
+    },
+    "peak_period_share": {
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 5,
+        "reg_lambda": 1.0
+      },
+      "trees": 126,
+      "cv_mae": 0.0116,
+      "train_mae": 0.00431,
+      "valid_mae": 0.01079,
+      "test_mae": 0.01099,
+      "gap_mae": 0.00906
+    }
+  },
+  "spreadsheet_test_mae": 0.06206,
+  "constrained_test_designs": 52,
+  "constrained_test_mae": 0.02373,
+  "noise_floor": {
+    "served_share": 0.00336,
+    "kwh_per_vehicle_day": 0.58747,
+    "peak_kw_share": 0.00627,
+    "peak_period_share": 0.00378
+  },
+  "top_features": [
+    [
+      "f12",
+      0.497
+    ],
+    [
+      "f14",
+      0.355
+    ],
+    [
+      "f1",
+      0.113
+    ],
+    [
+      "f0",
+      0.018
+    ],
+    [
+      "f6",
+      0.006
+    ],
+    [
+      "f8",
+      0.004
+    ]
+  ],
+  "use_cases": [
+    {
+      "case": {
+        "size": 500.0,
+        "site_limit_kw": 2750.0
+      },
+      "design": {
+        "dc_per_100": 14.235,
+        "dc_kw": 56.419,
+        "ac_per_100": 11.427,
+        "buffer_kwh": 34.396,
+        "staff_per_100": 1.671,
+        "top_up_below": 0.719,
+        "full_target": 0.807
+      },
+      "predicted_served": 0.9997,
+      "simulated_served": 0.9988,
+      "predicted_contribution": 444.56,
+      "simulated_contribution": 390.34
+    },
+    {
+      "case": {
+        "size": 1000.0,
+        "site_limit_kw": 2750.0
+      },
+      "design": {
+        "dc_per_100": 6.621,
+        "dc_kw": 77.688,
+        "ac_per_100": 9.712,
+        "buffer_kwh": 2062.175,
+        "staff_per_100": 1.502,
+        "top_up_below": 0.621,
+        "full_target": 0.937
+      },
+      "predicted_served": 0.8852,
+      "simulated_served": 0.9079,
+      "predicted_contribution": 400.38,
+      "simulated_contribution": 360.8
+    },
+    {
+      "case": {
+        "size": 1500.0,
+        "site_limit_kw": 5500.0
+      },
+      "design": {
+        "dc_per_100": 4.346,
+        "dc_kw": 77.866,
+        "ac_per_100": 13.041,
+        "buffer_kwh": 977.649,
+        "staff_per_100": 1.528,
+        "top_up_below": 0.594,
+        "full_target": 0.839
+      },
+      "predicted_served": 0.9992,
+      "simulated_served": 0.9914,
+      "predicted_contribution": 455.25,
+      "simulated_contribution": 396.57
+    }
+  ],
+  "bars": {
+    "1_test_mae_at_most_1.5pt": true,
+    "2_at_most_half_the_spreadsheet_error": true,
+    "3_constrained_designs_mae_at_most_3pt": true,
+    "4_test_at_most_1.3x_validation": false,
+    "5_gap_mae_at_most_2.5pt": true,
+    "6_picked_designs_hold_up_in_simulation": false
+  },
+  "run": "2026-10-09",
+  "code": {
+    "sim": "9aa4299b2d0d",
+    "driver": "03dd8a8db7a1"
+  }
+}

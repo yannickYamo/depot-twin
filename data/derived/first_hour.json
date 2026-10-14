@@ -1,0 +1,72 @@
+{
+  "forecast": {
+    "interpolated": {
+      "error": 0.1361,
+      "upper_bound_held": 0.9134
+    },
+    "own_model": {
+      "error": 0.0931,
+      "upper_bound_held": 0.956
+    }
+  },
+  "table": {
+    "plan_500_interpolated": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "ledger_kept": 0.978,
+      "ledger_promised_share": 0.9379,
+      "grid_variation": 0.206
+    },
+    "plan_1000_interpolated": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "ledger_kept": 0.9581,
+      "ledger_promised_share": 0.9734,
+      "grid_variation": 0.0
+    },
+    "plan_with_prices_500_interpolated": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "cost_per_kwh": 0.1723,
+      "fares_less_energy_per_vehicle_day": 497.1505
+    },
+    "plan_with_prices_1000_interpolated": {
+      "served": 0.8405,
+      "stranded": 0.0,
+      "cost_per_kwh": 0.1899,
+      "fares_less_energy_per_vehicle_day": 420.0974
+    },
+    "plan_500_own_model": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "ledger_kept": 0.9741,
+      "ledger_promised_share": 0.9475,
+      "grid_variation": 0.208
+    },
+    "plan_1000_own_model": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "ledger_kept": 0.9581,
+      "ledger_promised_share": 0.9734,
+      "grid_variation": 0.0
+    },
+    "plan_with_prices_500_own_model": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "cost_per_kwh": 0.1688,
+      "fares_less_energy_per_vehicle_day": 497.4905
+    },
+    "plan_with_prices_1000_own_model": {
+      "served": 0.8405,
+      "stranded": 0.0,
+      "cost_per_kwh": 0.1899,
+      "fares_less_energy_per_vehicle_day": 420.0974
+    }
+  },
+  "run": "2026-10-09",
+  "code": {
+    "sim": "9aa4299b2d0d",
+    "forecast": "c79f8c4e75b5",
+    "driver": "695d912cfe6d"
+  }
+}

@@ -1,0 +1,1558 @@
+{
+ "files": [
+  {
+   "file": "bev.xlsx",
+   "source": "Pacific Gas and Electric, Business Electric Vehicle rate sheet",
+   "bytes": 20204,
+   "sha256": "f72e16362b827c6f27e963925e199bf66c1428250ed89bf832366892ac1214d4",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "caiso/2024-04-15_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7679,
+   "sha256": "3cc1cf5c3b368fc4860e83e204d55c94619c3fa9bf8581e2ae59f298524d4012",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1668,
+   "sha256": "72cc9346243fb5a2ba335c28a12aea04023f9a9965973ae0fbbd14aaca17420c",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "803d52e49d32e54b44ce6c73ef09b537262deea212d7cb6b2287ff169246c9c4",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9136,
+   "sha256": "588d9f77deedef8dfae78e1c200f33057e61d4e4d10eaa382706080fd4c7549e",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3930,
+   "sha256": "f831f3ba15e5edbbe1b3e14da45930cb869f4557cc9388d167051ee650bfb1b4",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3939,
+   "sha256": "3d0684f0b389a51348a909a8586bf31ce32d5aa5ead15189a4516b64bf029713",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4037,
+   "sha256": "e19a52b5aac9a1b9d88c2cafdd35bccf3aba731ecc9e440a997822ec1ddbf662",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-15_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4104,
+   "sha256": "87371589ab1e9fba4f29931a53cbaa62fe539b15d7d8a117a604698b9ad08899",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7642,
+   "sha256": "a5bd1f0e81b18b177fdc4400af0e4bc0d33f7ec0b2a145ebf935756a5e986a63",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1672,
+   "sha256": "d9b3ab4910188d4e00bff41e8e6cbf495578ef21ffd7f64cc27c4a946d1f4433",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "1fe7a7afbd9fbb66a6112f3d4a7163b75755e49326ac733a2a85e6e7ccfef0e1",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9159,
+   "sha256": "d33454466809bdd0334b90ec3de4459bbe3ec0d22eaa87e55a48afe0d576a3a1",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3998,
+   "sha256": "5b6ada147c2825dcebea8d06e900c74982a85b3ac78be7e0227689c432e28ff7",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4206,
+   "sha256": "6f465a6262c45b766e54becf8b229045e65070fa0a8f5252abc39b0b3526b9bf",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4161,
+   "sha256": "a1bba8acd116b25ba3997811257773bf8c31899db3dccb347c0a2fda5a95a836",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-16_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4141,
+   "sha256": "5c9950cc0d32b5b7029c78823ed1e44b7ead02ce860101ca7c6573f5bd999ff3",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7753,
+   "sha256": "522ab8770a273950fbc2afdf3ac679d2b87774517d918b82c51f21e50ddea747",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1674,
+   "sha256": "8c3ebc639c92815e55c21fa51616a0903aa69832a0a6732e40f751e01f400be5",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "ea88a4f4d5e7dec9b69735677e9a179f1adc69672a0ed6c623e3f08885c59cce",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9134,
+   "sha256": "384b8a52a0543925f63237f71b6a34b647cc99df012839d411bf6dbc7517d481",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4008,
+   "sha256": "7095c753b917f422822c7bc25274063cdce74cce130293ad0ce60b97ac99bcf7",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4078,
+   "sha256": "d2ac80ca72dbea57fa5e551b170a26117811968b65768568786397085e933305",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3882,
+   "sha256": "47a14595fd5cc5860f3d8fda3a928a5653b748f23b852e3baa2fdae7141fcfbd",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-17_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4067,
+   "sha256": "38b7ea702b0f37d4b4be9f281c5e75f58d0e388629e395f54750c8002a522c55",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7775,
+   "sha256": "6755fe78aefc9e5e2aef43ddd8f5c1ffab5606e5c77a5be1d372157bd87900ea",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1661,
+   "sha256": "d37da27e7b02f3d5485eb60eb7834a7213acb2a93be9f30f035abbaf155411cd",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "f38bbba1d22eac745426f215e1f534fa5e943db137c77edd959275ba8e5f0c54",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9052,
+   "sha256": "0610a70fc056a1a9930883b078709553cab9ce3831e5bd48dcdeddbc251e0ed0",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4095,
+   "sha256": "caf73572a582e03cddf00cb7e4fc77fdbe694b9bb7c6300885c0d2caeaafb708",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4201,
+   "sha256": "35e3a44b34878153caaca30d5b407aafa3d7362178faa8e208179d380a608f7b",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4085,
+   "sha256": "452c5bf2ed5d11fda906314061c6e7f0c84f700ed84a91afe41aec4bad3f6afb",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-18_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3949,
+   "sha256": "936b1566ba344ea24b83978af0b15078a8e8dcf891d83a2abd59396d62aa024a",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7856,
+   "sha256": "dd2098c736c7dd452bbe7e50e944e6225a7bd4b3178236d7f50336aa2fd65ede",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1643,
+   "sha256": "7d98b7befce6f533ba46ea08be19610ccd8c787ed7f409b397337c3c142ee766",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "9bcf452784cd23e2993aa909874c72554752da19663fa9fdf5d97ee526c6c1dd",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9184,
+   "sha256": "b9f37590bfb00afd951e12adb81f3c1707acf277ef20885fca176c9c584ddded",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3997,
+   "sha256": "0875914dbb64a5679598ee738ff91ff790de4ffb9c298b73fd09751c0c38d3c9",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4117,
+   "sha256": "7a8b51aa53f66a02d62f6417a46fcd8b6e55db285b25908ae2ce211bae8fc705",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4126,
+   "sha256": "34a64a99b86a55e562ddf1ee392e0b9d3c5c61138e1ffbda2e13f99e7bd74ffe",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-19_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3918,
+   "sha256": "ceb12ad9417c26867e058d6a1b9d66af2cf79a2084912233360c96189d5b9c58",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7863,
+   "sha256": "59a9799175f6924b2aaa6bd6804fd6c4cdbbcc27a201ebba747b0bc600f21687",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1608,
+   "sha256": "35af70dad380ef55c1b25fd628d64c30edb3500997f3bf604870e3e3528ef547",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "a1860490e07ed37ab7b8475886d62f9601215b58e0b93510a65ee72a4a5b0561",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9207,
+   "sha256": "bd974807ac6c50bf36a1afce19ef5618bd0c3dc2b7d7d21ea01ad1376323d756",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3665,
+   "sha256": "d47fcf1bc1ca4cd153e0991d32e6d8cb77ea7869690893a4c714f88c1cb6accb",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4183,
+   "sha256": "76cd577fa93b569d736aae14124fe1ab5129dfbd2abdd167100a59ae0c3cd3af",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4098,
+   "sha256": "c41fa9ba77495c58e338520c97fd8611ee68fabad54c4f5c08078e9fda93cdb0",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-20_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3969,
+   "sha256": "48f28d63d46e459b05eb385a538678b25e4b39d562f519ef8b0dc74ea82bbb40",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7805,
+   "sha256": "0395f51af61931ce3ce2abf4c569386f3ce4de5b76bec80f3e75c49e6fdf0fbf",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1660,
+   "sha256": "190074b984172ab4af00920830895c27dbe5116aa439c75879e806e8cac58c2c",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_demand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7590,
+   "sha256": "4122667a982a29da12999c54dbe7309a4084a5f3d2359ee4e00e45d3f0e205a4",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9196,
+   "sha256": "3f9100313cdc6d3a30bf61584032992f4cbcfc451232ba2420d6546c16e80757",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3583,
+   "sha256": "d7773db7d9e14f7ed118b4935a8de879aa261ae7b90e0ff73aa0e5e775f3a1e5",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4165,
+   "sha256": "c2d5a4668f899656a6d7820a7bd74b2b2bbcb33ab3ea5b333d747bc75a63cf0f",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4160,
+   "sha256": "e74aa082cb5156f367cc2b404bc72362b70118d30621377a3fbf6a24eb49b44b",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-21_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4043,
+   "sha256": "41f8d7d767c5b0aa2654970f339105d3bf6387ab7c0b44fdbb0e1e6f655f729a",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7704,
+   "sha256": "a3d63eb4e2929144f7249be5a1b06c69166212b5ad594720e0ced75d48369718",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1647,
+   "sha256": "1231a1dffb10cee8d4a8a1e1fec035628c7352f307c2bbc9cf3a63d3b795ba64",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9143,
+   "sha256": "f2f2de902a23b25a6d2edefc1e50cd6cae13037da4408591fe632d1e2f0b23a5",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3948,
+   "sha256": "69fe4920f731fefbacb09ac4108b63e0c57722a750b02fc32b795bead12e3d2f",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4192,
+   "sha256": "1d7b113dbe4b422974efc7eef6592d705688e798b4c7fd38cff14f3de29fb363",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4151,
+   "sha256": "03d8d471035cbb6c66f0ac78b643a5cf289d7b42c18f80251fb624278fd09005",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-22_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3926,
+   "sha256": "f8af925e8b08ea3f71b252b51dc461f70641c531200354be595b72feae0dda0d",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7819,
+   "sha256": "949988e577774e81209d3b52d1e23b7deb28add31990eca6d8526f850d235009",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1646,
+   "sha256": "eb3e59ebb08f171ddf132b5a5d98c7c8e8c1765a73c1c13b9d51f138769dc630",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9139,
+   "sha256": "20c4f38b7353967b5e5c333ac08ef098fc3aacf8a54bdb850b3202e969e1673c",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3797,
+   "sha256": "28da6ef02c5488f1fea6547913738ed8de991aeab61b5e2116ce2aba85f64af6",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4051,
+   "sha256": "30fb586d3a54557327e32e1b57c5f21a20a5452ceee2f44706fb433fe38fc21b",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4139,
+   "sha256": "90e4200a00c8e35627fa9032286d1fbd69c305261420faf7cd1df94128a925a9",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-23_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4019,
+   "sha256": "e1398408109ccb444d397a7c7a2d4ded211a6e7fed4fa52166a397279e19965a",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7736,
+   "sha256": "1da862c289fd2b570df14f6ae2fc8ad224f0dfa3e2f729808597a8fd19874347",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1660,
+   "sha256": "d1a0a6ee564fb7e6f47d1a2972672a704afa69feefe65c2d4b8768d61b39f6d2",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9111,
+   "sha256": "3fa671b8eb4ebeb4089bab5149b7fbd8111db5bd5cfa8f1ef3ab2cf0e32e9adb",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3935,
+   "sha256": "155b486d774ae5606035a1ab332fda4c093d3f4ff298f9fbe7bdfdd6a2bffe08",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4263,
+   "sha256": "e9a125a2a1b7470062a04f0bd9e4c13c3ddcb06563e1a4743f4a89971fc85f29",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4220,
+   "sha256": "52e6e7d189b86df7050f5be00b10acfb3febb442d0eda935fe51b9022b216e2a",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-24_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3886,
+   "sha256": "a524dc166777304f36388f074bb3a9ea4c2da89dcdc97229c8c64687e5ed0789",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7803,
+   "sha256": "90c6272c0e15395df2fc411f107b8087e085217035ca0a4cba21a462cf1db15c",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1666,
+   "sha256": "1ace93ee959104506ea12b2137a8e31dedbc21b07ebe92208ac3bff70813c4fc",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9196,
+   "sha256": "6458fe064d6e5b5331ea189301eed032bc9de3ab5fb111ce7630b4abd72467a3",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3805,
+   "sha256": "03118fe1af2d6c46a5314cb97dad7f433e2a6f70bfa446e91f9252cf2dad34b8",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4056,
+   "sha256": "12608b9039f55d5b6285ae3c75807b2a3eccf2feb4f4f505a61b5b69514503a5",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4217,
+   "sha256": "023192dc0ee5262a25093cc4f0b9dfd8ba4e59f60f7c1598d0f32c56857f8b42",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-25_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3973,
+   "sha256": "8a05a1549d649f41e511fecbfeb203ac67e492b6cfc497e3d5eb90ae53f29cfc",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7859,
+   "sha256": "f3ada436d434d27679f9db51521a67bab8796031e178a77385ebd2262e2593e4",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1642,
+   "sha256": "488aa63a914415c7f053479229bac4c5c869c35a888248d591b08c92d87bd3aa",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9116,
+   "sha256": "dcd345e66c094e50ee7c8026d405824eb0398e9b783ebe37f5bfa0c58fedb42b",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3736,
+   "sha256": "ccaadbfab7fcc2a345f062a8eea120e6d177c0b5618d7757dd988baac8049707",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4071,
+   "sha256": "7d1f37ba566f69496f1893cb61a1fd25e17f242a9074a4f074a111b865b5b12a",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4121,
+   "sha256": "31ea5ded5b619f07f673e6b754e6c5dbbd0ea8453148c40719c1ae3a6cd11834",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-26_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3944,
+   "sha256": "27f6d19913149cdba2aa1388dde69260a57f1ec03bdd22b197e0b62051c96770",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7769,
+   "sha256": "5835bdd9298598ee69ce73c94dfa38e2e685b1004b9dfb5efaef19020a39b2d3",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1638,
+   "sha256": "1658d5f9082a45e676d01577b618838dd17085fa5a7fb203b46f8f24dd442d2a",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9188,
+   "sha256": "49e77a7248fe57500860e2f1147581ba46646f5494e3d3860f26f04598d2c942",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3743,
+   "sha256": "80baacdd08a4e803fbc1f8affd1982c76c826a4a67cb76179f71e02f498160ac",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4150,
+   "sha256": "b2400dcc3c2aa084b75f81e2a64880f04185d3993cb82f755ed72e976ddb758c",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4214,
+   "sha256": "f9e65430dd80d476f43bdf7e6727dd80294a8884eb23158058fdca8f86af6ea4",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-27_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3842,
+   "sha256": "1e2c453898c1c489fd3ac016bbb0a1435b1ef62dfa6153f0261a5bee84685ba9",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_co2.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 7857,
+   "sha256": "61533027cc452152513bbd4d800dc84e26d963dbde5427bd3f8729faa23cbc88",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_dam.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 1629,
+   "sha256": "cb14023c34780a9e5b80cb94a5964e2ae223e4b7d14ad45690f6b7e011edba45",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_netdemand.csv",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 9205,
+   "sha256": "411a2852891cb14ec18ccafcb710ca435a0007841f1783b36f36dcdce302f803",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_rtm_00.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3707,
+   "sha256": "078d0fc08acb1c850364ea95dbee69b85d6249ae05a30249c4a6c22a316dc1a3",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_rtm_06.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4174,
+   "sha256": "a7972c270bb721353e0e9c1a20f8bd02a492f8e25b8d669ee88cf9206016aedf",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_rtm_12.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 4188,
+   "sha256": "7cbf2fb010f04132e70633d755f23cfb8f15381c66ebd113fdcc681dbe23a8c6",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "caiso/2024-04-28_rtm_18.zip",
+   "source": "California ISO, OASIS prices and Today's Outlook demand and emissions",
+   "bytes": 3818,
+   "sha256": "f5ec80f67581bd3fe64b816b292b2d15576d414f9af7769f7864bc7a238d1fe5",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "census/2023_gaz_tracts_06.txt",
+   "source": "US Census Bureau, 2020 decennial population and 2023 gazetteer",
+   "bytes": 1835120,
+   "sha256": "ac75dd4f8e6cd9bb762ede2bd6abb4af856055fad036b01666fc93cee8b57cb5",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "file": "census/CenPop2020_Mean_TR06.txt",
+   "source": "US Census Bureau, 2020 decennial population and 2023 gazetteer",
+   "bytes": 383295,
+   "sha256": "4b75deb0255ee501e41574edcbce1a8d777035130284e2ad4c046daa3e8f2726",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "file": "chicago/hourly.json",
+   "source": "City of Chicago, Transportation Network Providers trips (Chicago Data Portal)",
+   "bytes": 732569,
+   "sha256": "79bd475c1cb1cdde01ccf7740bdf17d1d132db77224d976a0011d5e30dbfe809",
+   "retrieved": "2026-10-09"
+  },
+  {
+   "file": "cpuc/waymo-deployment-2025q2.zip",
+   "source": "California Public Utilities Commission, autonomous vehicle quarterly reports",
+   "bytes": 40139544,
+   "sha256": "ab826fd51b15b90f93964ec6250b6561c4a6282765a795944864ac11379d092f",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "file": "cpuc/waymo-deployment-2025q3.zip",
+   "source": "California Public Utilities Commission, autonomous vehicle quarterly reports",
+   "bytes": 39213011,
+   "sha256": "4faa59c1203a0fe132318a380612d63cfce62d996caaa84de3b15d95484b381b",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "file": "cpuc/waymo-deployment-2025q4.zip",
+   "source": "California Public Utilities Commission, autonomous vehicle quarterly reports",
+   "bytes": 52755884,
+   "sha256": "9266106d5aeac6a8be17719a8584afcacd326e792a8e2e17c500751058379ac5",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "cpuc/waymo-deployment-2026q1.zip",
+   "source": "California Public Utilities Commission, autonomous vehicle quarterly reports",
+   "bytes": 58368576,
+   "sha256": "6ab31b7edb697bd715d955e72d7e8d5b1901d88416d72bf0bcba3ef12b78a267",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "cpuc/waymo-deployment-2026q2.zip",
+   "source": "California Public Utilities Commission, autonomous vehicle quarterly reports",
+   "bytes": 64195863,
+   "sha256": "8897db0608f9a8ba051b841a6e29112ee042a75e0fcfa6e2f98aa420d89b89c8",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "cpuc/waymo-driverless-deployment-2025-q1.zip",
+   "source": "California Public Utilities Commission, autonomous vehicle quarterly reports",
+   "bytes": 29641373,
+   "sha256": "49420098813c1f6e393acecbfbb4faa9b861299cc785d9bfff799474c1176373",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "file": "nyc/fhvhv_2023-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 26983,
+   "sha256": "23436a7fbc7ec70a8134074b4f8094e78ee8c2309076fd43620dbcd4568423cd",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 24956,
+   "sha256": "aa49e5fc0c091573f56ddd44e9b6c1a0b3fcda7e7ef0b1d457841c17fc80b501",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 27140,
+   "sha256": "500eca9eedda3d93b4807c3761b240ed7ce2b8c4cd57d390ab9e7b9bbd1af525",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 26386,
+   "sha256": "a7629296151288fb4cea66812a423e69dd8fd108cebfdcb456a2bda35e238482",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 27001,
+   "sha256": "c76b9c9cc295216540d56636e26e0370d7d0fb644453a51f01c831881f4474a3",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 26383,
+   "sha256": "0004e979cce4d8888e4846f29835ac1b7a85afbad4b93eaad9e44659eee0a324",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-07.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 26865,
+   "sha256": "e9c923fd3be8d4ac675d085066341045da2eee7e25c3fc82495dcad6c84ed7e4",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-08.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28369,
+   "sha256": "05560ce848c9b42f058fe007421c75015927220b487f33e54491da8331f8470b",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-09.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28484,
+   "sha256": "7c8be8c69ffa60ad13993fad9dc464c0ee0c0892efc446575bbf349730f587d2",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-10.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28748,
+   "sha256": "c95d305ad77b11567e38e76dd7258321e7b81a96ba5a9e4626d620afdf99d234",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-11.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 27737,
+   "sha256": "95888942c0343db011aa52138f0fbe81e6b3bef66f4d14a0e60683a1bcbf6589",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2023-12.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28974,
+   "sha256": "4dce0f95c42eb37e7230a09e03fb9c27b3ffc32a1816d35f2e5ede336a34b05c",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28874,
+   "sha256": "7e0664bbd918ae778a37172f6da40a31321a518f997cb3d28cf156e9eddac70d",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 27718,
+   "sha256": "5658353d2ca643d8e94efc737a87f34301b7f6cc57645ae84d84aa4aa1ab0576",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28955,
+   "sha256": "75665c9d525b14076ebf8e20c11c7f9d52338fd53379f4b5c0b5bcc1e7cffbe6",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28212,
+   "sha256": "be392e4024cb87614deab7013c425910839c7b1b717ac3145eef20a9ff7aff53",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 29593,
+   "sha256": "0245a7f910040caf9813177979fe1702a968129e61bf582f7b92c3e875630a26",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 27678,
+   "sha256": "ccdf3ba85b76f6ddb6429840cacbf28146ec41673f5a088481c2f500a4292279",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-07.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28589,
+   "sha256": "d1caeac57efbc182528d8786bc470afab8d5c83fd80105f86d01387b86db5534",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-08.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28639,
+   "sha256": "2edc6fc82ea36c588cdc0022475f1f664c5bff4f7d6a7afe3d6ca988775ba397",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-09.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28096,
+   "sha256": "885081b828663307bfa9599f3b7a08ab3ad9d985834b8f1cef725b3daf6d61bc",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-10.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28798,
+   "sha256": "be4d08da74b3277b8c8bb269f5d3910a89fda1abbc17cc3e4d069c5b206a69fa",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-11.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28070,
+   "sha256": "db9bdca168ba05fb5af2898f19770f271c29fe7cc0f8f3f11d2718e2a8dca155",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2024-12.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28897,
+   "sha256": "8efd98fa7ac5954d8b7e206359e0a0160c6ca73e7c8bde3c8a763c712a6fbdae",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 29104,
+   "sha256": "08bc7116d948f72d360001f51037a13260dd35013b4542843e64c91bf96e28d6",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 26537,
+   "sha256": "808608ac31a7ec5b2bedd6061bb0868e1264639c829d11242c96f5971824dd86",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28938,
+   "sha256": "0e726b794a29f590bde57dd038c3c52f5e619ef1e8b0f8ff1f3785c3f378175f",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28062,
+   "sha256": "34dde68494df3d63d996ab5380e18c385a90ef520f752d034ac93eb3d93f6ee8",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 29098,
+   "sha256": "a009be37128ed5af1f17ce7459d2c3e62c386596a9b73c1ba94d4c59675d838d",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28375,
+   "sha256": "79dc80c711771d7d781fe580cdac4a0098cdbf2a24947e57105cc9d65b9dc95c",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-07.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28678,
+   "sha256": "368b9928ce7e6ecb685af6818849fda922d954f7c4c5db7e63351723b6c4d632",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-08.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28085,
+   "sha256": "6a5d74f9d5c44c80d72c4b30f5af54624dd005f8e2e8fea041660fb6a58f4590",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-09.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28204,
+   "sha256": "01691e83306d54d8eb4b93b711e212fc5a7ab24726f14d96cb77e82705eebca2",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-10.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 29212,
+   "sha256": "0ee70e355d30896c2cb85c77ddc90ac186f8142793c05cf940a0e966229add08",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-11.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28024,
+   "sha256": "97aa8e522bb93052fa086fec3859006e3212a1c6b06dc68804dcbbaf0e06a721",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2025-12.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28885,
+   "sha256": "c97c130dee52499a7170b0a6de08a893d9a64ba5ae9c5cc5f7606de7fb12035c",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2026-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28962,
+   "sha256": "c7faf8cb6a968149f4726b4cd114eb6a51d840b411e6a14ada0af78aa3f9387a",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2026-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 26447,
+   "sha256": "ee3f2fbc2b0d7d10e2b24c8ba96026c92660919ade810b76be57ed1cd153e768",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2026-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 29400,
+   "sha256": "459c971be33b30a00a83a4396459c2c882612c4dfe0c0fc6f6233286bdc45982",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2026-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 28432,
+   "sha256": "f1e658164259a6bce1ca3cf63b1d6127f72c8cc3c5b1a562d579eb6763b571f0",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2026-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 29436,
+   "sha256": "a9785e540cf92dbe3d4ce9ec971ff26221b11231f90bfdaa6d9978f838cf038b",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/fhvhv_2026-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 27917,
+   "sha256": "b1e5ff87403bd9df48a0e81085a26ef89592a1b24b6a5eea483e1d693176383b",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/taxi_zone_lookup.csv",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 12331,
+   "sha256": "1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 19693,
+   "sha256": "fcef6a54cad6cd042a0fdc2fa4f518e6439cfd06f98e7657a7918bd26d52026d",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 17364,
+   "sha256": "f4995eee7101abb5bac3f51d73e06f2b5073275d4caf97e21090191b35ec02c3",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21797,
+   "sha256": "00c7fe92b9aefeb87854c68698dc5df344d76a7b8ee2daf9db1891f96863ccd3",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 19429,
+   "sha256": "acc0c0c7356309096687dd00754f186fe3a9c394ba1c269c49f2e983909c12a4",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20385,
+   "sha256": "1b4983d47e83ab23d290fdc9480e148e06b51ee160641efbd887c2e01b522d30",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 18561,
+   "sha256": "b4fb68e9864142c79d5d0404a33a72b13e68fe248a26bbe6045314b1ffd14f96",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-07.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 19747,
+   "sha256": "b5eaeb6464cd39242af24d7b20fbf75d431f1d3c2903e8a97eb088ece9588327",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-08.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21592,
+   "sha256": "27634a0beffb3d5eba558de3cfb7f38952fccffa35b514c7fc54447d230556de",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-09.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20079,
+   "sha256": "badd610359387c80dfbde535d34136c692b400cbecd2ae455510bffaa350b0fe",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-10.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22054,
+   "sha256": "a10126a247fbff312848abf8b8b01decacb3c98c2c3d6d910a4f2c38bcfe2b05",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-11.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 19986,
+   "sha256": "e09b49d784fd76842439b7f754c567a19fb548818177acccf7acedef01867115",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2023-12.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22539,
+   "sha256": "9c5f4aa3fea107e8f9d66a81312605dd45bb02746089a3e04b3e8634bbea25e6",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21103,
+   "sha256": "892bcacf59010487c406305632b89e938c17b23a595ff05a0facaa1fb061e4c2",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 19749,
+   "sha256": "8fa373318196dc5e844d7b6690508532124616a8af17e05edc1edb53c4105bd9",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21775,
+   "sha256": "d508e9350b21fe7f639492fb4c1e5d5ac3e8c442d329f21eb537dd23c72e3a38",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21721,
+   "sha256": "811f604013f74e16dd72d29dbb9bee3ce6a5cb69ed4a28d2da39b0fbf0191bb6",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21053,
+   "sha256": "0589c0fc8bf2fca4f60d5f8dc6f7ca4e3bff262ccb613aa2eab981a804efd61d",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21366,
+   "sha256": "fa1219ffed0add93efb6b1d45abf1eacda710b34c8fde91b8560c1c90744382a",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-07.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21654,
+   "sha256": "2cfe7098b4ec2391b957e6293593a636b5e9ddb61d0b1183ea3e39737699d0e6",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-08.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22169,
+   "sha256": "8a908bb1c787d18f7175331ee02230a19978894e70292fa5b6677a8d4fd9a23b",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-09.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21195,
+   "sha256": "b16ae243d9fecb5924d002490ba1233b794cd7414d127bf43581ec4061748336",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-10.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22182,
+   "sha256": "7e638e59c52aee815e4aea614d962e9f71f088b6dcffc4d68034576763db984f",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-11.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21734,
+   "sha256": "fe69e532032919b27074cae47a9e4a4d48266b973f4b01a87edfaf8da36e89f4",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2024-12.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22011,
+   "sha256": "709b1b7beb1bd698fab550e09bbbe3d8b5942f06e95671268bcb7f65ca1eb1ca",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20945,
+   "sha256": "c1964f37d8319a52604b62962b6aa9110e0f00f612266f1ff9eb9d9a51b0f439",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 19650,
+   "sha256": "0ef389f93148ec918dc958f78aafe082208e51c695996e84aa43e4c9f633160e",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22494,
+   "sha256": "d57ef2b7ecec7f4c4146be10020ff08ab36a849bd6f7f58821719130d0bc6f66",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20984,
+   "sha256": "90e7f972534f04b40970f4e81b1ad9faa97319993e1e85b79a7095bf4bab9f4a",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20658,
+   "sha256": "419a092ae41028c5b6536e6a44369b6a0bf57a6609a2a349e5465570ed639fdd",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21294,
+   "sha256": "16f5858762fa4ce66202aced1030db1337d9b5267e376ba2ef381ca03d5577c9",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-07.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22524,
+   "sha256": "45ab4693640111596081b3390aab64b1685cc7cae23d79a7394fae06bd30f8fd",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-08.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22807,
+   "sha256": "f9a5f9029327a4c3aa282c8bb0fd8946ac79c7047ddbab2aa11588e0839f2883",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-09.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21390,
+   "sha256": "90069eb1ff90b6937706fe556cdd467b39b1dd46a6d6b79056d8371498560e41",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-10.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21545,
+   "sha256": "49d72dc3bc16d9734feb191e03cc9a58236deb61ba8b5317a64ad14f7f1d9f33",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-11.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21952,
+   "sha256": "cca0a013b2fd1d4034f185db832e570f6e87e20943f155dbdd4ebd298eec4679",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2025-12.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22434,
+   "sha256": "f2047d05eab218ddccff4834202bb5223a79ec1816ca05eead45b4a5976daef1",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2026-01.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21062,
+   "sha256": "35e73fb384472167be06b1f1ba8c5e843025c0fdc34023fc415476c452c3b190",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2026-02.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20162,
+   "sha256": "cff7fac319ff1cbe4b7455bbc036fb2d1cc9463da495f502b60369b3e875c010",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2026-03.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21325,
+   "sha256": "2f2a1101fae4a1eeb4db2275edf458b6a535ac8806da27c4f027d76845501160",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2026-04.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 21395,
+   "sha256": "3edff63d600fd1480d1364d4f300256bb7575e58667e56bf02001b79be851984",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2026-05.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 22545,
+   "sha256": "c700430bf0d3b60829f97e50d79410f16d6280ae74be41613c6409cf3688a37f",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "nyc/yellow_2026-06.parquet",
+   "source": "New York City Taxi and Limousine Commission, trip record data",
+   "bytes": 20909,
+   "sha256": "71ec3494444d33cf2057e69da83c3757a54c8875e4fad7dadabf17225549c39f",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2022-12.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 15396642,
+   "sha256": "5ac14ed57d9b2c0d584514221bfd98389356b8e5ffc7281b01bdfde18b6660d4",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-01.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 17227580,
+   "sha256": "fcce6448329236347fd1200e7b12e4167bcd3f691b8c7085499b3a52091ef8a5",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-02.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 15286097,
+   "sha256": "12145c58ab828a1c9873068b90a6404db49929341c64cbbe7281527336ec6fdc",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-03.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 16586094,
+   "sha256": "079c1c87aa23108dbe8e6fb17df2060858c930c8bf2402d58c47c603668c39ce",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-04.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 17389726,
+   "sha256": "7c4db2dc4f76b455f93e449d6fa02811b5517127b3ae677621ddfa3a3e04240b",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-05.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 16675613,
+   "sha256": "e81c32fddb9f5938de569e565e10cda21ad069f973f1376a0eac568a57bb7e99",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-06.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 16650807,
+   "sha256": "533bcea28cdaa86e3d6eaeb64631688e85cf2233c52dcc2ef9cd927273149675",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-07.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 16315380,
+   "sha256": "300cfada15da30cce7d8e600d82237b8463094dc85199b6c6b9e29a19b0a3a9a",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-08.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 17595629,
+   "sha256": "13153739dca84377fd2b6f27edaf43e4432ff1bb92af254bb4a740449c4a6b5e",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-09.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 16853979,
+   "sha256": "3bc3c82dc0caf1c8679d3278f22348baccae0ab0a99bbeca40d4b6b06fb8cee1",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-10.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 16923409,
+   "sha256": "9bdf68b448b2cbe8d2a391aab7a1a2e10fcdb71b9ecdef6882c22fbd14c35908",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-11.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 14996412,
+   "sha256": "fbd9ac2090dd8edeff5e061eff99fc8ba1b03aad80f38a12654811c70e181100",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2023-12.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 14218955,
+   "sha256": "b2d5732cec0a33970dc4bab12b1ffbc4f691a38c0c72350b46c56a1ede4310ff",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2024-01.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 17724182,
+   "sha256": "70d333c75e75fdf688d075b21441763c679367fb8defc8bf3e7050d49c13b497",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2024-02.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 23616476,
+   "sha256": "304f0e0bfa904a1535cdf6ad97e3a87a0c8f68cc2b64e66e012d8a7295c8f015",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2024-03.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 25841216,
+   "sha256": "e4bd08e7cfe3f5e6dca719ec2f873ab9a39287c338b2ca2b461c343b791d4dd4",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2024-04.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 24810896,
+   "sha256": "f9da45cbd8ae920c8193a0bdb7295d2f25b3a98fef68800b63ad3cfc639c99db",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "sftaxi/2024-05.csv",
+   "source": "City and County of San Francisco, Taxi Trips (DataSF open data)",
+   "bytes": 28252015,
+   "sha256": "5fe2c9246c67c9255bfb1ae406d23d741fef936e1c95b54ca9a9bf758c08549b",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "weather/37.75_-122.19_2025-08-31_2026-08-31.json",
+   "source": "Open-Meteo historical forecast archive (CC BY 4.0)",
+   "bytes": 253947,
+   "sha256": "595c2075d5d01e0d4ddebb9e6ca922fcaf7c2195ae3a66a05732d9c7d5f0b232",
+   "retrieved": "2026-10-05"
+  },
+  {
+   "file": "weather/chicago_2025-01-01_2026-08-31.json",
+   "source": "Open-Meteo historical forecast archive (CC BY 4.0)",
+   "bytes": 420339,
+   "sha256": "7f1e78987b4720c9427c7e8a4cd08b7dbb5dd271d248d8f1171b52754bfd1aa3",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "weather/new_york_2023-01-01_2026-06-30.json",
+   "source": "Open-Meteo historical forecast archive (CC BY 4.0)",
+   "bytes": 879838,
+   "sha256": "ddebc8daf8e29e60e518439d92869923af64bfb98fbe9b676c369e6369a5d71e",
+   "retrieved": "2026-10-04"
+  },
+  {
+   "file": "weather/san_francisco_2022-12-01_2024-05-31.json",
+   "source": "Open-Meteo historical forecast archive (CC BY 4.0)",
+   "bytes": 378227,
+   "sha256": "cb2d73c4318c245f5db2bc8fbab67ae61f53b4730d92911e5be4fb2d38674aff",
+   "retrieved": "2026-10-04"
+  }
+ ]
+}

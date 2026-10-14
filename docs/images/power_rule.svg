@@ -1,0 +1,26 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 880 250' role='img' aria-label='The same power, fed two ways'>
+<rect width='880' height='250' fill='#ffffff'/>
+<text x='72.0' y='26.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='17' font-weight='600' fill='#050f1e' text-anchor='start'>The same power, fed two ways</text>
+<text x='72.0' y='44.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>1,000 vehicles on one feeder, where power is short. Median of 40 runs (four fortnights by ten draws). E23.</text>
+<text x='72.0' y='70.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>Usable grid power drawn</text>
+<text x='72.0' y='96.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>Emptiest first</text>
+<rect x='72.0' y='102' width='175.3' height='34' rx='4' fill='#b76e00'/>
+<text x='253.3' y='125.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>88%</text>
+<text x='72.0' y='180.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>In plug order</text>
+<rect x='72.0' y='186' width='200.0' height='34' rx='4' fill='#006fee'/>
+<text x='278.0' y='209.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>100%</text>
+<text x='332.0' y='70.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>Vehicles between stations</text>
+<text x='332.0' y='96.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>Emptiest first</text>
+<rect x='332.0' y='102' width='176.0' height='34' rx='4' fill='#b76e00'/>
+<text x='514.0' y='125.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>29</text>
+<text x='332.0' y='180.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>In plug order</text>
+<rect x='332.0' y='186' width='35.3' height='34' rx='4' fill='#006fee'/>
+<text x='373.3' y='209.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>6</text>
+<text x='592.0' y='70.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>Rides served</text>
+<text x='592.0' y='96.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>Emptiest first</text>
+<rect x='592.0' y='102' width='152.9' height='34' rx='4' fill='#b76e00'/>
+<text x='750.9' y='125.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>76.4%</text>
+<text x='592.0' y='180.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>In plug order</text>
+<rect x='592.0' y='186' width='169.9' height='34' rx='4' fill='#006fee'/>
+<text x='767.9' y='209.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='13' font-weight='600' fill='#050f1e' text-anchor='start'>85.0%</text>
+</svg>

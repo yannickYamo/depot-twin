@@ -1,0 +1,41 @@
+{
+  "eval": "E20",
+  "window": "sf_e8",
+  "table": {
+    "plan_tariff": {
+      "rides_served_share": 1.0,
+      "promises_kept": 0.98,
+      "energy_cost_per_kwh_tariff": 0.1679,
+      "energy_cost_per_kwh_day_ahead": 0.1019,
+      "contribution_per_day": 88669.3833,
+      "contribution_per_day_day_ahead": 91861.1967
+    },
+    "plan_day_ahead": {
+      "rides_served_share": 1.0,
+      "promises_kept": 0.9681,
+      "energy_cost_per_kwh_tariff": 0.1925,
+      "energy_cost_per_kwh_day_ahead": 0.1011,
+      "contribution_per_day": 87487.7533,
+      "contribution_per_day_day_ahead": 91899.8967
+    },
+    "plan_tariff_curve": {
+      "rides_served_share": 1.0,
+      "promises_kept": 0.98,
+      "energy_cost_per_kwh_tariff": 0.1679,
+      "energy_cost_per_kwh_day_ahead": 0.1019,
+      "contribution_per_day": 88669.3833,
+      "contribution_per_day_day_ahead": 91861.1967
+    }
+  },
+  "bars": {
+    "1_day_ahead_steering_buys_10pct_cheaper_under_day_ahead_prices_rides_within_0.2": false,
+    "2_tariff_as_a_curve_matches_the_tariff_path": true,
+    "3_promises_kept_95pct_in_every_arm": true
+  },
+  "run": "2026-10-09",
+  "code": {
+    "sim": "9aa4299b2d0d",
+    "forecast": "c79f8c4e75b5",
+    "driver": "aa0a91990e01"
+  }
+}

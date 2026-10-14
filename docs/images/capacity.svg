@@ -1,0 +1,44 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 880 466' role='img' aria-label='What one feeder carries, by calling rule'>
+<rect width='880' height='466' fill='#ffffff'/>
+<text x='72.0' y='26.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='17' font-weight='600' fill='#050f1e' text-anchor='start'>What one feeder carries, by calling rule</text>
+<text x='72.0' y='44.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>Median of 40 runs (four fortnights by ten draws); band, 10th to 90th percentile; dot, the largest fleet carried. E23, E25 and E26.</text>
+<line x1='72' x2='852' y1='376.0' y2='376.0' stroke='#e5e9f0'/>
+<text x='64.0' y='380.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>85%</text>
+<line x1='72' x2='852' y1='273.4' y2='273.4' stroke='#e5e9f0'/>
+<text x='64.0' y='277.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>90%</text>
+<line x1='72' x2='852' y1='170.9' y2='170.9' stroke='#e5e9f0'/>
+<text x='64.0' y='174.9' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>95%</text>
+<line x1='72' x2='852' y1='68.3' y2='68.3' stroke='#e5e9f0'/>
+<text x='64.0' y='72.3' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>100%</text>
+<text x='99.9' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>500</text>
+<text x='239.1' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>600</text>
+<text x='378.4' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>700</text>
+<text x='517.7' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>800</text>
+<text x='657.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>900</text>
+<line x1='72' x2='852' y1='376' y2='376' stroke='#050f1e'/>
+<text x='462.0' y='416.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>Vehicles in the fleet, at 25 rides offered a vehicle a day</text>
+<path d='M72.0,88.8 L852.0,88.8' fill='none' stroke='#050f1e' stroke-width='1' stroke-dasharray='4 4'/>
+<text x='78.0' y='104.8' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>service floor: 99% of rides served</text>
+<path d='M99.9,68.3 L169.5,68.3 L239.1,68.3 L308.8,72.0 L378.4,92.3 L517.7,150.4 L657.0,239.6 L657.0,376.0 L517.7,272.6 L378.4,203.1 L308.8,148.9 L239.1,95.8 L169.5,76.3 L99.9,71.2 Z' fill='#b76e00' fill-opacity='0.16'/>
+<path d='M99.9,68.3 L169.5,68.3 L239.1,72.6 L308.8,93.5 L378.4,130.1 L517.7,196.9 L657.0,287.4' fill='none' stroke='#b76e00' stroke-width='2.5' stroke-dasharray=''/>
+<circle cx='169.5' cy='68.3' r='5.5' fill='#b76e00' stroke='#ffffff' stroke-width='2'/>
+<text x='665.0' y='291.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#b76e00' text-anchor='start'>called in at a set charge</text>
+<text x='665.0' y='307.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='600' fill='#b76e00' text-anchor='start'>carries 550</text>
+<path d='M99.9,68.3 L169.5,68.3 L239.1,68.3 L274.0,68.3 L308.8,68.3 L343.6,68.3 L378.4,68.3 L517.7,76.7 L657.0,138.7 L657.0,279.4 L517.7,152.2 L378.4,73.4 L343.6,69.1 L308.8,69.1 L274.0,69.3 L239.1,69.3 L169.5,69.3 L99.9,69.1 Z' fill='#006fee' fill-opacity='0.16'/>
+<path d='M99.9,68.3 L169.5,68.3 L239.1,68.3 L274.0,68.3 L308.8,68.3 L343.6,68.3 L378.4,68.3 L517.7,97.2 L657.0,188.9' fill='none' stroke='#006fee' stroke-width='2.5' stroke-dasharray=''/>
+<circle cx='343.6' cy='68.3' r='5.5' fill='#006fee' stroke='#ffffff' stroke-width='2'/>
+<text x='665.0' y='192.9' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#006fee' text-anchor='start'>called in once a charger is free</text>
+<text x='665.0' y='208.9' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='600' fill='#006fee' text-anchor='start'>carries 675</text>
+<text x='99.9' y='438.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='middle'>76%</text>
+<text x='239.1' y='438.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='middle'>90%</text>
+<text x='378.4' y='438.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='middle'>100%</text>
+<text x='517.7' y='438.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='middle'>100%</text>
+<text x='657.0' y='438.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='middle'>100%</text>
+<text x='687.0' y='438.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>of the usable power in use</text>
+<line x1='239.1' x2='239.1' y1='99.1' y2='376' stroke='#050f1e' stroke-dasharray='2 4'/>
+<text x='231.1' y='257.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='600' fill='#050f1e' text-anchor='end'>the plan: 600</text>
+<text x='231.1' y='273.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>still fits with</text>
+<text x='231.1' y='289.4' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>10% more energy use</text>
+<circle cx='378.4' cy='68.3' r='5.5' fill='#ffffff' stroke='#006fee' stroke-width='2'/>
+<text x='382.4' y='56.3' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#006fee' text-anchor='start'>700: served, with no power to spare</text>
+</svg>

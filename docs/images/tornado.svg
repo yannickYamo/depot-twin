@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 880 392' role='img' aria-label='Which input moves the money'>
+<rect width='880' height='392' fill='#ffffff'/>
+<text x='72.0' y='26.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='17' font-weight='600' fill='#050f1e' text-anchor='start'>Which input moves the money</text>
+<text x='72.0' y='44.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>600 vehicles on one feeder. Each input moved alone over its range (docs/METHOD.md); the figure is the swing in contribution a day.</text>
+<line x1='598.5' x2='598.5' y1='56' y2='334' stroke='#050f1e'/>
+<text x='598.5' y='350.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='middle'>as recorded: $102,469 a day</text>
+<text x='290.0' y='80.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>Running a vehicle, $ a day</text>
+<rect x='300.0' y='64' width='397.9' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='703.9' y='80.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$120,000</text>
+<text x='290.0' y='114.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>A vehicle, $ a year</text>
+<rect x='380.4' y='98' width='381.6' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='768.0' y='114.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$115,068</text>
+<text x='290.0' y='148.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>Fare a ride, $</text>
+<rect x='500.5' y='132' width='196.0' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='702.4' y='148.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$59,090</text>
+<text x='290.0' y='182.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>A person on site, $ an hour</text>
+<rect x='580.6' y='166' width='29.8' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='616.4' y='182.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$9,000</text>
+<text x='290.0' y='216.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>Land, $ a month</text>
+<rect x='589.5' y='200' width='16.4' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='611.8' y='216.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$4,932</text>
+<text x='290.0' y='250.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>Energy price, against the tariff</text>
+<rect x='591.3' y='234' width='14.4' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='611.7' y='250.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$4,341</text>
+<text x='290.0' y='284.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>A lost ride beyond its fare, $</text>
+<rect x='598.2' y='268' width='1.0' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='604.6' y='284.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$114</text>
+<text x='290.0' y='318.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>Grid connection, $ a kW</text>
+<rect x='598.2' y='302' width='1.0' height='22' rx='3' fill='#006fee' fill-opacity='0.8'/>
+<text x='604.6' y='318.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>$113</text>
+</svg>

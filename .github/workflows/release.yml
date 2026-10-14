@@ -1,0 +1,34 @@
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[data,ml,opt,dev]"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # A release is cut only from a tree that passes what CI checks: lint, types, the suite, every record
+      # current, and the headline runs reproduced from the repository.
+      - run: make check
+      - run: depot-twin stale && depot-twin reproduce
+      - run: mkdir -p out && depot-twin report --out out/report.html
+      - run: cd web && npm ci && npm run typecheck && npm test && npm run build && cd dist && zip -r ../../out/web.zip .
+      # The repository at the tag is the release: it holds the code, the scenarios and every result file.
+      # Beside it go the built page, the report, and the forecast scores with the document that explains them.
+      # Trained models are not shipped; the registered tests rebuild them from the public data.
+      - run: depot-twin package --out out/release && cd out && zip -r scores.zip release
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            out/report.html
+            out/web.zip
+            out/scores.zip

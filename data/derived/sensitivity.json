@@ -1,0 +1,226 @@
+{
+  "start": "2024-03-18",
+  "seeds": [
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "rows": [
+    {
+      "case": "as modelled",
+      "runs_per_fleet": 5,
+      "served_600": 1.0,
+      "served_600_range": [
+        0.9999,
+        1.0
+      ],
+      "served_700": 1.0,
+      "served_700_range": [
+        1.0,
+        1.0
+      ],
+      "served_800": 0.985,
+      "served_800_range": [
+        0.9825,
+        0.9874
+      ],
+      "served_1000": 0.871,
+      "served_1000_range": [
+        0.868,
+        0.8727
+      ],
+      "kwh_per_mile": 0.53,
+      "visits_per_day": 1.32
+    },
+    {
+      "case": "rides per vehicle: 21.5",
+      "runs_per_fleet": 5,
+      "served_600": 1.0,
+      "served_600_range": [
+        1.0,
+        1.0
+      ],
+      "served_700": 1.0,
+      "served_700_range": [
+        1.0,
+        1.0
+      ],
+      "served_800": 1.0,
+      "served_800_range": [
+        1.0,
+        1.0
+      ],
+      "served_1000": 0.9519,
+      "served_1000_range": [
+        0.9496,
+        0.9536
+      ],
+      "kwh_per_mile": 0.56,
+      "visits_per_day": 1.3
+    },
+    {
+      "case": "rides per vehicle: 18",
+      "runs_per_fleet": 5,
+      "served_600": 1.0,
+      "served_600_range": [
+        1.0,
+        1.0
+      ],
+      "served_700": 1.0,
+      "served_700_range": [
+        1.0,
+        1.0
+      ],
+      "served_800": 1.0,
+      "served_800_range": [
+        1.0,
+        1.0
+      ],
+      "served_1000": 0.9993,
+      "served_1000_range": [
+        0.9992,
+        0.9994
+      ],
+      "kwh_per_mile": 0.597,
+      "visits_per_day": 1.26
+    },
+    {
+      "case": "energy per mile: 10% lower",
+      "runs_per_fleet": 5,
+      "served_600": 1.0,
+      "served_600_range": [
+        1.0,
+        1.0
+      ],
+      "served_700": 1.0,
+      "served_700_range": [
+        1.0,
+        1.0
+      ],
+      "served_800": 0.9999,
+      "served_800_range": [
+        0.9998,
+        1.0
+      ],
+      "served_1000": 0.9354,
+      "served_1000_range": [
+        0.9329,
+        0.9374
+      ],
+      "kwh_per_mile": 0.488,
+      "visits_per_day": 1.24
+    },
+    {
+      "case": "energy per mile: 10% higher",
+      "runs_per_fleet": 5,
+      "served_600": 0.999,
+      "served_600_range": [
+        0.9986,
+        0.9996
+      ],
+      "served_700": 0.9896,
+      "served_700_range": [
+        0.9882,
+        0.9916
+      ],
+      "served_800": 0.9368,
+      "served_800_range": [
+        0.9327,
+        0.9398
+      ],
+      "served_1000": 0.8144,
+      "served_1000_range": [
+        0.812,
+        0.816
+      ],
+      "kwh_per_mile": 0.567,
+      "visits_per_day": 1.33
+    },
+    {
+      "case": "called in at 40% charge",
+      "runs_per_fleet": 5,
+      "served_600": 0.9932,
+      "served_600_range": [
+        0.9912,
+        0.9949
+      ],
+      "served_700": 0.9867,
+      "served_700_range": [
+        0.9857,
+        0.9873
+      ],
+      "served_800": 0.9502,
+      "served_800_range": [
+        0.9471,
+        0.9528
+      ],
+      "served_1000": 0.8483,
+      "served_1000_range": [
+        0.8463,
+        0.8498
+      ],
+      "kwh_per_mile": 0.523,
+      "visits_per_day": 1.85
+    },
+    {
+      "case": "called in at 55% charge",
+      "runs_per_fleet": 5,
+      "served_600": 0.864,
+      "served_600_range": [
+        0.8585,
+        0.8694
+      ],
+      "served_700": 0.8647,
+      "served_700_range": [
+        0.8594,
+        0.8737
+      ],
+      "served_800": 0.8811,
+      "served_800_range": [
+        0.876,
+        0.8839
+      ],
+      "served_1000": 0.8097,
+      "served_1000_range": [
+        0.8086,
+        0.8114
+      ],
+      "kwh_per_mile": 0.51,
+      "visits_per_day": 2.35
+    },
+    {
+      "case": "twice the people",
+      "runs_per_fleet": 5,
+      "served_600": 1.0,
+      "served_600_range": [
+        0.9999,
+        1.0
+      ],
+      "served_700": 1.0,
+      "served_700_range": [
+        1.0,
+        1.0
+      ],
+      "served_800": 0.985,
+      "served_800_range": [
+        0.9824,
+        0.9874
+      ],
+      "served_1000": 0.871,
+      "served_1000_range": [
+        0.868,
+        0.8727
+      ],
+      "kwh_per_mile": 0.53,
+      "visits_per_day": 1.32
+    }
+  ],
+  "run": "2026-10-10",
+  "code": {
+    "sim": "9aa4299b2d0d",
+    "forecast": "c79f8c4e75b5",
+    "driver": "737f2c77068d"
+  }
+}

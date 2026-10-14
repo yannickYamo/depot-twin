@@ -1,0 +1,2257 @@
+{
+  "study": "account",
+  "setting": "the capacity test's runs: the filed cadence, the rule that carried most, four fortnights by ten draws",
+  "base_design": {
+    "feeder": "one_feeder",
+    "control": "threshold_waits",
+    "fleet": 600
+  },
+  "carried_at_the_estimated_energy_use": 675,
+  "split": {
+    "500": {
+      "depot_contribution": 216831.0,
+      "fleet_cost": 132192.0,
+      "lost_ride_charge": 29.0,
+      "contribution": 84611.0,
+      "energy_share_of_revenue": 0.0369,
+      "fleet_cost_share_of_revenue": 0.5372,
+      "contribution_range": [
+        84340.0,
+        84776.0
+      ]
+    },
+    "600": {
+      "depot_contribution": 261137.0,
+      "fleet_cost": 158630.0,
+      "lost_ride_charge": 38.0,
+      "contribution": 102469.0,
+      "energy_share_of_revenue": 0.0368,
+      "fleet_cost_share_of_revenue": 0.5372,
+      "contribution_range": [
+        102303.0,
+        102579.0
+      ]
+    },
+    "650": {
+      "depot_contribution": 283968.0,
+      "fleet_cost": 171849.0,
+      "lost_ride_charge": 35.0,
+      "contribution": 112084.0,
+      "energy_share_of_revenue": 0.0361,
+      "fleet_cost_share_of_revenue": 0.5372,
+      "contribution_range": [
+        111814.0,
+        112225.0
+      ]
+    },
+    "700": {
+      "depot_contribution": 306963.0,
+      "fleet_cost": 185068.0,
+      "lost_ride_charge": 216.0,
+      "contribution": 121679.0,
+      "energy_share_of_revenue": 0.0346,
+      "fleet_cost_share_of_revenue": 0.5374,
+      "contribution_range": [
+        120383.0,
+        122158.0
+      ]
+    },
+    "800": {
+      "depot_contribution": 345991.0,
+      "fleet_cost": 211507.0,
+      "lost_ride_charge": 7399.0,
+      "contribution": 127084.0,
+      "energy_share_of_revenue": 0.0308,
+      "fleet_cost_share_of_revenue": 0.5472,
+      "contribution_range": [
+        109309.0,
+        138466.0
+      ]
+    },
+    "900": {
+      "depot_contribution": 372299.0,
+      "fleet_cost": 237945.0,
+      "lost_ride_charge": 28468.0,
+      "contribution": 105886.0,
+      "energy_share_of_revenue": 0.0287,
+      "fleet_cost_share_of_revenue": 0.5734,
+      "contribution_range": [
+        70537.0,
+        131791.0
+      ]
+    }
+  },
+  "break_even_lost_ride": {
+    "600_against_500": null,
+    "700_against_600": null,
+    "800_against_700": {
+      "median": 51.1,
+      "p10": 5.9,
+      "p90": 219.3,
+      "runs_where_the_larger_fleet_loses_more_rides": 40,
+      "runs": 40
+    },
+    "900_against_800": {
+      "median": 0.6,
+      "p10": -5.9,
+      "p90": 10.2,
+      "runs_where_the_larger_fleet_loses_more_rides": 40,
+      "runs": 40
+    }
+  },
+  "tornado": [
+    {
+      "input": "operations_day",
+      "label": "Running a vehicle, $ a day",
+      "value": 100.0,
+      "low": 50.0,
+      "high": 250.0,
+      "source": "assumed; no public source",
+      "contribution_at_low": 132469.0,
+      "contribution_at_high": 12469.0,
+      "swing": 120000.0
+    },
+    {
+      "input": "vehicle_year",
+      "label": "A vehicle, $ a year",
+      "value": 60000.0,
+      "low": 30000.0,
+      "high": 100000.0,
+      "source": "assumed; no public source",
+      "contribution_at_low": 151784.0,
+      "contribution_at_high": 36716.0,
+      "swing": 115068.0
+    },
+    {
+      "input": "fare",
+      "label": "Fare a ride, $",
+      "value": 19.69,
+      "low": 17.72,
+      "high": 21.66,
+      "source": "published price survey; moved 10% each way",
+      "contribution_at_low": 72924.0,
+      "contribution_at_high": 132014.0,
+      "swing": 59090.0
+    },
+    {
+      "input": "staff_hour",
+      "label": "A person on site, $ an hour",
+      "value": 40.0,
+      "low": 30.0,
+      "high": 55.0,
+      "source": "assumed loaded cost",
+      "contribution_at_low": 106069.0,
+      "contribution_at_high": 97069.0,
+      "swing": 9000.0
+    },
+    {
+      "input": "land_month",
+      "label": "Land, $ a month",
+      "value": 217500.0,
+      "low": 150000.0,
+      "high": 300000.0,
+      "source": "assumed for 14.5 industrial acres",
+      "contribution_at_low": 104688.0,
+      "contribution_at_high": 99757.0,
+      "swing": 4932.0
+    },
+    {
+      "input": "energy_price",
+      "label": "Energy price, against the tariff",
+      "value": 1.0,
+      "low": 0.8,
+      "high": 1.2,
+      "source": "published tariff; moved 20% each way",
+      "contribution_at_low": 104640.0,
+      "contribution_at_high": 100298.0,
+      "swing": 4341.0
+    },
+    {
+      "input": "lost_ride",
+      "label": "A lost ride beyond its fare, $",
+      "value": 20.0,
+      "low": 0.0,
+      "high": 60.0,
+      "source": "assumed; no public source",
+      "contribution_at_low": 102507.0,
+      "contribution_at_high": 102393.0,
+      "swing": 114.0
+    },
+    {
+      "input": "connection_kw",
+      "label": "Grid connection, $ a kW",
+      "value": 200.0,
+      "low": 100.0,
+      "high": 400.0,
+      "source": "assumed, inside published ranges",
+      "contribution_at_low": 102507.0,
+      "contribution_at_high": 102394.0,
+      "swing": 113.0
+    }
+  ],
+  "feeder_timing": {
+    "kind": "scenario table, no bars",
+    "capital": 550000.0,
+    "one_feeder_planned_for": 600,
+    "site_average_contribution_per_vehicle_day": 170.84,
+    "added_contribution_per_vehicle_day": {
+      "cheap": 315.02,
+      "base": 182.83,
+      "dear": -76.76
+    },
+    "valued_at_per_vehicle_day": {
+      "cheap": 315.02,
+      "base": 182.83,
+      "dear": 0.0
+    },
+    "most_a_year_late_can_cost": 40040000.0,
+    "left_out_as_paid_already": [
+      "land",
+      "connection"
+    ],
+    "vehicles_today_by_level": {
+      "last_four_quarters": 241.0,
+      "latest_quarter": 280.0
+    },
+    "lead_months_assumed": [
+      24,
+      36,
+      48
+    ],
+    "discount_assumed": [
+      0.08,
+      0.1
+    ],
+    "by_growth_estimate": {
+      "first_to_last": {
+        "growth_per_month": 0.0519,
+        "months_until_one_feeder_is_full": {
+          "last_four_quarters": 19,
+          "latest_quarter": 16
+        }
+      },
+      "fitted": {
+        "growth_per_month": 0.0481,
+        "months_until_one_feeder_is_full": {
+          "last_four_quarters": 20,
+          "latest_quarter": 17
+        }
+      },
+      "last_six_months": {
+        "growth_per_month": 0.02,
+        "months_until_one_feeder_is_full": {
+          "last_four_quarters": 47,
+          "latest_quarter": 39
+        }
+      }
+    },
+    "growth_since_the_footprint_settled": {
+      "footprint_last_changed_in": "2025q3",
+      "tracts_before_and_after": [
+        1496,
+        1796
+      ],
+      "months_fitted": 9,
+      "from": "2025-10",
+      "to": "2026-06",
+      "growth_per_month": 0.0198,
+      "trips_a_day_first_and_last_month": [
+        39286,
+        44964
+      ],
+      "rise_in_trips_a_day_across_the_quarter_it_changed": 0.564,
+      "nearest_reading": "last_six_months",
+      "months_until_one_feeder_is_full": {
+        "last_four_quarters": 47,
+        "latest_quarter": 39
+      }
+    },
+    "summary": {
+      "scenarios": 108,
+      "slowest_growth_reading": "last_six_months",
+      "a_year_late_at_base_costs_on_the_faster_growth_readings": [
+        19352000.0,
+        30658000.0
+      ],
+      "a_year_late_at_base_costs_on_the_slowest_growth_reading": [
+        -41000.0,
+        9814000.0
+      ],
+      "a_year_late_across_fleet_costs": [
+        -41000.0,
+        52848000.0
+      ],
+      "base_cost_scenarios_at_the_cap": 16,
+      "base_cost_scenarios": 36,
+      "a_year_late_by_fleet_costs_on_the_faster_growth_readings": {
+        "cheap": [
+          33374000.0,
+          52848000.0
+        ],
+        "base": [
+          19352000.0,
+          30658000.0
+        ],
+        "dear": [
+          -41000.0,
+          -30000.0
+        ]
+      },
+      "carrying_cost_of_applying_a_year_early": [
+        30000.0,
+        41000.0
+      ],
+      "capital_at_risk_if_the_second_feeder_is_never_needed": 550000.0
+    },
+    "scenarios": [
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 42575000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 95424000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 40629000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 90227000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 52848000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 101782000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 49598000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94688000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 48934000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94243000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 45089000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 86080000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 24695000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 55353000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 23563000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 52333000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 30658000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 59046000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28770000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54924000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28387000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54672000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 26154000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 49931000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -67000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -79000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -32000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -62000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -38000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -72000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -30000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -58000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -34000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -65000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 34993000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 87842000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 33374000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 82972000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 52848000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 101782000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 49598000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94688000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 48934000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94243000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 45089000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 86080000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 20295000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 50953000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 19352000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 48122000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 30658000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 59046000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28770000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54924000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28387000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54672000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 26154000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 49931000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -67000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -79000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -32000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -62000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -38000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -72000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -30000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -58000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -34000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -65000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 10000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -7000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 45000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 7794000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 34000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 7150000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 7749000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 29007000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 7116000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 26323000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -22000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -37000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 12000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 4497000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 4000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 4120000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 4485000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 16811000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 4116000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 15250000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -67000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -79000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -32000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -62000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -38000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -72000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -30000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -58000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -34000.0
+      },
+      {
+        "today": "last_four_quarters",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -65000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 50832000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 103680000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 48551000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 98149000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 52848000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 101782000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 49598000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94688000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 48934000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94243000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 45089000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 86080000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 29487000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 60145000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28160000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 56930000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 30658000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 59046000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28770000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54924000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28387000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54672000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 26154000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 49931000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -67000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -79000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -32000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -62000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -38000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -72000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -30000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -58000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -34000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "first_to_last",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -65000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 45658000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 98506000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 43585000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 93184000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 52848000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 101782000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 49598000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94688000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 48934000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 94243000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 45089000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 86080000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 26484000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 57142000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 25279000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54048000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 30658000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 59046000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28770000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54924000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 28387000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 54672000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 26154000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 49931000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -67000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -79000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -32000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -62000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -38000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -72000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -30000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -58000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -34000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "fitted",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -65000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 3601000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 3348000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 3636000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 20567000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 3389000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 18964000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 16931000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 48971000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 15575000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "cheap",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 44534000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 2062000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 1910000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 2097000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 11911000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 1951000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 10976000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 9814000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 28397000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": 9025000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "base",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": 25819000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -35000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -67000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -41000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 24,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -79000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -32000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -62000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -38000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 36,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -72000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -30000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.08,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -58000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 12,
+        "cost_of_waiting": -34000.0
+      },
+      {
+        "today": "latest_quarter",
+        "growth": "last_six_months",
+        "fleet_costs": "dear",
+        "lead_months": 48,
+        "discount": 0.1,
+        "applied_months_after_signing": 24,
+        "cost_of_waiting": -65000.0
+      }
+    ]
+  },
+  "code": {
+    "driver": "6dc702bb690c",
+    "upstream": "9ece1811b366"
+  }
+}

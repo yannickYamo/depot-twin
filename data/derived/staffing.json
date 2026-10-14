@@ -1,0 +1,178 @@
+{
+  "start": "2024-03-18",
+  "size": 1000,
+  "seeds": [
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "rows": [
+    {
+      "staff": 25,
+      "power": "need_first",
+      "runs": 10,
+      "served": 0.8063,
+      "grid_kw": 2414.8,
+      "charging": 117.7,
+      "between_stations": 32.5,
+      "queued": 384.3,
+      "served_spread": {
+        "median": 0.8061,
+        "p10": 0.8041,
+        "p90": 0.8083,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 25,
+      "power": "slot_power",
+      "runs": 10,
+      "served": 0.8709,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.8,
+      "served_spread": {
+        "median": 0.871,
+        "p10": 0.868,
+        "p90": 0.8728,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 50,
+      "power": "need_first",
+      "runs": 10,
+      "served": 0.8307,
+      "grid_kw": 2516.8,
+      "charging": 124.9,
+      "between_stations": 20.9,
+      "queued": 364.0,
+      "served_spread": {
+        "median": 0.8305,
+        "p10": 0.8292,
+        "p90": 0.8326,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 50,
+      "power": "slot_power",
+      "runs": 10,
+      "served": 0.8709,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.8,
+      "served_spread": {
+        "median": 0.871,
+        "p10": 0.868,
+        "p90": 0.8728,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 100,
+      "power": "need_first",
+      "runs": 10,
+      "served": 0.841,
+      "grid_kw": 2558.7,
+      "charging": 128.4,
+      "between_stations": 16.5,
+      "queued": 354.8,
+      "served_spread": {
+        "median": 0.841,
+        "p10": 0.8389,
+        "p90": 0.8431,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 100,
+      "power": "slot_power",
+      "runs": 10,
+      "served": 0.8709,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.8,
+      "served_spread": {
+        "median": 0.871,
+        "p10": 0.868,
+        "p90": 0.8728,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 200,
+      "power": "need_first",
+      "runs": 10,
+      "served": 0.842,
+      "grid_kw": 2566.0,
+      "charging": 129.4,
+      "between_stations": 15.4,
+      "queued": 352.5,
+      "served_spread": {
+        "median": 0.8419,
+        "p10": 0.8395,
+        "p90": 0.8442,
+        "runs": 10
+      }
+    },
+    {
+      "staff": 200,
+      "power": "slot_power",
+      "runs": 10,
+      "served": 0.8709,
+      "grid_kw": 2612.0,
+      "charging": 129.3,
+      "between_stations": 2.7,
+      "queued": 330.8,
+      "served_spread": {
+        "median": 0.871,
+        "p10": 0.868,
+        "p90": 0.8728,
+        "runs": 10
+      }
+    }
+  ],
+  "in_order_gain": {
+    "25": {
+      "median": 0.0644,
+      "p10": 0.0637,
+      "p90": 0.0655,
+      "runs": 10
+    },
+    "50": {
+      "median": 0.0402,
+      "p10": 0.0395,
+      "p90": 0.0409,
+      "runs": 10
+    },
+    "100": {
+      "median": 0.0302,
+      "p10": 0.0289,
+      "p90": 0.0305,
+      "runs": 10
+    },
+    "200": {
+      "median": 0.0289,
+      "p10": 0.0283,
+      "p90": 0.0298,
+      "runs": 10
+    }
+  },
+  "run": "2026-10-10",
+  "code": {
+    "sim": "9aa4299b2d0d",
+    "forecast": "c79f8c4e75b5",
+    "driver": "737f2c77068d"
+  }
+}

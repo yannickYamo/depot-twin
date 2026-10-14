@@ -1,0 +1,63 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 880 440' role='img' aria-label='Energy use sets the fleet one feeder carries'>
+<rect width='880' height='440' fill='#ffffff'/>
+<text x='72.0' y='26.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='17' font-weight='600' fill='#050f1e' text-anchor='start'>Energy use sets the fleet one feeder carries</text>
+<text x='72.0' y='44.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='start'>Share of depot visits starting on a low battery, median of four fortnights by ten draws; large dot, the largest fleet carried. E26, E27.</text>
+<line x1='72' x2='852' y1='376.0' y2='376.0' stroke='#e5e9f0'/>
+<text x='64.0' y='380.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>0%</text>
+<line x1='72' x2='852' y1='296.0' y2='296.0' stroke='#e5e9f0'/>
+<text x='64.0' y='300.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>25%</text>
+<line x1='72' x2='852' y1='216.0' y2='216.0' stroke='#e5e9f0'/>
+<text x='64.0' y='220.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>50%</text>
+<line x1='72' x2='852' y1='136.0' y2='136.0' stroke='#e5e9f0'/>
+<text x='64.0' y='140.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>75%</text>
+<line x1='72' x2='852' y1='56.0' y2='56.0' stroke='#e5e9f0'/>
+<text x='64.0' y='60.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='end'>100%</text>
+<text x='105.9' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>550</text>
+<text x='190.7' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>600</text>
+<text x='275.5' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>650</text>
+<text x='360.3' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>700</text>
+<text x='445.0' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>750</text>
+<text x='529.8' y='394.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>800</text>
+<line x1='72' x2='852' y1='376' y2='376' stroke='#050f1e'/>
+<text x='462.0' y='416.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#5d6e83' text-anchor='middle'>Vehicles in the fleet, at 25 rides offered a vehicle a day</text>
+<path d='M72.0,216.0 L852.0,216.0' fill='none' stroke='#050f1e' stroke-width='1' stroke-dasharray='4 4'/>
+<text x='846.0' y='210.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='end'>carried: at most half of visits arrive on a low battery</text>
+<path d='M275.5,376.0 L360.3,376.0 L402.7,376.0 L445.0,376.0 L529.8,94.9' fill='none' stroke='#00a372' stroke-width='2.5' stroke-dasharray=''/>
+<circle cx='275.5' cy='376.0' r='3' fill='#00a372'/>
+<circle cx='360.3' cy='376.0' r='3' fill='#00a372'/>
+<circle cx='402.7' cy='376.0' r='3' fill='#00a372'/>
+<circle cx='445.0' cy='376.0' r='3' fill='#00a372'/>
+<circle cx='529.8' cy='94.9' r='3' fill='#00a372'/>
+<circle cx='445.0' cy='376.0' r='6' fill='#00a372' stroke='#ffffff' stroke-width='2'/>
+<rect x='551.8' y='236.6' width='14' height='3' fill='#00a372'/>
+<text x='571.8' y='241.6' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>10% less energy than estimated: carries 750</text>
+<path d='M105.9,376.0 L190.7,376.0 L233.1,376.0 L275.5,376.0 L317.9,376.0 L360.3,181.4' fill='none' stroke='#006fee' stroke-width='2.5' stroke-dasharray=''/>
+<circle cx='105.9' cy='376.0' r='3' fill='#006fee'/>
+<circle cx='190.7' cy='376.0' r='3' fill='#006fee'/>
+<circle cx='233.1' cy='376.0' r='3' fill='#006fee'/>
+<circle cx='275.5' cy='376.0' r='3' fill='#006fee'/>
+<circle cx='317.9' cy='376.0' r='3' fill='#006fee'/>
+<circle cx='360.3' cy='181.4' r='3' fill='#006fee'/>
+<circle cx='317.9' cy='376.0' r='6' fill='#006fee' stroke='#ffffff' stroke-width='2'/>
+<rect x='551.8' y='256.6' width='14' height='3' fill='#006fee'/>
+<text x='571.8' y='261.6' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>as estimated: carries 675</text>
+<path d='M105.9,376.0 L148.3,376.0 L190.7,376.0 L233.1,340.4 L275.5,135.0' fill='none' stroke='#d92626' stroke-width='2.5' stroke-dasharray=''/>
+<circle cx='105.9' cy='376.0' r='3' fill='#d92626'/>
+<circle cx='148.3' cy='376.0' r='3' fill='#d92626'/>
+<circle cx='190.7' cy='376.0' r='3' fill='#d92626'/>
+<circle cx='233.1' cy='340.4' r='3' fill='#d92626'/>
+<circle cx='275.5' cy='135.0' r='3' fill='#d92626'/>
+<circle cx='233.1' cy='340.4' r='6' fill='#d92626' stroke='#ffffff' stroke-width='2'/>
+<rect x='551.8' y='276.6' width='14' height='3' fill='#d92626'/>
+<text x='571.8' y='281.6' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>10% more: carries 625</text>
+<path d='M190.7,376.0 L233.1,376.0 L275.5,106.4 L317.9,56.0' fill='none' stroke='#006fee' stroke-width='2' stroke-dasharray='6 4'/>
+<circle cx='233.1' cy='376.0' r='6' fill='#ffffff' stroke='#006fee' stroke-width='2'/>
+<line x1='551.8' x2='565.8' y1='297.6' y2='297.6' stroke='#006fee' stroke-width='2' stroke-dasharray='4 3'/>
+<text x='571.8' y='301.6' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>as estimated, systems on while parked: 625</text>
+<path d='M105.9,376.0 L148.3,376.0 L190.7,85.7' fill='none' stroke='#d92626' stroke-width='2' stroke-dasharray='6 4'/>
+<circle cx='148.3' cy='376.0' r='6' fill='#ffffff' stroke='#d92626' stroke-width='2'/>
+<line x1='551.8' x2='565.8' y1='317.6' y2='317.6' stroke='#d92626' stroke-width='2' stroke-dasharray='4 3'/>
+<text x='571.8' y='321.6' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='400' fill='#050f1e' text-anchor='start'>10% more, systems on while parked: 575</text>
+<line x1='190.7' x2='190.7' y1='64' y2='376' stroke='#050f1e' stroke-dasharray='2 4'/>
+<text x='196.7' y='76.0' font-family='Outfit, Inter, system-ui, sans-serif' font-size='12' font-weight='600' fill='#050f1e' text-anchor='start'>the plan: 600</text>
+</svg>

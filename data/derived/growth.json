@@ -1,0 +1,339 @@
+{
+  "rule": "headroom",
+  "rows": [
+    {
+      "option": "one_feeder",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 0.9975,
+      "available_at_peak_share": 0.8142,
+      "queue_wait_min": 0.2493,
+      "grid_use": 0.3289,
+      "charger_use": 0.5149
+    },
+    {
+      "option": "one_feeder",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 0.9967,
+      "available_at_peak_share": 0.7936,
+      "queue_wait_min": 2.2219,
+      "grid_use": 0.6418,
+      "charger_use": 0.6107
+    },
+    {
+      "option": "one_feeder",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 0.9908,
+      "available_at_peak_share": 0.7272,
+      "queue_wait_min": 26.1249,
+      "grid_use": 0.771,
+      "charger_use": 0.7364
+    },
+    {
+      "option": "one_feeder",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 0.9753,
+      "available_at_peak_share": 0.6227,
+      "queue_wait_min": 108.0875,
+      "grid_use": 0.8646,
+      "charger_use": 0.8229
+    },
+    {
+      "option": "one_feeder",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 0.9383,
+      "available_at_peak_share": 0.5189,
+      "queue_wait_min": 199.4258,
+      "grid_use": 0.8942,
+      "charger_use": 0.8528
+    },
+    {
+      "option": "one_feeder",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.8866,
+      "available_at_peak_share": 0.4443,
+      "queue_wait_min": 214.3709,
+      "grid_use": 0.9175,
+      "charger_use": 0.8706
+    },
+    {
+      "option": "one_feeder",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.7657,
+      "available_at_peak_share": 0.3502,
+      "queue_wait_min": 329.6534,
+      "grid_use": 0.947,
+      "charger_use": 0.8925
+    },
+    {
+      "option": "one_feeder",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.6598,
+      "available_at_peak_share": 0.2927,
+      "queue_wait_min": 412.5707,
+      "grid_use": 0.966,
+      "charger_use": 0.9111
+    },
+    {
+      "option": "one_feeder",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.5407,
+      "available_at_peak_share": 0.2292,
+      "queue_wait_min": 496.3809,
+      "grid_use": 0.9823,
+      "charger_use": 0.9274
+    },
+    {
+      "option": "one_feeder",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.4144,
+      "available_at_peak_share": 0.1749,
+      "queue_wait_min": 567.234,
+      "grid_use": 0.9929,
+      "charger_use": 0.9494
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 0.9975,
+      "available_at_peak_share": 0.8142,
+      "queue_wait_min": 0.2493,
+      "grid_use": 0.3289,
+      "charger_use": 0.5149
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 0.9996,
+      "available_at_peak_share": 0.8303,
+      "queue_wait_min": 0.9058,
+      "grid_use": 0.6635,
+      "charger_use": 0.5279
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 0.9998,
+      "available_at_peak_share": 0.833,
+      "queue_wait_min": 0.1571,
+      "grid_use": 0.8348,
+      "charger_use": 0.529
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 0.9902,
+      "available_at_peak_share": 0.7453,
+      "queue_wait_min": 13.898,
+      "grid_use": 0.9515,
+      "charger_use": 0.6709
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 0.9595,
+      "available_at_peak_share": 0.5654,
+      "queue_wait_min": 146.4271,
+      "grid_use": 0.9767,
+      "charger_use": 0.8158
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.915,
+      "available_at_peak_share": 0.4825,
+      "queue_wait_min": 201.1827,
+      "grid_use": 0.9851,
+      "charger_use": 0.8548
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.7926,
+      "available_at_peak_share": 0.3708,
+      "queue_wait_min": 295.1736,
+      "grid_use": 0.9916,
+      "charger_use": 0.8864
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.6774,
+      "available_at_peak_share": 0.3035,
+      "queue_wait_min": 390.348,
+      "grid_use": 0.9939,
+      "charger_use": 0.904
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.5427,
+      "available_at_peak_share": 0.2284,
+      "queue_wait_min": 487.7466,
+      "grid_use": 0.9967,
+      "charger_use": 0.9265
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.4128,
+      "available_at_peak_share": 0.1653,
+      "queue_wait_min": 533.2126,
+      "grid_use": 0.9975,
+      "charger_use": 0.9493
+    },
+    {
+      "option": "two_feeders",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 0.9975,
+      "available_at_peak_share": 0.8142,
+      "queue_wait_min": 0.2493,
+      "grid_use": 0.1645,
+      "charger_use": 0.5149
+    },
+    {
+      "option": "two_feeders",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 0.9996,
+      "available_at_peak_share": 0.8303,
+      "queue_wait_min": 0.9058,
+      "grid_use": 0.331,
+      "charger_use": 0.5279
+    },
+    {
+      "option": "two_feeders",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 0.9998,
+      "available_at_peak_share": 0.833,
+      "queue_wait_min": 0.1571,
+      "grid_use": 0.4133,
+      "charger_use": 0.529
+    },
+    {
+      "option": "two_feeders",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 0.9997,
+      "available_at_peak_share": 0.8285,
+      "queue_wait_min": 0.4836,
+      "grid_use": 0.4948,
+      "charger_use": 0.5229
+    },
+    {
+      "option": "two_feeders",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 0.9898,
+      "available_at_peak_share": 0.7663,
+      "queue_wait_min": 0.0327,
+      "grid_use": 0.5663,
+      "charger_use": 0.5476
+    },
+    {
+      "option": "two_feeders",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.9956,
+      "available_at_peak_share": 0.7914,
+      "queue_wait_min": 1.7875,
+      "grid_use": 0.6401,
+      "charger_use": 0.6065
+    },
+    {
+      "option": "two_feeders",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.9919,
+      "available_at_peak_share": 0.7353,
+      "queue_wait_min": 22.7781,
+      "grid_use": 0.7744,
+      "charger_use": 0.7407
+    },
+    {
+      "option": "two_feeders",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.9748,
+      "available_at_peak_share": 0.6191,
+      "queue_wait_min": 111.2891,
+      "grid_use": 0.8628,
+      "charger_use": 0.8223
+    },
+    {
+      "option": "two_feeders",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.9132,
+      "available_at_peak_share": 0.4798,
+      "queue_wait_min": 223.3236,
+      "grid_use": 0.9065,
+      "charger_use": 0.8624
+    },
+    {
+      "option": "two_feeders",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.7648,
+      "available_at_peak_share": 0.3586,
+      "queue_wait_min": 331.5567,
+      "grid_use": 0.9469,
+      "charger_use": 0.892
+    }
+  ],
+  "limits": {
+    "one_feeder": {
+      "serves_99pct_up_to": 500,
+      "serves_95pct_up_to": 600,
+      "hand_check": {
+        "site_limit_kw": 2750.0,
+        "energy_limited_fleet": 613,
+        "daily_energy_kwh": 58235.0
+      }
+    },
+    "one_feeder_with_buffer": {
+      "serves_99pct_up_to": 600,
+      "serves_95pct_up_to": 700,
+      "hand_check": {
+        "site_limit_kw": 2750.0,
+        "energy_limited_fleet": 613,
+        "daily_energy_kwh": 58235.0
+      }
+    },
+    "two_feeders": {
+      "serves_99pct_up_to": 1000,
+      "serves_95pct_up_to": 1200,
+      "hand_check": {
+        "site_limit_kw": 5500.0,
+        "energy_limited_fleet": 1227,
+        "daily_energy_kwh": 116565.0
+      }
+    }
+  },
+  "run": "2026-10-09",
+  "code": {
+    "sim": "9aa4299b2d0d",
+    "driver": "03dd8a8db7a1"
+  }
+}

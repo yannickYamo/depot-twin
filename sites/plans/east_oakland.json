@@ -1,0 +1,783 @@
+{
+ "site": "East Oakland, one feeder",
+ "usable_kwh_a_day": 62700.0,
+ "feeder_kwh_per_vehicle_day": 94.5,
+ "fleet_by_arithmetic": 663,
+ "fleets_run": [
+  550,
+  575,
+  600,
+  625,
+  650,
+  675,
+  700,
+  725
+ ],
+ "windows": [
+  "2024-03-18",
+  "2024-04-15",
+  "2024-04-29",
+  "2024-05-13"
+ ],
+ "draws_a_window": 2,
+ "cases": {
+  "as entered": {
+   "by_size": {
+    "600": {
+     "served_lowest_window": 0.9995,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.8943,
+     "grid_at_limit_share": 0.584,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 93.5,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9995,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "625": {
+     "served_lowest_window": 0.9995,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.9274,
+     "grid_at_limit_share": 0.7137,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 93.05,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9995,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "650": {
+     "served_lowest_window": 0.9996,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.9621,
+     "grid_at_limit_share": 0.8338,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 92.85,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9996,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "675": {
+     "served_lowest_window": 0.9996,
+     "low_battery_visits_worst_window": 0.3327,
+     "grid_share_used": 0.9926,
+     "grid_at_limit_share": 0.9685,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 92.2,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9996,
+       "low_battery_visits": 0.3327,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "700": {
+     "served_lowest_window": 0.9977,
+     "low_battery_visits_worst_window": 0.681,
+     "grid_share_used": 1.0,
+     "grid_at_limit_share": 1.0,
+     "waiting_for_a_charger_share": 0.2996,
+     "feeder_kwh_per_vehicle_day": 89.6,
+     "windows_carried": 2,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9977,
+       "low_battery_visits": 0.681,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.3392,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.1425,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.6361,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "725": {
+     "served_lowest_window": 0.9939,
+     "low_battery_visits_worst_window": 0.9711,
+     "grid_share_used": 1.0,
+     "grid_at_limit_share": 1.0,
+     "waiting_for_a_charger_share": 0.7601,
+     "feeder_kwh_per_vehicle_day": 86.5,
+     "windows_carried": 0,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9939,
+       "low_battery_visits": 0.7623,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.9711,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.8561,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.9015,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    }
+   },
+   "carried": 675
+  },
+  "10% more energy on the road": {
+   "by_size": {
+    "550": {
+     "served_lowest_window": 0.9995,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.8993,
+     "grid_at_limit_share": 0.6059,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 102.55,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9995,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "575": {
+     "served_lowest_window": 0.9995,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.9363,
+     "grid_at_limit_share": 0.7251,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 102.1,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9995,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "600": {
+     "served_lowest_window": 0.9995,
+     "low_battery_visits_worst_window": 0.0013,
+     "grid_share_used": 0.9734,
+     "grid_at_limit_share": 0.8804,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 101.7,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9995,
+       "low_battery_visits": 0.0013,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "625": {
+     "served_lowest_window": 0.9994,
+     "low_battery_visits_worst_window": 0.506,
+     "grid_share_used": 0.9994,
+     "grid_at_limit_share": 0.995,
+     "waiting_for_a_charger_share": 0.0109,
+     "feeder_kwh_per_vehicle_day": 100.25,
+     "windows_carried": 3,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9994,
+       "low_battery_visits": 0.506,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0002,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.2403,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    }
+   },
+   "carried": 600
+  },
+  "systems on while parked": {
+   "by_size": {
+    "575": {
+     "served_lowest_window": 0.9995,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.9021,
+     "grid_at_limit_share": 0.6066,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 98.35,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9995,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "600": {
+     "served_lowest_window": 0.9994,
+     "low_battery_visits_worst_window": 0.0,
+     "grid_share_used": 0.9404,
+     "grid_at_limit_share": 0.7446,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 98.3,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9994,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "625": {
+     "served_lowest_window": 0.9996,
+     "low_battery_visits_worst_window": 0.3211,
+     "grid_share_used": 0.9799,
+     "grid_at_limit_share": 0.91,
+     "waiting_for_a_charger_share": 0.0,
+     "feeder_kwh_per_vehicle_day": 98.3,
+     "windows_carried": 4,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9996,
+       "low_battery_visits": 0.3211,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 1.0,
+       "low_battery_visits": 0.0,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 1.0
+    },
+    "650": {
+     "served_lowest_window": 0.9711,
+     "low_battery_visits_worst_window": 0.881,
+     "grid_share_used": 1.0,
+     "grid_at_limit_share": 1.0,
+     "waiting_for_a_charger_share": 0.423,
+     "feeder_kwh_per_vehicle_day": 96.5,
+     "windows_carried": 2,
+     "windows": {
+      "2024-03-18": {
+       "served": 0.9711,
+       "low_battery_visits": 0.8517,
+       "settled": true,
+       "carried": false,
+       "held_back_unsettled": false
+      },
+      "2024-04-15": {
+       "served": 1.0,
+       "low_battery_visits": 0.2344,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-04-29": {
+       "served": 1.0,
+       "low_battery_visits": 0.025,
+       "settled": true,
+       "carried": true,
+       "held_back_unsettled": false
+      },
+      "2024-05-13": {
+       "served": 0.9994,
+       "low_battery_visits": 0.881,
+       "settled": false,
+       "carried": false,
+       "held_back_unsettled": false
+      }
+     },
+     "runs_settled": 0.875
+    }
+   },
+   "carried": 625
+  }
+ },
+ "carried": 675,
+ "planned": 600,
+ "planned_rides_per_day": 15000,
+ "carried_against_arithmetic": 1.017,
+ "what_binds_past_the_carried_fleet": "the feeder's energy: it is at its limit nearly all week",
+ "changes": [
+  {
+   "change": "feed the emptiest vehicle first",
+   "kind": "remove",
+   "fleets_tried": [
+    575,
+    625,
+    675
+   ],
+   "carried_with_it": null,
+   "vehicles": null,
+   "met_the_bars_unsettled": [
+    575
+   ],
+   "runs": 24,
+   "says": "carries fewer than 575; 575 met both bars with a run that had not settled"
+  },
+  {
+   "change": "call a vehicle in whether or not a charger is free",
+   "kind": "remove",
+   "fleets_tried": [
+    575,
+    625,
+    675
+   ],
+   "carried_with_it": 575,
+   "vehicles": -100,
+   "met_the_bars_unsettled": [],
+   "runs": 24,
+   "says": "carries 575"
+  },
+  {
+   "change": "a quarter more chargers",
+   "kind": "add",
+   "fleets_tried": [
+    700,
+    725
+   ],
+   "carried_with_it": 700,
+   "vehicles": 25,
+   "met_the_bars_unsettled": [],
+   "runs": 16,
+   "says": "carries 700"
+  },
+  {
+   "change": "a quarter more people and bays",
+   "kind": "add",
+   "fleets_tried": [
+    700,
+    725
+   ],
+   "carried_with_it": 675,
+   "vehicles": 0,
+   "met_the_bars_unsettled": [],
+   "runs": 16,
+   "says": "carries 675"
+  }
+ ],
+ "changes_skipped": null,
+ "unusual_inputs": [],
+ "unsettled_runs_decided_a_fleet": false,
+ "at_the_edge_of_the_fleets_run": false,
+ "runs": 196,
+ "inputs": {
+  "site": {
+   "name": "East Oakland, one feeder"
+  },
+  "grid": {
+   "services": 1,
+   "usable_share": 0.95,
+   "kw": 2750
+  },
+  "vehicles": {
+   "ipace": {
+    "share": 0.6,
+    "capacity_kwh": 90,
+    "max_dc_kw": 104,
+    "max_ac_kw": 11,
+    "drive_kwh_per_mile": 0.3,
+    "always_on_kw": 2.0,
+    "dc_curve": [
+     [
+      0.0,
+      100
+     ],
+     [
+      0.4,
+      100
+     ],
+     [
+      0.6,
+      70
+     ],
+     [
+      0.8,
+      50
+     ],
+     [
+      0.9,
+      35
+     ],
+     [
+      1.0,
+      10
+     ]
+    ]
+   },
+   "ojai": {
+    "share": 0.4,
+    "capacity_kwh": 93,
+    "max_dc_kw": 150,
+    "max_ac_kw": 11,
+    "drive_kwh_per_mile": 0.27,
+    "always_on_kw": 1.8
+   }
+  },
+  "fleet": {
+   "rides_per_vehicle_day": 25,
+   "ride_minutes": 23.0,
+   "max_wait_minutes": 10.0,
+   "depot_leg_minutes": 5.0,
+   "depot_leg_miles": 1.2,
+   "vehicle_spread": 0.08,
+   "parked_load": "unknown"
+  },
+  "demand": {
+   "windows": [
+    "2024-03-18",
+    "2024-04-15",
+    "2024-04-29",
+    "2024-05-13"
+   ]
+  },
+  "sources": {
+   "grid": "published map reading",
+   "energy": "assumed",
+   "parked_load": "assumed",
+   "rides": "assumed",
+   "ride": "assumed",
+   "demand": "measured, in another city",
+   "policy": "chosen"
+  },
+  "depot": {
+   "chargers_per_vehicle": 0.132,
+   "charger_kw": 60.0,
+   "people_per_vehicle": 0.025,
+   "plug_minutes": 2.0,
+   "clean_minutes": 8.0,
+   "clean_every": 4,
+   "inspect_minutes": 20.0,
+   "inspect_every": 10,
+   "charger_efficiency": 0.93
+  },
+  "rules": {
+   "calling": "threshold_waits",
+   "call_below": 0.55,
+   "charge_to": 0.85,
+   "power": "slot_power"
+  },
+  "policy": {
+   "service_floor": 0.99,
+   "low_battery_visits_at_most": 0.5,
+   "energy_margin": 1.1
+  },
+  "sweep": {
+   "step": 25,
+   "draws": 2,
+   "start": 0.9,
+   "changes": true
+  }
+ },
+ "made_from": {
+  "east_oakland.toml": "49b6d14d0661"
+ },
+ "code": {
+  "sim": "9aa4299b2d0d",
+  "driver": "18abfd5bc618"
+ }
+}

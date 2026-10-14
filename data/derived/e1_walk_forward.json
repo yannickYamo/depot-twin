@@ -1,0 +1,37 @@
+{
+  "windows": [
+    {
+      "window_end": "2026-06-01",
+      "fixed_trees_wape": 0.0676,
+      "early_stopped_wape": 0.0705,
+      "early_stopped_trees": 195,
+      "naive_wape": 0.08
+    },
+    {
+      "window_end": "2026-05-04",
+      "fixed_trees_wape": 0.0413,
+      "early_stopped_wape": 0.0441,
+      "early_stopped_trees": 233,
+      "naive_wape": 0.045
+    },
+    {
+      "window_end": "2026-04-06",
+      "fixed_trees_wape": 0.0778,
+      "early_stopped_wape": 0.0761,
+      "early_stopped_trees": 248,
+      "naive_wape": 0.1064
+    },
+    {
+      "window_end": "2026-03-09",
+      "fixed_trees_wape": 0.0502,
+      "early_stopped_wape": 0.0507,
+      "early_stopped_trees": 181,
+      "naive_wape": 0.0514
+    }
+  ],
+  "run": "2026-10-09",
+  "code": {
+    "forecast": "c79f8c4e75b5",
+    "driver": "03dd8a8db7a1"
+  }
+}
