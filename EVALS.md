@@ -1,0 +1,2044 @@
+# Evaluations
+
+[Back to the README](README.md)
+
+*Every registered test: question, bars fixed before the run, result, and what followed. For a reader checking a figure. The one thing to take: 35 tests, 96 of 145 bars, misses published.*
+
+
+Every test is written down with what's measured, on what data, against which baseline, and the bar it has to clear, and its bars are fixed before the run reported under it. A miss stays on the page.
+
+The index of every test and how it came out lives in [docs/SCOREBOARD.md](docs/SCOREBOARD.md), generated from the result files. Where one test is best read beside another, it says which. Why each test was run and what it led to is in the next section.
+
+## The path through the tests
+
+The tests are numbered in the order I asked them. This section is the map: for each one, why I ran it, what it showed and what it led to. The figures are each test's own, from its Result section below. Seven lines of enquiry run through the thirty-five tests and the studies beside them.
+
+### 1. Can a model do the planner's work? (E1 to E6)
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E1](#e1-week-ahead-demand-forecast) | A depot is planned a week ahead, so the first model was a week-ahead demand forecast, scored against the same hour last week. | 6.26% error against 6.29%. 0 of 1 bars. | A week ahead, the depot plans on last week's curve. The weekly shape is kept for the simulator. |
+| [E2](#e2-recall-rules-on-a-power-constrained-depot) | On a feeder that can't deliver all the energy a fleet wants, something has to choose which vehicles come in. I tried four ways: a threshold, a headroom rule, an hourly linear program and a learned policy. | Headroom is the best hand-written rule at 1,000 vehicles, 1.8 points ahead of the threshold, and the hourly plan is 0.5 points behind it there. The learned policy, trained at a quarter of that size, is level with headroom there and the weakest rule at 500. The best rule still loses 23 points of rides. 3 of 5 bars. | The learned policy isn't a drop-in replacement. The loss was the grid's and not the rule's, which sent me to the growth study. Every rule here fed the emptiest vehicle first; E11 varies the power rule. |
+| [Growth study](#growth-study) | How far does this parcel's grid go, and what does a battery or a second feeder buy? | One feeder serves 99% of rides at 400 vehicles where energy arithmetic says 613: the queue forms before the energy runs out. No bars. | The gap between the arithmetic and the simulated day became the subject. A search over depot designs was the next step. |
+| [E3](#e3-a-fast-stand-in-for-the-simulator) | A search over designs asks the simulator the same question many times. Could boosted trees answer in its place, without memorising the designs they were trained on? | 0.68 points of error on held-out designs against 6.21 for the spreadsheet rule. But the designs the search picked were predicted to earn 11.2% to 14.6% more than they did in simulation. 4 of 6 bars. | A model that is accurate on average is wrong exactly where a search goes. E4 added what that needs. |
+| [E4](#e4-a-planner-that-can-be-trusted-with-the-search) | The same idea with week-long runs, a safety margin taken from the model's own over-prediction, and 300 designs made after the models were frozen. | The models held up on the new designs. The margin did not fit: it is 1.24 points and there is one point of room above 99% service, so the planner offered no design at all. 5 of 7 bars. | E5 tried to shrink the margin by teaching the model where the search looks. |
+| [E5](#e5-teaching-the-planner-where-it-searches) | Simulate what the planner picks, retrain on it, repeat. | The planner picked nothing, so both rounds added nothing. 1 of 3 bars. | The simulator stays in the loop for every decision, and the models only shortlist. Every capacity figure after this comes from simulated runs. |
+| [E6](#e6-identifying-the-twin-from-telemetry) | No two vehicles use the same energy, and the plan needs each one's figures. Can they be recovered from the telemetry the twin's vehicles produce? | After seven days the median error is 2.5% on driving energy and 3.1% on the always-on load, against 5.4% and 5.2% for the vehicle type's figure. 3 of 4 bars. | The plan reads identified figures. The level of energy use stays my estimate, which E26 to E28 move. |
+
+### 2. Forecasts for the plan (E7, E7b, E13, E15 to E18, E24)
+
+The detail of every model, split and control is in [docs/ML.md](docs/ML.md).
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E7](#e7-ride-forecasts-for-the-controller) | An hourly plan needs rides 1, 6 and 24 hours ahead, each with an upper bound. First try: a count model. | 0 of 9 bars. A reporting change raised recorded rides by about 45% just before the held-out days, and trees don't predict beyond the range they have seen. | The cause was the target and not the settings, so E7b changed the target alone. |
+| [E7b](#e7b-the-same-forecasts-on-a-scale-free-target) | One change: forecast the ratio to the same hour last week. | 10.7% error one hour ahead against 14.9% for last week. The forecast still runs low in the busiest hours at every horizon. 5 of 9 bars. | This is the reference model. It runs low at the peak, and the plan reads the bound and not the mean. |
+| [E13](#e13-can-a-forecast-be-built-for-a-place-with-no-ride-history) | Every forecast so far was trained on the city it serves, and East Oakland has no ride history. Each of three cities was held out in turn and forecast from the others. | The borrowed forecast beats last week in eight of nine cells and its bounds don't carry across cities. 1 of 4 bars. | A new site starts on last week's curve with a guard on the bound. Generated demand is used to size a depot, which E15 checked. |
+| [E15](#e15-is-the-worst-generated-scenario-a-safe-reading-of-a-constrained-depot) | If generated demand sizes a new site, is its worst scenario a safe reading? | In Chicago and New York the real fortnight served 3.1 and 2.9 points more rides than the worst of ten generated ones. 2 of 2 bars. | A new site's capacity is read from the worst of ten scenarios. |
+| [First-hour study](#first-hour-forecast-study) and the workbench | Variants of the reference: a model for the hour already under way, and one change at a time to features, history and trees. | Rides served don't move with the first-hour model; the workbench variants were scored on error only. No bars: every window had been used before. | Nothing adopted on that evidence. It raised the question E16 asked. |
+| [E16](#e16-what-is-a-forecast-worth-to-the-plan-and-does-that-depend-on-what-binds) | I judged an error of 11% to 12% too high. After the first attempts moved no rides, I asked what cutting it would be worth: the plan ran on perfect foresight, the model, last week's curve and a broken feed. | Where energy binds, all four serve the same 87.72% of rides. Where vehicles bind, perfect foresight serves 99.20% against 99.22% for last week's curve. 3 of 4 bars. | Forecast error stopped being a goal for this depot. A forecast is judged on the margin its bound asks the fleet to hold. |
+| [E17](#e17-do-the-changes-to-the-model-improve-the-forecasts-bound-and-does-that-hold-on-days-held-back-for-it) | Three changes had each helped on the development city. Would they help on windows held back in two other cities? | 0 of 4 bars. The changes help in New York and not in Chicago. | The reference stands. A change that helps on one city's window isn't a finding. |
+| [E18](#e18-how-cheaply-can-the-fleet-buy-a-required-level-of-demand-certainty) | Is the margin won in the bound or in the point forecast? The two were separated and compared at the same achieved coverage, with a pretrained model added. | A more elaborate bound asked for a larger margin, 54.8 vehicle-equivalents against 41.7. The pretrained model asked for 35.9. 2 of 3 bars. | The margin falls only where the point forecast improves. One window a series could not say by how much. |
+| [E24](#e24-over-26-weeks-in-three-series-which-forecast-is-better-and-which-bound-holds) | One window can't separate a model's skill from the window's luck. Each of 26 weeks was forecast by a model refitted on the days before it, on three series in two cities. | 4 of 4 bars. Chicago, one hour ahead: 8.6% for last week, 5.9% for the trees and 5.4% for the pretrained model. A study beside it ([docs/ML.md](docs/ML.md), section 2) puts the trees a third of a point ahead of a plain average of past weeks there. | This is the comparison the documents quote. The trees stay the reference, and the pretrained model is the candidate. |
+
+### 3. The controller, and which part delivers the gain (E8 to E12, E14)
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E8](#e8-the-heartbeat-controller) | Does an hourly plan against the forecast's bound, with short phased sessions, serve more rides than filling every free charger? | 4.8 points more rides at 1,000 vehicles. Its hourly promise held 93% of the time against a stated 95%. 4 of 5 bars. | E9 changed how the promise is built and repeated the result on other days. |
+| [E9](#e9-a-ledger-that-keeps-its-word-and-e8-again-on-fresh-days) | Can the promise hold, and does E8 repeat on days it was not run on? | 4.2 points more at 1,000 vehicles. 4 of 4 bars. | The result looked settled. I asked what happens to it when the forecast is wrong. |
+| [E10](#e10-a-guard-for-when-the-forecast-breaks) | The plan trusts the forecast's bound. A guard should notice a broken forecast and fall back. | The guard did not fire on a sound forecast and caught a stale one within 8 hours. The plan under the broken forecast barely moved. 2 of 3 bars. | If a broken forecast doesn't hurt, the forecast isn't what delivers the gain. E11 looked for what does. |
+| [E11](#e11-taking-the-controller-apart) | E8 and E9 measured the controller whole. To say which part delivers the gain, every calling rule was crossed with every power rule. | With power fed in order of plugging in, a plain threshold serves 88.8% of rides at 1,000 vehicles and the full controller 88.5%. No bars: an attribution, with the meaning of each outcome written first. | The power rule became the headline. The next question was what the plan itself is worth. |
+| [E12](#e12-does-a-plan-that-knows-the-price-of-energy-earn-its-place) | The plan adds no rides. Can it move charging out of the tariff's expensive hours, and does that take a plan? | The plan pays 14% less a kWh under long visits. A threshold that waits for a free charger at the plan's own levels pays less still and serves 0.97 points fewer rides: the hourly program decides little of its own. 4 of 6 bars. | The plan's case is the cost of energy. E20 and E23 measured how large it is. |
+| [Session length study](#session-length-study) | E8 ran hour-long slots. How far does the case against short ones depend on the drive to the depot and the charger's power? | A visit that delivers 26 kWh loses 14 to 18 points of rides. No bars. | The rule is stated in energy a visit and not in minutes. |
+| [Staffing study](#staffing-study) | Why does feeding the emptiest vehicle first lose? | Vehicles finish together, and 7.5% of the site's power goes unused while they wait to be unplugged. No bars. | The mechanism is stated with the rule. E14 tested both away from the development days. |
+| [E14](#e14-do-the-power-rule-findings-hold-on-fresh-days-from-another-city-and-does-the-textbook-rule-beat-in-order-feeding) | The power-rule finding rested on one San Francisco fortnight and its mechanism on the development days, and scheduling theory names a further rule to test beside it. | The finding holds on another city's days, and the textbook rule ties with in-order feeding. 4 of 4 bars. | The rule is stated as: feed at full rate in any order that finishes vehicles one after another. |
+| [Sensitivity study](#sensitivity-study) | Several inputs sit at the edge of what is public. Each was moved alone. | 2.3 depot visits a day cost 13.6 points of rides at 700 vehicles. No bars. | Visit frequency was the input to pin down, and the filings count it: E22. |
+
+### 4. The account and the demand (E19 to E21)
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E19](#e19-where-is-the-sweet-spot-and-what-binds-on-either-side-of-it) | With the parts in place, which design earns the most at the required service? | 0 of 4 bars. Contribution keeps rising one step past the last fleet that meets the service floor: 800 vehicles earn more than 700 while serving 98.5%. | The service floor is a policy and not an output of the money. The account ranks designs and doesn't pick the fleet. |
+| [E20](#e20-can-the-plan-follow-an-hourly-price) | E19's price bar missed. Can the plan follow an hourly price? | 0.2% cheaper: that fortnight's price curve was too flat to follow. 2 of 3 bars. | The plan's saving is steering by the clock around the tariff's peak, and is described that way. |
+| [E21](#e21-what-does-east-oakland-ask-of-a-depot-and-when) | The twin sizes demand from the fleet. The filings give the other direction: residents and trips. | The area within 20 km would keep 241 vehicles busy against 600 carried. The density fit was not built, and the timing bar missed. 1 of 3 bars. | The parcel is demand-bound today. When a second feeder is needed is given as a scenario. |
+
+### 5. What one feeder carries (E22, E23, E25 to E28)
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E22](#e22-does-the-twin-survive-the-real-visit-cadence) | The filings count charging sessions: about three visits a vehicle a day, where the twin ran one long one. Do the findings survive the real cadence? | 4 of 4 bars. With a wash every fourth visit, three visits a day cost no rides at 500 vehicles. | Every later capacity test runs at the filed cadence. Its capacity figure came from three seeds on one fortnight under one rule, which E23 widened. |
+| [E23](#e23-what-does-one-feeder-carry-with-what-spread-and-under-which-calling-rule) | How much of a capacity figure is the fortnight, the seeds or the calling rule? Four fortnights by ten draws, five fleets, three rules. | 4 of 4 bars. A plain threshold carries 500 vehicles, and the same threshold waiting for a free charger and the hourly plan carry 600. 700 is served and not carried. | "Carried" got its definition. The answer sat between two steps of a hundred. |
+| [E25](#e25-is-the-fleet-halfway-between-the-one-carried-and-the-one-only-served-carried-too) | Is 650 carried, and does the verdict depend on the line I drew for low-battery visits? | 4 of 4 bars. 650 is carried with the line at a quarter, a half or three quarters. | At 650 the feeder gives 97% of its usable power, and what fills it is an energy figure I estimated. |
+| [E26](#e26-what-does-one-feeder-carry-if-the-vehicles-use-more-energy-than-estimated) | Which fleet still fits when the energy estimate is 10% off? | 5 of 5 bars. 750, 675 and 625 vehicles at 10% less, the estimate and 10% more. | The fleet follows the energy arithmetic, and the plan became 600. The parked load was the next assumption to move. |
+| [E27](#e27-what-does-one-feeder-carry-if-a-parked-vehicles-systems-stay-on) | The model switches a vehicle's systems off in the depot. What if they stay on? | 3 of 3 bars. 625 at the estimate, and 550 in every fortnight with 10% more on the road as well. | 600 holds against either unknown alone. Metering one vehicle's whole day became the first action. |
+| [E28](#e28-how-far-does-the-plan-of-600-hold) | Four things were still untested: energy further out than 10%, a busier vehicle, a sharper peak than the records show, and the other cadence settings that match the filings. | 3 of 5 bars. 575 and 525 vehicles at 20% and 30% more energy. No fleet from 525 to 600 is carried at 30 rides a vehicle a day, nor with the busiest hours 20% busier, where 600 misses in one fortnight by a hair (98.98%) while 650 and 675 hold. All eight matching settings carry 675. | The plan states its limits: 10% more energy, 27.5 rides a vehicle a day, and a peak 10% sharper than the records show. |
+
+### 6. Which rule runs the planned fleet (E29)
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E29](#e29-what-does-the-plans-cheaper-energy-cost-in-margin) | In E23 the hourly plan carries 600 vehicles, but its fleet rides at about a third of a charge where the rule that waits keeps two thirds. Is one setting the cause? | 4 of 5 bars. As tested at 600 the floor forces 7.5% of the plan's calls and the fleet rides at 32% of a charge, short of the half asked of it. A peak call-in level of 25% leaves no visit starting low and keeps the saving. At 600 the plan buys energy 9.8% cheaper than the rule that waits. | I did not rebuild the plan. At the planned fleet the rule that waits stays the one to run: the plan carries 600 on a third of a charge. |
+
+### 7. Two vehicle types, their chargers and a second feeder (E30 to E34)
+
+| Test | Why I ran it | What it showed | What followed |
+|---|---|---|---|
+| [E30](#e30-does-the-plan-of-600-depend-on-the-fleets-mix-of-vehicles) | Every capacity test so far ran one assumed mix, 60% I-PACE and 40% Ojai. Does the plan of 600 rest on it? | 4 of 5 bars. In every fortnight one feeder carries 650 all I-PACE and 700 all Ojai, within a step of the energy arithmetic at every share. At 10% more energy an all-I-PACE fleet carries 575. | The plan is stated with its mix: 600 at 40% Ojai or more. |
+| [E31](#e31-how-much-does-the-plan-rest-on-the-ojais-unknown-figures) | The Ojai's battery, always-on load and charging curve have no public source. Which of them matters? | 4 of 4 bars. The always-on load moves an all-Ojai fleet from 775 to 600 across 1.5 to 2.5 kW; the battery and the curve move it by at most a step. | The always-on load is the figure to meter first, on the road and parked. |
+| [E32](#e32-does-a-calling-rule-that-knows-the-vehicle-type-carry-more) | With two types, a share of charge isn't the same range. Does calling the least range first carry more? | 2 of 3 bars. It carries 675, as the rule that waits, with 1.1 points fewer visits starting low in the worst fortnight at 675. | The rule that waits stays the rule to run. |
+| [E33](#e33-what-do-the-chargers-do-for-two-vehicle-types-on-one-feeder-and-on-two) | Every capacity test so far ran 60 kW chargers, so neither type charged at its own rate. Do faster chargers, or keeping them for the Ojai, carry more on one feeder or two? | 4 of 5 bars. Every design at the sizing rule's count carries 675 on one feeder and 1,350 on two; 150 kW cuts the Ojai's visit from 81 to 67 minutes at 675, while the I-PACE's grows from 81.5 to 87. Half the count at 150 kW carries two steps fewer on each, 50 and 100 vehicles. | The chargers stay at the sizing rule's count at 60 kW, the cheapest design that carries the most: $405,000 a year less than 150 kW at 675. |
+| [E34](#e34-how-many-vehicles-do-two-feeders-carry-with-the-planning-margin) | E33 ran two feeders at the estimate. With the plan's margin of 10% more energy, do two feeders carry twice the plan? | 1 of 1 bar. 1,200 in every fortnight, twice one feeder's 600. | The plan is stated by feeder: 600 on one, 1,200 on two. |
+
+### The method the path settled on
+
+- **A baseline before a model, and a stronger baseline before a claim.** E1 did not beat last week's curve by its bar, and E7 lost to it. A study beside E24 added the forecast a planner with no model would use, and against it the trees' lead in Chicago is a third of a point.
+- **Take a result apart before building on it.** E8 and E9 agreed on the controller as a whole; E11 crossed every calling rule with every power rule to say which part delivers the gain.
+- **Price an improvement before chasing it.** After the first attempts moved no rides, E16 asked what a perfect forecast is worth to this depot before any more work went into a better one.
+- **One window gives the order and not the size.** E17 carried three ideas to other cities, and together they helped in one and not the other. E24 replaced single windows with 26 weeks.
+- **Move the line you drew, and the figure you estimated.** E25 moved the low-battery line. E26 to E28 moved the energy estimate, the parked load, the rides a vehicle and the peak. E30 and E31 moved the mix of vehicles and the new vehicle's unknown figures, and E33 the chargers' power and count.
+- **Every result ends in a decision.** The bars that missed decided as much as the ones that passed: E5 kept the simulator in the loop, E7 changed the target, E17 kept the reference, E19 made the service floor a policy.
+
+### Not yet run
+
+- The pretrained forecast inside the plan. It is ahead on error and on margin, and has not driven a simulated depot.
+- A plan that sees the spread of charge across vehicles and not one pool of energy. E29 says what it could win: margin at the planned fleet, not cheaper energy.
+- A second season at this site. Every capacity range is four fortnights of one spring; the other-city runs in `sites/plans/` cover the seasons with other cities' demand.
+- A check against a real depot, and one vehicle of each type metered through a whole day.
+
+## What every test shares
+
+The site's load manager draws at most 95% of the connection (`DepotConfig.usable_share`; the reasoning is in `docs/METHOD.md`), so one feeder is 2,612 kW usable of 2,750. A rider waits up to ten minutes for a free vehicle and is counted lost after that, and rides served means rides served over rides served plus rides given up on. The depot records of E8, E9, E12 and E22 carry the cadence each arm ran at and the share of its vehicles that arrived at the low-battery floor, so an arm named for a rule shows whether that rule was the one deciding. E8, E9 and the account's tests give the plan each vehicle's identified energy use; E10, E11 and the second growth study give it the vehicle type's figures, and E10's threshold arm feeds in order. Each result file carries a stamp of the code it ran on (`provenance.py`); the scoreboard shows a record as current only while that code is unchanged.
+
+## E1. Week-ahead demand forecast
+
+- **Question.** Does the forecast predict hourly ride-hail demand a week ahead better than "same hour last week"?
+- **Data.** City of Chicago public ride-hail trips, counted per hour, January 2025 to the latest full month available. (The city's 2023 to 2024 dataset timed out on hourly counts, so the series starts in 2025.) Chicago is used because robotaxi trip times are redacted in public filings and no Bay Area city publishes ride-hail trips by the hour.
+- **Split.** The final 91 days are held out. The model is trained once on everything before them. Hyperparameters are fixed in `models/demand.py` and aren't tuned on the held-out days.
+- **Metric.** Weighted absolute percentage error: total absolute error divided by total trips.
+- **Baseline.** The count for the same hour one week earlier.
+- **Bar.** The model removes at least 15% of the baseline's error.
+- **What a miss would mean.** The calendar and trend features add nothing a planner could not get from last week's numbers, and the depot should plan on last week.
+
+### Result
+
+**0 of 1 bars.** Numbers are in `data/derived/e1_demand.json` and `data/derived/e1_walk_forward.json`; reproduce with `depot-twin eval e1` and `depot-twin eval e1-walk`.
+
+The forecast is XGBoost with a fixed 400 trees, trained on 1 January 2025 to 1 June 2026 and scored on 2,184 held-out hours to 31 August 2026.
+
+| | Error |
+|---|---|
+| Forecast | 6.26% |
+| Same hour last week | 6.29% |
+
+| Bar | Result | |
+|---|---|---|
+| The forecast removes at least 15% of the baseline's error | 0.5% | **Miss** |
+
+Reported without a bar: four earlier four-week windows, each scored by a model trained only on what came before it. All four end before the held-out period.
+
+| Window ending | Forecast | Same hour last week | Error removed | With early stopping |
+|---|---|---|---|---|
+| 9 March 2026 | 5.02% | 5.14% | 2% | 4.90% |
+| 6 April 2026 | 7.78% | 10.64% | 27% | 7.68% |
+| 4 May 2026 | 4.13% | 4.50% | 8% | 4.10% |
+| 1 June 2026 | 6.76% | 8.00% | 16% | 6.88% |
+
+What this says:
+
+- **On the registered days the forecast is no better than last week's numbers.** At city scale, hourly ride-hail demand repeats week to week within about 6%, and the calendar and trend features find almost nothing more.
+- **It helps where last week is a poor guide.** It beat the baseline in all four earlier windows, by 2% to 27%, and most in the window where last week's figure was furthest off (10.64%). It clears 15% in only two of the four, and the registered result is a miss.
+- **So the depot plans on last week's demand**, as the registration said a miss would mean. The simulation uses the weekly shape the model produces, not its edge over the baseline, so nothing downstream depends on the missed bar.
+- **Setting the number of trees by early stopping made little difference.** It was better by 0.12 points or less in three of the four windows and worse by 0.12 in the fourth, so the model keeps its fixed 400 trees.
+- Weather and local events, which a week-old history can't see, were not tried.
+
+## E2. Recall rules on a power-constrained depot
+
+> **Read with E11.** Every rule here ran with power going to the emptiest vehicle first. E11 shows what feeding in order adds when power is short, so read these runs for the ranking of recall rules among themselves and E11 for the levels.
+
+- **Question.** When the site can't deliver all the energy the fleet wants, does a smarter rule for calling vehicles in serve more rides than a fixed battery threshold?
+- **Setup.** The East Oakland depot on one 2.75 MW service, with 500 and with 1,000 vehicles, simulated for eight days with the last seven measured (the first day is the fleet settling from its starting charge). Ten seeds, 101 to 110. Development used seeds 1 and 2; policy training uses seeds from 1,000 up.
+- **Rules.** Threshold (call in at 20%, release at 85%). Headroom (call in the emptiest vehicles when the road can spare them and a charger is free). Plan (an hourly linear program over the next day). Learned (a PPO policy trained on a quarter-scale copy of the 1,000-vehicle scenario and run at full size).
+- **Metric.** Share of offered rides served, averaged over the ten seeds. Share of the fleet on the road at peak is reported alongside.
+- **What development showed.** On seeds 1 and 2 the plan trailed headroom at 1,000 vehicles. The learned policy had not been trained.
+- **Bars.** Five are counted: bar 2 is two bars.
+  1. Headroom beats threshold by at least 2 points at 1,000 vehicles.
+  2. Plan against headroom: (2a) no worse at 500; (2b) within 0.5 points at 1,000. Development suggests 2b will miss.
+  3. Learned beats threshold at 1,000 vehicles, a fleet four times the size it trained on.
+  4. Learned is within 1 point of the best hand-written rule at 1,000.
+- **What a miss would mean.** For 1: the simple rule is enough and the extra logic isn't worth operating. For 2: the fluid plan is too coarse when power is the limit. For 3 and 4: the policy doesn't transfer across fleet sizes, or learned nothing the hand rules lack.
+
+### Result
+
+**3 of 5 bars.** Numbers are in `data/derived/e2_recall.json`; reproduce with `depot-twin eval e2`.
+
+| Rule | 500 vehicles | 1,000 vehicles | On the road at peak, 1,000 |
+|---|---|---|---|
+| Threshold | 97.7% | 74.7% | 32.3% |
+| Headroom | 99.0% | 76.5% | 35.1% |
+| Plan | 99.2% | 75.9% | 32.5% |
+| Learned | 96.3% | 76.5% | 33.0% |
+
+Mean of ten seeds. At 1,000 vehicles the seeds of every rule lie within 1.2 points of each other. At 500 the plan ranges from 99.0% to 99.4% and the learned policy from 94.8% to 96.9%. No vehicle was stranded in any run.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Headroom beats threshold by 2 points at 1,000 | 1.8 points | **Miss** |
+| 2a. Plan no worse than headroom at 500 | 99.2% against 99.0% | **Pass** |
+| 2b. Plan within 0.5 points of headroom at 1,000 | 0.54 points behind | **Miss** |
+| 3. Learned beats threshold at 1,000 | 1.9 points | **Pass** |
+| 4. Learned within 1 point of the best hand-written rule at 1,000 | 0.1 points ahead of headroom | **Pass** |
+
+What this says:
+
+- **Headroom is the best hand-written rule at 1,000 vehicles, and by less than the 2 points asked of it.** It serves 1.8 points more than the threshold there. The hourly plan is 0.2 points ahead of it at 500, inside the spread between seeds, and 0.54 behind at 1,000, so the fluid plan is too coarse where power is the limit.
+- **The learned policy carried from 250 vehicles to 1,000.** It serves 1.9 points more than the threshold there and is level with headroom, 0.1 points ahead and inside the spread between seeds.
+- **The learned policy is the weakest rule at 500 vehicles,** a size it never trained at, and the least steady from seed to seed. It isn't a drop-in replacement.
+- **Two points is the most any rule recovers at 1,000 vehicles.** The best rule still loses 23 points of rides, and that is the grid, not the rule.
+
+## Growth study
+
+A study, no bars. Numbers are in `data/derived/growth.json`; reproduce with `depot-twin eval growth`.
+
+The East Oakland depot at fleets of 200 to 2,000 under three grid options: one 2.75 MW feeder, the same feeder with a 4 MWh battery, and two feeders. Headroom rule, demand drawn from the average week, three seeds. Runs are eight days with the last seven measured: the first day is the fleet settling from its starting charge. Chargers follow the sizing rule at every size.
+
+| Fleet | One feeder | One feeder with battery | Two feeders | Queue wait, one feeder | Grid use, one feeder | On the road at peak, one feeder |
+|---|---|---|---|---|---|---|
+| 200 | 99.6% | 99.6% | 99.6% | 0 min | 32% | 79% |
+| 400 | 99.3% | 99.9% | 99.9% | 2 min | 63% | 76% |
+| 500 | 99.0% | 99.9% | 99.9% | 22 min | 77% | 72% |
+| 600 | 97.4% | 98.8% | 99.9% | 98 min | 86% | 62% |
+| 700 | 93.8% | 96.0% | 99.6% | 193 min | 89% | 52% |
+| 800 | 88.4% | 91.4% | 99.2% | 226 min | 92% | 44% |
+| 1,000 | 76.5% | 79.1% | 99.1% | 328 min | 95% | 35% |
+| 1,200 | 66.2% | 67.5% | 97.5% | 416 min | 97% | 30% |
+| 1,500 | 53.6% | 54.5% | 91.6% | 476 min | 98% | 23% |
+| 2,000 | 41.3% | 41.7% | 76.5% | 530 min | 99% | 18% |
+
+| Grid option | Largest fleet serving 99% | Largest serving 95% | Hand arithmetic, energy alone |
+|---|---|---|---|
+| One feeder | 400 | 600 | 613 |
+| One feeder with battery | 500 | 700 | 613 |
+| Two feeders | 1,000 | 1,200 | 1,227 |
+
+What this says:
+
+- **One feeder carries 400 vehicles at 99% and 600 at 95%.** Hand arithmetic on energy alone says 613. The simulation is lower because the queue forms before the energy runs out: at 500 vehicles the site uses 77% of its usable power and a vehicle already waits 22 minutes for a charger. The 500 row sits a hair under the line at 98.97%.
+- **A battery buys one step at each level.** It lifts 500 vehicles from 98.97% to 99.9% and 700 from 93.8% to 96.0%.
+- **A second feeder doubles the site:** 1,000 vehicles at 99%, 1,200 at 95%.
+- **2,000 vehicles don't fit on this parcel's grid:** 76.5% on two feeders.
+- Every run here used the headroom rule with power going to the emptiest vehicle first. E11 found that power rule costs rides when power is short, so these levels are a floor; the growth study adds an arm with in-order feeding.
+
+## E3. A fast stand-in for the simulator
+
+> **Read with E4.** These runs measure two weekdays with demand drawn from an average week; E4 measures a full week. The money gap shown here is why E4 was built.
+
+- **Question.** Can gradient-boosted trees (XGBoost) predict what the simulator would say about a depot design well enough to search designs with, without having memorized the designs they were trained on?
+- **Data.** 1,600 designs drawn at random from the ranges in `surrogate.py` (fleet 150 to 2,200, grid connection 1 to 9 MW, fast and slow charger counts, charger power, battery, demand level and peakiness, energy per mile, staffing, recall and release levels). Each is simulated for three days and measured on the last two. The first 200 designs are simulated a second time under another seed.
+- **Split.** By design, never by row, so both runs of a design sit on the same side.
+  - Designs with a fleet of 900 to 1,150 are withheld from training and validation entirely (the gap set).
+  - The rest are split at random 70% train, 15% validation, 15% test.
+  - Hyperparameters are chosen by 5-fold cross-validation inside the training set, from a grid of 12. The number of trees is set by early stopping on the validation set. The test and gap sets are held out of every choice.
+- **Metric.** Mean absolute error on the share of rides served, in points.
+- **Baseline.** The spreadsheet answer: energy the site can deliver over energy the fleet wants, capped at 100%.
+- **Bars.**
+  1. Test error is 1.5 points or less.
+  2. Test error is at most half the spreadsheet's error on the same designs.
+  3. On test designs where the simulator says fewer than 99% of rides are served (the cases that matter), error is 3 points or less.
+  4. No overfitting: test error is at most 1.3 times validation error. Training error is reported beside both.
+  5. On the gap set, error is 2.5 points or less.
+  6. In use: for three cases (500 and 1,000 vehicles on 2.75 MW, 1,500 vehicles on 5.5 MW), the design the trees pick as most profitable is simulated. The simulated share of rides served is within 2 points of the prediction, and the simulated contribution per vehicle within 5%.
+- **Also reported, no bar.** The seed-to-seed difference between two runs of the same design, which is the error no model can get under. Errors for the other three predicted quantities. The features the trees lean on most.
+- **What a miss would mean.** For 1 to 3: the trees aren't accurate enough to search with, and sizing stays in the simulator. For 4 and 5: they memorized the sampled designs and can't be trusted between them. For 6: the search finds designs that look good only to the trees, which is the failure that matters most.
+
+### Result
+
+**4 of 6 bars.** Numbers are in `data/derived/e3_surrogate.json`; reproduce with `depot-twin eval e3`.
+
+| | Error on share of rides served |
+|---|---|
+| Training (1,019 designs) | 0.22 points |
+| Validation (219 designs) | 0.44 points |
+| Test (219 designs) | 0.68 points |
+| Gap set (143 designs, fleets of 900 to 1,150) | 0.77 points |
+| Test designs under 99% service (52 designs) | 2.37 points |
+| Spreadsheet, on the test designs | 6.21 points |
+| Two runs of the same design | 0.34 points |
+
+The three designs the trees picked, simulated:
+
+| Case | Rides served, predicted | Simulated | Contribution per vehicle, predicted | Simulated |
+|---|---|---|---|---|
+| 500 vehicles on 2.75 MW | 100.0% | 99.7% | $444.56 | $389.79 |
+| 1,000 vehicles on 2.75 MW | 88.5% | 90.6% | $400.38 | $360.06 |
+| 1,500 vehicles on 5.5 MW | 99.9% | 99.3% | $455.25 | $397.19 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Test error at most 1.5 points | 0.68 | **Pass** |
+| 2. At most half the spreadsheet's error | About a ninth of it | **Pass** |
+| 3. Constrained designs at most 3 points | 2.37 | **Pass** |
+| 4. Test at most 1.3 times validation | 1.57 times | **Miss** |
+| 5. Gap set at most 2.5 points | 0.77 | **Pass** |
+| 6. Picked designs hold up in simulation | Service within 2 points in two cases and 2.1 points off at 1,000 vehicles; contribution predicted 11% to 15% above the simulated figure in all three | **Miss** |
+
+What this says:
+
+- **The trees predict service well across sampled designs.** They interpolate across fleet sizes they never saw, and they lean on grid power per vehicle (50% of the gain) and the energy ratio (36%), which is what the physics says should matter.
+- **Bar 4 is a real warning.** Test error is small in absolute terms, about twice the seed-to-seed difference, but training error is a third of it. The models fit their training designs more closely than they generalize.
+- **The money doesn't hold in any case.** The simulated contribution counts the rides of the two days each run measures, a Tuesday and a Wednesday. The prediction assumes an average day's demand. No design here was judged on a Friday or Saturday peak. At 1,000 vehicles on one feeder the picked design also serves 2.1 points more than predicted, outside the 2-point allowance.
+- **The error sits in the designs that matter:** 2.37 points where service is under 99%, against 0.68 overall, because most random designs are overbuilt and serve everything.
+- This search carries no service floor. E4 measures a full week and tests a search that must hold 99%.
+
+## E4. A planner that can be trusted with the search
+
+> **Read with E11 and E23.** These runs use emptiest-first power, one energy figure for every vehicle and demand drawn from an average week. Read this test for the method and what it shows about searching with a model. It chose no depot design.
+
+Runs are eight days with the last seven measured, so every weekday counts once (E3's three-day runs measure two weekdays); to pay for the longer runs the pool is 1,000 plus 1,000 designs and the random reference set is 100 per case. E4 extends E3 around one point: an optimizer doesn't sample a surrogate fairly, it hunts for the designs the surrogate likes best, so average error says little about whether the chosen design is real.
+
+- **What changed from E3.**
+  - Runs measure a full week, not two weekdays.
+  - Sampling: half the designs are space-filling (Sobol), half are placed where the site delivers 0.8 to 1.3 times the energy the fleet wants and the chargers 0.9 to 2.5 times, because that edge is where the planner searches.
+  - Targets are trained on a logit or log scale, so no prediction can leave its physical range.
+  - Two features added: chargers per vehicle and battery kWh per vehicle. The peak-draw model is dropped; the capacity subscription is costed at the full connection.
+  - The planner accepts a design only if predicted service, less the 90th percentile of the model's over-prediction on validation designs it predicts to pass, is still 99%.
+  - A design can be chosen to hold 99% service in 95% of demand scenarios (level varying by 8%, peak from slightly flatter to sharper), not only on the expected week.
+- **Data.** 1,000 Sobol designs and 1,000 boundary designs, one simulation each; the first 100 of each simulated again under a second seed. Fleets of 900 to 1,150 are withheld as before. The rest are split by design 70/15/15. Hyperparameters by 5-fold cross-validation grouped by design, inside the training set; trees by early stopping on validation.
+- **Prospective set.** 300 new designs (150 Sobol, 150 boundary, new seeds) are generated and simulated only after the models are frozen.
+- **Search test.** Three cases the site can serve: 400 and 600 vehicles on 2.75 MW, 1,000 on 5.5 MW. For each, the planner ranks 20,000 candidate designs; when it offers any, its top 50 and 100 candidates drawn at random are all simulated.
+- **Bars.**
+  1. Prospective error on rides served is 1.5 points or less, and 1.5 points or less on the designs the simulator puts between 95% and 99.9% service.
+  2. No overfitting: prospective error is at most 1.3 times validation error.
+  3. Gap-set error is 2.5 points or less.
+  4. Regret: in each case, the simulated contribution of the planner's first pick is within 2% of the best simulated design that truly serves 99% (among all 150 simulated). At least 40 of its top 50 truly serve 99%, and none serves under 97%.
+  5. For 1,000 vehicles on 2.75 MW, which the growth study shows can't reach 99%, the planner returns no design.
+  6. Robustness: the design chosen across demand scenarios, simulated under 20 fresh scenarios, serves 99% in at least 18. The design chosen on expected demand alone is reported beside it.
+  7. No prediction on the prospective set falls outside its physical range.
+- **Also reported, no bar.** Rank correlation between predicted and simulated contribution; the seed-to-seed noise floor; the margin; how the robust design differs from the expected-demand design.
+- **Limits stated in advance.** Trip length is fixed at the filed 4.92 miles and isn't an input. Regret is measured against the best of 150 simulated designs per case, not a true optimum, which is unknown.
+- **What a miss would mean.** For 1 to 3: as in E3. For 4: the search finds designs that look good only to the model. For 5: the margin is too loose. For 6: planning on expected demand isn't enough, and the scenario method doesn't fix it.
+
+### Result
+
+**5 of 7 bars.** Numbers are in `data/derived/e4_planner.json`; reproduce with `depot-twin eval e4`.
+
+| | Error on share of rides served |
+|---|---|
+| Training (1,271 designs) | 0.25 points |
+| Validation (272 designs) | 1.37 points |
+| Test (273 designs) | 1.42 points |
+| Gap set (184 designs, fleets of 900 to 1,150) | 1.43 points |
+| Prospective (300 designs made after the models were frozen) | 1.34 points |
+| Prospective, designs between 95% and 99.9% service (127) | 0.68 points |
+| Spreadsheet, on the prospective designs | 4.77 points |
+| Two runs of the same design | 0.24 points |
+
+The margin is 1.24 points, so a design needs a predicted 100.24% to be accepted, and no prediction passes 100%. The planner offered no design in any of the three cases, on expected demand or across scenarios. With nothing offered there is no first pick, no top 50 and no regret to measure.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Prospective error at most 1.5 points, overall and in the 95% to 99.9% band | 1.34 and 0.68 | **Pass** |
+| 2. Prospective at most 1.3 times validation | 0.98 times | **Pass** |
+| 3. Gap set at most 2.5 points | 1.43 | **Pass** |
+| 4. Regret at most 2%; 40 of the top 50 truly at 99%; none under 97% | Nothing offered in any case | **Miss** |
+| 5. No design offered for 1,000 vehicles on 2.75 MW | None offered | **Pass** |
+| 6. Robust design holds in 18 of 20 scenarios, every case | No design chosen in any case | **Miss** |
+| 7. Predictions inside their physical range | All inside on the prospective designs | **Pass** |
+
+What this says:
+
+- **The planner declines to choose.** Its margin, 1.24 points, is wider than the one point of room any candidate has above the 99% service level. A stand-in whose error near the service level is larger than the room above it can't be trusted with the search, and a planner honest about that error offers nothing.
+- **Average accuracy doesn't show it.** Held-out, gap and prospective errors agree at 1.3 to 1.4 points, under a third of the spreadsheet's, and the band near the service level is at 0.68. The margin is the 90th percentile of over-prediction among designs predicted to pass, and that tail is what the planner has to hold back.
+- **Bar 5 passes without telling the cases apart.** The planner returns nothing for the fleet the feeder can't serve, and nothing for the three it can.
+- **The models fit their training designs closely,** 0.25 points against 1.37 on validation.
+- Planning on expected demand against planning across scenarios isn't measured: neither had a design to simulate.
+
+## E5. Teaching the planner where it searches
+
+> **Read with E11 and E23.** The same simulator settings as E4.
+
+E4's margin is measured on validation designs, not on the designs a search goes hunting for, and an optimizer selects for the model's errors. The method registered here is the standard one: simulate what the search picks, add those runs to the training data, and repeat, so the model learns the region the optimizer visits.
+
+- **Method.**
+  1. Round one: 30 situations drawn at random (fleet 200 to 1,800; a grid connection that can deliver 1.05 to 1.8 times the fleet's energy; demand level, peakiness and energy per mile from their ranges). For each, the E4 planner ranks 5,000 candidate designs and its top 20 are simulated for a full week. Those runs join the training set and the models are retrained, with hyperparameters chosen again by grouped cross-validation.
+  2. Round two: the same with 30 new situations and the retrained planner.
+  3. Margin: 12 further situations, top 20 each, simulated but never trained on. The margin becomes the 90th percentile of over-prediction on these searched designs; with none picked, the margin from training stands.
+- **Test.** The three E4 cases, searched afresh with the final planner: when it offers any design, its top 50 and the same 100 random candidates are simulated. These cases were seen once in E4; none of their designs is in the training or margin data.
+- **Bars.**
+  1. The E4 search bar, unchanged: regret at most 2% in every case, at least 40 of the top 50 truly at 99% service, none under 97%.
+  2. The first pick itself truly serves 99% in every case.
+  3. Accuracy elsewhere isn't traded away: error on the E4 prospective designs stays at or under 1.5 points and 1.3 times validation error.
+- **Also reported.** Over-prediction on searched designs after each round; the margin; how many candidates remain acceptable in each case.
+- **What a miss would mean.** For 1 and 2: two rounds aren't enough, or the simulator's own week-to-week noise near 99% is too large for any model to rank through, and the simulator must stay in the loop for every decision. For 3: the model has been bent toward the searched region at the expense of the rest.
+
+### Result
+
+**1 of 3 bars.** Numbers are in `data/derived/e5_active.json`; reproduce with `depot-twin eval e5`.
+
+With nothing picked there is nothing to retrain on. Both rounds hold 0 designs, the margin stays at the 1.24 points from training, and none of the 20,000 candidates is acceptable in any of the three cases. The model is E4's, on the same 1,271 training designs.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Regret at most 2%; 40 of the top 50 at 99%; none under 97% | Nothing offered in any case | **Miss** |
+| 2. First pick truly serves 99% | No first pick in any case | **Miss** |
+| 3. Prospective accuracy kept | 1.34 points, 0.98 times validation | **Pass** |
+
+What this says:
+
+- **The loop never starts.** It learns from what the search picks, and a planner that accepts nothing picks nothing. Bar 3 passes because the model is unchanged.
+- **Across E3 to E5, the stand-in is accurate on average and not near the edge that matters.** It can shortlist, and the simulator decides.
+- The registration's reading of a miss on bars 1 and 2 holds: the simulator stays in the loop for every decision.
+
+## E6. Identifying the twin from telemetry
+
+- **Question.** No two vehicles use the same energy, and the true figures aren't public. Can each vehicle's driving energy (kWh per mile) and always-on load (kW), and each vehicle type's charge curve, be recovered from the telemetry the vehicle already produces?
+- **Why it is a test and not an assumption.** In the simulator each vehicle is given true values the estimator never sees: its type's figure moved by a random 8% (one standard deviation), separately for driving and for always-on load. The estimator starts from the type's figure and sees only, every five-minute simulation step, the miles driven, the time elapsed and the change in the battery gauge, which is noisy (0.1% of the pack per reading).
+- **Setup.** 500 vehicles (60% I-PACE at 0.30 kWh per mile and 2.0 kW; 40% Ojai at 0.27 and 1.8), 2.75 MW, 60 kW chargers, seven days, headroom rule.
+- **Method.** One two-parameter Kalman filter per vehicle for energy. For charge curves, the median power delivered in each 5% band of charge, using only readings where the vehicle received all it could take.
+- **Baseline.** Using the type's figure for every vehicle, which is what the twin does without identification.
+- **Bars.**
+  1. Driving energy: median error across vehicles at most 3%, and at most half the baseline's.
+  2. Always-on load: median error at most 5%, and at most half the baseline's.
+  3. At least nine vehicles in ten are within 8% on both.
+  4. Each type's charge curve is within 3 kW on average of the truth (the lower of what the battery accepts and what the charger delivers), over the bands seen.
+- **Also reported.** Error after one day against seven.
+- **Limit stated in advance.** This shows the estimator works on the simulator's own vehicles. It says nothing about what the true figures are for a real fleet; it says they would not need to be assumed.
+- **What a miss would mean.** For 1 to 3: miles and hours move together too closely in service for the two effects to be separated, and the twin would have to identify one combined figure. For 4: sessions are too often power-limited for the battery's own limit to be seen.
+
+### Result
+
+**3 of 4 bars.** Numbers are in `data/derived/e6_identify.json`; reproduce with `depot-twin eval e6`.
+
+| | Using the type's figure | Identified after 1 day | Identified after 7 days |
+|---|---|---|---|
+| Driving energy, median error | 5.4% | 4.3% | 2.5% |
+| Always-on load, median error | 5.2% | 4.8% | 3.1% |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Driving energy within 3% and half the baseline | 2.5% against 5.4% | **Pass** |
+| 2. Always-on load within 5% and half the baseline | 3.1% against 5.2%: inside 5%, short of half | **Miss** |
+| 3. Nine vehicles in ten within 8% on both | 91.8% | **Pass** |
+| 4. Charge curves within 3 kW | 0.04 kW over 16 bands and 0.00 kW over 15 | **Pass** |
+
+A vehicle gave a median of 1,607 readings in the week.
+
+What this says:
+
+- **Driving energy separates, narrowly.** A week of telemetry cuts the error of the type's figure by just over half, and one day already removes a fifth of it.
+- **Always-on load is harder.** A week takes its error from 5.2% to 3.1%, which is useful and short of the halving the bar asked for.
+- **Nine vehicles in ten are within 8% on both figures,** with little to spare.
+- Bar 4 is weaker evidence than it looks. Power readings in the simulator carry no noise, so the charge-curve result mostly shows that discarding power-limited readings is the right logic. A real meter would need the same test with noise.
+- As stated in advance, this shows the method works on the simulator's own vehicles, not what the true figures are.
+
+## E7. Ride forecasts for the controller
+
+Exact repeats of records are dropped (6% to 15% of records, depending on the month), and a break in the series is noted below.
+
+- **Question.** A controller that decides every five minutes needs to know how many rides to expect in an hour, one, six and twenty-four hours ahead, and how wrong that could be. Can it be told, with honest error bars?
+- **Data.** San Francisco taxi trips from the city's open data, 1 December 2022 to 31 May 2024, counted in five-minute steps. A record counts as a ride if it isn't paratransit, covers at least 300 metres and lasts at least a minute. Hourly weather from a public archive of forecasts.
+- **A break in the data, found before fitting.** From mid-February 2024 reported rides rise by about 45%, with dispatched trips roughly doubling, while the number of cabs reporting stays near 790. That looks like a change in what is reported, not in demand. It falls just before the calibration and held-out blocks. It is left in: a controller's forecasts have to survive a shift like this, and the test will show whether these do.
+- **What is forecast.** Rides in the hour that starts h after the moment of prediction, for h of 1, 6 and 24 hours. One model per horizon.
+- **Label.** The value later observed. Nothing else in a row comes from after the moment of prediction, except the weather forecast for the target hour and the target hour's calendar. That is checked by a unit test (`tests/test_features.py`), which changes every value after a moment and checks that no feature at that moment moves.
+- **Features (21).** From the series: the hourly rate now, 1 hour, 24 hours and 7 days ago; the target's own slot on the latest earlier day and week available; spread within the last hour; mean, maximum and minimum over the last day; the rate now against the same time last week. Calendar of the target hour: hour, weekday, weekend, holiday, month, minute of day. Weather: temperature and rain now, and forecast for the target hour.
+- **Split, in time order.** The last 60 days are held out. Before them, 28 days calibrate the intervals. Before those, 28 days set the number of trees by early stopping. Everything earlier trains. Rows whose label reaches into the next block are dropped, so no label is shared across a boundary. Training rows are taken every 15 minutes, since hourly sums five minutes apart overlap almost entirely.
+- **Tuning.** Depth (4, 6) and minimum child weight (1, 5): four combinations, chosen by expanding-window cross-validation inside the training block. Learning rate 0.05, row and column sample 0.8, Poisson objective.
+- **Intervals.** The 95% quantile of the error on the calibration block, scaled by the square root of the prediction plus one, gives the upper bound the controller plans against.
+- **Baselines.** The last hour's rate; the same time on the latest earlier day; the same time last week. The best of the three on the early-stopping block is the one to beat.
+- **Bars, for each horizon.**
+  1. Model: removes at least 15% of the best baseline's error on the held-out days (total absolute error over total rides).
+  2. Intervals: the upper 95% bound holds for between 93% and 97% of held-out hours.
+  3. At the peak: over the busiest tenth of held-out hours, the forecast isn't low by more than 3% on average. Under-predicting the peak is the error that costs rides.
+- **Also reported, no bar.** The same models fitted again without weather, their tree settings chosen again; the inputs they lean on most; the same pipeline on Chicago's hourly ride-hail series, as a check that the method isn't tuned to one city.
+- **Limits stated in advance.** Taxis, not ride-hail. Trips served, not trips requested. The weather "forecast" is from an archive that is a little better than a real forecast a day ahead would have been. The series ends in May 2024.
+- **What a miss would mean.** For 1: recent history adds nothing the calendar and last week don't, and the controller plans on the baseline. For 2: the intervals can't be planned against as they stand. For 3: the model is right on average and wrong when it matters.
+
+### Result
+
+**0 of 9 bars.** Numbers are in `data/derived/e7_forecasts.json`; reproduce with `depot-twin eval e7`.
+
+San Francisco, on the 60 held-out days:
+
+| Horizon | Forecast error | Best baseline | Error removed | Upper bound held | At the peak |
+|---|---|---|---|---|---|
+| 1 hour | 15.4% | 15.4% (same time yesterday) | 0.0% | 91.5% | 24.0% low |
+| 6 hours | 24.7% | 15.4% (same time yesterday) | -60.5% | 90.1% | 40.8% low |
+| 24 hours | 25.3% | 14.9% (same time last week) | -69.6% | 89.8% | 44.6% low |
+
+The same pipeline on Chicago's hourly series, reported without a bar:
+
+| Horizon | Forecast error | Best baseline | Error removed | Upper bound held | At the peak |
+|---|---|---|---|---|---|
+| 1 hour | 4.00% | 6.44% | 37.9% | 96.0% | 0.8% low |
+| 6 hours | 4.64% | 6.43% | 27.9% | 95.7% | 0.3% low |
+| 24 hours | 4.95% | 6.34% | 21.9% | 97.1% | 0.4% low |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Removes 15% of the best baseline's error | None at 1 hour; adds 60.5% and 69.6% at 6 and 24 | **Miss** at every horizon |
+| 2. Upper bound holds 93% to 97% of the time | 91.5%, 90.1%, 89.8% | **Miss** at every horizon |
+| 3. Not low by more than 3% at the peak | 24.0%, 40.8%, 44.6% low | **Miss** at every horizon |
+
+Without weather the error moved by less than a point at every horizon (15.0%, 24.2% and 26.1%).
+
+What this says:
+
+- **The break in the data decided it.** Training ends before the mid-February 2024 rise noted in the registration, and the held-out days sit after it. A tree model predicts by averaging training examples that look alike, so it can't predict a busier hour than it has seen. At the peak it ran 24% to 45% low. "Same time last week" has no such ceiling: it moves with the level by construction.
+- **The method isn't broken where the level is stable.** On Chicago the forecast removes 22% to 38% of the baseline's error, the bounds hold 95.7% to 97.1% of the time, and at the peak it is low by less than 1%.
+- **The peak bar earned its place.** Average error at one hour was level with the baseline, 15.4% each. Scored only on the busiest tenth of hours, the forecast came in a quarter low. A controller planning on it would have run short exactly when it mattered.
+- **What follows, as registered.** The controller plans on the baseline, not on these models.
+
+The reading suggests a change of target: forecast the ratio to last week instead of the count, so the model has no ceiling. That is a new test, E7b.
+
+## E7b. The same forecasts on a scale-free target
+
+Registered after E7's result.
+
+- **Question.** If E7 failed because tree models extrapolate poorly beyond the level they trained on, does forecasting the ratio to the same time last week, instead of the count, pass E7's bars?
+- **Change from E7.** The objective becomes squared error on the ratio, where E7 fitted counts. The label becomes rides in the target hour divided by rides in the same hour last week. Every feature taken from the series is divided by the same reference, except the one that is already a ratio to last week. Rows are weighted by the reference, in training and in the block that stops the trees, so busy hours count for more. The prediction is the predicted ratio times the reference. Data, split, tuning grid, bounds, baselines and bars are E7's.
+- **An honest caveat.** The held-out days are the same ones E7 was scored on, so this is a second look at them, made knowing why the first failed. It tests a diagnosis; it isn't fresh evidence. Fresh evidence will be the controller's own running under replayed demand in E8.
+- **Bars.** E7's three, for each horizon.
+- **What a miss would mean.** The level shift was not the whole story, and the controller stays on the baseline.
+
+### Result
+
+**5 of 9 bars.** Numbers are in `data/derived/e7b_scale_free.json`; reproduce with `depot-twin eval e7b`.
+
+| Horizon | Forecast error | Same hour last week | Baseline the bar used | Error removed (bar) | Upper bound held | At the peak | Trees |
+|---|---|---|---|---|---|---|---|
+| 1 hour | 10.7% | 14.9% | 15.4% (same time yesterday) | 30.6% | 94.4% | 6.0% low | 336 |
+| 6 hours | 12.4% | 14.9% | 15.4% (same time yesterday) | 19.5% | 92.7% | 11.6% low | 798 |
+| 24 hours | 11.8% | 14.9% | 14.9% (same time last week) | 20.9% | 94.6% | 7.3% low | 399 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Removes 15% of the best baseline's error | 30.6%, 19.5% and 20.9% at 1, 6 and 24 hours | **Pass** at every horizon |
+| 2. Upper bound holds 93% to 97% of the time | 94.4%, 92.7%, 94.6% | **Pass** at 1 and 24, **miss** at 6 |
+| 3. Not low by more than 3% at the peak | 6.0%, 11.6%, 7.3% low | **Miss** at every horizon |
+
+What this says:
+
+- **The ceiling was the problem.** Changing the target from a count to a ratio to last week took the error from E7's 15.4%, 24.7% and 25.3% to 10.7%, 12.4% and 11.8%, across a level shift the models never trained on. It now beats the baseline by 19.5% to 30.6%.
+- **The better simple rule on the held-out days is "same hour last week" at every horizon.** At 1 and 6 hours the bar used "same time yesterday", the best on the early-stopping block, which scored 15.4% against last week's 14.9%. Against last week the forecast still removes 28.2% and 16.8% of the error, so bar 1 holds on either rule.
+- **The bounds run thin, and at six hours fall out of the bar:** 92.7% there, 94.4% and 94.6% at 1 and 24 hours, against 95%.
+- **The peak bar is missed at every horizon,** by far less than in E7, where the forecast ran 24% to 45% low. The bar picks the busiest tenth of hours by what actually happened, and any forecast looks low on hours chosen for having turned out high. E8 measures whether the upper bound, which the controller plans against, holds in the busiest hours.
+- **Weather adds nothing measurable.** Fitted again without it, tree settings chosen again, the error is 10.64%, 12.26% and 11.72% against 10.68%, 12.37% and 11.78%. It stays in as registered.
+- **This is a second look at the same days, on a series with a reporting break just before them.** It confirms why E7 failed, and it measures a model through that break. The controller uses these scale-free models.
+
+## E8. The heartbeat controller
+
+> **Read with E11.** E11 showed the gain over headroom came from the power rule the controller shipped with, not from its plan.
+
+Registered after development on other days (18 to 31 March 2024). The session design below came out of that development, for the reasons given under it.
+
+- **Question.** Does a depot run as a heartbeat (short time-boxed charging sessions, arriving in small phased groups, with the number called in each hour set by an optimization against the upper bound of the ride forecast) serve more rides, draw power more evenly, and keep its promises, compared with the headroom rule that fills every free charger at once?
+- **What is new in the test itself.** Demand isn't drawn from an average week. It is replayed from real days: San Francisco taxi rides in five-minute steps, scaled so the fleet is offered 25 rides a vehicle a day on average. The controller sees only the forecasts made at each moment by the E7b models from the history up to that moment, so its forecast errors are real ones.
+- **Days.** 14 days from Monday 15 April 2024, inside the block E7 held out. The first seven are warm-up (the fleet settles and the controller learns its own plan error); the last seven are scored. Five seeds, 201 to 205.
+- **Setup.** East Oakland on one 2.75 MW feeder, 500 and 1,000 vehicles, 60 kW chargers, each vehicle type with its own energy use and each vehicle differing from its type by a random 8%. The controller uses energy figures identified from telemetry as in E6, not the true ones.
+- **The controller.**
+  - Tick: five minutes.
+  - A session is one slot: the energy a charger delivers in a 60-minute beat at full rate (about 56 kWh), ending at 85% charge at most. A vehicle is called only if it has room for at least 90% of a slot.
+  - No more vehicles are plugged in than the site can feed at full rate (40 on this feeder), and they are fed in order of plugging in.
+  - Chargers are worked in twelve phases, so at most a twelfth of them turn over per tick.
+  - **Why an hour, measured in energy.** On the development days, 30-minute sessions cut off by the clock served far fewer rides than the headroom rule at both sizes, for two reasons. Every visit costs the road over an hour whatever it delivers (15 minutes each way, plugging, cleaning), so two or three short top-ups a day take more vehicle-hours than they return in energy; and with 60 kW chargers the charge rate is flat up to about two thirds full, so short sessions buy no speed. And when the site is short of power, a slot measured in minutes sends vehicles away half fed. The public figure of about three short sessions a day may reflect faster chargers or chargers nearer the riders than this depot's.
+  - Each hour a linear program plans the next 24 against the upper 95% bound of demand and returns how many vehicles to call in this hour. The emptiest vehicles under 75% are called, timed to arrive as chargers come free.
+  - Ledger: at the start of each hour the controller commits a number of vehicles on the road for that hour: its plan, less the 95th percentile of its own plan error over the previous seven days.
+- **Compared with.** The headroom rule and the fixed threshold, given the same forecasts and the same replayed demand.
+- **Bars.**
+  1. Product: at 1,000 vehicles the heartbeat serves at least 1 point more rides than headroom. At 500 it is no more than 0.2 points worse.
+  2. Product: the ledger is kept in at least 95% of scored hours, at both sizes.
+  3. Product: no vehicle is stranded.
+  4. Grid: at 500 vehicles the minute-to-minute variation of grid draw (standard deviation over mean) is at most half of headroom's.
+  5. System: a tick takes under 50 ms at the median and under 500 ms at the 99th percentile.
+- **Also reported, no bar.** Sessions per vehicle per day and energy per session (public filings suggest about three and about 29 kWh); energy delivered per charger-hour; share of the fleet on the road in the busiest hours; how often the forecast's upper bound held, overall and in the hours forecast to be busiest (E7's peak check, read on the hours forecast to be busiest).
+- **Limits stated in advance.** Taxi demand, scaled. The same days E7 and E7b were scored on, though the controller is scored on rides and promises, not forecast error. One site, one week.
+- **What a miss would mean.** For 1: at a site this short of energy, orchestration doesn't buy rides, only smoothness. For 2: the plan is too optimistic about itself to be promised against. For 4: phasing doesn't flatten the draw in practice. For 5: the optimization is too slow to run on the tick.
+
+### Result
+
+**4 of 5 bars.** Numbers are in `data/derived/e8_heartbeat.json`; reproduce with `depot-twin eval e8`.
+
+| | Threshold | Headroom | Heartbeat |
+|---|---|---|---|
+| Rides served, 500 vehicles | 99.8% | 100.0% | 100.0% |
+| Rides served, 1,000 vehicles | 80.8% | 82.8% | 87.6% |
+| Fleet on the road in the busiest hours, 500 | 81.1% | 81.3% | 85.6% |
+| Fleet on the road in the busiest hours, 1,000 | 41.9% | 43.5% | 47.8% |
+| Grid draw variation, 500 | 0.40 | 0.56 | 0.21 |
+| Energy per charger-hour, 500 | 26.7 kWh | 26.7 kWh | 28.2 kWh |
+| Sessions per vehicle per day, 500 | 1.4 of 61 kWh | 1.7 of 51 kWh | 1.6 of 55 kWh |
+| Trips per visit, 500 and 1,000 | 18.1 and 23.0 | 15.2 and 21.7 | 15.6 and 21.3 |
+| Share of the plan's calls made by the low-battery floor, 500 and 1,000 | | | 0.0% and 100.0% |
+| Vehicles stranded | 0 | 0 | 0 |
+
+Mean of five seeds over the last seven of fourteen days.
+
+| Bar | Result | |
+|---|---|---|
+| 1. At least 1 point more rides than headroom at 1,000; no more than 0.2 worse at 500 | 4.8 points more at 1,000; level at 500 | **Pass** |
+| 2. Ledger kept in 95% of scored hours | 99.5% at 500, 93.2% at 1,000 | **Miss** |
+| 3. No vehicle stranded | None | **Pass** |
+| 4. Grid draw variation at most half of headroom's at 500 | 0.21 against 0.56 | **Pass** |
+| 5. Tick under 50 ms at the median and 500 ms at the 99th percentile | 0.4 ms and 7.9 ms at worst | **Pass** |
+
+The forecast's upper bound held in 92.2% of scored hours, and in every one of the hours forecast to be busiest.
+
+What this says:
+
+- **At 1,000 vehicles the heartbeat serves 4.8 points more rides than headroom on the same feeder.** E11 found that this gain comes from the power rule the controller ships with, not from its plan.
+- **At that size the floor, not the plan, is calling vehicles in.** Every one of the plan's calls at 1,000 vehicles was made by the low-battery floor, and every visit arrived at the floor, under headroom as well. A site this short of energy leaves the plan nothing to choose.
+- **Where the site isn't short, the heartbeat buys smoothness and availability.** At 500 the rides are level, the grid draw varies less than half as much as under headroom, and over four points more of the fleet is on the road in the busiest hours.
+- **The ledger holds at 500 and over-promises at 1,000:** 93.2% of commitments kept against a stated 95%, while promising 87.8% of what was delivered. E9 builds the promise from the fleet's present state.
+- **The forecast bound is a little thin overall and sound where it matters:** 92% of all hours, and every hour that was expected to be busy.
+- **The controller is cheap to run,** under 10 ms a tick at the 99th percentile.
+
+## E9. A ledger that keeps its word, and E8 again on fresh days
+
+- **Question.** E8's ledger kept its promises 93% of the time at 1,000 vehicles against a stated 95%. Can it be made to hold, without becoming a promise of nothing? And does E8's main result repeat on days it was not run on?
+- **What changed in the ledger, found on the development days (18 to 31 March 2024).**
+  - The promise starts from what is on the road at the start of the hour, moved by the change in how many vehicles the plan calls in, so vehicles already on their way in or out are counted. A steady-state figure with a wider margin would promise below zero at 1,000 vehicles.
+  - The margin is built to keep 97.5% of promises, so that 95% can be stated and met over a single week of 168 promises.
+  - The margin corrects itself: each broken promise widens it, each kept one narrows it slightly.
+  - Nothing else in the controller changes. The ledger doesn't feed back into control.
+- **Days.** 14 days from Monday 13 May 2024: later than every day used so far. Seven warm-up, seven scored. Five seeds, 301 to 305. Same depot, fleets and demand scaling as E8.
+- **Bars.**
+  1. The ledger is kept in at least 95% of scored hours, at 500 and at 1,000 vehicles.
+  2. It isn't vacuous: what was promised adds up to at least 90% of what was delivered.
+  3. E8 repeats: the heartbeat serves at least 1 point more rides than headroom at 1,000 vehicles and is no more than 0.2 points worse at 500.
+  4. No vehicle is stranded.
+- **What a miss would mean.** For 1 and 2: the depot can't yet state a dependable hourly commitment. For 3: E8's gain belonged to one week.
+
+### Result
+
+**4 of 4 bars.** Numbers are in `data/derived/e9_ledger.json`; reproduce with `depot-twin eval e9`.
+
+| | 500 vehicles | 1,000 vehicles |
+|---|---|---|
+| Ledger kept | 98.0% of hours | 95.8% of hours |
+| Promised, as a share of what was delivered | 94.2% | 97.5% |
+| Rides served, heartbeat | 100.0% | 88.6% |
+| Rides served, headroom | 100.0% | 84.4% |
+| Grid draw variation, heartbeat against headroom | 0.23 against 0.58 | flat out against 0.20 |
+| Trips per visit, heartbeat against headroom | 15.0 against 13.8 | 20.4 against 21.9 |
+| Share of the plan's calls made by the low-battery floor | 0.0% | 100.0% |
+| Vehicles stranded | 0 | 0 |
+
+Mean of five seeds.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Ledger kept in 95% of scored hours, both sizes | 98.0% and 95.8% | **Pass** |
+| 2. Promised at least 90% of what was delivered | 94.2% and 97.5% | **Pass** |
+| 3. At least 1 point more rides than headroom at 1,000; no more than 0.2 worse at 500 | 4.2 points more at 1,000; level at 500 | **Pass** |
+| 4. No vehicle stranded | None | **Pass** |
+
+What this says:
+
+- **The depot can state an hourly commitment and keep it.** It promises 94% to 97% of the vehicles it goes on to deliver and keeps the promise in 95.8% to 98.0% of hours.
+- **A promise built from the fleet's present state holds where E8's did not.** At 1,000 vehicles E8's ledger kept 93.2% of commitments; this one keeps 95.8% while promising more of what is delivered.
+- **E8's comparison repeats on later days:** 88.6% against 84.4% at 1,000 vehicles, level at 500.
+- **At 1,000 vehicles the floor, not the plan, is calling vehicles in:** every one of the plan's calls. The gain over headroom there is measured with each rule's own power rule, and E11 separates the two.
+
+## E10. A guard for when the forecast breaks
+
+- **Question.** The controller trusts the forecast's upper bound. If the forecast goes wrong, does a guard that watches the bound notice in time and limit the damage, without raising false alarms when the forecast is sound?
+- **The guard.** Each hour it compares the rides actually offered with the upper bound it was given for that hour. The bound is meant to be broken about one hour in twenty; for the hour under way, whose bound is read off the one-hour model, it breaks about one hour in ten. If it is broken in eight or more of the last 12 hours, control passes to the fixed-threshold rule, which uses no forecast. It passes back after at least 24 hours, once the bound is broken in a third of recent hours or fewer.
+- **The fault.** From the start of day 8, every forecast handed to the controller is 33% of what the models said: a feed that has gone stale on a quiet day. The demand itself is untouched.
+- **Days and runs.** 14 days from 13 May 2024; days 8 to 14 scored. 500 and 1,000 vehicles, three seeds (311 to 313). Five runs each: the controller with a sound forecast, with and without the guard; the controller with the fault, with and without the guard; and the threshold rule.
+- **Bars.**
+  1. No false alarm: with a sound forecast the guard never passes control away, at either size; and run over the sound forecast of all four replayed fortnights with the hour's rides drawn at the planned fleet's scale (600 vehicles, three draws, no depot), the trigger never fires.
+  2. Detection: with the fault, the guard passes control within 12 hours of its start, in every run.
+  3. Damage limited: with the fault, the guarded controller serves at least as many rides as the unguarded one, to within 0.2 points, at both sizes.
+- **Also reported.** What the fault costs the unguarded controller, and how the guarded one compares with running the threshold rule all along.
+- **What a miss would mean.** For 1: the guard is too jumpy to leave switched on. For 2: it is too slow to matter. For 3: falling back doesn't help, either because the controller shrugs off a bad forecast by itself or because the fallback is worse than a misinformed controller.
+
+### Result
+
+**2 of 3 bars.** Numbers are in `data/derived/e10_guard.json`; reproduce with `depot-twin eval e10`.
+
+| Rides served, days 8 to 14 | 500 vehicles | 1,000 vehicles |
+|---|---|---|
+| Controller, sound forecast | 100.0% | 88.7% |
+| Controller, sound forecast, guarded | 100.0% | 88.7% |
+| Controller, stale forecast | 100.0% | 88.7% |
+| Controller, stale forecast, guarded | 100.0% | 87.5% |
+| Threshold rule, with the controller's power rule | 100.0% | 88.9% |
+
+No vehicle was stranded in any run.
+
+| Bar | Result | |
+|---|---|---|
+| 1. No false alarm with a sound forecast | No run fell back, and the trigger never fired on the four fortnights at 600 vehicles | **Pass** |
+| 2. Falls back within 12 hours of the fault | Every run, within 8 hours | **Pass** |
+| 3. Guarded serves at least as many rides under the fault | 87.5% against 88.7% unguarded at 1,000; level at 500 | **Miss** |
+
+What this says:
+
+- **The guard works as a detector.** It never fired on a sound forecast, and it caught a stale one within eight hours in every run. Over the sound forecast of all four fortnights at 600 vehicles the bound broke in 10.8% to 17.1% of hours and the trigger never fired.
+- **The controller did not need it.** Handed forecasts a third of the truth, the unguarded controller served exactly as many rides as with sound ones. The guard then cost rides at 1,000 by switching rules mid-stream.
+- **The last row is the one that matters.** A plain threshold rule, given the controller's way of sharing power, serves as many rides as the whole controller: 100.0% at 500 and 88.9% at 1,000. The forecast can't matter much to rides if a rule that ignores it does as well.
+- **Why a bad forecast can't move the controller at 1,000.** On these same days E9 records that the low-battery floor, not the plan, made every one of the plan's calls at that size. E11 takes the controller apart to say which part delivers its rides.
+
+## E11. Taking the controller apart
+
+Registered after E10.
+
+- **Question.** E8 and E9 measured the heartbeat controller as a whole: its calling and its power rule together. Which part delivers the gain: how vehicles are called in, or how power is shared among those plugged in?
+- **Grid.** Three ways of calling vehicles in (fixed threshold, headroom, heartbeat plan) crossed with two ways of sharing power (lowest charge first, which the simple rules used; in order of plugging in, which the heartbeat used). Every cell on the same days (from 13 May 2024), 500 and 1,000 vehicles, three seeds (321 to 323).
+- **Reported for every cell.** Rides served; share of the fleet on the road in the busiest hours; variation of grid draw.
+- **No bars.** This is an attribution, not a claim. What is written in advance is what each outcome would mean.
+  - If the power rule carries the gain: the result of E8 and E9 is "feed vehicles in turn at full rate", and the plan, the forecasts behind it and the ledger have to justify themselves on grid smoothness and on being able to make a promise, not on rides.
+  - If the plan carries it: E10's last row was a coincidence of that week.
+  - If both matter: say how much each.
+
+### Result
+
+An attribution, no bars. Numbers are in `data/derived/e11_apart.json`; reproduce with `depot-twin eval e11`.
+
+**The power rule carries the gain in rides. The plan doesn't.**
+
+Rides served:
+
+| Vehicles called in by | Power to lowest charge first | Power in order of plugging in |
+|---|---|---|
+| **1,000 vehicles** | | |
+| Threshold | 82.9% | 88.8% |
+| Headroom | 84.7% | 86.0% |
+| Heartbeat plan | 85.7% | 88.5% |
+| **500 vehicles** | | |
+| Threshold | 100.0% | 100.0% |
+| Headroom | 100.0% | 100.0% |
+| Heartbeat plan | 100.0% | 100.0% |
+
+The variation of grid draw at 500 vehicles came out at 0.40 and 0.24 for the threshold, 0.57 and 0.39 for headroom, and 0.26 and 0.22 for the heartbeat. No vehicle was stranded in any cell.
+
+What this says:
+
+- **At a site short of energy, in-order feeding lifts every rule:** by 5.9 points under a threshold, 2.8 under the plan and 1.3 under headroom.
+- **With in-order feeding the plan adds no rides.** A plain threshold serves 88.8% at 1,000 vehicles and the full controller 88.5%. With lowest-charge-first the plan is 2.8 points ahead of the threshold, so its calling partly makes up for a poor power rule, and adds nothing to a good one.
+- **The gain in E8 and E9 is the power rule's.** The heartbeat's gain over headroom at 1,000 vehicles comes from the power rule it ships with.
+- **Where energy isn't short, nothing separates the cells.** Every one serves 100.0% at 500 vehicles.
+- **Headroom is the weakest way to call vehicles in once power is fed in order:** 86.0% at 1,000, and the smallest share of the fleet on the road in the busiest hours at 500.
+- **What the plan is left with.** A slightly smoother grid draw than a threshold with the same power rule, 0.22 against 0.24; more of the fleet on the road in the busiest hours at 500, 85.5% against 84.4%; and the ability to make and keep an hourly promise. Not rides. On the same days E9 records that the floor, not the plan, made every one of the plan's calls at 1,000 vehicles.
+
+Why lowest-charge-first loses is measured in the staffing study: site power goes unused while finished vehicles wait on chargers to be unplugged. Where a plan could still earn its place is money, which E12 tests.
+
+## Growth study with in-order feeding
+
+A study, no bars. Numbers are in `data/derived/growth_v2.json`; reproduce with `depot-twin eval growth-v2`.
+
+The first growth study again, with each vehicle type's own energy use and demand replayed from 15 to 28 April 2024, the second week scored, three seeds. Two arms at every size: the headroom rule with power to the emptiest vehicle first, and the heartbeat controller with in-order feeding.
+
+Rides served:
+
+| Fleet | One feeder, headroom | One feeder, heartbeat | Two feeders, headroom | Two feeders, heartbeat |
+|---|---|---|---|---|
+| 400 | 100.0% | 100.0% | 100.0% | 100.0% |
+| 600 | 100.0% | 100.0% | 100.0% | 100.0% |
+| 700 | 99.5% | 99.9% | 100.0% | 100.0% |
+| 800 | 95.6% | 98.0% | 100.0% | 100.0% |
+| 1,000 | 82.7% | 87.6% | 100.0% | 100.0% |
+| 1,200 | 71.6% | 75.9% | 100.0% | 100.0% |
+| 1,500 | 58.8% | 62.1% | 97.8% | 99.2% |
+| 2,000 | 45.6% | 46.8% | 82.9% | 87.6% |
+
+No vehicle was stranded in any run.
+
+- **One feeder carries 700 vehicles at 99% and 800 at 95%,** under either arm. The heartbeat arm is 2.4 points ahead at 800 and 4.9 at 1,000, where E8 records on these days that the low-battery floor, not the plan, calls the vehicles in (every call).
+- **Two feeders carry 1,500 vehicles at 99% with the heartbeat arm** (99.2%) and 1,200 with headroom (97.8% at 1,500).
+- **2,000 vehicles still don't fit:** 87.6% at best on two feeders.
+- **The grid saturates before service breaks.** With the heartbeat arm the feeder runs at 92% of its usable power at 600 vehicles. From 700 up it is at its limit around the clock, and at 700 99.9% of rides are still served.
+- **A 4 MWh battery makes no difference to the heartbeat arm at any size:** 99.9% at 700 and 87.6% at 1,000, with or without. A battery moves energy in time and adds none. Under headroom it is worth 2.6 points at 800 (98.2% against 95.6%) and 2.6 at 1,000, and it moves neither capacity figure.
+
+## E12. Does a plan that knows the price of energy earn its place?
+
+- **Question.** E11 showed that the day-ahead plan adds no rides over a fixed threshold once power is shared in order. Energy at this site costs $0.36 per kWh from 4 pm to 9 pm and $0.13 to $0.15 the rest of the day. Can the plan move charging out of the expensive hours without losing rides, and does it take a plan to do that, or would a threshold that knows the clock do as well?
+- **Arms.** All with in-order feeding.
+  - Threshold: call in at 20%, release at 85%.
+  - Clock-aware threshold: the same, but call in at 40% in the four hours before the peak and at 15% during it. No forecast, no plan.
+  - Clock-aware threshold that waits for a free charger: the plan's own call-in levels (59%, 75% in the four hours before the peak, 15% during it), calling only as many vehicles as chargers are free and unspoken for. No forecast, no program. It is what the plan's steering does on its own.
+  - Plan: the heartbeat controller as in E9.
+  - Plan with prices: the same controller told the tariff. Its hourly program weighs fares against the cost of each hour's energy; in the four hours before the peak it also calls vehicles that would otherwise run down during it; during the peak it calls only vehicles under 15%.
+  - Plan, clock only (reported, no bar): the plan with prices, with its hourly program unable to see them. It separates the steering by the clock from the program's own use of prices.
+- **What development showed (18 to 31 March 2024, two seeds).** Putting the price in the hourly program alone moved nothing. Steering which vehicles are called before and during the peak moved a great deal. At 500 vehicles the plan with prices bought energy cheaper at unchanged service; the clock-aware threshold bought it cheaper still and lost rides. At 1,000 vehicles, with the site flat out, nothing could move, and the clock-aware threshold lost more rides.
+- **Days.** 14 days from Monday 29 April 2024, the last unused part of the held-out block. Seven warm-up, seven scored. Five seeds, 401 to 405. 500 and 1,000 vehicles.
+- **Bars, at 500 vehicles, plan with prices against the plain threshold.**
+  1. Energy is at least 5% cheaper per kWh.
+  2. Rides served are no more than 0.1 points below the threshold's.
+  3. Fares less energy cost, per vehicle per day, is higher.
+  4. No vehicle is stranded under the plan with prices, at either size.
+  5. The plan with prices buys energy at least 1% cheaper per kWh than the clock-aware threshold that waits, with rides within 0.1 points of it. Belief: the hourly program contributes something beyond the steering by the clock.
+  6. The program's quota sits below its ceiling (the site's charging capacity, or the vehicles with room for a slot) in at least a quarter of the scored hours. Belief: the program is the thing deciding how many vehicles each hour takes.
+- **Attribution, reported without a bar.** The plan with prices against the clock-aware threshold on fares less energy, at both sizes. If the clock-aware threshold matches it, the plan is still not needed.
+- **What a miss would mean.** On 1 to 4: the plan has no case left at this site, and the depot should run a threshold with in-order feeding. On 5 or 6: the plan's saving is its clock steering, and the hourly program is machinery with no decision of its own at this depot.
+
+### Result
+
+**4 of 6 bars.** Numbers are in `data/derived/e12_cost.json`; reproduce with `depot-twin eval e12`.
+
+All arms run long visits (a fifteen-minute leg each way, cleaning on every visit). The last column, reported without a bar, is the plan with its tariff-clock steering and an hourly program that can't see prices.
+
+| 500 vehicles | Threshold | Clock-aware threshold | Clock-aware threshold that waits | Plan | Plan with prices | Plan, clock steering only |
+|---|---|---|---|---|---|---|
+| Rides served | 99.8% | 94.6% | 99.0% | 100.0% | 100.0% | 100.0% |
+| Energy bought in the peak hours | 24.0% | 14.6% | 3.5% | 24.3% | 10.4% | 10.2% |
+| Price paid per kWh | $0.1956 | $0.1754 | $0.1530 | $0.1965 | $0.1675 | $0.1671 |
+| Energy cost per vehicle per day | $18.84 | $15.97 | $14.64 | $19.13 | $16.26 | $16.22 |
+| Fares less energy, per vehicle per day | $494.26 | $470.13 | $494.41 | $494.89 | $497.76 | $497.79 |
+| Trips per visit | 17.8 | 16.3 | 13.7 | 16.0 | 16.0 | 16.0 |
+| Share of the plan's calls made by the floor | | | | 0.0% | 4.9% | 4.2% |
+| Hours with the program's quota at its ceiling | | | | 95.2% | 95.6% | 96.6% |
+
+At 1,000 vehicles the site draws its limit around the clock, so no rule can move when energy is bought: every arm pays $0.190 per kWh. The three plan arms are identical there at 84.0% of rides, the threshold serves 84.2%, the clock-aware threshold 80.0% and the one that waits 85.0%. At that size the low-battery floor, not the plan, calls the vehicles in: every one of the plan's calls, with the quota at its ceiling in every hour. No vehicle was stranded.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Energy at least 5% cheaper per kWh | 14.4% cheaper | **Pass** |
+| 2. Rides no more than 0.1 points below the threshold | 0.2 points higher | **Pass** |
+| 3. Fares less energy higher | $3.49 more per vehicle per day | **Pass** |
+| 4. No vehicle stranded under the plan with prices | None, at either size | **Pass** |
+| 5. At least 1% cheaper per kWh than the clock-aware threshold that waits, rides within 0.1 points | $0.1675 against $0.1530, 9.5% dearer; 100.0% against 99.03% of rides | **Miss** |
+| 6. Quota below its ceiling in a quarter of scored hours | Below it in 4.4% of hours: at its ceiling in 95.6% | **Miss** |
+
+What this says:
+
+- **Told the tariff, the plan cuts the energy bought in the peak hours by more than half and pays 14% less per kWh, with no loss of rides.** On 500 vehicles that is about $1,290 a day off the energy bill.
+- **The saving is the clock steering, all of it.** The plan whose hourly program can't see prices pays $0.1671 against $0.1675 and earns four cents a vehicle-day more. What moves energy is calling, before the peak, the vehicles that would otherwise run down during it, and holding calls during it.
+- **A threshold that simply knows the clock can't steer safely.** It pays 10% less per kWh and loses 5.25 points of rides doing it, $24.13 a vehicle a day worse than not trying. It pulls vehicles in before the peak whether or not the road can spare them.
+- **The hourly program decides almost nothing of its own.** Its quota sits at its ceiling in 95.6% of hours. The plan's call-in levels, with a call only when a charger is free and no program at all, buy energy at $0.1530 a kWh, 8.7% cheaper than the plan, and serve 99.03% of rides against the plan's 100.0%. The plan's edge over it is those 0.97 points of rides, $3.35 a vehicle-day in fares less energy, and not the price of energy.
+- **It only works with slack.** At a site drawing its limit all day there is no cheaper hour to move into.
+- **The size of it.** $3.49 on $494.26 a vehicle a day is 0.7%, and energy is under 4% of fares. The plan is worth having; the power rule from E11 is worth far more and costs nothing.
+
+## Session length study
+
+A study, no bars. Numbers are in `data/derived/session_length.json`; reproduce with `depot-twin eval session-length`.
+
+How far does the case against short charging sessions depend on two things the depot doesn't have to accept: how far it sits from the riders, and how powerful its chargers are? The controller was run with slots of 20, 30, 45 and 60 minutes, at a drive of 5, 10 and 15 minutes each way, with 60 kW and 150 kW chargers, on the development days (from 18 March 2024), 500 and 1,000 vehicles, five seeds. Visits are long, with cleaning on each.
+
+Rides served at 500 vehicles, with the energy per session in brackets:
+
+| Drive each way | Chargers | 20 min slot | 30 min | 45 min | 60 min |
+|---|---|---|---|---|---|
+| 5 minutes | 60 kW | 62.3% (16 kWh) | 86.4% (26) | 100.0% (41) | 100.0% (55) |
+| 15 minutes | 60 kW | 56.3% (16 kWh) | 82.2% (26) | 100.0% (41) | 100.0% (55) |
+| 5 minutes | 150 kW | 100.0% (40 kWh) | 100.0% (64) | 100.0% (67) | 100.0% (67) |
+| 15 minutes | 150 kW | 99.8% (40 kWh) | 100.0% (64) | 100.0% (68) | 100.0% (68) |
+
+At 1,000 vehicles, with the site short of power, the 60-minute slot was best in every case and in every one of the five seeds, by 0.9 to 2.5 points over the 45-minute slot: 86.8% to 89.2% of rides, against 58.2% to 83.8% with 20-minute slots. No vehicle was stranded.
+
+What this says:
+
+- **Distance isn't what sinks short sessions.** Moving the depot from 15 minutes away to 5 lifts a 20-minute slot at 60 kW from 56% to 62%. Every visit also carries plugging in, unplugging and cleaning, whatever the drive.
+- **Charger power is what rescues them.** At 150 kW a 20-minute slot delivers 40 kWh and serves 99.6% or more, as well as an hour at 60 kW does.
+- **So the rule is about energy, not minutes.** A visit that delivers about 40 kWh serves all or nearly all rides; one that delivers 26 kWh loses 14 to 18 points; one that delivers 16 kWh loses 38 to 44. Fast chargers make a full visit a short one; slow ones make it a long one.
+- **When the site is short of power, fewer and fuller visits win.** At 1,000 vehicles a 150 kW charger on a 20-minute slot delivers only 23 kWh, because the feeder can't feed it any faster, and every extra visit is overhead.
+
+E22 measures what cleaning less often changes.
+
+## Staffing study
+
+A study, no bars. Numbers are in `data/derived/staffing.json`; reproduce with `depot-twin eval staffing`.
+
+E11 found that in-order feeding serves more rides than lowest-charge-first at a site short of power. This measures why. A threshold rule was run with each power rule at 1,000 vehicles on one feeder, on the development days (14 days from 18 March 2024, the second week scored), ten seeds, with 25 (the scenario), 50, 100 and 200 people on the depot floor. Visits are long (a fifteen-minute leg, cleaning every time). Each run recorded where vehicles were at every step, and rides served is read from those steps as rides served over rides offered in the scored week.
+
+| People | Power rule | Rides served, mean (10th to 90th percentile of ten runs) | Grid power used | Vehicles between stations | Vehicles waiting for a charger |
+|---|---|---|---|---|---|
+| 25 | Emptiest first | 80.6% (80.4% to 80.9%) | 2,415 kW | 32.5 | 381 |
+| 25 | In order | 87.1% (86.8% to 87.3%) | 2,612 kW | 2.7 | 328 |
+| 50 | Emptiest first | 83.1% (82.9% to 83.3%) | 2,517 kW | 20.9 | 361 |
+| 50 | In order | 87.1% (86.8% to 87.3%) | 2,612 kW | 2.7 | 328 |
+| 100 | Emptiest first | 84.2% (84.0% to 84.4%) | 2,559 kW | 16.4 | 351 |
+| 100 | In order | 87.1% (86.8% to 87.3%) | 2,612 kW | 2.7 | 328 |
+| 200 | Emptiest first | 84.2% (84.0% to 84.4%) | 2,566 kW | 15.4 | 349 |
+| 200 | In order | 87.1% (86.8% to 87.3%) | 2,612 kW | 2.7 | 328 |
+
+"Between stations" counts vehicles at the depot that aren't in the queue, not charging and not being cleaned: waiting for a person to plug them in or unplug them, being plugged or unplugged, or waiting for a bay.
+
+What this says:
+
+- **The loss is unused power.** In-order feeding draws 2,612 kW around the clock. Emptiest-first draws 7.5% less with the scenario's 25 people. At a site short of energy, rides follow energy: 7.5% less energy, 6.5 points fewer rides.
+- **Why the power goes unused.** Feeding the emptiest first evens out the charge of every vehicle plugged in, so they reach their target together. Each then needs a person to unplug it, and the people are also cleaning. Vehicles stand between stations, 32.5 at a time against 2.7 with in-order feeding, while several hundred wait in the queue.
+- **More people recover a little over half of it.** From 25 to 100 people the gap closes from 6.5 points to 2.9. Past 100 it stops closing: 2.9 points with 200. Run for run the gap moves by about a tenth of a point: with 25 people it is 6.4 to 6.6 points between the 10th and 90th percentile of the ten runs.
+- **About three points remain however many people there are.** Emptiest-first still draws 1.8% less power with 200 people, with 15 vehicles between stations. Vehicles that finish together are unplugged and replaced together, and for those minutes their chargers draw nothing. This last part is read from the counts, not isolated by a further experiment.
+- **In-order feeding doesn't need the people.** Its result is the same at every staffing level. It finishes vehicles one after another, so the work arrives one vehicle at a time.
+- **What this says about E11.** The gain from in-order feeding is between 2.9 and 6.5 points depending on how well staffed the depot is. A depot with automated connectors would see the low end.
+
+## E13. Can a forecast be built for a place with no ride history?
+
+- **Question.** Every forecast so far was trained on the history of the city it serves. A new site has none. Can demand be generated for it from other cities, a forecast trained on that, and its likely error stated in advance? The new site can't answer this, so cities that do have data stand in for it: each is treated in turn as if it had no history.
+- **Data.** Hourly pickups: New York ride-hail and yellow taxi by area (January 2023 to June 2026), Chicago ride-hail for the whole city (January 2025 to August 2026), San Francisco taxi by area (December 2022 to May 2024). Each series is labelled with a kind of place: core, inner, outer, airport or whole city.
+- **Generated demand.** For a target series, from donor series in other cities only: a weekly profile mixed from donors of the same kind; the donors' holiday pattern and response to rain, applied to the target's own calendar and weather; week-long blocks of the donors' leftover variation; a slow drift in level; then counts drawn at a level picked at random over a wide range. The target's own rides are never used.
+- **Model.** One XGBoost model per horizon (1, 6 and 24 hours) pooled over all donor series and the generated series, predicting the ratio to the same hour last week. No city identifier, no month, no temperature: only features that mean the same thing in every city. Trained only on donor data from before the target's test days.
+- **Bounds.** A relative error plus counting noise. Sized on donor cities the model was not trained on (each donor city held out in turn), not on errors inside a city. Where only one donor city exists, one service is held out in its place.
+- **Test days.** The last 60 days of each target city's series, scored on the whole-city series. Development used the 60 days before those, and never the test days.
+- **Arms, per held-out city and horizon.**
+  - Same hour last week, and the best of three naive rules.
+  - In-city: a model trained on the city's own history, fitted by E7b's procedure on the cross-city features. What having history is worth.
+  - Donors only.
+  - Donors plus generated demand for the target. The arm the bars are on.
+  - Generated demand only.
+- **Bars.**
+  1. In all three cities and at all three horizons, the donors-plus-generated model has lower error than the best naive rule.
+  2. In at least 7 of the 9 cells its error is no more than 1.25 times the in-city model's.
+  3. In all 9 cells the upper bound holds between 90% and 99% of the time (it is sized for 95%).
+  4. The depot reaches the same answer on generated demand as on real days: for San Francisco, with demand generated from other cities and scaled to the same rides per day, rides served by a threshold with in-order feeding is within 1.5 points of the figure on real days (15 to 28 April 2024), at 500 and at 1,000 vehicles. Ten generated scenarios, three seeds.
+- **Reported without a bar.** Whether generated demand adds anything over donors alone. How close the generated weekly profile, spread and persistence are to the real ones. The worst cell's error, which is the figure a new site will be quoted.
+- **Known weaknesses, stated before the run.** Three cities, all dense and served by transit. For San Francisco the only donor city with earlier data is New York. Taxi and ride-hail records are trips served, not trips wanted. Nothing here tests the level of demand at a new site; the level is an input.
+- **What development showed.** Three rounds on the development days set the method.
+  - *The model is told the size of the place* (the log of last week's level), and every large donor is also trained on thinned to 300 and to 2,000 rides an hour. Without this, a model that had learned from San Francisco's 200 rides an hour distrusted last week's figure in New York, where it is precise.
+  - *The generator doesn't carry a small donor's counting noise* to places of another size. With that noise left in, generated demand made the New York forecast much worse.
+  - *Trust.* The forecast is last week's figure moved part of the way to the model's. How far is measured on donor cities the model was not trained on. Where the donors transfer badly to each other, the forecast stays near last week's figure. This costs accuracy where transfer would have been good, as it did for Chicago at one hour in development.
+  - *Bounds are sized on donor series of the target's kind and nearest its size.*
+  - *Added, reported without a bar:* the same scores with New York and Chicago thinned to 500 rides an hour, the scale of a depot.
+  - *What development showed.* On the development days the donors-plus-generated arm matched or beat the best naive rule in every cell; one was an exact tie, so bar 1 may miss. Upper bounds ran at or past both edges of bar 3.
+- **What a miss would mean.** On bar 1 or 2: a new site should run on last week's curve until it has a few weeks of its own rides, and the plan should not be offered at a site without history. On bar 3: the bounds can't be trusted across cities and the guard from E10 becomes mandatory at a new site. On bar 4: generated demand isn't fit for sizing a depot.
+
+### Result
+
+**1 of 4 bars.** Numbers are in `data/derived/e13_new_site.json`; reproduce with `depot-twin eval e13`.
+
+Error as a share of rides, on each city's last 60 days, with the city never seen in training. In every cell the best naive rule is the same hour last week.
+
+| Held-out city | Ahead | Same hour last week | Trained on its own history | Donors only | Donors plus generated |
+|---|---|---|---|---|---|
+| New York | 1 h | 8.21% | 4.07% | 7.69% | 7.63% |
+| | 6 h | 8.23% | 5.27% | 7.90% | 7.89% |
+| | 24 h | 8.09% | 5.71% | 8.09% | 8.09% |
+| Chicago | 1 h | 6.44% | 4.00% | 5.16% | 5.10% |
+| | 6 h | 6.43% | 4.71% | 5.68% | 5.89% |
+| | 24 h | 6.34% | 5.12% | 5.88% | 5.88% |
+| San Francisco | 1 h | 14.90% | 10.10% | 11.26% | 11.26% |
+| | 6 h | 14.90% | 12.06% | 13.16% | 13.05% |
+| | 24 h | 14.94% | 12.95% | 13.63% | 13.86% |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Beats the best naive rule in all 9 cells | 8 of 9, by 0.34 to 3.64 points; New York at 24 hours is level with last week's figure | **Miss** |
+| 2. Within 1.25 times the in-city model in 7 of 9 | 4 of 9; New York is 1.42 to 1.88 times, Chicago 1.28 times at one hour and 1.251 at six | **Miss** |
+| 3. Upper bound holds 90% to 99% of the time in all 9 | New York 96.2% to 97.3%; Chicago 98.9% to 99.2%, over the top edge in two cells; San Francisco 91.2%, 88.2% and 87.2% | **Miss** |
+| 4. Depot on generated demand within 1.5 points of real days | 500 vehicles: 100.0% against 100.0%. 1,000 vehicles: 88.0% against 88.2% | **Pass** |
+
+Reported without a bar:
+
+- **Generated demand barely moves the forecast.** Beside donors alone it lowered error in four cells, by up to 0.11 points, left three level and raised two, by 0.21 and 0.23 points. Donors alone beat last week's figure in eight cells and tie in the ninth.
+- **Generated demand alone isn't enough.** A model trained only on it is worse than last week's figure in eight cells: 12.5% to 19.9% in New York, 106% to 161% in San Francisco.
+- **At a depot's scale**, with New York and Chicago thinned to 500 rides an hour, the forecast has 7.7% to 9.3% error in New York and 6.5% to 7.5% in Chicago, against 9.5% to 10.0% and 8.1% to 8.3% for last week's figure. A model trained on the city's own thinned history is 0.7 to 2.5 points better.
+- **How like the real thing generated demand is.** Its weekly shape is off by 15% to 23% of the average hour. It varies more than the real series in New York and Chicago, 0.22 and 0.25 against 0.12 and 0.11 in log terms, and less in San Francisco, 0.15 against 0.22.
+- **The figure a new site is quoted**, against last week's curve on the same days: 76% to 93% of its error an hour ahead, 88% to 100% at six and 24 hours. The worst cell is New York 24 hours ahead, 8.09% against 8.09%.
+
+What this says:
+
+- **A forecast built without the place's own history beats last week's curve in eight cells, by most an hour ahead, and not at all in New York a day ahead.** In New York at 24 hours the donors transfer so poorly that the forecast is given no trust and is last week's figure exactly. Against a model trained on the place's own rides it is behind in all nine cells. A new site should run on last week's curve until it has a few weeks of its own rides, as the registration said a miss would mean.
+- **Bar 3: the bounds can't be trusted across cities.** For San Francisco the only earlier data was New York's, so the bounds were sized between New York's two services, which share a city and its shocks, and they came out too narrow. With two donor cities they came out on the wide side. The guard from E10 is mandatory at a new site.
+- **Bar 4: the depot reaches the same answer on generated demand.** At 1,000 vehicles the real fortnight's 88.2% sits inside the ten scenarios' range, 86.2% to 90.7%, 0.1 points from their mean. Generated demand is fit for sizing a depot even though it doesn't improve the forecast.
+- **Limits.** Three cities, all dense. The level of demand at a new site is still an input.
+
+## E14. Do the power-rule findings hold on fresh days from another city, and does the textbook rule beat in-order feeding?
+
+- **Question.** Three things are worth confirming away from the development days. E11 found that in-order feeding beats "emptiest first" at a site short of power; the staffing study explained why and said the gain shrinks with more people, but it was a study on development days. And scheduling theory names a further rule: feed the vehicle with the least energy still to take.
+- **Demand.** Real ride-hail days from Chicago: 14 days from Monday 2 March 2026, hourly counts thinned to a depot's scale and spread over five-minute steps. No depot run has used Chicago before. Seven days warm-up, seven scored.
+- **Arms.** A fixed threshold (call in at 20%, release at 85%) with each of three power rules: emptiest first, in order of plugging in, least energy left first. 1,000 vehicles on one feeder. 25 people (the scenario) and 100. Five seeds, 601 to 605.
+- **What development showed (San Francisco, 18 to 31 March 2024, two seeds).** In-order feeding served more rides than emptiest first, by less with 100 people than with 25. Least-left matched in-order feeding.
+- **Bars.**
+  1. With 25 people, in-order feeding serves at least 2 points more rides than emptiest first (rides served over rides offered, as in the staffing study).
+  2. With 100 people the gap is smaller than with 25, and still above zero.
+  3. With 25 people, emptiest first leaves at least 4% of the site's power unused and in-order feeding less than 1%.
+  4. Least-left serves no fewer rides than in-order feeding, to within a tenth of a point, at both staffing levels.
+- **What a miss would mean.** On 1 to 3: the power-rule finding belongs to San Francisco's days and the headline claim must be withdrawn or narrowed. On 4: the textbook rule doesn't carry over to a depot, and the reason needs finding.
+
+### Result
+
+**4 of 4 bars.** Numbers are in `data/derived/e14_power_rules.json`; reproduce with `depot-twin eval e14`.
+
+Rides served is served over offered, as in the staffing study.
+
+| Power rule | People | Rides served | Usable site power drawn | Vehicles between stations |
+|---|---|---|---|---|
+| Emptiest first | 25 | 78.2% | 92.4% | 32.8 |
+| Emptiest first | 100 | 82.0% | 98.0% | 16.5 |
+| In order of plugging in | 25 or 100 | 85.4% | 100.0% | 2.7 |
+| Least energy left first | 25 or 100 | 85.6% | 100.0% | 2.7 |
+
+No vehicle was stranded in any run.
+
+| Bar | Result | |
+|---|---|---|
+| 1. With 25 people, in-order serves at least 2 points more than emptiest first | 7.2 points | **Pass** |
+| 2. With 100 people the gap is smaller and still above zero | 3.4 points | **Pass** |
+| 3. With 25 people, emptiest first leaves at least 4% of power unused and in-order under 1% | 7.6% and 0.02% | **Pass** |
+| 4. Least-left serves no fewer rides than in-order, to a tenth of a point | 0.14 points more, at both staffing levels | **Pass** |
+
+What this says:
+
+- **The finding holds on another city's days.** In-order feeding serves 7.2 points more rides than emptiest first with 25 people and 3.4 points more with 100. On San Francisco's days the staffing study measures 6.5 and 2.9.
+- **The mechanism holds.** Emptiest first leaves 7.6% of the site's usable power undrawn with 25 people. In-order feeding draws all of it.
+- **The textbook rule ties with in-order feeding:** 85.57% against 85.43%. At a site short of energy, rides follow energy delivered, and both rules deliver all of it.
+- **So the rule to state is broader than "in order".** Feed at full rate in any order that finishes vehicles one after another. Emptiest first is the one natural choice that breaks it.
+
+## Sensitivity study
+
+A study, no bars. Numbers are in `data/derived/sensitivity.json`; reproduce with `depot-twin eval sensitivity`.
+
+Several inputs sit at the edge of what is public, as recorded in `docs/METHOD.md`. This study moves each one, alone, and reads rides served on one feeder with a threshold and in-order feeding, on the development days (14 days from 18 March 2024, the second week scored), five seeds. Visits are long: a fifteen-minute leg each way and cleaning on every visit. Energy per mile and depot visits per day are read at 700 vehicles.
+
+| Input moved | 600 vehicles | 700 | 800 | 1,000 | Energy per mile | Depot visits per day |
+|---|---|---|---|---|---|---|
+| As modelled (25 rides a vehicle a day) | 100.0% | 100.0% | 98.5% | 87.1% | 0.53 kWh | 1.32 |
+| 21.5 rides a vehicle | 100.0% | 100.0% | 100.0% | 95.2% | 0.56 kWh | 1.30 |
+| 18 rides a vehicle | 100.0% | 100.0% | 100.0% | 99.9% | 0.60 kWh | 1.26 |
+| Energy per mile 10% lower | 100.0% | 100.0% | 100.0% | 93.5% | 0.49 kWh | 1.24 |
+| Energy per mile 10% higher | 99.9% | 99.0% | 93.7% | 81.4% | 0.57 kWh | 1.33 |
+| Called in at 40% charge | 99.1% | 98.6% | 95.0% | 84.8% | 0.52 kWh | 1.85 |
+| Called in at 55% charge | 86.4% | 86.4% | 88.1% | 81.0% | 0.51 kWh | 2.34 |
+| Twice the people | 100.0% | 100.0% | 98.5% | 87.1% | 0.53 kWh | 1.32 |
+
+Each figure is the mean of five seeds. They move little from seed to seed: the widest range in the table is 1.3 points (700 vehicles called in at 55% charge, 85.9% to 87.3%), and 800 vehicles as modelled serve 98.2% to 98.7%.
+
+What this says:
+
+- **The site's capacity is a number of rides, not of vehicles.** On these days, at 25 rides a vehicle, 700 vehicles serve 100.0% and 800 serve 98.5%, just under the 99% floor. At 21.5 rides, 800 vehicles serve 100.0%. At 18 rides, 1,000 serve 99.9%. Public figures put a vehicle at 18 to 24 rides a day, so a capacity quoted at 25 rides is the cautious end.
+- **Energy per mile moves the limit by about a fleet step for every 10%.** At 800 vehicles the depot serves 100.0% of rides with 10% less energy per mile and 93.7% with 10% more; with 10% more, 700 vehicles fall just under the floor (99.0%).
+- **More depot visits cost rides when every visit is cleaned.** Calling vehicles in at 40% gives 1.9 visits a day and costs 1.4 points at 700 vehicles. Calling them in at 55% gives 2.3 visits and costs 13.6 points. E22 measures what cleaning less often changes.
+- **People don't matter once power is fed in order.** Doubling them changes nothing, as the staffing study found.
+- These runs use a threshold. The day-ahead plan isn't part of this study.
+
+## E15. Is the worst generated scenario a safe reading of a constrained depot?
+
+- **Question.** In E13 the depot at 1,000 vehicles served 88.2% of rides on San Francisco's real days and 88.0% on generated demand, inside the ten generated scenarios' range of 86.2% to 90.7%: the average of generated scenarios is close to the real figure, and the scenarios spread four points around it. A constrained site is safer read from the worst scenario than from the average. Is that safe in other cities?
+- **Demand.** Chicago and New York ride-hail, each for 14 days from Monday 2 March 2026, thinned to a depot's scale: the real fortnight, and ten fortnights generated for the city from the other cities only. Seven days warm-up, seven scored.
+- **Arms.** 1,000 vehicles on one feeder, a fixed threshold with in-order feeding. Three seeds, 701 to 703.
+- **Bars, one per city.** Rides served on the real fortnight are no more than half a point below the worst of the ten generated scenarios.
+- **Reported without a bar.** The gap between the real fortnight and the average generated one.
+- **No development was possible** without using the days, so the generator is as E13 left it. San Francisco's result is the only prior evidence: its real figure, 88.2%, sits two points above its worst generated scenario, 86.2%.
+- **What a miss would mean.** Generated demand can't bound a constrained site's capacity even at its worst scenario, and the generator needs harder weeks before a new site's capacity is quoted at all.
+
+### Result
+
+**2 of 2 bars.** Numbers are in `data/derived/e15_worst_scenario.json`; reproduce with `depot-twin eval e15`.
+
+Rides served, 1,000 vehicles on one feeder:
+
+| City | Real fortnight | Generated, average of ten | Generated, worst | Generated, best |
+|---|---|---|---|---|
+| Chicago | 85.4% | 89.2% | 82.4% | 96.7% |
+| New York | 91.4% | 92.2% | 88.4% | 97.0% |
+
+| Bar | Result | |
+|---|---|---|
+| Chicago: real no more than half a point below the worst generated scenario | 3.1 points above it | **Pass** |
+| New York: the same | 2.9 points above it | **Pass** |
+
+What this says:
+
+- **The worst scenario is a safe reading.** In both cities the real fortnight lands about three points above the worst of ten generated ones.
+- **The average isn't.** It is 3.8 points kinder than Chicago's real days and 0.9 points kinder than New York's.
+- **Shape matters as much as level.** The same depot, fleet and rides per day serves 91% on New York's days and 85% on Chicago's. A site's kind of place is a first-order input to its capacity.
+- **The spread is wide.** Ten generated fortnights for one city run from 82% to 97% of rides served at this size. That is what not knowing the place costs.
+- **Rule for a new site.** Generate ten scenarios. Quote the worst for capacity, and quote the spread beside it.
+- **Limit.** Two cities are checked here, once each. The generator's typical weeks are kinder than the real ones, and the rule above works around that without changing the generator.
+
+## First-hour forecast study
+
+A study, no bars. Numbers are in `data/derived/first_hour.json`; reproduce with `depot-twin eval first-hour`.
+
+The plan has no model for the hour already under way: its figure is last week's rides for that hour, adjusted by what the one-hour model says about the hour after. This study trains a fourth model for that hour, like the other three, and asks two things: how much better the forecast is over the four replay windows (56 days), and whether the plan does better with it, on E9's days and, told the tariff, on E12's days, at 500 and 1,000 vehicles on seeds 801 to 803. Every window has been used before, so nothing here is a test.
+
+The forecast, over the four windows:
+
+| | Error | Upper bound held |
+|---|---|---|
+| Interpolated from the one-hour model | 13.61% | 91.3% |
+| Its own model | 9.31% | 95.6% |
+
+One of the four windows lies inside the days that sized the bound.
+
+The plan:
+
+| Arm | Fleet | Forecast of the first hour | Rides served | Promises kept | Share of deliveries promised | Energy, per kWh |
+|---|---|---|---|---|---|---|
+| Plan | 500 | Interpolated | 100.0% | 97.8% | 94.7% | |
+| Plan | 500 | Own model | 100.0% | 97.2% | 95.0% | |
+| Plan | 1,000 | Interpolated | 88.7% | 96.2% | 97.4% | |
+| Plan | 1,000 | Own model | 88.7% | 96.2% | 97.4% | |
+| Plan with prices | 500 | Interpolated | 100.0% | | | $0.1675 |
+| Plan with prices | 500 | Own model | 100.0% | | | $0.1674 |
+| Plan with prices | 1,000 | Interpolated | 84.05% | | | $0.1899 |
+| Plan with prices | 1,000 | Own model | 84.05% | | | $0.1899 |
+
+No vehicle was stranded.
+
+What this says:
+
+- **The forecast is much better.** About a third less error, and a bound that holds 95.6% of the time where the interpolated one holds 91.3%, short of the 95% it is sized for.
+- **The plan barely notices.** Rides served are the same with either forecast in every arm. At 1,000 vehicles nothing moves: the site is flat out and the plan has no choice to make.
+- **What moves is small and at 500 vehicles.** The plan with prices buys energy at $0.1674 against $0.1675, the same price. The plain plan commits to a little more of what it delivers, 95.0% against 94.7%, and keeps 97.2% of promises against 97.8%.
+- **This agrees with E10 and E11.** The plan's decisions at this depot are set by energy and by the peak, not by the detail of the next hour's rides.
+- **What is done with it.** The model is kept as an option, the `now:` windows in the runner, the right choice for a live depot where the guard watches that bound. The registered tests run on the interpolated figure.
+
+## E16. What is a forecast worth to the plan, and does that depend on what binds?
+
+Days: the `sf_e8` window (15 to 28 April 2024). It has been used by E8 and the workbench, so this is a prospective hypothesis on days already seen, and is labelled as such; the hypothesis was fixed before these runs.
+
+- **Question.** The workbench found the plan's results unchanged by the forecast at this depot. A sharper claim follows from it: the value of forecast accuracy depends on which constraint binds. Energy bound: no value. Vehicles bound: value. This test looks for both regimes on the same days.
+- **Arms**, each the price-aware plan fed a different forecast: *perfect foresight* (the rides that came, as forecast and bound); *the model* (the reference forecast); *last week's curve* (no model, with a bound sized the same way); *a broken feed* (the model's forecast cut to a third from the second week, unwatched).
+- **Regimes**, all on one feeder with in-order feeding, three seeds (1001 to 1003):
+  - *Slack:* 500 vehicles at 25 rides a vehicle a day.
+  - *Edge:* 700 vehicles at 25.
+  - *Energy bound:* 1,000 vehicles at 25.
+  - *Vehicles bound:* 500 vehicles at 32 rides a vehicle a day, so that at the peak every vehicle on the road is busy and energy isn't short.
+- **Measures.** Rides served; fares less energy cost per vehicle-day; energy per kWh; promises kept; the bound's margin above the rides that came, in vehicle-equivalents; peak grid draw. *Regret* is perfect foresight's figure less an arm's, on rides and on money.
+- **Bars.**
+  1. Energy bound: rides served differ by less than 0.5 points across all four arms.
+  2. Vehicles bound: perfect foresight serves at least 1 point more rides than last week's curve, and the model recovers at least half of that gap.
+  3. The model's regret on fares less energy is at most 2% of perfect foresight's figure in every regime.
+  4. The broken feed loses more rides against perfect foresight in the vehicles-bound regime than in the energy-bound one.
+- **What a miss would mean.** On 1: the forecast does matter where the workbench said it did not, and the workbench's conclusion must be withdrawn. On 2: either forecast quality doesn't matter even where vehicles bind, and forecasting should stop being a priority for this depot, or the model is far from perfect foresight and has room to earn. On 3: the plan is leaving money on the table that a better forecast would find. On 4: a broken feed does uniform damage, and the guard matters everywhere.
+
+### Result
+
+**3 of 4 bars.** Numbers are in `data/derived/e16_regret.json`; reproduce with `depot-twin eval e16`.
+
+Rides served, second week, three seeds:
+
+| Regime | Perfect foresight | The model | Last week's curve | Broken feed |
+|---|---|---|---|---|
+| Slack (500 at 25 rides) | 100.00% | 100.00% | 100.00% | 100.00% |
+| Edge (700 at 25) | 99.87% | 99.87% | 99.87% | 99.87% |
+| Energy bound (1,000 at 25) | 87.72% | 87.72% | 87.72% | 87.72% |
+| Vehicles bound (500 at 32) | 99.20% | 99.18% | 99.22% | 99.18% |
+
+The reserve is the bound's margin above the rides that came, in vehicle-equivalents (one per 60/23 rides an hour), and scales with the fleet and its rides: 50, 70, 100 and 64 by regime under the model, 1.27 times that under last week's curve (64, 89, 127 and 81), none under perfect foresight. Promises were kept in 97.0% to 98.4% of hours in every arm. No vehicle was stranded.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Energy bound: rides within 0.5 points across arms | Identical to four decimals | **Pass** |
+| 2. Vehicles bound: foresight worth 1 point over last week, model recovers half | Foresight is worth nothing: last week's curve serves 0.02 points more | **Miss** |
+| 3. Model's money regret at most 2% everywhere | At most 0.02%, $0.10 a vehicle-day | **Pass** |
+| 4. Broken feed hurts more where vehicles bind | 0.02 points there, nothing where energy binds | **Pass** |
+
+What this says:
+
+- **Where energy binds, and at the edge, the forecast is worth exactly nothing.** All four arms serve the same rides and earn the same money.
+- **Where vehicles bind, perfect foresight is worth nothing either.** It serves 99.20% of rides, last week's curve 99.22%, and the model and a feed cut to a third 99.18%: all four within 0.04 points. Bar 4 passes on those 0.02 points. The hypothesis fails: neither regime gives the forecast a value in rides.
+- **A forecast's value at this depot is a reserve, not rides.** The model's margin is the smaller in every regime, and that is where a better forecast shows.
+- **Money follows rides.** The model's regret against perfect foresight is at most 0.02% of fares less energy.
+- **What is decided.** Forecast error isn't a priority for this depot's results. The forecast work that remains is justified by the bound, meaning calibration and sharpness, which set the reserve, and by sites with no history.
+
+## E17. Do the changes to the model improve the forecast's bound, and does that hold on days held back for it?
+
+- **Question.** E16 settled what a forecast is for at this depot: its bound sets the vehicles held in reserve. The workbench named four changes to the way the forecast is built. Do they make the bound tighter at the same reliability, and the forecast more accurate, on days held back for the purpose?
+- **Arms**, each one change from the reference, and one with all of them:
+  - *Reference:* ratio to the same hour last week; trees stopped on one block; a symmetric bound sized on the calibration block.
+  - *Steadier denominator:* ratio to the mean of that hour over the last four weeks.
+  - *Rolling-origin stopping:* the number of trees chosen on four expanding folds of the training block, then refit.
+  - *Normalized counts:* a count target made scale-free: rides divided by the trailing four-week level, scale restored afterwards.
+  - *Calibrated quantile bounds:* a 95th-percentile model for the bound, corrected on the calibration block by time of day.
+  - *Bagging:* five models on different seeds and row samples, averaged.
+  - *All of them* (with the ratio target).
+- **Development.** San Francisco, hourly, scored on its forecast holdout. Development evidence only: those days have been inspected before.
+- **Confirmation.** Chicago and New York, thinned to a depot's volume (500 rides an hour), on the reserved windows 5 January to 1 March 2026, with models trained only on days before them. Each figure is the mean over six draws of the thinning, and the draws that agree with the mean are counted.
+- **Measures.** Error one hour ahead (and at 6 and 24); bound coverage (sized for 95%); sharpness, as the vehicles a 500-vehicle fleet would hold in reserve for the bound; paired-day differences from the reference with a 90% block-bootstrap interval (weeks as blocks).
+- **Bars, on the confirmation windows, the all-changes arm against the reference.**
+  1. Lower error one hour ahead in both cities, with the paired-day interval excluding zero in both.
+  2. Coverage between 93% and 97% in both cities.
+  3. Fewer vehicles held in reserve in both cities, at coverage no lower than the reference's.
+  4. Lower error at six and 24 hours ahead as well, in both cities.
+- **Reported without a bar.** Each single change on its own; the normalized-count arm against the ratio arm.
+- **What a miss would mean.** On 1 or 4: the changes are San Francisco's, and the reference stands. On 2 or 3: the bound isn't better in the way that matters to the plan, and the first-hour study's guard rule stays mandatory.
+- **What development showed, on San Francisco.** The calibrated quantile bound was no better than the symmetric bound at any horizon (lower coverage and a wider bound), while the other three changes each helped. The all-changes arm therefore keeps the symmetric bound; the quantile bound stays as an arm of its own, reported.
+
+### Result
+
+**0 of 4 bars.** Numbers are in `data/derived/e17_fixes.json`; reproduce with `depot-twin eval e17`.
+
+Each city is thinned to a depot's scale by keeping rides at random, and every figure is the mean over six draws of that thinning (seeds 17 to 22). The models are trained on every hour of the day. Below: error one hour ahead, bound coverage and vehicles held in reserve (fleet of 500). "Error" is the aggregate figure, rides missed over rides that came. The paired-day difference is the mean of the day-by-day differences from the reference, which weighs quiet days as much as busy ones, with its 90% block-bootstrap interval; the two don't subtract to each other. The last column counts the draws in which the arm's error was below the reference's.
+
+| City | Arm | Error | Same hour last week | Coverage | Reserve | Mean paired-day difference (90% interval) | Draws lower, of 6 |
+|---|---|---|---|---|---|---|---|
+| Chicago | Reference | 7.96% | 12.66% | 95.7% | 36.9 | | |
+| Chicago | Steadier denominator | 8.23% | | 93.6% | 32.2 | +0.20 points (-0.39 to +1.19) | 0 |
+| Chicago | Rolling stopping | 8.02% | | 95.7% | 36.6 | +0.07 (0.00 to +0.10) | 0 |
+| Chicago | Normalized counts | 7.95% | | 95.1% | 34.8 | -0.02 (-0.25 to +0.30) | 3 |
+| Chicago | Quantile bound | 7.96% | | 94.6% | 39.5 | same point forecast | |
+| Chicago | Bagging | 7.90% | | 95.5% | 35.6 | -0.07 (-0.09 to -0.04) | 6 |
+| Chicago | All three changes | 8.23% | | 93.3% | 31.8 | +0.19 (-0.43 to +1.21) | 1 |
+| New York | Reference | 8.85% | 16.16% | 92.4% | 31.4 | | |
+| New York | Steadier denominator | 8.21% | | 92.4% | 28.8 | -0.97 (-2.16 to +0.06) | 6 |
+| New York | Rolling stopping | 8.88% | | 92.2% | 31.2 | +0.06 (0.00 to +0.13) | 2 |
+| New York | Normalized counts | 8.47% | | 92.6% | 30.0 | -0.06 (-1.39 to +1.54) | 6 |
+| New York | Quantile bound | 8.85% | | 91.1% | 33.7 | same point forecast | |
+| New York | Bagging | 8.80% | | 92.2% | 31.1 | -0.13 (-0.37 to -0.01) | 4 |
+| New York | All three changes | 8.30% | | 92.2% | 29.0 | -0.81 (-1.90 to +0.16) | 6 |
+
+At six and 24 hours the combined recipe has 11.32% and 12.45% error in New York against the reference's 11.91% and 12.80%, lower in six and five draws of six. In Chicago it has 9.55% and 10.19% against 8.27% and 8.83%, lower in no draw.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Lower error at 1 h in both cities, intervals excluding zero | New York lower, in 6 draws of 6, with an interval that reaches +0.16; Chicago higher, lower in 1 draw of 6 | **Miss** |
+| 2. Coverage 93% to 97% in both | Chicago 93.3%; New York 92.2% | **Miss** |
+| 3. Fewer reserve vehicles at no lower coverage, both cities | New York: 29.0 against 31.4, and coverage fell 0.19 points. Chicago: 31.8 against 36.9, and coverage fell 2.4 points | **Miss** |
+| 4. Lower error at 6 and 24 h in both | New York yes; Chicago no | **Miss** |
+
+What this says:
+
+- **The combined recipe helps in New York and not in Chicago.** It takes 0.35 to 0.59 points off the error in New York and adds 0.27 to 1.36 points in Chicago. New York's intervals are wide; its window holds two storm days (25 January and 23 February 2026), and the ratio target carries each one into the week after. The reference stands as the default.
+- **The steadier denominator is where the smaller reserve comes from.** On its own it holds 32.2 vehicles against 36.9 in Chicago, with about 2 points less coverage, and 28.8 against 31.4 in New York at the same coverage. The combined recipe's smaller reserve is this change.
+- **Bagging is the one change whose interval excludes zero, in both cities, and it is small:** 0.07 points in Chicago, lower in six draws of six, and 0.13 in New York, lower in four.
+- **Normalized counts aren't settled either way.** An hour ahead they have lower error in both cities, in three draws of six in Chicago and six in New York, with intervals that include zero. At six and 24 hours they are worse in Chicago and better in New York.
+- **Coverage at depot volume runs under 95% in New York for every arm**, 91.1% to 92.6%, where Chicago's reference holds 95.7%. No recipe here closes that.
+- **The quantile bound holds less often and asks for more vehicles** than the symmetric bound in both cities.
+
+## E18. How cheaply can the fleet buy a required level of demand certainty?
+
+Registered after E16 and E17. The question is theirs: E16 found that a forecast's value at this depot is the reserve its bound asks of the fleet; E17 found that changes to the point forecast move error more than they move the bound, and that the bound holds under 95% at depot volume in New York however the point forecast is built.
+
+- **Question.** At a required reliability, which forecasting architecture asks the fleet to hold the fewest vehicles in reserve? The point forecast and the uncertainty estimate are separated and judged separately.
+- **The measure.** The reserve–coverage frontier: for required coverage at 29 levels from 85% to 99%, the bound is sized on the calibration block at that level and the vehicles held in reserve and the coverage achieved are read on the test days. Arms are compared at matched *achieved* coverage, by interpolation on their frontiers, never at matched nominal coverage. The headline is reserve at 95% achieved.
+- **Arms.**
+  - *A, reference:* the reference point forecast with its symmetric bound, which grows with the square root of the forecast.
+  - *B, calibration only:* the same point forecast with a volume-aware bound, a relative part sized on the calibration block and a counting part at the normal multiple of the level asked for, combined in quadrature. This is the form the cross-city model already uses.
+  - *C, pretrained model:* Chronos-2 (Amazon, Apache 2.0) zero-shot as the point forecast, with the same bound as B sized the same way. Its version is pinned by model file and commit.
+  - *D, ensemble:* the mean of the reference and Chronos-2 point forecasts, with the same bound as B.
+  - Reported beside them: last week's curve with the B bound.
+- **Where.** *Exploratory, labelled as a second look:* Chicago and New York ride-hail on the E17 windows, which E17 opened once. *Confirmation:* New York yellow taxi, thinned to 500 rides an hour, 5 January to 1 March 2026, trained on days before; a series no forecast has ever been scored on. New York series appear in public pretraining corpora, so any Chronos-2 figure in New York is an engineering result about an available component, not a zero-shot claim; Chicago, whose series begins in 2025, is the cleaner read for that claim.
+- **Bars, on the confirmation series, reserve at 95% achieved coverage.**
+  1. B holds fewer vehicles than A.
+  2. The best of C and D holds no more than B plus one vehicle, or fewer (a pretrained point forecast doesn't make the bound worse).
+  3. At least one arm reaches 95% achieved coverage with a bound sized for 95% on the calibration block, within one point (the calibration carries from the calibration block to the test days).
+  4. Reported, no bar: whether any arm holds fewer than B by more than two vehicles. If none does, the finding is that the bound, not the point forecast, was the problem.
+- **After this, work on the trees' features and bound stops**, whatever the result. What is left open is under "Not yet run".
+- **What a miss would mean.** On 1: the symmetric bound is adequate and the under-coverage has another cause (the calibration block itself). On 2: the pretrained model's errors have a shape the bound can't absorb, and it should not be used for the bound. On 3: bounds don't carry from the calibration block to new days at this volume, and the guard must be sized on live days.
+
+### Result
+
+**2 of 3 bars.** Numbers are in `data/derived/e18_reserve.json`; reproduce with `depot-twin eval e18`. Chronos-2 is at commit `29ec376`, `chronos-forecasting` 2.3.2, context 2,048 hours, no covariates.
+
+Each series is thinned to 500 rides an hour, and every figure is the mean over three draws of that thinning (seeds 18 to 20). Each arm's frontier is read on 29 reliability levels, 85% to 99%, and arms are compared at matched achieved coverage, never nominal. The reserve is the bound's margin above the rides that came, in vehicle-equivalents at one vehicle per 60/23 rides an hour, not vehicles a plan held.
+
+The confirmation series is New York yellow taxi, forecast one hour ahead:
+
+| Arm | Point forecast | Bound | Error (aggregate) | Coverage at nominal 95% | Reserve at 95% achieved |
+|---|---|---|---|---|---|
+| A | Reference trees | Symmetric | 10.46% | 94.3% | 41.7 |
+| B | Reference trees | Volume-aware | 10.46% | 95.6% | 54.8 |
+| C | Chronos-2 | Volume-aware | 7.73% | 96.3% | 35.9 |
+| D | Mean of the two | Volume-aware | 8.54% | 96.0% | 37.9 |
+| Last week's curve | | Volume-aware | 17.64% | 92.9% | 141.1 |
+
+At six and 24 hours on the same series Chronos-2 holds 46.5 and 52.5 against the reference's 56.6 and 59.0.
+
+Exploratory, a second look at E17's window, one hour ahead, arm A against arm C:
+
+| Series | Reference trees, error | Reserve | Chronos-2, error | Reserve |
+|---|---|---|---|---|
+| Chicago ride-hail | 7.98% | 34.0 | 6.46% | 27.1 |
+| New York ride-hail | 8.96% | 40.2 | 6.11% | 25.8 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. The volume-aware bound holds fewer vehicles than the symmetric one at 95% achieved | More: 54.8 against 41.7 | **Miss** |
+| 2. The best pretrained arm holds no more than the calibration arm plus one | 35.9 against 54.8 | **Pass** |
+| 3. Some arm reaches 95% within a point at nominal 95% | A 94.3% and B 95.6%; C and D hold 96.3% and 96.0% | **Pass** |
+| Reported: any arm beats the calibration arm by more than two vehicles | Chronos-2 by 18.9; the ensemble by 16.8 | |
+
+What this says:
+
+- **The volume-aware bound doesn't win the reserve.** It holds 13 more than the symmetric bound at the same achieved coverage on the confirmation series, and more in both exploratory series. E17 pointed at the bound as the place to cut the reserve; here the reserve fell only where the point forecast got better. That rules out this bound. It doesn't show that no bound could do better.
+- **The size of the pretrained model's advantage, on the confirmation series:** 7.73% error against 10.46% for the trees trained on this city, and 35.9 against 41.7 at 95% achieved coverage, 5.8 fewer. It used no covariates and no training here.
+- **Which claim each series supports.** New York taxi data is in the pretrained model's public training corpora, so the New York figures show that an available component helps this system, not that a pretrained model transfers zero-shot. Only Chicago supports a zero-shot reading, and that look is exploratory: 6.46% against 7.98%, and 27.1 against 34.0.
+- **The bounds carry from the calibration block.** Sized for 95%, the reference's two bounds hold 94.3% and 95.6% on the test days. The pretrained arms hold a little over, 96.0% to 96.3%, which is why arms are compared at achieved coverage.
+- **The ensemble sits between its two parts** at 8.54% and 37.9. There is no case for keeping the trained model inside an ensemble at one hour.
+- **What is decided.** Work on the trees' features and bound stops here, as registered. The trained trees remain the controlled reference: locally trained and reproducible from public data. Chronos-2 is the preferred pretrained candidate where its dependency and its provenance are acceptable. No change of default is claimed.
+
+## E19. Where is the sweet spot, and what binds on either side of it?
+
+The fortnight is the `sf_e8` window (15 to 28 April 2024, the second week scored), used before by E8, E16 and the workbench; as with E16, the hypotheses are prospective and the days aren't.
+
+- **Question.** With every component settled, the question the project began with: across fleet size, feeders, chargers and the way vehicles are called in, which design earns the most at the required service, and which resource binds on either side of it? And does a plan that knows the price of energy earn its place at every size, including under wholesale prices?
+- **The frozen fortnight.** Real San Francisco rides and the trained forecasts; PG&E's BEV-2 tariff; California ISO net demand and emissions; and, new, the day-ahead and real-time prices at the PG&E load point for the same days, from the system operator's public archive. Every input dated and pinned.
+- **Designs.** Fleet 400, 500, 600, 700, 800, 1,000 and 1,200 vehicles; one feeder (2.75 MW) or two (5.5 MW); chargers at the sizing rule's count or one and a half times it; people at one per forty vehicles. Three ways of calling vehicles in: a fixed threshold; the plan told the tariff; the plan told the day-ahead price instead (a scenario for an operator with a pass-through supply contract). In-order feeding throughout. Five seeds.
+- **The account** (`finance.py`): revenue at the published average fare; energy under the tariff (base case) and under the day-ahead and real-time scenarios with an assumed delivery charge; the capacity subscription; chargers, storage, connection, land and people annualized; vehicles at a parameter of $60,000 a vehicle-year, on a slider from $30,000 to $100,000 on the money page. Contribution per site-day, per vehicle-day and per ride; payback on site capital; availability; and what binds: the share of scored steps with the grid at its limit, with vehicles waiting for a charger, and with rides lost while neither the grid nor the chargers were short (vehicles bind).
+- **Required service.** 99% of rides served; for the plan arms, promises kept at least 95% of hours.
+- **Bars, base case (tariff, $60,000 a vehicle-year).**
+  1. A sweet spot exists on one feeder: among designs that meet service, the best contribution per day is at a fleet smaller than 1,200, and the contribution per day falls on the fleet sizes above it.
+  2. The plan told the tariff has higher contribution than the threshold at every design where both meet service.
+  3. Where service breaks on one feeder under the threshold with the sizing rule's chargers, the grid binds: at the smallest fleet that fails service, the grid is at its limit in more than half of the scored steps; at the largest fleet that meets it, in fewer than a fifth.
+  4. Under the day-ahead scenario, the plan told the day-ahead price buys energy at least 10% cheaper than the plan told the tariff, at 500 vehicles on one feeder, with rides within 0.2 points.
+- **Reported without a bar.** The real-time scenario; payback years; the same figures on two feeders.
+- **What a miss would mean.** On 1: at this site more vehicles always pay, and the answer is the biggest fleet the grid allows. On 2: the plan has a size at which it costs more than it saves. On 3: service breaks for another reason than the feeder, and the capacity figure needs a new explanation. On 4: the plan's price response is tuned to the tariff's three periods and doesn't follow an hourly price.
+
+### Result
+
+**0 of 4 bars.** Numbers are in `data/derived/e19_sweet_spot.json`; reproduce with `depot-twin eval e19`. Base case: the tariff, $60,000 a vehicle-year, $100 a vehicle-day to run it, and $20 for each ride lost beyond its fare. The sweep runs long visits, a fifteen-minute leg each way with cleaning on every visit, under a plain threshold or the plan; E23 measures what one feeder carries at the cadence the filings imply, and prices those runs with the same account.
+
+A ride pays the published average fare, $19.69, on average at every fleet size. Busy pricing moves price between hours and not between designs: the share of steps sold at the busy price runs from 11% at 400 vehicles to 69% at 1,200 on one feeder, and the average fare is the same at both.
+
+One feeder, the sizing rule's chargers, each figure the mean of five seeds. Seed to seed the contribution moves by a few hundred dollars a day where service holds (at 700 vehicles under the threshold, $126,100 to $126,400), and by a few thousand at 1,000 and 1,200:
+
+| Fleet | Threshold: contribution a day, rides served | The plan, told the tariff: contribution a day, rides served | Rides lost a day (threshold, plan) | Grid at its limit (threshold, plan) |
+|---|---|---|---|---|
+| 400 | $68,200, 100.0% | $69,400, 100.0% | 0, 0 | 2%, 16% |
+| 500 | $87,500, 100.0% | $88,900, 100.0% | 0, 0 | 23%, 43% |
+| 600 | $105,900, 99.97% | $106,900, 100.0% | 5, 0 | 63%, 79% |
+| 700 | $126,300, 99.98% | $125,500, 99.88% | 3, 22 | 98%, 100% |
+| 800 | $134,700, 98.5% | $130,800, 98.0% | 299, 399 | 100%, 100% |
+| 1,000 | $67,900, 88.0% | $65,000, 87.8% | 3,027, 3,101 | 100%, 100% |
+| 1,200 | -$39,800, 77.7% | -$58,200, 76.1% | 6,791, 7,256 | 100%, 100% |
+
+The best design in the sweep is 1,200 vehicles on two feeders under the plan told the tariff: $220,700 a day with 100.0% of rides served. The best on one feeder at the required service is 700 vehicles under the threshold: $126,300 a day with 99.98% of rides served.
+
+Reported without a bar: at the designs that meet service with the sizing rule's chargers, site capital is paid back in 0.15 to 0.19 years of contribution, and energy under the real-time scenario costs $0.100 to $0.103 a kWh, within a tenth of a cent of the day-ahead scenario.
+
+| Bar | Result | |
+|---|---|---|
+| 1. A sweet spot inside the range on one feeder, with contribution falling above it | At the required service the best fleet is 700. Contribution still rises to $134,700 at 800, where 98.5% of rides are served, and falls steeply after | **Miss** |
+| 2. The plan beats the threshold wherever both meet service | Ahead at 400, 500 and 600 on one feeder by $950 to $1,400 a day and at every size on two feeders; at 700 on one feeder the threshold earns $800 more | **Miss** |
+| 3. The grid binds where service breaks: over half at the smallest failing fleet, under a fifth at the largest passing one | 100% at 800; but 98% at 700, where service still holds | **Miss** |
+| 4. The plan told the day-ahead price buys at least 10% cheaper under that scenario | $0.1004 against $0.1006 a kWh at 500 vehicles: 0.2% | **Miss** |
+
+What this says:
+
+- **The sweet spot on one feeder is 700 vehicles, and the account pulls one step past it.** 800 vehicles earn $8,500 a day more than 700 while serving 98.5%, because 299 lost rides a day cost $6,000 at $20 each against the fares of a hundred more vehicles; 800 earn more only while a lost ride is valued under about $49 beyond its fare. Past 800 the account turns hard: 1,000 vehicles lose 3,027 rides a day, $60,500 at $20 each, and earn half of what 700 do. 1,200 lose money.
+- **Scarcity doesn't pay.** A fleet too small for its demand sells more of its hours at the busy price and earns the same $19.69 a ride, so a lost ride is only ever a loss.
+- **The grid saturates before service breaks.** At 700 vehicles the feeder is at its limit 98% of the time and 99.98% of rides are still served, because the fleet's batteries carry the day. Service breaks at 800. The band starts lower than the bar's "under a fifth": the grid is at its limit 63% of the time at 600.
+- **The plan's worth is its energy price, and it closes as the grid saturates.** It pays $0.1619 against $0.1922 a kWh at 400 vehicles, $0.1767 against $0.1949 at 600, and $0.1899 against $0.1901 at 700, where the plan loses 22 rides a day to the threshold's 3 and comes out $800 behind. Above 700 the plan loses more rides than the threshold at every size.
+- **Told the day-ahead price, the plan buys only 0.2% cheaper under that scenario.** E20 tests the steering directly.
+- **Two feeders.** Contribution rises through 1,200 vehicles, with the grid at its limit 62% to 75% of the time there. The sweet spot lies beyond the sweep.
+- **One and a half times the chargers buy nothing.** Under the threshold they cost $500 to $900 a day at 400 to 700 vehicles on one feeder for the same rides, and above 700 they make the plan worse: 96.7% against 98.0% at 800.
+- **Under the wholesale scenario** energy would cost about $0.10 a kWh against $0.16 to $0.19, worth $3,500 to $5,500 a day at 400 to 700 vehicles under the threshold. It is a scenario for an operator with a pass-through contract and an assumed delivery charge of $0.08 a kWh, not a figure for this site.
+
+## E20. Can the plan follow an hourly price?
+
+E19 found the plan's price response tuned to the tariff's three periods: told the day-ahead price, it bought only 0.2% cheaper under that price. For this test the steering reads a price curve: the expensive hours are the dearest quarter of the next 24 that also sit at least 20% above the median hour, and the pre-peak window precedes whatever stretch that is. On the tariff nothing changes: the peak is still 4 pm to 9 pm.
+
+- **Days.** The `sf_e8` fortnight, second week scored, 500 vehicles on one feeder, three seeds (2001 to 2003). Days used before; hypotheses written first.
+- **Arms.** The plan told the tariff (as E12 and E19); the plan told the day-ahead price with that steering; and, as a check that it changes nothing where it should not, the plan told the tariff *as a price curve* through the same path.
+- **Bars.**
+  1. Under the day-ahead scenario, the plan told the day-ahead price buys energy at least 10% cheaper per kWh than the plan told the tariff, with rides within 0.2 points.
+  2. The plan told the tariff as a curve matches the plan told the tariff: energy per kWh within 2%, rides within 0.2 points.
+  3. Promises are kept at least 95% of hours in every arm.
+- **What a miss would mean.** On 1: the day-ahead prices that fortnight have too little shape for steering to matter, or the dearest-quarter rule is the wrong window; report the price spread. On 2: the price-curve path moves the tariff case, and E12's result doesn't describe the plan. On 3: price steering costs the promise.
+
+### Result
+
+**2 of 3 bars.** Numbers are in `data/derived/e20_price_steering.json`; reproduce with `depot-twin eval e20`.
+
+500 vehicles, one feeder, three seeds:
+
+| Arm | Rides served | Promises kept | Energy per kWh under the tariff | Under the day-ahead scenario |
+|---|---|---|---|---|
+| The plan told the tariff | 100.0% | 98.8% | $0.1651 | $0.1006 |
+| The plan told the tariff as a curve | 100.0% | 98.8% | $0.1651 | $0.1006 |
+| The plan told the day-ahead price | 100.0% | 96.6% | $0.1923 | $0.1004 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Day-ahead steering buys 10% cheaper under day-ahead prices, rides within 0.2 points | 0.2% cheaper; rides level | **Miss** |
+| 2. The tariff as a curve matches the tariff path | Identical to four decimals | **Pass** |
+| 3. Promises kept 95% in every arm | 96.6% to 98.8% | **Pass** |
+
+What this says:
+
+- **The plan can follow a price curve, and on the tariff it does exactly what the tariff path does.** The curve path is a generalization of the tariff path.
+- **This fortnight's day-ahead prices gave it almost nothing to follow.** Steering by them buys energy 0.2% cheaper under the day-ahead scenario, worth about $10 a day in contribution at 500 vehicles.
+- **Steering by the wrong price is expensive.** Billed on the tariff, the arm that steered by day-ahead prices pays $0.1923 a kWh against $0.1651, 16% more, and earns $1,300 a day less. The price the plan is told has to be the price the depot pays.
+- **So the price response is real and conditional.** It pays where the price has a shape worth paying for. The tariff's evening peak has one; this fortnight's day-ahead curve at this load point doesn't.
+
+## E22. Does the twin survive the real visit cadence?
+
+- **Question.** The filings count charging sessions and chargers. Over six quarters a vehicle charged once every 7.5 to 9.4 trips, and each charger saw 14 to 21 sessions a day. The twin under long sessions visits the depot 1.3 to 1.5 times a vehicle-day for about an hour, with a fifteen-minute leg each way and cleaning on every visit, and its own sensitivity study found that 2.3 visits a day cost 13.6 points of rides. Can the twin reproduce the real cadence with plausible settings, and do its findings hold under it?
+- **The record.** `data/derived/footprint.json`: 2025 Q1 to 2026 Q2, trips per session 9.34, 9.39, 8.93, 8.41, 7.84, 7.45; sessions per charger-day 15.7, 16.9, 14.4, 19.3, 21.0, 19.2. The target is the last three quarters: 7.5 to 8.5 trips a session, 19 to 21 sessions a charger-day. Charging data covers the whole passenger fleet, pilot and deployment; trips are the deployment's. A session in the filing is one plug-in; a visit in the twin is one plug-in.
+- **Arms.** The twin at 500 vehicles on one feeder on the `sf_e8` fortnight, a threshold rule, in-order feeding, seeds 2201 to 2203. Capacity is read on fleets of 400 to 1,000 in steps of 100, as the largest fleet serving 99% of rides with every smaller one serving it too, once under the chosen setting and once under long sessions (called in at 20%, cleaned every visit, a fifteen-minute leg). The plan arm runs 30-minute slots, about 26 kWh, seven to eight trips' worth. The settings swept: depot leg 15, 8 and 5 minutes (miles in proportion); cleaning on every visit, every second, every fourth; call-in at 20%, 40% and 55% charge with release at 85%; chargers at the sizing rule's count (66) and at one per five vehicles (100), the filings' ratio.
+- **Measures.** Trips per visit; visits per charger-day; rides served; energy per kWh under the plan; vehicles waiting for a charger. Every arm records the cadence it actually ran at and the share of its vehicles that arrived at the low-battery floor, so an arm named for a rule shows whether that rule was the one deciding.
+- **Bars.**
+  1. Some setting with a depot leg of at most 8 minutes and cleaning at most every second visit reproduces both of the filings' counts within 15%: 7.5 to 8.5 trips a visit and 19 to 21 sessions a charger-day.
+  2. Under that setting, in-order feeding beats emptiest-first at 1,000 vehicles on one feeder by at least one point of rides served (E11's finding, under the real cadence).
+  3. Under that setting, the one-feeder capacity at the 99% floor is within 100 vehicles of the capacity under long sessions.
+  4. Under that setting, the plan told the tariff buys energy at least 5% cheaper per kWh than the threshold at 500 vehicles, with rides within 0.5 points, and the plan's own trips a visit sit inside the filings' range, within the same 15%.
+- **What a miss would mean.** On 1: the twin's visit is too expensive and the real operation does something the twin doesn't model (depots inside the service area, cleaning off the charging path). On 2: the power-rule finding was an artefact of long sessions. On 3: capacity depends on the cadence, and every capacity figure has to say which cadence it is for. On 4: the plan's energy worth depends on long sessions.
+
+### Result
+
+**4 of 4 bars.** Numbers are in `data/derived/e22_cadence.json`; reproduce with `depot-twin eval e22`.
+
+The sweep, 54 settings, three seeds each, 500 vehicles on one feeder. What decides cadence is the charge level that calls a vehicle in. The rows below are at an eight-minute leg and the sizing rule's 66 chargers:
+
+| Called in at | Cleaned | Visits a vehicle-day | Trips a visit | Visits a charger-day | Rides served |
+|---|---|---|---|---|---|
+| 20% | every visit | 1.5 | 17.3 | 11 | 100.0% |
+| 40% | every visit | 2.0 | 12.3 | 15 | 99.3% |
+| 55% | every visit | 2.4 | 9.3 | 18 | **87.1%** |
+| 55% | every second | 3.0 | 8.4 | 23 | 99.6% |
+| 55% | every fourth | 3.1 | 8.1 | 24 | 100.0% |
+
+The setting chosen (bar 1): called in at 55%, released at 85%, cleaned every fourth visit, an eight-minute leg (2.0 miles), the sizing rule's chargers. It gives 8.1 trips a visit against the filings' 7.5 to 8.5, and 24 visits a charger-day against 19 to 21, above the range and inside the 15% margin. No vehicle arrived at the low-battery floor, so the threshold was the rule deciding. With cleaning on every visit the same call-in level loses 13 points of rides. The leg moves little: with cleaning on every visit, 87.7% at five minutes and 85.8% at fifteen; with cleaning every fourth visit, 100.0% at every leg. One charger per five vehicles, the filings' ratio, serves the same rides at 16 visits a charger-day.
+
+The findings under that setting, each arm with the trips a visit it actually ran at:
+
+| Finding | Result | Trips a visit as run |
+|---|---|---|
+| In-order feeding against emptiest-first, 1,000 vehicles, one feeder | 84.9% against 75.3% of rides, 9.5 points | 10.5 and 10.5 |
+| One-feeder capacity at the 99% floor, chosen setting, fleets of 400 to 1,000 | 600 (600 serves 99.96%, 700 serves 98.0%) | 8.2 at 600, 8.8 at 700 |
+| One-feeder capacity at the 99% floor, long sessions | 700 (700 serves 100.0%, 800 serves 98.5%) | 18.6 at 700, 20.9 at 800 |
+| The plan told the tariff on 30-minute slots against the threshold, 500 vehicles | $0.1586 against $0.1918 a kWh, 17.3% cheaper; rides 100.0% both | 7.4 and 8.1 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. A setting with a leg of at most 8 minutes and cleaning at most every second visit reproduces both counts within 15% | 8.1 trips a visit and 24 visits a charger-day | **Pass** |
+| 2. In-order feeding beats emptiest-first at 1,000 vehicles by at least a point | 9.5 points | **Pass** |
+| 3. Capacity at the 99% floor within 100 vehicles of capacity under long sessions | 600 against 700 | **Pass** |
+| 4. The plan buys at least 5% cheaper at 500, rides within 0.5 points, its own trips a visit in the filings' range | 17.3% cheaper, rides level, 7.4 trips a visit: just under 7.5 and inside the 15% margin | **Pass** |
+
+What this says:
+
+- **The filings' cadence is reachable.** Three visits a day of short sessions, with a wash every second to fourth visit, reproduce what the filings count on trips a visit and run a little hot on visits a charger-day.
+- **Cleaning is the cost of a visit, not the drive.** Shorten the drive and little moves. Skip the wash on three visits in four and three visits a day serve as many rides as one and a half.
+- **Capacity reads one step lower under frequent visits:** 600 at the 99% floor against 700 under long sessions. The bar passes at its edge, so a capacity figure should say which cadence it is for. At a fleet of 700, vehicles were waiting for a charger in about two thirds of steps under either cadence. The 600 is capacity under the threshold rule, which calls a vehicle in at 55% whether or not a charger is free.
+- **The power rule matters under short sessions too:** nine and a half points at 1,000 vehicles. At that size the depot doesn't hold the filings' cadence. Vehicles wait for a charger in every step and a visit stretches to 10.5 trips.
+- **The plan keeps its energy edge at the filings' cadence.** On 30-minute slots it buys 17.3% cheaper at level rides, with 3.4 visits a vehicle-day. The plan chose all of its own calls: the floor made none of them.
+
+These capacity figures rest on three seeds, one fortnight and one calling rule. E23 measures capacity over forty runs and three calling rules.
+
+## E23. What does one feeder carry, with what spread, and under which calling rule?
+
+- **Question.** E22 read capacity from three seeds on one fortnight under one rule, and that rule calls a vehicle in at a set charge whether or not a charger is free. Three things are unknown: how much of the answer is the fortnight and the seeds, how much is the rule, and how much is the three inputs the fleet's throughput rests on.
+- **Days already looked at.** E22 chose the cadence setting on the fortnight from 15 April, one of the four scored here, and the fortnight from 18 March served earlier studies as a development window. Neither was used to choose anything this test compares, and the other two fortnights give the same two readings of capacity, 700 and 600.
+- **Runs.** One feeder, the cadence setting E22 chose, in-order feeding. Four replayed fortnights (from 18 March, 15 April, 29 April and 13 May 2024), ten seeds, fleets of 500 to 900 in steps of 100, three calling rules: the threshold; the same threshold calling a vehicle only when a charger is free and unspoken for; and the plan on 30-minute slots. 600 runs. Then the power rule both ways on the same forty fortnight-and-seed pairs, at 1,000 vehicles and at the fleet carried and the step below it; and one input moved at a time under the rule that carried most: 18 and 21.5 rides a vehicle a day, ride time of 18 and 28 minutes, a rider's wait of 5 and 15 minutes, three seeds each.
+- **A settled fleet, and the same rides in every fortnight.** Every run starts its vehicles at the same spread of charge, and a fleet at the edge of what a feeder carries takes more than a week to settle. So each fortnight is replayed twice and the last week is scored, and the record keeps the same week one pass earlier beside it, with the charge of the vehicles on the road in both. A run whose scored week still reads differently from the week a pass earlier, by more than two points of low-battery arrivals or half a point of charge, is run again with four passes and then eight; the record keeps how many each run took. Demand is scaled on the scored week, so a fleet is offered exactly 25 rides a vehicle a day in every fortnight. The first fortnight lies inside the days that sized the forecast's bound, which touches the plan's arm only.
+- **What "carried" means.** A fleet is carried when at least nine runs in ten serve 99% of rides, no more than half its vehicles arrive at the low-battery level, and every smaller fleet is carried too. The second condition is there because a fleet can serve its rides for a fortnight with nearly every vehicle arriving at the emergency level; that is a depot with no margin, and it is reported beside the capacity, not as it.
+- **Measures.** By rule and fleet: the median, 10th and 90th percentile of rides served, the share of runs at 99%, trips a visit, the share of vehicles arriving at the low-battery level overall and by fortnight, the share of the usable connection drawn, and the account of each run (contribution a day and rides lost, at the base case of E19). The power rule's gain and the plan's energy saving as paired differences over the forty pairs, with the power drawn and the vehicles standing between stations under each power rule. Every run is kept in the record.
+- **Bars.**
+  1. Waiting for a free charger carries no fewer vehicles than the plain threshold.
+  2. In-order feeding beats emptiest-first by at least a point of rides at 1,000 vehicles in nine pairs in ten.
+  3. The plan buys energy at least 5% cheaper than the threshold at 500 vehicles, with rides within half a point, in nine pairs in ten.
+  4. Capacity under the rule that carries most is within one fleet step across the four fortnights.
+- **What a miss would mean.** On 1: the queue the plain threshold builds isn't what limits it. On 2: the power rule's gain depends on the days. On 3: the saving depends on the days. On 4: one fortnight isn't enough to state a capacity, and the figure needs a wider band than a fleet step.
+
+### Result
+
+**4 of 4 bars.** Numbers and every run are in `data/derived/e23_capacity.json`; reproduce with `depot-twin eval e23`.
+
+Rides served by fleet size, forty runs each (four fortnights, ten seeds): the median, with the 10th percentile in brackets, then the share of vehicles arriving at the low-battery level. The last column is the share of the feeder's usable power the waiting rule draws.
+
+| Fleet | Threshold | Threshold, waits for a charger | Plan on 30-minute slots | Power in use |
+|---|---|---|---|---|
+| 500 | 100.0% (99.8%), none | 100.0% (99.9%), none | 100.0% (99.8%), 0.03% | 76% |
+| 600 | 99.5% (97.8%), none | 100.0% (99.9%), none | 100.0% (99.9%), 18.5% | 90% |
+| 700 | 96.3% (92.3%), none | 100.0% (99.7%), 68.0% | 98.3% (95.9%), 66.0% | 100% |
+| 800 | 92.8% (88.9%), none | 98.3% (95.5%), all | 92.3% (88.3%), all | 100% |
+| 900 | 88.3% (83.6%), none | 93.7% (89.2%), all | 87.8% (83.0%), all | 100% |
+| **Carried** | **500** | **600** | **600** | |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Waiting for a free charger carries no fewer vehicles than the plain threshold | 600 against 500 | **Pass** |
+| 2. In-order feeding beats emptiest-first by a point at 1,000 vehicles in nine pairs in ten | 8.8 points at the median, 8.2 to 9.4 between the 10th and 90th percentile; a point or more in all 40 pairs (83.9% of rides against 75.1%) | **Pass** |
+| 3. The plan buys 5% cheaper at 500 with rides within half a point, in nine pairs in ten | 19.1% cheaper at the median, 17.7% to 20.0%; rides level | **Pass** |
+| 4. Capacity under the best rule within one fleet step across the four fortnights | 600, 600, 700 and 600 | **Pass** |
+
+One input moved at a time, under the rule that waits for a charger (four fortnights, three seeds):
+
+| Input | Carried | Largest fleet serving 99% on any terms | What happens |
+|---|---|---|---|
+| As above: 25 rides a vehicle, 23-minute rides, a 10-minute wait | 600 | 700 | 15,000 rides a day carried; 17,500 served with the feeder at its limit |
+| 21.5 rides a vehicle | 700 | 800 | 15,050 rides a day carried; 800 serves 17,200 with every vehicle arriving at the low-battery level |
+| 18 rides a vehicle | 700 | 1,000 | 12,600 rides a day carried; 1,000 serves 18,000 with every vehicle arriving at the low-battery level |
+| 18-minute rides | 600 | 800 | 700 serves every ride with 76% of vehicles at the low-battery level |
+| 28-minute rides | none of 500 to 900 | none | 500 to 700 serve 98.7% to 98.9% at the median and reach the floor in a quarter to half of the runs: the vehicles bind, not the grid |
+| A 5-minute wait | none of 500 to 900 | none | 500 to 700 serve 99.4% to 99.5% at the median and reach the floor in three runs in four |
+| A 15-minute wait | 600 | 700 | 700 serves every ride with 62% of vehicles at the low-battery level, over the half that counts as carried |
+
+What this says:
+
+- **One feeder carries 600 vehicles and serves 700.** At 600 the waiting rule serves at least 99.9% of rides in every run, no vehicle arrives at the low-battery level, and the feeder runs at 90% of its usable power. At 700 it still serves 100.0% at the median and at least 99.6% in every run, but the feeder is at its limit in every scored step and 68% of vehicles arrive at the low-battery level: the emergency floor, not the rule, is bringing most of them in, so 700 is served and not counted as carried. At 800 rides are lost: 98.3% at the median, and only 10 runs of 40 reach 99%.
+- **The fortnights split on 700.** One of the four carries it (36% of vehicles at the low-battery level) and three don't (56%, 72% and 73%), with the same rides offered in each. The shape of the week decides it, which is why 700 is an edge and not a plan.
+- **A hundred vehicles of capacity are the calling rule.** A threshold that calls a vehicle in whether or not a charger is free carries 500: at 600 it serves 99.5% at the median and reaches 99% in three of the four fortnights, missing it in all ten draws of the fourth. The same threshold waiting for a free charger carries 600 and loses nothing there.
+- **How to read "vehicles arriving at the low-battery level" and "runs".** The share is counted over depot visits: the visits that start at 12% charge or under, after the drive in. And the ten draws of a fortnight are close to copies of each other: 98% to 99.8% of the variance in rides served lies between fortnights, not between draws (`data/derived/capacity_spread.json`), so forty runs are worth about four, "nine runs in ten" means every fortnight, and a 10th percentile is the weakest fortnight.
+- **The scored week is a settled one.** Of the 1,144 runs, 981 settled on two passes, 109 took four and 54 took eight. 38 were still moving after eight: 29 runs of the plan at 500 vehicles, by up to 9 points of the charge on the road with almost no visit starting low; seven runs of emptiest-first feeding at 600, by up to 7 points of low-battery arrivals, falling; and two at 700 under the waiting rule, by 3 points. None of them is under a rule and fleet where it would change what is carried. The runs that needed more passes sit where expected, at the edge: 700 vehicles under the waiting rule, where 67% of vehicles arrived at the low-battery level a pass earlier and 68% in the scored week. `depot-twin reproduce` runs six of the recorded runs again and prints the passes each took.
+- **Served at the limit while holding the 99% floor, the feeder gives about 17,000 to 18,000 rides a day whatever the fleet:** 700 vehicles at 25 rides, 800 at 21.5, 1,000 at 18, each with most or all vehicles arriving at the low-battery level. Carried with margin it gives 12,600 to 15,050. A vehicle on the road draws energy whether or not it carries anyone, so fewer rides a vehicle doesn't buy many more vehicles.
+- **The plan carries 600 too, and its worth is the energy bill.** On 30-minute slots it serves 100.0% of rides at 600 in the median run with 18.5% of its vehicles arriving at the low-battery level, and 98.3% at 700, where 66% do. It buys energy 19.1% cheaper at 500 vehicles, 17.7% to 20.0% across the forty pairs, with no ride lost.
+- **The power rule is worth 8.8 points where power is short and nothing where it isn't.** At 1,000 vehicles under the plain threshold emptiest-first draws 88% of the usable power against 100% in order, with 28 vehicles standing between stations against 6. At 500 and 600 vehicles under the waiting rule the two power rules serve the same rides, within a tenth of a point in nine pairs in ten. Emptiest-first isn't free there either: at 600 it leaves 53% of vehicles arriving at the low-battery level where feeding in order leaves none.
+- **Two inputs change what binds.** With 28-minute rides, or with riders who wait five minutes and not ten, no fleet from 500 to 900 holds 99% in nine runs in ten, with power to spare: the vehicles on the road can't always reach a rider in time, and the grid isn't the limit.
+- **The account, on these runs.** At the base case of E19, in the median run, 600 vehicles contribute $102,400 a day and 700 contribute $122,100, with no ride lost at either. 800 contribute $127,900 while losing about 350 rides a day, between $105,900 and $137,300 at the 10th and 90th percentile of runs.
+
+## E25. Is the fleet halfway between the one carried and the one only served carried too?
+
+- **Question.** E23 moves the fleet a hundred vehicles at a time and puts the answer between two steps: 600 carried with margin, 700 served with most vehicles arriving at the low-battery level. Two of its four fortnights carry 700 and two don't, so the verdict on 700 rests on where the low-battery line is drawn. A planner choosing a fleet wants to know whether the fifty vehicles between are usable.
+- **Runs.** 650 vehicles, 16,250 rides a day, under the rule that waits for a free charger, with in-order feeding and the cadence setting E22 chose. The same four fortnights and ten seeds as E23, each replayed until the fleet settles and its last week scored, so every run pairs with E23's runs at 600 and 700. 40 runs.
+- **Measures.** Rides served, the share of runs at 99%, the share of vehicles arriving at the low-battery level overall and by fortnight, and the share of the feeder's usable power drawn. Then the verdict on 600, 650 and 700 with the low-battery line drawn at a quarter, a half and three quarters of vehicles.
+- **Bars.**
+  1. 650 vehicles serve 99% of rides in nine runs in ten.
+  2. At most half the vehicles arrive at the low-battery level in the median run.
+  3. 650 is carried in each of the four fortnights taken alone.
+  4. The verdict on 650 is the same wherever the low-battery line is drawn, at a quarter, a half or three quarters.
+- **What a miss would mean.** On 1: the edge is nearer 600 than the step suggested. On 2 or 3: 650 is an edge like 700, usable in some weeks and not in others, and the plan stays at 600. On 4: the figure depends on a line drawn by judgement, and should be quoted with it.
+
+### Result
+
+**4 of 4 bars.** Numbers and every run are in `data/derived/e25_between.json`; reproduce with `depot-twin eval e25`.
+
+The three fleets under the rule that waits for a free charger, forty runs each on the same fortnights and seeds:
+
+| Fleet | Rides a day | Rides served, median (lowest run) | Vehicles arriving at the low-battery level | Power in use | Steps with the feeder at its limit |
+|---|---|---|---|---|---|
+| 600 | 15,000 | 100.0% (99.9%) | none | 90% | 62% |
+| **650** | **16,250** | **100.0% (99.92%)** | **none, in every run** | **97%** | **87%** |
+| 700 | 17,500 | 100.0% (99.6%) | 68% | 100% | 100% |
+
+| Bar | Result | |
+|---|---|---|
+| 1. 650 vehicles serve 99% of rides in nine runs in ten | All 40 runs; the lowest serves 99.92% | **Pass** |
+| 2. At most half the vehicles arrive at the low-battery level in the median run | None, in every run | **Pass** |
+| 3. Carried in each of the four fortnights taken alone | All four | **Pass** |
+| 4. The verdict is the same wherever the low-battery line is drawn | Carried at a quarter, a half and three quarters | **Pass** |
+
+What this says:
+
+- **One feeder carries 650 vehicles, 16,250 rides a day, at the estimated energy use.** Every run serves at least 99.92% of its rides, no vehicle arrives at the low-battery level in any of them, and every run settled on two passes. The fleet draws 97% of the feeder's usable power, against 90% at 600.
+- **The edge is sharp, and it is the feeder.** Between 650 and 700 the power drawn goes from 97% of what the feeder can give to all of it, and low-battery arrivals go from none to 68%. The fleets in between were not run here; E26 runs them.
+- **The verdict on 650 doesn't depend on the line; the verdict on 700 does.** With the line at a quarter or a half of vehicles, 700 isn't carried; at three quarters it is. 600 and 650 are carried wherever it is drawn. 650 holds under every reading of the line. Whether it holds when the energy estimate moves is E26's question.
+- **What it leaves in hand.** At 650 the feeder is at its limit in 87% of the scored steps, so the margin is in the batteries and not in the connection: the vehicles on the road hold 67% charge in the median run, against 68% at 600 and 49% at 700.
+- **The account.** 650 vehicles contribute $112,100 a day in the median run, against $102,400 at 600, with no ride lost in the median run.
+
+## E26. What does one feeder carry if the vehicles use more energy than estimated?
+
+- **Question.** At 650 vehicles the feeder gives 97% of its usable power and is at its limit in 87% of the scored steps. What fills it is the energy a vehicle uses on the road, 0.27 to 0.30 kWh a mile plus an always-on load, and that figure is assumed. E23 moved rides a vehicle, ride length and rider patience, and left energy alone. A lease is signed on the fleet that still fits when the estimate is off, so the question is which fleet that is. Two smaller questions ride along. The rule that waits for a free charger was read on steps of fifty vehicles and the plain rule on steps of a hundred: what does each carry on the same steps? And the score counts a ride when it is served or given up on: how many rides does that leave unsettled at the two edges of a scored week?
+- **Runs.** The capacity test's setting: the cadence E22 chose, in-order feeding, four fortnights by ten seeds, each replayed until the fleet settles and its last week scored. Under the rule that waits for a free charger, with driving energy and the always-on load both multiplied by 0.9, 1.0 and 1.1: fleets of 650, 700, 725, 750 and 800 at 0.9; 550, 600, 625, 650, 675 and 700 at 1.0; 550, 575, 600, 625 and 650 at 1.1. Under the plain rule at 1.0: 500, 550, 600 and 650. The runs E23 and E25 already hold at 1.0 are read from their records and not run again; 600 new runs. For the edges of the week, the carried fleet of 650 and an overloaded fleet of 800, four fortnights by three seeds: the rides waiting as the scored week opens and as the run ends.
+- **Measures.** By energy level and fleet: rides served, the share of runs at 99%, the share of depot visits arriving at the low-battery level, the share of usable power drawn, the share of steps at the feeder's limit, and the energy the feeder gives a vehicle a day. "Carried" is E23's rule, unchanged. **The fleet to plan for** is the largest fleet carried both at the estimate and at 10% more energy use.
+- **Bars.**
+  1. 600 vehicles are carried with 10% more energy use.
+  2. The carried fleet doesn't rise as energy use rises: the fleet at 0.9 is at least the fleet at 1.0, which is at least the fleet at 1.1.
+  3. The feeder's energy is what binds: the carried fleet multiplied by its energy level is within 50 vehicles of the fleet carried at the estimate, at both ends.
+  4. On the same fifty-vehicle steps, the rule that waits for a free charger carries at least 50 vehicles more than the plain rule.
+  5. The rides waiting at the two edges of a scored week are under a thousandth of the rides scored, in every run measured.
+- **What a miss would mean.** On 1: the plan is below 600, at the largest fleet that does hold. On 2: something other than energy is deciding the edge, and the capacity figure needs another look. On 3: the simple reading, a feeder's energy divided by a vehicle's, isn't a safe way to carry the figure to another site. On 4: the calling rule's gain is smaller than the hundred-vehicle steps made it look. On 5: fleets close to the 99% line should be scored by when a ride was offered.
+
+### Result
+
+**5 of 5 bars.** Numbers and every run are in `data/derived/e26_margin.json`; reproduce with `depot-twin eval e26`.
+
+Under the rule that waits for a free charger, forty runs a fleet on the same fortnights and seeds. "Low" is the share of depot visits that start at the low-battery level, in the median run:
+
+| Energy use | Fleet | Rides served, median (lowest run) | Runs at 99% | Low | Power in use | Steps at the feeder's limit | Feeder's kWh a vehicle a day | Fortnights carried |
+|---|---|---|---|---|---|---|---|---|
+| 0.9 | 650 | 100.0% (99.90%) | 100% | 0% | 88% | 56% | 85 | 4 of 4 |
+| 0.9 | 700 | 100.0% (99.90%) | 100% | 0% | 94% | 77% | 84 | 4 of 4 |
+| 0.9 | 725 | 100.0% (99.93%) | 100% | 0% | 97% | 88% | 84 | 4 of 4 |
+| 0.9 | **750** | 100.0% (99.87%) | 100% | 0% | 100% | 100% | 84 | 3 of 4 |
+| 0.9 | 800 | 100.0% (99.16%) | 100% | 89% | 100% | 100% | 78 | 0 of 4 |
+| 1.0 | 550 | 100.0% (99.86%) | 100% | 0% | 83% | 38% | 95 | 4 of 4 |
+| 1.0 | 600 | 100.0% (99.89%) | 100% | 0% | 90% | 62% | 94 | 4 of 4 |
+| 1.0 | 625 | 100.0% (99.90%) | 100% | 0% | 94% | 74% | 94 | 4 of 4 |
+| 1.0 | 650 | 100.0% (99.92%) | 100% | 0% | 97% | 87% | 94 | 4 of 4 |
+| 1.0 | **675** | 100.0% (99.91%) | 100% | 0% | 100% | 99% | 93 | 4 of 4 |
+| 1.0 | 700 | 100.0% (99.62%) | 100% | 68% | 100% | 100% | 90 | 1 of 4 |
+| 1.1 | 550 | 100.0% (99.88%) | 100% | 0% | 91% | 65% | 104 | 4 of 4 |
+| 1.1 | 575 | 100.0% (99.89%) | 100% | 0% | 95% | 77% | 103 | 4 of 4 |
+| 1.1 | 600 | 100.0% (99.92%) | 100% | 0% | 98% | 93% | 103 | 4 of 4 |
+| 1.1 | **625** | 100.0% (99.79%) | 100% | 30% | 100% | 100% | 100 | 3 of 4 |
+| 1.1 | 650 | 100.0% (99.38%) | 100% | 82% | 100% | 100% | 97 | 0 of 4 |
+
+The fleet in bold is the largest carried at that level. The rows at 1.0 for 600, 650 and 700 are E23's and E25's runs, read from their records.
+
+The plain rule at the estimate, on the steps the waiting rule was also run on:
+
+| Fleet | Rides served, median (lowest run) | Runs at 99% | Power in use |
+|---|---|---|---|
+| 500 | 100.0% (99.7%) | 100% | 76% |
+| **550** | 100.0% (99.1%) | 100% | 83% |
+| 600 | 99.5% (97.6%) | 75% | 89% |
+| 650 | 98.1% (94.6%) | 25% | 93% |
+
+| Bar | Result | |
+|---|---|---|
+| 1. 600 vehicles are carried with 10% more energy use | Carried, in all four fortnights; the feeder at 98% of its usable power | **Pass** |
+| 2. The carried fleet doesn't rise as energy use rises | 750, 675 and 625 | **Pass** |
+| 3. Carried fleet times energy level within 50 vehicles of the fleet at the estimate | 675, 675 and 688 | **Pass** |
+| 4. The waiting rule carries at least 50 more than the plain rule on the same steps | 650 against 550 | **Pass** |
+| 5. Rides waiting at the edges of a scored week under a thousandth of rides scored | None waiting at either edge in any of 24 runs | **Pass** |
+
+What this says:
+
+- **The feeder's energy sets the fleet.** The feeder gives 62.7 MWh a day. A carried vehicle takes 93 to 95 kWh of it at the estimate, 84 to 85 with 10% less energy use and 100 to 104 with 10% more, and the largest fleet carried is the one divided by the other to within a step: 750, 675 and 625. Under the waiting rule with in-order feeding a depot can run its feeder at all of its usable power and still be carried. The band between no low-battery arrivals and most is 50 to 75 vehicles wide at every level, and all three carried fleets sit inside it in the fortnight of 18 March: 750 with 10% less (52% of visits start low there, so that fortnight isn't carried), 675 at the estimate (45% there, none in the other three) and 625 with 10% more. Because the kWh a vehicle is a share of the feeder's own output, it is fleet times energy level, 675, 675 and 688, that carries the finding. The realised change is smaller than the nominal one: with 10% more on the road the feeder gives a vehicle 9.0% more at 600, because a vehicle that uses more spends longer in the depot, where the model drains nothing. E27 counts that.
+- **At the estimate one feeder carries 675 vehicles.** E25 carried 650; 675 is carried too, in all four fortnights at the half line, and 700 isn't. This is the largest fleet run that was carried, on steps of 25. At 10% less, 750 is the largest carried and the next fleet run, 800, isn't; 775 was not run.
+- **The fleet to plan for.** The registered rule, the largest fleet carried at the estimate and with 10% more energy use, gives 625. At 625 with 10% more the feeder is at its limit in every step of the median run, 30% of visits start low in the median run and 62% in the worst, and one fortnight of the four isn't carried: its median is 58% against the line at 50%, so that verdict turns on where the line is drawn. E25 asked of its fleet that it be carried in each fortnight taken alone, and the same condition here gives 600: carried in all four at both levels, with no visit starting low in the median run and the feeder at 98% with 10% more energy use. I plan on 600. That is a choice made after the run and stricter than the rule registered before it; every document that quotes 600 gives the registered 625 beside it.
+- **The calling rule is worth a hundred vehicles on equal steps.** The plain rule holds 99% in every run at 550, in three fortnights of four at 600 (all ten draws of the fourth miss) and in under half the runs at 650. The waiting rule is carried at 650 on those steps, and at 675 on finer ones the plain rule was not run on.
+- **The edges of the scored week leave nothing unsettled.** The scored week opens and closes at midnight on a Monday. In 24 runs, at 650 vehicles and at 800 where rides are lost through the week, no rider was waiting at either moment. The bar is passed with nothing to measure, which says the boundary was well placed and nothing about a boundary in a busy hour.
+- **What it doesn't settle.** The energy figure itself, and whether 10% is wide enough for a figure with no source: the estimate comes to about 0.53 kWh a mile all in, nearly half of it the always-on load. A measurement on real vehicles replaces the range with a number.
+
+## E27. What does one feeder carry if a parked vehicle's systems stay on?
+
+- **Question.** The fleet model drains a vehicle's always-on load, 1.8 to 2.0 kW for its computers, sensors and climate control, on the road and on the drive to and from the depot. A vehicle waiting, charging or being cleaned draws nothing. Whether a robotaxi powers down in the depot isn't public, and the choice favours the feeder: at 600 vehicles a vehicle spends about two hours a day inside. If that load keeps running there, how many vehicles does the feeder carry, and does the planned fleet still hold?
+- **Runs.** The capacity test's setting, the rule that waits for a free charger, four fortnights by ten seeds. The always-on load is counted for every minute between a vehicle's arrival at the depot and its release, taken from its battery as it leaves. With energy use on the road as estimated: 600, 625, 650 and 675 vehicles. With 10% more: 550, 575 and 600. 280 runs. The same fleets without the parked load are E26's.
+- **Measures.** Rides served, the share of runs at 99%, the share of depot visits starting at the low-battery level over all forty runs and in the worst fortnight, the share of usable power drawn, and what the parked load adds to the feeder's energy a vehicle a day. Carried is E23's rule over the forty runs; carried in every fortnight applies it to each fortnight alone.
+- **Bars.**
+  1. With the parked load counted, 600 vehicles are carried in every fortnight at the estimated energy use.
+  2. The parked load takes at most 50 vehicles off the fleet carried at the estimate (675 in E26).
+  3. With the parked load and 10% more energy use on the road together, 550 vehicles are carried in every fortnight.
+- **What a miss would mean.** On 1: the plan of 600 rests on vehicles powering down in the depot, and has to say so or come down. On 2: time in the depot matters more to the feeder than the estimate allowed, and the energy figure to measure is the whole day's, not the road's. On 3: the two unknowns together leave less than 550, and the plan needs a measurement before it needs a fleet.
+
+### Result
+
+**3 of 3 bars.** Numbers and every run are in `data/derived/e27_parked.json`; reproduce with `depot-twin eval e27`.
+
+With the always-on load counted while a vehicle is in the depot, forty runs a fleet. "Low" is the share of depot visits that start at the low-battery level in the median run, then in the worst fortnight. Bold is the largest fleet carried over the forty runs:
+
+| Energy use on the road | Fleet | Rides served, median (lowest run) | Runs at 99% | Low (worst fortnight) | Power in use | Feeder's kWh a vehicle a day | Fortnights carried |
+|---|---|---|---|---|---|---|---|
+| 1.0 | 600 | 100.0% (99.89%) | 100% | 0% (0%) | 95% | 99.2 | 4 of 4 |
+| 1.0 | **625** | 100.0% (99.65%) | 100% | 0% (47%) | 99% | 99.3 | 4 of 4 |
+| 1.0 | 650 | 100.0% (95.20%) | 75% | 86% (94%) | 100% | 96.5 | 1 of 4 |
+| 1.0 | 675 | 96.1% (89.66%) | 0% | 100% (100%) | 100% | 92.9 | 0 of 4 |
+| 1.1 | **550** | 100.0% (99.89%) | 100% | 0% (0%) | 96% | 109.3 | 4 of 4 |
+| 1.1 | 575 | 100.0% (98.30%) | 88% | 0% (72%) | 100% | 109.0 | 3 of 4 |
+| 1.1 | 600 | 98.6% (92.25%) | 38% | 99% (100%) | 100% | 104.5 | 0 of 4 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. 600 vehicles are carried in every fortnight at the estimate with the parked load | All four; no visit starts low in any fortnight | **Pass** |
+| 2. The parked load takes at most 50 vehicles off the fleet carried at the estimate | 625 against 675 | **Pass** |
+| 3. With the parked load and 10% more energy use, 550 vehicles are carried in every fortnight | All four | **Pass** |
+
+What this says:
+
+- **A parked vehicle left switched on costs the feeder about 5 kWh a vehicle a day and 50 vehicles.** At 600 the feeder gives a vehicle 99.2 kWh a day with the parked load against 94.3 without. The largest fleet carried goes from 675 to 625.
+- **The edge is sharper with the load counted.** Without it, a fleet past the feeder's limit still serves its rides for a while: vehicles sit in the depot, where the model drains nothing, and the depot balances itself. With it, 675 vehicles serve 96.1% of rides and no run reaches 99%. The fleets E26 found served at the limit lean on that free parking.
+- **The plan of 600 holds against either unknown and not against both.** With the parked load alone, 600 is carried in every fortnight with the feeder at 95%. With 10% more energy on the road alone, E26 carried it in every fortnight at 98%. With both, 600 serves 99% in under four runs in ten and is carried in no fortnight; 575 serves 99% in 88% of its runs, short of nine in ten, and is carried in three fortnights of four; 550 is carried over the forty runs and in all four.
+- **What to take from it.** The figure to measure is a vehicle's whole day at the meter, parked hours included. The plan stays at 600 with its condition stated: one of the two unknowns may go against it, not both. A reader who wants the fleet that survives both should plan on 550.
+- **How the load is counted.** It is charged to the battery when the vehicle leaves, for every minute since it arrived. The feeder gives that energy back on a later visit, so a day's energy is right and the minute it is drawn is late by a visit. The load is counted as energy and not as power drawn through the charger while a vehicle is plugged in, so 625 reads as an energy sensitivity and not as an electrical model of a parked vehicle. The simulator's own code is unchanged; every other test still assumes a parked vehicle draws nothing.
+
+## E28. How far does the plan of 600 hold?
+
+- **Question.** E26 moved a vehicle's energy use 10% each way and E27 counted the parked load. Four things were left alone that could each move what the feeder carries. The energy estimate could be further out than 10%: does the carried fleet keep following the arithmetic at 20% and 30% more? A vehicle could be busier than 25 rides a day. The ride records count rides served, so a real peak may have been higher than the recorded one. And the call-in level and the cleaning interval were both chosen to match one pair of filed counts: do other settings that match them carry the same fleet?
+- **Runs.** The capacity test's setting and the rule that waits for a free charger, on its four fortnights with three of its ten seeds: twelve runs a fleet. A control at the estimate on the same seeds (600, 650, 675, 700). Energy on the road at 1.2 times the estimate (525 to 600 vehicles) and 1.3 times (475 to 550). Rides a vehicle a day at 1.1 times (575 to 650) and 1.2 times (525 to 600). The busiest fifth of the week's hours raised by 10% and by 20% with the weekly total unchanged (600, 650, 675, 700). And every pair of a call-in level (45% to 65% in steps of 5) and a cleaning interval (every third to sixth visit) that matches both filed counts within 15% at 500 vehicles, at 600, 650 and 675 vehicles.
+- **Measures.** As E27: rides served, runs at 99%, visits starting at the low-battery level, power in use, and the fleet carried over all runs and in every fortnight.
+- **Bars.**
+  1. With 20% more energy on the road, the carried fleet is within one step of 25 of the arithmetic's figure, 675 divided by 1.2.
+  2. With 10% more rides a vehicle a day, 600 vehicles are carried in every fortnight.
+  3. With the busiest fifth of hours 20% busier, 600 vehicles are carried in every fortnight.
+  4. With the busiest fifth of hours 20% busier, the carried fleet is within one step of the control's.
+  5. Under every cadence setting that matches the filings, 600 vehicles are carried in every fortnight.
+- **What a miss would mean.** On 1: past 10% the fleet stops following the energy arithmetic, and a wider energy range can't be read off it. On 2: the plan holds for 25 rides a vehicle a day and no busier, and has to say so. On 3 or 4: the recorded shape flatters the feeder, and the plan needs a margin for a peak the records could not show. On 5: the plan rests on the one setting E22 chose, and the capacity range has to cover the others.
+
+### Result
+
+**3 of 5 bars.** Numbers and every run are in `data/derived/e28_further.json`; reproduce with `depot-twin eval e28`. 624 runs, twelve a fleet.
+
+"Low" is the share of depot visits that start at the low-battery level in the median run, then in the worst fortnight. Bold is the largest fleet carried in every fortnight; with 20% more energy, 575 is also carried over the twelve runs taken together (33% low). With the busiest hours 20% busier no fleet is carried: 600 misses 99% in one fortnight, and a fleet counts only when every smaller one does:
+
+| What moved | Fleet | Rides served, median (lowest run) | Runs at 99% | Low (worst fortnight) | Power in use | Fortnights carried |
+|---|---|---|---|---|---|---|
+| Nothing (control) | 650 | 100.0% (99.92%) | 100% | 0% (0%) | 97% | 4 of 4 |
+| | **675** | 100.0% (99.93%) | 100% | 0% (45%) | 100% | 4 of 4 |
+| | 700 | 100.0% (99.65%) | 100% | 62% (72%) | 100% | 1 of 4 |
+| Energy on the road, 1.2 times | **550** | 100.0% (99.92%) | 100% | 0% (9%) | 98% | 4 of 4 |
+| | 575 | 100.0% (99.77%) | 100% | 33% (55%) | 100% | 3 of 4 |
+| | 600 | 100.0% (99.18%) | 100% | 82% (88%) | 100% | 0 of 4 |
+| Energy on the road, 1.3 times | 500 | 100.0% (99.91%) | 100% | 0% (0%) | 97% | 4 of 4 |
+| | **525** | 100.0% (99.81%) | 100% | 18% (44%) | 100% | 4 of 4 |
+| | 550 | 100.0% (98.97%) | 92% | 76% (84%) | 100% | 0 of 4 |
+| Rides a vehicle a day, 27.5 | 600 | 99.9% (99.15%) | 100% | 0% (0%) | 93% | 4 of 4 |
+| | **650** | 99.9% (99.33%) | 100% | 0% (38%) | 99% | 4 of 4 |
+| Rides a vehicle a day, 30 | 525 | 98.9% (97.14%) | 50% | 0% (0%) | 84% | 2 of 4 |
+| | 600 | 99.0% (97.36%) | 50% | 0% (0%) | 95% | 2 of 4 |
+| Busiest fifth of hours 10% busier | **675** | 100.0% (99.61%) | 100% | 0% (37%) | 100% | 4 of 4 |
+| | 700 | 100.0% (99.22%) | 100% | 54% (68%) | 100% | 2 of 4 |
+| Busiest fifth of hours 20% busier | 600 | 99.8% (98.98%) | 75% | 0% (0%) | 90% | 3 of 4 |
+| | 675 | 99.9% (99.11%) | 100% | 0% (30%) | 99% | 4 of 4 |
+| | 700 | 99.9% (98.50%) | 75% | 49% (64%) | 100% | 2 of 4 |
+
+Of the twenty cadence settings tried at 500 vehicles, eight match both filed counts within 15%: a call-in level of 50% or 55% with cleaning every third, fourth, fifth or sixth visit. A call-in level of 45% gives too many trips a visit, 10.7, and 60% or more gives too many sessions a charger. Under each of the eight, 600, 650 and 675 vehicles are carried in every fortnight, with the feeder at over 99% of its usable power at 675 and 43% to 45% of visits starting low in the worst fortnight. The fleets above 675 were not run under them.
+
+| Bar | Result | |
+|---|---|---|
+| 1. With 20% more energy the carried fleet is within one step of the arithmetic | 575 against 562.5 | **Pass** |
+| 2. With 10% more rides a vehicle, 600 are carried in every fortnight | All four; 650 is carried too | **Pass** |
+| 3. With the peak hours 20% busier, 600 are carried in every fortnight | Three of four; the lowest run serves 98.98%, in the fortnight of 18 March | **Miss** |
+| 4. With the peak hours 20% busier, the carried fleet is within one step of the control's | None carried, against 675 | **Miss** |
+| 5. Under every cadence setting that matches the filings, 600 are carried in every fortnight | All eight settings | **Pass** |
+
+What this says:
+
+- **The fleet follows the fleet carried at the estimate, scaled by energy, as far out as it was pushed.** 675 divided by 1.2 is 562 and the feeder carries 575; divided by 1.3 it is 519 and the feeder carries 525. The 30% case has no bar. 575 is carried over the twelve runs and not in every fortnight: in its worst fortnight 55% of visits start low against 50%, so the fleet carried in every fortnight is 550. A wider range on a vehicle's energy use can be read off the arithmetic. The plan of 600 isn't carried with 20% more: it holds to 10%, as E26 found, and no further.
+- **The cadence setting doesn't decide the answer.** Two settings were fitted to one pair of filed counts, and every other pair that fits them carries the same fleet.
+- **A sharper peak does move it, and not through the grid.** With the busiest fifth of hours 10% busier the control's 675 is still carried. With them 20% busier at the same weekly total, 600 vehicles serve 99.8% in the median run and miss 99% in the fortnight of 18 March, its lowest run at 98.98%, with no visit starting low and the feeder at 90% of its power. 650 and 675 hold 99% in every run there, but a fleet is carried only when every smaller one is, so none is. The vehicles run short at the peak before the feeder does.
+- **A busier vehicle is the limit, and it isn't a grid limit.** At 27.5 rides a vehicle a day the feeder carries 650. At 30, no fleet from 525 to 600 is carried: rides served are 98.9% to 99.0% in the median run with the feeder at 84% to 95% of its power and no visit starting low. More vehicles don't help, because the rides offered grow with the fleet. The vehicles run short at the busiest hours before the feeder does. Fleets below 525 were not run at that level.
+- **What to take from it.** The plan of 600 stands for up to 27.5 rides a vehicle a day, up to 10% more energy than estimated, and a peak up to 10% sharper than the records show. Past 27.5 rides, or past that peak, the thing to add is vehicle time at the peak, not grid.
+- **Twelve runs, not forty.** The control carries 675, the figure E26 found on forty runs.
+
+## E29. What does the plan's cheaper energy cost in margin?
+
+- **Question.** In E23 the plan carries 600 vehicles, but its fleet rides at about a third of a charge, where the rule that waits keeps its fleet near two thirds. One setting is the likely cause: through the tariff's evening peak the plan calls a vehicle in only below 15% charge, three points above the level at which any vehicle is called in. What does raising that setting add to the plan's margin at the planned fleet, and what does it cost in energy price? And does the length of the plan's view, 24 hours in every test so far, matter?
+- **Runs.** The capacity test's setting under the plan on 30-minute slots, on its four fortnights with three of its ten seeds: twelve runs a fleet. The peak call-in level at 15% (as tested), 25% and 35%, at 500, 600 and 650 vehicles. Then the plan as tested with a 12-hour and a 36-hour view at 600 vehicles, and, with no bar, asked to keep 30% of a charge in hand across the road fleet in place of the half it keeps, at 500 and 600 vehicles. The threshold that waits for a free charger is read from E23 on the same fortnights and seeds.
+- **Measures.** Rides served, visits starting at the low-battery level, the charge the fleet rides at, energy cost per kWh and the saving against the threshold that waits at 500 vehicles, and the fleet carried.
+- **The plan's steering.** The plan holds vehicles out through the expensive hours only while its own hourly program, with its visits at the ceiling, keeps the fleet's energy above the reserve through them. When it can't, holding vehicles out only hands the calls to the low-battery floor at the same price and with no margin, so the level is left where it is.
+- **Bars.**
+  1. Called in below 25% at the peak, the plan carries 600 vehicles in every fortnight.
+  2. At that level it keeps at least half of the energy saving it has at 15%, at 500 vehicles.
+  3. A 12-hour or a 36-hour view moves rides served at 600 vehicles by under a tenth of a point and low-battery visits by under 5 points.
+  4. As tested, at 600 vehicles the floor forces under a tenth of the plan's calls in the scored week.
+  5. As tested, at 600 vehicles the plan's fleet rides at half a charge or more, at the median.
+- **What a miss would mean.** On 1: the peak level isn't what holds the plan back. On 2: the saving and the margin are the same energy, and the plan can't have both. On 3: the length of the view matters, and 24 hours was an untested choice. On 4 or 5: at the planned fleet the floor, not the plan, is the controller, and the plan's figures there are the floor's.
+
+### Result
+
+**4 of 5 bars.** Numbers and every run are in `data/derived/e29_steer.json`; reproduce with `depot-twin eval e29`. 156 runs, twelve a fleet.
+
+"Low" is the share of depot visits that start at the low-battery level in the median run, then in the worst fortnight. The threshold that waits pays $0.1921 a kWh at 500 vehicles and $0.1930 at 600 on the same fortnights and seeds:
+
+| Plan setting | Fleet | Rides served, median (lowest run) | Runs at 99% | Low (worst fortnight) | Charge on the road | Energy, a kWh | Fortnights carried |
+|---|---|---|---|---|---|---|---|
+| Called in below 15% at the peak (as tested) | 500 | 100.0% (99.71%) | 100% | 0.1% (0.5%) | 52% | $0.1553 | 4 of 4 |
+| | 600 | 100.0% (99.86%) | 100% | 18% (20%) | 32% | $0.1740 | 4 of 4 |
+| | 650 | 100.0% (99.72%) | 100% | 35% (43%) | 28% | $0.1852 | 4 of 4 |
+| Below 25% | 500 | 100.0% (99.71%) | 100% | 0% (0%) | 54% | $0.1554 | 4 of 4 |
+| | 600 | 100.0% (99.85%) | 100% | 0% (0%) | 40% | $0.1739 | 4 of 4 |
+| | 650 | 100.0% (99.77%) | 100% | 0% (24%) | 35% | $0.1864 | 4 of 4 |
+| Below 35% | 500 | 100.0% (99.76%) | 100% | 0% (0%) | 59% | $0.1565 | 4 of 4 |
+| | 600 | 100.0% (99.88%) | 100% | 0% (0%) | 51% | $0.1739 | 4 of 4 |
+| | 650 | 100.0% (99.80%) | 100% | 0% (23%) | 44% | $0.1871 | 4 of 4 |
+| As tested, 12-hour view | 600 | 100.0% (99.86%) | 100% | 18% (20%) | 32% | $0.1740 | 4 of 4 |
+| As tested, 36-hour view | 600 | 100.0% (99.86%) | 100% | 18% (20%) | 31% | $0.1740 | 4 of 4 |
+| As tested, 30% of a charge in reserve | 500 | 100.0% (99.75%) | 100% | 3% (7%) | 44% | $0.1534 | 4 of 4 |
+| | 600 | 100.0% (99.87%) | 100% | 18% (18%) | 31% | $0.1740 | 4 of 4 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Called in below 25% at the peak, the plan carries 600 in every fortnight | All four, with no visit starting low | **Pass** |
+| 2. At that level it keeps half its energy saving at 500 | 19.1% against 19.2% | **Pass** |
+| 3. A 12 or 36 hour view moves rides by under a tenth of a point and low visits by under 5 points | No change in rides; 0.2 points in low visits | **Pass** |
+| 4. As tested, at 600 the floor forces under a tenth of the plan's calls | 7.5% | **Pass** |
+| 5. As tested, at 600 the fleet rides at half a charge or more | 31.6% | **Miss** |
+
+What this says:
+
+- **The peak level is what sets the low-battery visits.** At 600, raising it from 15% to 25% takes visits starting low from 18% to none and lifts the fleet's charge from 32% to 40%, at the same price a kWh. At 35% the fleet rides at 51%. At 500 the same change takes them from 0.1% to none for under a tenth of a point of the energy saving. Most runs at 500 were still moving after eight passes, in the charge on the road and not in visits starting low.
+- **As tested, the plan carries 600 on a third of a charge.** Its fleet rides at 32% and the floor forces 7.5% of its calls; the program's quota sits at its ceiling in every hour. A reserve of 30% in place of half moves nothing at 600, 18% of visits starting low either way, so the reserve isn't what sets the level. The peak level is.
+- **The plan carries 650 under every setting.** It serves 99% in every run there, with 35% of visits starting low as tested and none in the median run at 25% or 35%. The threshold that waits serves 100.0% at 650 too (E25, E28).
+- **The plan still saves at the planned fleet.** At 500 vehicles it pays 19.2% less for energy than the threshold that waits. At 600 it pays 9.8% less: with the feeder at 91% of its power in use, less charging is left to move out of the dear hours, and half the saving goes.
+- **The length of the view doesn't matter.** Twelve, 24 and 36 hours serve the same rides, and low-battery visits at 600 move by 0.2 points, from 18.3% to 18.2%.
+- **What to take from it.** At the planned fleet the rule that waits for a free charger stays the controller to run: the plan carries 600 and buys cheaper energy, but on a third of a charge where the rule keeps two thirds. The plan belongs with its peak level at 25%: no visit starts low and the saving is kept.
+
+## E30. Does the plan of 600 depend on the fleet's mix of vehicles?
+
+- **Question.** Every capacity test so far ran one fleet: 60% I-PACE and 40% Ojai, a mix I assumed. The Ojai's estimate uses less energy, 0.27 kWh a mile and 1.8 kW always on against 0.30 and 2.0, so a fleet with more of them takes less from the feeder. On this site every charger gives 60 kW, under what either vehicle accepts for most of a charge, so the mix should move the answer through energy and not through time on the charger. How many vehicles does one feeder carry as the share of Ojai moves, and does the plan of 600 hold at every share?
+- **Runs.** The capacity test's setting and the rule that waits for a free charger, on its four fortnights with its ten seeds: forty runs a fleet. The share of Ojai at 0%, 40%, 70% and 100%, at the estimated energy use and with 10% more, five fleets in steps of 25 around what the energy arithmetic gives for each. The 40% arm repeats E26's runs, as a check that a run gives the same result twice.
+- **Measures.** As E27: rides served, runs at 99%, visits starting at the low-battery level, power in use, the feeder's energy per vehicle-day, and the fleet carried over all runs and in every fortnight. A fleet carried is compared with another only when its steps pin it: when the smallest fleet run is not carried or the largest is, the fleet lies outside the steps, and a bar that compares it counts as a miss. For each vehicle type: visits a vehicle-day, the chance a vehicle comes in at each hour of the day, the energy put in per visit and per vehicle-day, minutes on the charger and in the depot, and the share of its visits starting low.
+- **Bars.**
+  1. With the fleet all Ojai, one feeder carries at least 700 vehicles in every fortnight at the estimate.
+  2. With the fleet all I-PACE, 600 vehicles are carried in every fortnight at the estimate.
+  3. The fleet carried in every fortnight never falls as the share of Ojai rises, at either level of energy use.
+  4. At each share the fleet carried in every fortnight at the estimate is within one step of 25 of the arithmetic: 675 scaled by a vehicle-day's energy at 40% over that at the share, each type's energy read at 600 vehicles and 40%, where every run serves all its rides with no visit starting low, so each type takes all it uses.
+  5. The plan of 600 is carried in every fortnight at every share, at the estimate and with 10% more energy use.
+- **What a miss would mean.** On 1 or 4: the mix moves the answer by less than the energy arithmetic says, and something other than energy binds. On 2 or 5: the plan of 600 rests on the assumed mix and has to be stated as a function of it. On 3: the type's faster charging or its battery matters in a way the energy figures don't show.
+
+### Result
+
+**4 of 5 bars.** Numbers and every run are in `data/derived/e30_mix.json`; reproduce with `depot-twin eval e30`. 1,600 runs, forty a fleet. The 40% arm at the estimate gave the same result as E26 in 200 of 200 runs.
+
+Every run at every fleet serves at least 99.2% of its rides. What decides the fleet carried is the low-battery line: a fleet stops being carried when more than half of its visits in a fortnight start low, and the fortnight of 18 March goes first.
+
+| Share of Ojai | Energy use | Battery energy a vehicle-day, at 600 | Fleet carried | In every fortnight | Arithmetic |
+|---|---|---|---|---|---|
+| 0% | Estimate | 90.7 kWh | 650 | 650 | 652 |
+| | 10% more | | 600 | 575 | |
+| 40% (as every test so far) | Estimate | 87.6 kWh | 675 | 675 | 675 |
+| | 10% more | | 625 | 600 | |
+| 70% | Estimate | 85.3 kWh | 700 | 675 | 694 |
+| | 10% more | | 650 | 625 | |
+| 100% | Estimate | 82.9 kWh | 725 | 700 | 713 |
+| | 10% more | | 650 | 650 | |
+
+At 600 vehicles and the assumed mix, where no visit starts low, each type in the median run:
+
+| | I-PACE | Ojai |
+|---|---|---|
+| Visits a vehicle-day | 3.01 | 2.67 |
+| Battery energy per visit | 30.2 kWh | 31.1 kWh |
+| Battery energy a vehicle-day | 90.7 kWh | 82.9 kWh |
+| Minutes on the charger, median (10th to 90th percentile) | 41 (30 to 55) | 40 (29 to 54) |
+| Minutes in the depot | 49 | 48 |
+| Charge on arrival | 54% | 54% |
+| Chance of coming in, quietest hour to busiest | 0.101 (04:00) to 0.155 (09:00) | 0.093 (02:00) to 0.130 (10:00) |
+
+| Bar | Result | |
+|---|---|---|
+| 1. All Ojai, at least 700 in every fortnight at the estimate | 700 | **Pass** |
+| 2. All I-PACE, 600 in every fortnight at the estimate | 650 | **Pass** |
+| 3. The fleet carried in every fortnight never falls as the share of Ojai rises | 650, 675, 675, 700 at the estimate; 575, 600, 625, 650 at 10% more | **Pass** |
+| 4. Within one step of 25 of the arithmetic at each share | 650 against 652, 675 against 675, 675 against 694, 700 against 713 | **Pass** |
+| 5. 600 carried in every fortnight at every share and both energies | All I-PACE at 10% more carries 575; at 600, 55% of its visits start low in the fortnight of 18 March | **Miss** |
+
+What this says:
+
+- **The mix moves the fleet as its energy does.** The two types sit on the charger 40 and 41 minutes and arrive at the same charge. The Ojai comes in less often, 2.7 times a day against 3.0, and the fleet carried follows the energy arithmetic within one step at every share. These runs don't separate energy from the types' other differences; E31 moves those for the Ojai.
+- **All Ojai against all I-PACE is 50 vehicles at the estimate and 75 at 10% more.** In every fortnight all Ojai carries 700 and all I-PACE 650 at the estimate; at 10% more, 650 against 575.
+- **The plan of 600 rests on the mix.** At 10% more energy than estimated it holds with 40% Ojai or more, and an all-I-PACE fleet carries 575. The plan is stated with its mix: 600 at 40% Ojai or more.
+- **What to take from it.** A depot planned on one vehicle type has to be re-read when the mix changes: the feeder's energy a vehicle-day is the number to carry over, not the fleet.
+
+## E31. How much does the plan rest on the Ojai's unknown figures?
+
+- **Question.** The Ojai's battery, its always-on load and its charging curve have no public source. E30 reads the fleet at each share on my estimates for them. Which of them moves what one feeder carries, and by how much?
+- **Runs.** The capacity test's setting and the rule that waits, on its four fortnights with three of its ten seeds: twelve runs a fleet. A fleet all Ojai at the estimate, as E30's arm with the same seeds and from its lowest step, with one figure moved at a time: the always-on load at 1.5 and 2.5 kW in place of 1.8; the battery at 85 and 100 kWh in place of 93; and the I-PACE's measured charging curve in place of the Ojai's assumed one. Five fleets in steps of 25 around what the energy arithmetic gives for each.
+- **Measures.** As E30.
+- **Bars.**
+  1. With the always-on load at 2.5 kW, 600 vehicles are carried in every fortnight.
+  2. A battery of 85 or 100 kWh moves the fleet carried in every fortnight by at most one step of 25 from E30's all-Ojai arm on the same seeds.
+  3. The I-PACE's charging curve moves it by at most one step of 25.
+  4. The always-on load moves it further across its range than the battery does across its own.
+- **What a miss would mean.** On 1: a plausible Ojai drawing more than estimated undoes the plan for a fleet of them, and the mix's gain can't be counted before one is metered. On 2 or 3: on this site the battery or charging speed matters, and E30's reading that the mix works through energy alone is wrong. On 4: the always-on load is not the unknown to meter first.
+
+### Result
+
+**4 of 4 bars.** Numbers and every run are in `data/derived/e31_new_vehicle.json`; reproduce with `depot-twin eval e31`. 300 runs, twelve a fleet.
+
+A fleet all Ojai, with one figure moved at a time. The control is E30's all-Ojai arm read on the same three seeds; the file keeps its rows and its fleet carried in every fortnight, not its runs. Every run serves at least 99.3% of its rides; as in E30 the low-battery line decides:
+
+| Figure moved | Feeder energy a vehicle-day, at the smallest fleet run | Fleet carried | In every fortnight |
+|---|---|---|---|
+| None (the estimate) | 88.1 kWh at 650 | not recorded | 700 |
+| Always-on load 1.5 kW | 80.9 kWh at 725 | 800 | 775 |
+| Always-on load 2.5 kW | 104.5 kWh at 550 | 625 | 600 |
+| Battery 85 kWh | 88.2 kWh at 650 | 725 | 725 |
+| Battery 100 kWh | 88.0 kWh at 650 | 725 | 700 |
+| The I-PACE's charging curve | 88.0 kWh at 650 | 725 | 700 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. With the always-on load at 2.5 kW, 600 carried in every fortnight | 600 | **Pass** |
+| 2. A battery of 85 or 100 kWh moves the fleet by at most one step | 725 and 700, against 700 | **Pass** |
+| 3. The I-PACE's charging curve moves it by at most one step | 700, against 700 | **Pass** |
+| 4. The always-on load moves it further than the battery | 175 across 1.5 to 2.5 kW, against 25 across 85 to 100 kWh | **Pass** |
+
+What this says:
+
+- **The always-on load is the unknown that matters.** From 1.5 to 2.5 kW the fleet carried in every fortnight goes from 775 to 600. The load runs every hour a vehicle is on the road, so the feeder's energy a vehicle-day moves with it: 80.9 kWh at 1.5 kW against 104.5 kWh at 2.5 kW.
+- **The battery and the charging curve don't.** Neither moves the fleet by more than one step. Every charger on this site gives 60 kW; faster chargers were not run.
+- **What to take from it.** For the Ojai the figure to meter first is the always-on load, on the road and parked. At the top of its plausible range a fleet of them still carries 600.
+
+## E32. Does a calling rule that knows the vehicle type carry more?
+
+- **Question.** The rule that waits calls the emptiest vehicles first, by share of charge. With two types a share of charge is not the same range: an Ojai at 40% goes further than an I-PACE at 40%. A rule that calls the vehicle with the least range left, in hours on the road at its own energy use, could put the feeder's energy where it is needed sooner. Does it carry more?
+- **Runs.** The capacity test's setting at the assumed mix, 60% I-PACE and 40% Ojai, on its four fortnights with its ten seeds, at 550 to 700 vehicles on E26's steps. The rule calls a vehicle when its range falls below what the rule that waits calls at, 55% of an average vehicle's charge at the average vehicle's use, and calls the least range first, as many as chargers are free. The rule that waits is E26's runs, the same fortnights and seeds.
+- **Measures.** As E30.
+- **Bars.**
+  1. The rule that knows the type carries at least 700 vehicles in every fortnight, a step more than the rule that waits.
+  2. At 600 and 700 vehicles it serves at least as many rides as the rule that waits in the median run.
+  3. At 675 vehicles its worst fortnight has fewer visits starting low than the rule that waits.
+- **What a miss would mean.** On 1 or 2: with two types this close in energy, the order of calling doesn't move capacity, and the plain rule stays. On 3: knowing the type doesn't buy margin either.
+
+### Result
+
+**2 of 3 bars.** Numbers and every run are in `data/derived/e32_range.json`; reproduce with `depot-twin eval e32`. 240 runs, forty a fleet.
+
+"Low" is the share of depot visits that start at the low-battery level in the median run, then in the worst fortnight:
+
+| Fleet | Rule | Rides served, median (lowest run) | Low (worst fortnight) | Power in use | Fortnights carried |
+|---|---|---|---|---|---|
+| 600 | Least range first | 100.0% (99.88%) | 0% (0%) | 90% | 4 of 4 |
+| | The rule that waits | 100.0% (99.89%) | 0% (0%) | 90% | 4 of 4 |
+| 675 | Least range first | 100.0% (99.92%) | 0% (43.7%) | 100% | 4 of 4 |
+| | The rule that waits | 100.0% (99.91%) | 0% (44.8%) | 100% | 4 of 4 |
+| 700 | Least range first | 100.0% (99.62%) | 67% (73%) | 100% | 1 of 4 |
+| | The rule that waits | 100.0% (99.62%) | 68% (73%) | 100% | 1 of 4 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Carries at least 700 in every fortnight | 675, as the rule that waits | **Miss** |
+| 2. At 600 and 700 serves at least as many rides in the median run | 100.0% against 100.0% at both | **Pass** |
+| 3. At 675 its worst fortnight has fewer visits starting low | 43.7% against 44.8% | **Pass** |
+
+What this says:
+
+- **Knowing the type doesn't carry more.** The two rules carry the same 675, and serve the same rides in the median run at every fleet. The two types here are 9% apart in battery energy a vehicle-day; a wider gap was not run.
+- **What to take from it.** The rule that waits stays the rule to run. At 675 the range-first rule has a point fewer visits starting low in the worst fortnight; at 700 it has none fewer. That is not a step of fleet.
+
+## E33. What do the chargers do for two vehicle types, on one feeder and on two?
+
+- **Question.** Every capacity test so far ran 60 kW chargers, so neither type charged at its own top rate: up to 100 kW for the I-PACE and, as assumed, 150 kW for the Ojai. Faster chargers can shorten a visit, and a bank with some fast chargers could keep them for the type that can use them. On one feeder and on two, does charger power or the order in which vehicles take chargers carry more vehicles, and which design costs least for the fleet it carries?
+- **Runs.** The capacity test's setting at the assumed mix, 40% Ojai, at the estimate, on its four fortnights with three seeds, as E31: 600 to 725 vehicles in steps of 25 on one feeder (2,750 kW), 1,200 to 1,450 in steps of 50 on two (5,500 kW). Six charger designs, each against the sizing rule's count of chargers for the fleet: that count at 60 kW and at 150 kW; half of it at 60 kW and at 150 kW; and the full count with 40% of it at 150 kW and the rest at 60 kW, either kept for the Ojai (an Ojai asks for a 150 kW charger first, an I-PACE for a 60 kW one) or taken by whichever vehicle is called first.
+- **Measures.** As E30, with each type's share of visits on a 150 kW charger and the chargers' cost a day: their installed cost, $40,000 a charger and $500 a kW, over ten years.
+- **Bars.**
+  1. On one feeder, 150 kW chargers carry within one step of 60 kW chargers.
+  2. On two feeders, 150 kW chargers carry within one step of 60 kW chargers.
+  3. On each feeder count, half as many chargers at 150 kW carry within one step of the full count at 60 kW, for less a day.
+  4. On one feeder, half as many 60 kW chargers carry at least one step fewer than the full count.
+  5. On each feeder count, keeping the fast chargers for the Ojai carries at least as many as letting the first vehicle take them.
+- **What a miss would mean.** On 1 or 2: charger power, not the feeder's energy, binds there, and the plan should be read on faster chargers. On 3: plug count matters beyond power, and the cheaper design is not available. On 4: the sizing rule buys more chargers than the fleet needs. On 5: steering a fast charger to the type that can use it costs the fleet.
+
+### Result
+
+**4 of 5 bars.** Numbers and every run are in `data/derived/e33_chargers.json`; reproduce with `depot-twin eval e33`. 864 runs, twelve a fleet. The 60 one-feeder runs at 60 kW that E30 also made, 600 to 700 vehicles on the same seeds, serve the same rides as E30's, run for run.
+
+The fleet carried in every fortnight, and the chargers a day at the fleet the full count at 60 kW carries:
+
+| Design | One feeder | Chargers a day at 675 | Two feeders | Chargers a day at 1,350 |
+|---|---|---|---|---|
+| The sizing rule's count at 60 kW | 675 | $1,726 | 1,350 | $3,433 |
+| The same count at 150 kW | 675 | $2,836 | 1,350 | $5,640 |
+| 40% at 150 kW, kept for the Ojai | 675 | $2,170 | 1,350 | $4,321 |
+| 40% at 150 kW, first vehicle takes it | 675 | $2,170 | 1,350 | $4,321 |
+| Half the count at 150 kW | 625 | $1,418 | 1,250 | $2,836 |
+| Half the count at 60 kW | below 600 | $863 | below 1,200 | $1,726 |
+
+Minutes on the charger, median visit, one feeder at 675, and the share of each type's visits on a 150 kW charger:
+
+| Design | I-PACE | Ojai | On 150 kW: I-PACE, Ojai |
+|---|---|---|---|
+| All 60 kW | 81.5 | 81 | 0%, 0% |
+| All 150 kW | 87 | 67 | 100%, 100% |
+| Mixed, kept for the Ojai | 88 | 63.5 | 12%, 97% |
+| Mixed, first vehicle takes it | 84 | 72.5 | 50%, 48% |
+
+| Bar | Result | |
+|---|---|---|
+| 1. On one feeder, 150 kW within one step of 60 kW | 675 against 675 | **Pass** |
+| 2. On two feeders, 150 kW within one step of 60 kW | 1,350 against 1,350 | **Pass** |
+| 3. Half as many at 150 kW within one step of the full count at 60 kW, for less | 625 against 675, and 1,250 against 1,350 | **Miss** |
+| 4. On one feeder, half as many at 60 kW carry at least one step fewer | No fleet from 600 carried: 99% of visits start low at 600 | **Pass** |
+| 5. Keeping the fast chargers for the Ojai carries at least as many | 675 and 1,350, as the first vehicle taking them | **Pass** |
+
+What this says:
+
+- **The feeder sets the fleet, not the chargers' power.** Every design with the sizing rule's count carries 675 on one feeder and 1,350 on two. 150 kW chargers cut the Ojai's median visit from 81 to 67 minutes at 675, while the I-PACE's grows from 81.5 to 87, and carry no more vehicles.
+- **Two feeders carry twice one feeder** at the estimate, on the steps run: 1,350 against 675.
+- **The number of plugs matters, as far as these designs show.** Half the count at 150 kW has more power in all than the full count at 60 kW and carries two steps fewer on each feeder count, 50 and 100 vehicles; half at 60 kW carries none of the fleets run. No design held the power and moved only the plugs.
+- **Steering the fast chargers to the Ojai changes which type charges faster, not how many are carried.** Kept for it, 97% of Ojai visits use one and its visit is 63.5 minutes; the fleet carried is the same as when the first vehicle takes it.
+- **What to take from it.** Buy the sizing rule's count at 60 kW. It is the cheapest design that carries the most: $1,110 a day less than 150 kW at 675, about $405,000 a year, for the same fleet.
+
+## E34. How many vehicles do two feeders carry with the planning margin?
+
+- **Question.** One feeder is planned for 600, the fleet it carries in every fortnight with 10% more energy use than estimated. E33 ran two feeders at the estimate only. With the same margin, do two feeders carry twice the plan?
+- **Runs.** E33's run on two feeders with the sizing rule's count of 60 kW chargers, at the assumed mix, with energy use 10% higher: 1,100 to 1,300 vehicles in steps of 50, four fortnights, three seeds.
+- **Measures.** As E33.
+- **Bars.**
+  1. Two feeders carry at least 1,200 vehicles in every fortnight with 10% more energy use, twice one feeder's plan.
+- **What a miss would mean.** The second feeder buys less than a second plan: something other than the feeder's energy binds at twice the fleet.
+
+### Result
+
+**1 of 1 bar.** Numbers and every run are in `data/derived/e34_two_feeders.json`; reproduce with `depot-twin eval e34`. 60 runs, twelve a fleet.
+
+| Fleet | Rides served, median (lowest run) | Low (worst fortnight) | Power in use | Fortnights carried |
+|---|---|---|---|---|
+| 1,150 | 100.0% (99.89%) | 0% (0%) | 95% | 4 of 4 |
+| 1,200 | 100.0% (99.93%) | 0% (8.3%) | 98.5% | 4 of 4 |
+| 1,250 | 100.0% (99.82%) | 31% (59%) | 100% | 3 of 4 |
+
+| Bar | Result | |
+|---|---|---|
+| 1. Two feeders carry at least 1,200 in every fortnight with 10% more | 1,200 | **Pass** |
+
+What this says:
+
+- **The second feeder buys a second plan.** With 10% more energy two feeders carry 1,200 in every fortnight, twice one feeder's 600; the fortnight of 18 March fails at 1,250, as it fails one feeder at 625.
+- **The read is on three seeds a fortnight**, where one feeder's plan is on ten.
+
+## E21. What does East Oakland ask of a depot, and when?
+
+Runs after E23, on the capacity E23 measures. Growth is read three ways from the constant-footprint quarters (first to last, a line through all of them, the last six months alone), and where demand stands today is read two ways (the average of the last four quarters, which the bars are scored on, and the latest quarter). The month the area outgrows one feeder is reported under each; bar 3 is scored on the first reading of growth and the four-quarter level.
+
+- **Question.** The twin sizes demand from the fleet. The filings give the other direction: residents served and trips, by quarter. What does the service area around the parcel produce in rides, how many vehicles is that, which feeder does it need, and when?
+- **The record.** `data/derived/footprint.json`: the served tracts (1,496 then 1,796), their 2020 population (5.73 then 7.16 million), trips per resident a month: 0.106, 0.130, 0.125, 0.174, 0.182, 0.197 over 2025 Q1 to 2026 Q2. Service areas around the parcel as circles of straight-line distance over Alameda County tracts only (83 San Francisco and 33 Contra Costa tracts fall inside 20 km and are left out: across the bay, and another county's service): 8 km (421,000 residents), 15 km (912,000), 20 km (1,082,000).
+- **Method.** Penetration from the last four quarters' residents and trips; a ramp from the constant-footprint quarters (2025 Q3 on), as a monthly growth rate with its range; a density elasticity from the nine donor areas (rides per resident against residents per square kilometre, log-log, ordinary least squares, leave-one-area-out) applied to the service area's density against the served footprint's, which needs the donor areas' populations; the twin's rides-per-vehicle-day turns rides into vehicles; the capacity figures turn vehicles into feeders.
+- **Bars.**
+  1. Leave-one-area-out error of the density fit within 35% on at least six of nine donor areas, with a positive elasticity. If the donor areas' populations aren't built, the fit can't be run and the bar is scored a miss.
+  2. The 20 km area at today's penetration needs fewer vehicles than one feeder carries at the 99% floor.
+  3. At the measured ramp, the month in which the 20 km area needs a second feeder is more than 24 months out and less than 120.
+- **What a miss would mean.** On 1: density doesn't explain demand across donor areas, and the level stands on penetration alone, labelled so. On 2: the parcel is demand-bound, not grid-bound, today. On 3: the ramp is too fast or too slow for a lease-time decision to lean on.
+
+### Result
+
+**1 of 3 bars.** Numbers are in `data/derived/e21_demand.json`; reproduce with `depot-twin eval e21`. Capacity is E23's: 600 vehicles carried on one feeder under the rule that waits for a free charger, 15,000 rides a day.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Density elasticity across donor areas | No fit: the donor areas' populations it needs were not built | **Miss** |
+| 2. The 20 km area today needs fewer vehicles than one feeder carries | 241 vehicles against 600 | **Pass** |
+| 3. The second feeder more than 24 months out and less than 120 | 19 months on the first-to-last reading | **Miss** |
+
+Where demand stands, read two ways: 0.169 trips a resident a month over the last four quarters, and 0.197 in the latest quarter. Growth at a constant footprint (2025 Q3 to 2026 Q2), read three ways: 5.2% a month first to last, 4.8% fitted through all four quarters, 2.0% over the last six months.
+
+| Service area around the parcel | Residents | Rides a day today (four-quarter average, latest quarter) | Vehicles at 25 rides | Months until a second feeder, from the four-quarter level: first to last / fitted / last six months | From the latest quarter |
+|---|---|---|---|---|---|
+| 8 km | 421,000 | 2,350, 2,720 | 94, 109 | 37 / 40 / 94 | 34 / 37 / 87 |
+| 15 km | 912,000 | 5,080, 5,900 | 203, 236 | 22 / 24 / 55 | 19 / 20 / 48 |
+| 20 km | 1,082,000 | 6,030, 6,990 | 241, 280 | 19 / 20 / 47 | 16 / 17 / 39 |
+
+What this says:
+
+- **Today the parcel is demand-bound, not grid-bound.** The 20 km area would keep 241 to 280 vehicles busy, depending on whether today is read as the year's average or the latest quarter; one feeder carries 600. Both figures are unadjusted readings: no density adjustment, and its direction isn't known. A depot here opens with room to spare.
+- **For the 20 km area the room runs out in 16 to 47 months.** Bar 3 is scored on the first-to-last reading from the four-quarter level, 19 months, and misses the 24 it asked for. The slowest reading of growth gives 39 to 47 months. Read the timing as a scenario, not a forecast. On the two faster readings of growth the second feeder should be applied for at the lease.
+- **Against other fleets.** This test counts against the 600 vehicles E23 carried on its hundred-vehicle steps, which is also the fleet the documents plan on (E26's registered rule gives 625): 16 to 47 months across the two readings of today and the three of growth, 16 to 20 on the two faster readings and 39 to 47 on the slowest. The same arithmetic against the 675 vehicles the feeder carries at the estimated energy use gives 18 to 53 months.
+- **Which reading of growth to plan on.** The first constant-footprint quarter, 2025 Q3, is the quarter the footprint itself was enlarged, from 1,496 tracts to 1,796, and trips a day rose 56% from July to October 2025. The two faster readings, first to last and the fitted line, span that step. A line through the nine months after it, October 2025 to June 2026, gives 2.0% a month, the same as the last-six-months reading (`growth_since_the_footprint_settled` in `data/derived/account_study.json`). The documents plan on that rate, 39 to 47 months, and quote 16 to 20 as what another enlargement would do. The two levels of today are one trajectory read at two dates, centred on January and May 2026, so the months count from the first half of 2026 and not from a signing date. The service areas are denser than the served footprint as computed, the penetration is a statewide blend, and the direction of a density correction isn't known. What a late application costs is in the account study (`data/derived/account_study.json`, described in `docs/METHOD.md`, section 6), a table of scenarios with no bars.
+- **The density adjustment isn't built,** so the level stands on penetration alone. The three areas run from 3,000 residents a square kilometre at 8 km to 2,000 at 20 km.
+
+## E24. Over 26 weeks in three series, which forecast is better, and which bound holds?
+
+- **Question.** Every forecast test so far scores one window. A single window can't separate a model's skill from the window's luck, and the San Francisco series has a break in what is reported just before its held-out days. Over many weeks, on series without that break: does the model trained here beat last week, does the pretrained model beat it, and does a bound that adapts hold where a fixed one drifts?
+- **Data.** Three series in two cities: Chicago ride-hail, New York ride-hail and New York yellow taxi, hourly, thinned to a depot's 500 rides an hour. The last 26 whole weeks of each. Eight of New York's weeks are the window E17 and E18 scored, where the pretrained model was first compared; the differences are reported on the other weeks as well.
+- **Method.** Each week is forecast by a model fitted on the days before it: the four weeks before the test week size the bound, the four before those stop the trees, everything earlier trains. All 168 hours of the week are scored at both horizons. Arms: the same hour last week; the latest same hour of day already known (yesterday's at one hour ahead, the day before's at 24); the model trained here; the pretrained model (Chronos-2, no local fitting); the mean of the last two. One hour and 24 hours ahead. Error is read week by week, and the range on a mean comes from resampling whole weeks. Three upper bounds on the same forecasts: one quantile fixed before the first week; the quantile taken again each week; and an adaptive one whose level moves after every hour through all 26 weeks, using only outcomes already known. Each bound is reported on hours held, on width and on pinball loss; the bars are on hours held.
+- **Bars, one hour ahead, all three series.**
+  1. The model trained here has lower error than last week, and the range of the weekly difference excludes zero.
+  2. The pretrained model has lower error than the model trained here, and the range of the weekly difference excludes zero.
+  3. The adaptive bound holds in at least 90% of hours in at least 24 of the 26 weeks.
+  4. Week by week, the adaptive bound sits nearer 95% than the fixed one.
+- **What a miss would mean.** On 1: the model's lead over last week in one window was the window. On 2: the pretrained model's lead isn't established over time. On 3: an adaptive level isn't enough to keep weekly coverage. On 4: the simpler fixed bound is as good here.
+- **Not in this test.** San Francisco: its five-minute series has fifteen weeks after the reporting break, too few for 26 origins. New York taxi records are in the pretrained model's public training corpora; Chicago is the reading least likely to be.
+
+### Result
+
+**4 of 4 bars.** Numbers are in `data/derived/e24_backtest.json`; reproduce with `depot-twin eval e24`.
+
+Three series in two cities, 26 weeks each, with all 168 hours of every week scored at both horizons. Error is total absolute error over total rides, read week by week; each figure is the mean of the 26 weekly figures. A range is the 5th to 95th percentile of that mean when whole weeks are resampled. Differences are in points and paired by week.
+
+One hour ahead:
+
+| Series | Same hour last week | Same hour, latest day known | Trained here | Pretrained | Mean of the two | Trained here less last week (range) | Pretrained less trained here (range) |
+|---|---|---|---|---|---|---|---|
+| Chicago ride-hail | 8.62% | 18.01% | 5.85% | 5.40% | 5.40% | -2.77 (-3.41 to -2.19) | -0.45 (-0.58 to -0.32) |
+| New York ride-hail | 11.75% | 17.96% | 7.00% | 6.02% | 6.17% | -4.75 (-6.01 to -3.79) | -0.98 (-1.70 to -0.35) |
+| New York yellow taxi | 15.08% | 20.92% | 9.06% | 7.72% | 7.93% | -6.02 (-7.42 to -4.77) | -1.33 (-2.38 to -0.53) |
+
+Eight of each New York series' weeks lie inside the window E17 and E18 scored, where the pretrained model was first compared. The pretrained model less the model trained here, on the weeks outside that window:
+
+| Series | Weeks not opened before | One hour ahead (range) | 24 hours ahead (range) |
+|---|---|---|---|
+| Chicago ride-hail | 26 of 26 | -0.45 (-0.58 to -0.32) | -0.60 (-0.82 to -0.35) |
+| New York ride-hail | 18 of 26 | -0.40 (-1.01 to +0.11) | -0.37 (-0.97 to +0.19) |
+| New York yellow taxi | 18 of 26 | -0.55 (-0.94 to -0.20) | -0.94 (-1.58 to -0.37) |
+
+In New York ride-hail the range includes zero at both horizons. In Chicago and New York yellow it doesn't.
+
+Three upper bounds on the model trained here, one hour ahead, each sized for 95%. Width is the bound's height above the forecast as a share of the forecast. Pinball loss is the quantile loss of the bound at 95%, in rides an hour; lower is better.
+
+| Series | Bound | Hours held | Weeks of 26 holding 90% or more | Mean distance from 95%, week by week | Width | Pinball loss |
+|---|---|---|---|---|---|---|
+| Chicago ride-hail | Fixed | 94.3% | 24 | 2.04 points | 11.7% | 4.150 |
+| | Rolling | 95.0% | 24 | 2.21 | 12.3% | 4.160 |
+| | Adaptive | 95.0% | 26 | 1.57 | 12.5% | 4.166 |
+| New York ride-hail | Fixed | 94.8% | 21 | 3.86 | 13.9% | 7.522 |
+| | Rolling | 94.3% | 22 | 3.37 | 15.0% | 7.711 |
+| | Adaptive | 95.0% | 24 | 2.25 | 19.4% | 7.585 |
+| New York yellow taxi | Fixed | 94.4% | 22 | 2.76 | 17.2% | 7.787 |
+| | Rolling | 94.9% | 23 | 2.54 | 18.2% | 7.851 |
+| | Adaptive | 95.1% | 26 | 1.92 | 18.7% | 7.862 |
+
+At 24 hours the adaptive bound is far wider than the fixed one: 17.3% of the forecast against 13.2% in Chicago, 44.7% against 17.8% in New York ride-hail and 64.9% against 23.9% in New York yellow. Its pinball loss is higher in all three: 5.991 against 5.367, 15.444 against 10.422 and 20.559 against 10.252.
+
+| Bar | Result | |
+|---|---|---|
+| 1. Trained here beats last week, range excluding zero, all three | Lower by 2.77, 4.75 and 6.02 points; the ranges stop at -2.19, -3.79 and -4.77 | **Pass** |
+| 2. Pretrained beats trained here, range excluding zero, all three | Lower by 0.45, 0.98 and 1.33 points; the ranges stop at -0.32, -0.35 and -0.53 | **Pass** |
+| 3. Adaptive bound holds 90% of hours in at least 24 of 26 weeks | 26, 24 and 26 weeks | **Pass** |
+| 4. Adaptive bound nearer 95% than the fixed one, week by week | 1.57 against 2.04 points, 2.25 against 3.86, 1.92 against 2.76 | **Pass** |
+
+What this says:
+
+- **The model trained here beats last week's curve in every series, over half a year.** It removes 32% to 40% of last week's error an hour ahead, and the ranges sit well clear of zero. The latest same hour of day already known is the worst rule everywhere.
+- **The pretrained model leads, and by less on weeks not opened before.** Over all 26 weeks it is 0.45, 0.98 and 1.33 points under the model trained here. On the 18 New York weeks outside the window E17 and E18 scored, the lead is 0.40 points in ride-hail, with a range that includes zero, and 0.55 in yellow taxi. New York taxi records are in its public training corpora, so Chicago is the reading least likely to be: 5.40% against 5.85%, a lead of 0.45 points, on weeks none of which were opened before.
+- **The mean of the two adds nothing.** It is level with the pretrained model in Chicago and behind it in both New York series, 6.17% against 6.02% and 7.93% against 7.72%.
+- **The adaptive bound is a choice for steadier weekly coverage, not a better bound.** Its level moves after every hour on outcomes already known (adaptive conformal inference), so it holds 95.0% to 95.1% of hours by construction. Week by week it sits 0.47 to 1.61 points nearer 95% than the fixed bound, and it holds 90% in 26, 24 and 26 weeks against 24, 21 and 22. It pays in width: 7% and 8% wider than the fixed bound in Chicago and New York yellow, 39% wider in New York ride-hail. It doesn't improve pinball loss in any series: 4.166 against the fixed bound's 4.150 in Chicago, 7.585 against 7.522 in New York ride-hail, 7.862 against 7.787 in New York yellow.
+- **At 24 hours the forecasts keep their order and the adaptive bound costs more:** the model trained here is 1.87 to 3.30 points under last week and the pretrained model a further 0.60 to 1.43 over all weeks, every range clear of zero, while the adaptive bound is 31% to 172% wider than the fixed one with pinball loss 12% to 101% higher.
+- **This is the comparison to rely on.** E7b on San Francisco measures a model through a reporting break, on one window. E18's eight weeks put the pretrained model's lead on New York yellow at 2.73 points; over 26 weeks it is 1.33, and 0.55 on the weeks outside that window. A single window gave the order and not the size.
+

@@ -1,0 +1,951 @@
+{
+  "study": "the spread of the capacity runs, split between the fortnight replayed and the draw within it",
+  "fortnights": [
+    "2024-03-18",
+    "2024-04-15",
+    "2024-04-29",
+    "2024-05-13"
+  ],
+  "draws_a_fortnight": 10,
+  "rows": {
+    "threshold, 500 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9975,
+          "2024-04-15": 1.0,
+          "2024-04-29": 0.9997,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0012,
+        "sd_between_draws": 0.0003,
+        "share_of_variance_between_fortnights": 0.947,
+        "runs_worth": 4.2,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold, 600 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9783,
+          "2024-04-15": 0.9998,
+          "2024-04-29": 0.9929,
+          "2024-05-13": 0.9966
+        },
+        "sd_between_fortnights": 0.0095,
+        "sd_between_draws": 0.0009,
+        "share_of_variance_between_fortnights": 0.991,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold, 700 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9238,
+          "2024-04-15": 0.983,
+          "2024-04-29": 0.9613,
+          "2024-05-13": 0.9633
+        },
+        "sd_between_fortnights": 0.0247,
+        "sd_between_draws": 0.0013,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold, 800 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.8896,
+          "2024-04-15": 0.9516,
+          "2024-04-29": 0.9261,
+          "2024-05-13": 0.9309
+        },
+        "sd_between_fortnights": 0.0258,
+        "sd_between_draws": 0.0014,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold, 900 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.8368,
+          "2024-04-15": 0.9057,
+          "2024-04-29": 0.8824,
+          "2024-05-13": 0.8843
+        },
+        "sd_between_fortnights": 0.029,
+        "sd_between_draws": 0.0012,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 500 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9986,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0007,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 600 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.999,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 700 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9967,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0016,
+        "sd_between_draws": 0.0002,
+        "share_of_variance_between_fortnights": 0.982,
+        "runs_worth": 4.1,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.7127,
+          "2024-04-15": 0.5673,
+          "2024-04-29": 0.3712,
+          "2024-05-13": 0.7317
+        },
+        "sd_between_fortnights": 0.165,
+        "sd_between_draws": 0.0749,
+        "share_of_variance_between_fortnights": 0.829,
+        "runs_worth": 4.7,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 800 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9546,
+          "2024-04-15": 0.9945,
+          "2024-04-29": 0.9792,
+          "2024-05-13": 0.9862
+        },
+        "sd_between_fortnights": 0.0172,
+        "sd_between_draws": 0.0012,
+        "share_of_variance_between_fortnights": 0.995,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.9992,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0003,
+        "sd_between_draws": 0.0006,
+        "share_of_variance_between_fortnights": 0.212,
+        "runs_worth": 13.7,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 900 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.8925,
+          "2024-04-15": 0.9615,
+          "2024-04-29": 0.9348,
+          "2024-05-13": 0.94
+        },
+        "sd_between_fortnights": 0.0289,
+        "sd_between_draws": 0.0016,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 1.0,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "plan, 500 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9976,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0012,
+        "sd_between_draws": 0.0002,
+        "share_of_variance_between_fortnights": 0.983,
+        "runs_worth": 4.1,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0037,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0008,
+          "2024-05-13": 0.0008
+        },
+        "sd_between_fortnights": 0.0015,
+        "sd_between_draws": 0.0019,
+        "share_of_variance_between_fortnights": 0.383,
+        "runs_worth": 9.0,
+        "runs": 40
+      }
+    },
+    "plan, 600 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9988,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0006,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.993,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.1949,
+          "2024-04-15": 0.185,
+          "2024-04-29": 0.1878,
+          "2024-05-13": 0.1761
+        },
+        "sd_between_fortnights": 0.0066,
+        "sd_between_draws": 0.0131,
+        "share_of_variance_between_fortnights": 0.203,
+        "runs_worth": 14.2,
+        "runs": 40
+      }
+    },
+    "plan, 700 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9593,
+          "2024-04-15": 0.9932,
+          "2024-04-29": 0.9803,
+          "2024-05-13": 0.9856
+        },
+        "sd_between_fortnights": 0.0145,
+        "sd_between_draws": 0.0021,
+        "share_of_variance_between_fortnights": 0.98,
+        "runs_worth": 4.1,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.6538,
+          "2024-04-15": 0.693,
+          "2024-04-29": 0.6647,
+          "2024-05-13": 0.6498
+        },
+        "sd_between_fortnights": 0.019,
+        "sd_between_draws": 0.0134,
+        "share_of_variance_between_fortnights": 0.67,
+        "runs_worth": 5.7,
+        "runs": 40
+      }
+    },
+    "plan, 800 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.8831,
+          "2024-04-15": 0.9463,
+          "2024-04-29": 0.9206,
+          "2024-05-13": 0.9249
+        },
+        "sd_between_fortnights": 0.0263,
+        "sd_between_draws": 0.0014,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.9644,
+          "2024-04-15": 1.0,
+          "2024-04-29": 0.9999,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0178,
+        "sd_between_draws": 0.0014,
+        "share_of_variance_between_fortnights": 0.994,
+        "runs_worth": 4.0,
+        "runs": 40
+      }
+    },
+    "plan, 900 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.8302,
+          "2024-04-15": 0.8994,
+          "2024-04-29": 0.8769,
+          "2024-05-13": 0.8784
+        },
+        "sd_between_fortnights": 0.0292,
+        "sd_between_draws": 0.0012,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 1.0,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "power rule slot_power, 1000 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.7877,
+          "2024-04-15": 0.8551,
+          "2024-04-29": 0.8394,
+          "2024-05-13": 0.8385
+        },
+        "sd_between_fortnights": 0.0293,
+        "sd_between_draws": 0.0013,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "power rule need_first, 1000 vehicles": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.706,
+          "2024-04-15": 0.7612,
+          "2024-04-29": 0.7522,
+          "2024-05-13": 0.7499
+        },
+        "sd_between_fortnights": 0.0247,
+        "sd_between_draws": 0.0016,
+        "share_of_variance_between_fortnights": 0.996,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 650 vehicles, energy use x0.9": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.999,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 700 vehicles, energy use x0.9": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9991,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.996,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 725 vehicles, energy use x0.9": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9994,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0003,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.999,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 750 vehicles, energy use x0.9": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9991,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0004,
+        "sd_between_draws": 0.0001,
+        "share_of_variance_between_fortnights": 0.942,
+        "runs_worth": 4.2,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.5238,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0144
+        },
+        "sd_between_fortnights": 0.2594,
+        "sd_between_draws": 0.0319,
+        "share_of_variance_between_fortnights": 0.985,
+        "runs_worth": 4.1,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 800 vehicles, energy use x0.9": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9928,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0036,
+        "sd_between_draws": 0.0003,
+        "share_of_variance_between_fortnights": 0.995,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.7806,
+          "2024-04-15": 0.9953,
+          "2024-04-29": 0.8722,
+          "2024-05-13": 0.9273
+        },
+        "sd_between_fortnights": 0.0906,
+        "sd_between_draws": 0.0169,
+        "share_of_variance_between_fortnights": 0.966,
+        "runs_worth": 4.1,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 550 vehicles, energy use x1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9987,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0006,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 600 vehicles, energy use x1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.999,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 625 vehicles, energy use x1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9991,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.998,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 650 vehicles, energy use x1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9993,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0004,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.994,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 675 vehicles, energy use x1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9993,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0004,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.987,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.4485,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0237
+        },
+        "sd_between_fortnights": 0.2204,
+        "sd_between_draws": 0.0325,
+        "share_of_variance_between_fortnights": 0.979,
+        "runs_worth": 4.1,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 700 vehicles, energy use x1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9967,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0016,
+        "sd_between_draws": 0.0002,
+        "share_of_variance_between_fortnights": 0.982,
+        "runs_worth": 4.1,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.7127,
+          "2024-04-15": 0.5673,
+          "2024-04-29": 0.3712,
+          "2024-05-13": 0.7317
+        },
+        "sd_between_fortnights": 0.165,
+        "sd_between_draws": 0.0749,
+        "share_of_variance_between_fortnights": 0.829,
+        "runs_worth": 4.7,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 550 vehicles, energy use x1.1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9989,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 575 vehicles, energy use x1.1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.999,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0005,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.999,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.0,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.0,
+        "runs_worth": 40.0,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 600 vehicles, energy use x1.1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9993,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0003,
+        "sd_between_draws": 0.0,
+        "share_of_variance_between_fortnights": 0.997,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.0917,
+          "2024-04-15": 0.0,
+          "2024-04-29": 0.0,
+          "2024-05-13": 0.0
+        },
+        "sd_between_fortnights": 0.045,
+        "sd_between_draws": 0.0282,
+        "share_of_variance_between_fortnights": 0.718,
+        "runs_worth": 5.4,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 625 vehicles, energy use x1.1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9985,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0007,
+        "sd_between_draws": 0.0002,
+        "share_of_variance_between_fortnights": 0.924,
+        "runs_worth": 4.3,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.5825,
+          "2024-04-15": 0.0751,
+          "2024-04-29": 0.0953,
+          "2024-05-13": 0.4419
+        },
+        "sd_between_fortnights": 0.2523,
+        "sd_between_draws": 0.0722,
+        "share_of_variance_between_fortnights": 0.924,
+        "runs_worth": 4.3,
+        "runs": 40
+      }
+    },
+    "threshold_waits, 650 vehicles, energy use x1.1": {
+      "served": {
+        "by_fortnight": {
+          "2024-03-18": 0.9945,
+          "2024-04-15": 1.0,
+          "2024-04-29": 1.0,
+          "2024-05-13": 1.0
+        },
+        "sd_between_fortnights": 0.0027,
+        "sd_between_draws": 0.0003,
+        "share_of_variance_between_fortnights": 0.991,
+        "runs_worth": 4.0,
+        "runs": 40
+      },
+      "arrived_at_floor_share": {
+        "by_fortnight": {
+          "2024-03-18": 0.7339,
+          "2024-04-15": 0.8743,
+          "2024-04-29": 0.7561,
+          "2024-05-13": 0.8715
+        },
+        "sd_between_fortnights": 0.0737,
+        "sd_between_draws": 0.0315,
+        "share_of_variance_between_fortnights": 0.845,
+        "runs_worth": 4.6,
+        "runs": 40
+      }
+    }
+  },
+  "where_rides_served_moves": {
+    "cells": 13,
+    "share_of_variance_between_fortnights": [
+      0.98,
+      0.998
+    ],
+    "runs_worth": [
+      4.0,
+      4.1
+    ]
+  },
+  "code": {
+    "driver": "0a218a9903aa",
+    "upstream": "c51d7ca74bd0"
+  }
+}

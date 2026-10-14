@@ -1,0 +1,83 @@
+{
+ "500_slot_power": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 1.4582,
+  "grid_kwh_per_vehicle_day": 95.6618
+ },
+ "500_slot_power_cadence": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 3.0759,
+  "grid_kwh_per_vehicle_day": 93.8752
+ },
+ "500_slot_power_few_people": {
+  "rides_served_share": 0.9202,
+  "visits_per_vehicle_day": 0.9469,
+  "grid_kwh_per_vehicle_day": 63.542
+ },
+ "500_slot_power_waits": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 3.0674,
+  "grid_kwh_per_vehicle_day": 94.5894
+ },
+ "500_need_first": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 1.3919,
+  "grid_kwh_per_vehicle_day": 91.1716
+ },
+ "500_need_first_cadence": {
+  "rides_served_share": 0.9962,
+  "visits_per_vehicle_day": 2.8338,
+  "grid_kwh_per_vehicle_day": 87.0561
+ },
+ "500_need_first_few_people": {
+  "rides_served_share": 0.9066,
+  "visits_per_vehicle_day": 0.9443,
+  "grid_kwh_per_vehicle_day": 63.989
+ },
+ "500_need_first_waits": {
+  "rides_served_share": 1.0,
+  "visits_per_vehicle_day": 2.211,
+  "grid_kwh_per_vehicle_day": 91.2392
+ },
+ "1000_slot_power": {
+  "rides_served_share": 0.8992,
+  "visits_per_vehicle_day": 0.9527,
+  "grid_kwh_per_vehicle_day": 62.7
+ },
+ "1000_slot_power_cadence": {
+  "rides_served_share": 0.8499,
+  "visits_per_vehicle_day": 2.0512,
+  "grid_kwh_per_vehicle_day": 62.7
+ },
+ "1000_slot_power_few_people": {
+  "rides_served_share": 0.4729,
+  "visits_per_vehicle_day": 0.4479,
+  "grid_kwh_per_vehicle_day": 34.4752
+ },
+ "1000_slot_power_waits": {
+  "rides_served_share": 0.931,
+  "visits_per_vehicle_day": 0.8593,
+  "grid_kwh_per_vehicle_day": 62.7
+ },
+ "1000_need_first": {
+  "rides_served_share": 0.8149,
+  "visits_per_vehicle_day": 0.8877,
+  "grid_kwh_per_vehicle_day": 58.0254
+ },
+ "1000_need_first_cadence": {
+  "rides_served_share": 0.7537,
+  "visits_per_vehicle_day": 1.8085,
+  "grid_kwh_per_vehicle_day": 55.051
+ },
+ "1000_need_first_few_people": {
+  "rides_served_share": 0.4587,
+  "visits_per_vehicle_day": 0.4619,
+  "grid_kwh_per_vehicle_day": 33.945
+ },
+ "1000_need_first_waits": {
+  "rides_served_share": 0.8687,
+  "visits_per_vehicle_day": 0.7987,
+  "grid_kwh_per_vehicle_day": 59.3871
+ },
+ "_made_by": "web/scripts/reference.py: seeds 1 to 3, seven days less the first, weekly shape"
+}

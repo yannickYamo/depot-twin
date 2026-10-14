@@ -1,0 +1,764 @@
+{
+ "tests_run": 35,
+ "bars_passed": 96,
+ "bars_total": 145,
+ "claims": [
+  {
+   "claim": "power_rule",
+   "value": 0.0878,
+   "low": 0.0815,
+   "high": 0.094,
+   "share_of_usable_power_drawn": {
+    "slot_power": {
+     "median": 1.0,
+     "p10": 1.0,
+     "p90": 1.0,
+     "runs": 40
+    },
+    "need_first": {
+     "median": 0.8781,
+     "p10": 0.8773,
+     "p90": 0.8793,
+     "runs": 40
+    }
+   },
+   "gain_at_planned_fleets": {
+    "500": {
+     "median": 0.0,
+     "p10": -0.0004,
+     "p90": 0.0,
+     "runs": 40
+    },
+    "600": {
+     "median": 0.0,
+     "p10": 0.0,
+     "p90": 0.0006,
+     "runs": 40
+    }
+   },
+   "unit": "share of rides served, charging in order of arrival less emptiest battery first",
+   "conditions": "1,000 vehicles on one feeder, a site short of power; the cadence setting E22 chose, each fortnight replayed until the fleet settles and its last week scored; median and 10th to 90th percentile of 4 fortnights by 10 draws. Where power is not short the two rules serve the same rides",
+   "source": "E23, data/derived/e23_capacity.json",
+   "says": [
+    "8.8 points",
+    "8.2 to 9.4"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "planned_fleet",
+   "value": 600,
+   "rides_per_day": 15000.0,
+   "figures": [
+    "90% of usable power at the estimate",
+    "98% with more energy use"
+   ],
+   "share_of_usable_power_drawn_at_the_estimate": 0.9027,
+   "share_of_usable_power_drawn_with_more_energy_use": 0.9837,
+   "low_battery_arrivals_with_more_energy_use": 0.0,
+   "carried_in_each_fortnight_with_more_energy_use": {
+    "2024-03-18": true,
+    "2024-04-15": true,
+    "2024-04-29": true,
+    "2024-05-13": true
+   },
+   "registered_rule_gives": 625,
+   "unit": "vehicles to plan one 2.75 MW feeder for",
+   "conditions": "the largest fleet carried at the estimated energy use and, in each of the four fortnights taken alone, with driving energy and the always-on load 10% higher. E26's registered rule, the largest fleet carried at both levels over all forty runs, gives 625; 25 rides offered a vehicle a day; a vehicle is called in once a charger is free for it; the cadence setting E22 chose, each fortnight replayed until the fleet settles and its last week scored; 4 fortnights by 10 draws",
+   "source": "E26, data/derived/e26_margin.json",
+   "says": [
+    "600 vehicles",
+    "15,000 rides a day",
+    "10% more energy"
+   ],
+   "stated_in": [
+    "README.md",
+    "docs/BRIEF.md",
+    "docs/STORY.md"
+   ]
+  },
+  {
+   "claim": "capacity_one_feeder",
+   "value": 675,
+   "rides_per_day": 16875.0,
+   "figures": [
+    "68% of visits start on a low battery at the limit"
+   ],
+   "served_at_the_limit": 700,
+   "rides_per_day_at_the_limit": 17500.0,
+   "low_battery_arrivals_at_the_limit": 0.6803,
+   "grid_share_used": {
+    "550": 0.8337,
+    "600": 0.9027,
+    "625": 0.935,
+    "650": 0.971,
+    "675": 0.9982,
+    "700": 1.0
+   },
+   "carried_on_hundred_vehicle_steps": 600,
+   "by_fortnight": {
+    "2024-03-18": 600,
+    "2024-04-15": 600,
+    "2024-04-29": 700,
+    "2024-05-13": 600
+   },
+   "by_rule_on_hundred_vehicle_steps": {
+    "threshold": 500,
+    "threshold_waits": 600,
+    "plan": 600
+   },
+   "unit": "vehicles on one 2.75 MW feeder at the estimated energy use",
+   "conditions": "carried: the largest fleet serving 99% of rides in nine runs in ten with no more than half its depot visits arriving at the low-battery level; the largest fleet run that was carried, in steps of 25 vehicles. Served at the limit: the largest fleet serving 99% in nine runs in ten on any terms. 25 rides offered a vehicle a day; a vehicle is called in once a charger is free for it; the cadence setting E22 chose, each fortnight replayed until the fleet settles and its last week scored; 4 fortnights by 10 draws",
+   "source": "E23, E25 and E26, data/derived/e23_capacity.json, e25_between.json and e26_margin.json",
+   "says": [
+    "675 vehicles",
+    "700 vehicles"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "capacity_by_energy_use",
+   "carried": {
+    "0.9": 750,
+    "1": 675,
+    "1.1": 625
+   },
+   "carried_times_energy_use": {
+    "0.9": 675.0,
+    "1": 675.0,
+    "1.1": 688.0
+   },
+   "feeder_kwh_per_vehicle_day": 92.7,
+   "usable_kwh_a_day": 62700.0,
+   "unit": "vehicles carried on one feeder with the vehicles' energy use 10% lower and 10% higher than estimated",
+   "conditions": "driving energy and the always-on load both multiplied; the capacity test's setting; 4 fortnights by 10 draws",
+   "source": "E26, data/derived/e26_margin.json",
+   "says": [
+    "750 vehicles",
+    "625 vehicles"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "calling_rule",
+   "waits_for_a_charger": 650,
+   "plain": 550,
+   "figures": [
+    "steps of 50 vehicles"
+   ],
+   "steps": [
+    500,
+    550,
+    600,
+    650
+   ],
+   "plain_runs_at_the_floor": {
+    "500": 1.0,
+    "550": 1.0,
+    "600": 0.75,
+    "650": 0.25
+   },
+   "unit": "largest fleet carried on one feeder, by calling rule, on the same steps",
+   "conditions": "both rules on steps of 50 vehicles at the estimated energy use; the rule that waits was not run above the last shared step here, where finer steps carry 675; 4 fortnights by 10 draws",
+   "source": "E26, data/derived/e26_margin.json",
+   "says": [
+    "650 vehicles",
+    "550 vehicles"
+   ],
+   "stated_in": [
+    "README.md",
+    "docs/BRIEF.md",
+    "docs/STORY.md"
+   ]
+  },
+  {
+   "claim": "power_rule_served",
+   "in_order": {
+    "median": 0.8391,
+    "p10": 0.7876,
+    "p90": 0.8559,
+    "runs": 40
+   },
+   "emptiest_first": {
+    "median": 0.7508,
+    "p10": 0.7063,
+    "p90": 0.7613,
+    "runs": 40
+   },
+   "unit": "share of rides served at 1,000 vehicles on one feeder, by power rule",
+   "conditions": "a plain threshold; the cadence setting E22 chose, each fortnight replayed until the fleet settles and its last week scored; median of 4 fortnights by 10 draws",
+   "source": "E23, data/derived/e23_capacity.json",
+   "says": [
+    "83.9%",
+    "75.1%"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "second_feeder",
+   "low": 16,
+   "high": 47,
+   "figures": [
+    "2.0% a month since the footprint last changed",
+    "9 months fitted"
+   ],
+   "on_the_growth_since_the_footprint_settled": {
+    "footprint_last_changed_in": "2025q3",
+    "tracts_before_and_after": [
+     1496,
+     1796
+    ],
+    "months_fitted": 9,
+    "from": "2025-10",
+    "to": "2026-06",
+    "growth_per_month": 0.0198,
+    "trips_a_day_first_and_last_month": [
+     39286,
+     44964
+    ],
+    "rise_in_trips_a_day_across_the_quarter_it_changed": 0.564,
+    "nearest_reading": "last_six_months",
+    "months_until_one_feeder_is_full": {
+     "last_four_quarters": 47,
+     "latest_quarter": 39
+    }
+   },
+   "by_level_and_reading_of_growth": {
+    "last_four_quarters": {
+     "first_to_last": 19,
+     "fitted": 20,
+     "last_six_months": 47
+    },
+    "latest_quarter": {
+     "first_to_last": 16,
+     "fitted": 17,
+     "last_six_months": 39
+    }
+   },
+   "unit": "months until the 20 km area needs more vehicles than one feeder is planned for",
+   "conditions": "against the 600 vehicles planned; a scenario, not a test. Today's level read two ways (the last four quarters, centred on January 2026, and the latest quarter, centred on May 2026), so the months count from the first half of 2026. Growth: the fit to monthly trips since the served footprint last changed (2025-10 to 2026-06), which agrees with the slowest of E21's three readings; the two faster readings span the quarter the footprint was enlarged and are quoted as what such a jump would do again. Statewide trips a resident applied to the East Bay's residents, with no adjustment for density",
+   "source": "E21 and the account study, data/derived/e21_demand.json and account_study.json",
+   "says": [
+    "39 to 47 months",
+    "16 to 20 months"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "feeder_timing",
+   "figures": [
+    "108 scenarios",
+    "$4 to $10 million at a lead of 4 years",
+    "$183 a vehicle a day added"
+   ],
+   "a_year_late_on_the_growth_since_the_footprint_settled_by_lead_months": {
+    "24": [
+     -41000.0,
+     -35000.0
+    ],
+    "36": [
+     4000.0,
+     2094000.0
+    ],
+    "48": [
+     4110000.0,
+     9801000.0
+    ]
+   },
+   "base_cost_scenarios_at_the_cap": [
+    16,
+    36
+   ],
+   "a_year_late_at_base_costs_on_the_faster_growth_readings": [
+    19327000.0,
+    30618000.0
+   ],
+   "a_year_late_at_base_costs_on_the_slowest_growth_reading": [
+    -41000.0,
+    9801000.0
+   ],
+   "a_year_late_across_fleet_costs": [
+    -41000.0,
+    52808000.0
+   ],
+   "carrying_cost_of_applying_a_year_early": [
+    30000.0,
+    41000.0
+   ],
+   "capital": 550000.0,
+   "added_contribution_per_vehicle_day": {
+    "cheap": 314.78,
+    "base": 182.59,
+    "dear": -77.0
+   },
+   "scenarios": 108,
+   "unit": "dollars of contribution not earned by applying a year after signing, present value",
+   "conditions": "a table of scenarios with no bars: two readings of today, three of growth, lead times of two, three and four years, discount rates of 8% and 10%, and the two unsourced vehicle costs at the cheap end, the base and the dear end of their ranges; a vehicle the first feeder cannot carry is valued at what a second feeder would add for it, the land and first connection being paid already; capped at one feeder's worth of vehicles; every vehicle assumed to find its rides",
+   "source": "account study, data/derived/account_study.json",
+   "says": [
+    "$19 to $31 million",
+    "$30,000 to $41,000",
+    "$53 million"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "parked_load",
+   "carried_with_the_parked_load": {
+    "1": 625,
+    "1.1": 550
+   },
+   "carried_in_every_fortnight_with_the_parked_load": {
+    "1": 625,
+    "1.1": 550
+   },
+   "feeder_kwh_per_vehicle_day_added": {
+    "1": {
+     "600": 4.9,
+     "625": 5.5,
+     "650": 2.8,
+     "675": 0.2
+    },
+    "1.1": {
+     "550": 5.7,
+     "575": 5.8,
+     "600": 1.7
+    }
+   },
+   "figures": [
+    "125 vehicles between the two",
+    "0.53 kWh a mile all in"
+   ],
+   "unit": "vehicles carried on one feeder with the always-on load counted while a vehicle is in the depot, and with 10% more energy use on the road as well",
+   "conditions": "the always-on load charged to a vehicle's battery for every minute between arriving at the depot and leaving it; the capacity test's setting; 4 fortnights by 10 draws. Carried in every fortnight applies the rule to each fortnight alone",
+   "source": "E27, data/derived/e27_parked.json",
+   "says": [
+    "550 vehicles",
+    "550 vehicles"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "further_from_the_estimate",
+   "carried_by_energy_use": {
+    "1.2": 575,
+    "1.3": 525
+   },
+   "carried_by_rides_a_vehicle": {
+    "1.1": 650,
+    "1.2": null
+   },
+   "carried_with_a_sharper_peak": {
+    "1.1": 675,
+    "1.2": null
+   },
+   "carried_under_other_cadence_settings": {
+    "3_0.5": 675,
+    "3_0.55": 675,
+    "4_0.5": 675,
+    "4_0.55": 675,
+    "5_0.5": 675,
+    "5_0.55": 675,
+    "6_0.5": 675,
+    "6_0.55": 675
+   },
+   "figures": [
+    "20%",
+    "30%",
+    "27.5 rides",
+    "650 vehicles",
+    "30 rides",
+    "8 settings"
+   ],
+   "unit": "vehicles carried on one feeder with one input moved further than the earlier tests moved it",
+   "conditions": "the capacity test's setting and the rule that waits for a free charger, on its four fortnights with three of its ten seeds, twelve runs a fleet; one input moved at a time; at 30 rides a vehicle a day no fleet from 525 to 600 is carried and smaller fleets were not run",
+   "source": "E28, data/derived/e28_further.json",
+   "says": [
+    "575 vehicles",
+    "525 vehicles"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "plan_at_the_planned_fleet",
+   "energy_saving_at_500_by_peak_level": {
+    "0.15": 0.1916,
+    "0.25": 0.191,
+    "0.35": 0.1853
+   },
+   "low_battery_visits_at_600_by_peak_level": {
+    "0.15": 0.1834,
+    "0.25": 0.0,
+    "0.35": 0.0
+   },
+   "charge_on_the_road_at_600": 0.3155,
+   "served_at_650": 1.0,
+   "carried_with_the_peak_level_raised": 650,
+   "figures": [
+    "32%"
+   ],
+   "unit": "what the hourly plan pays for energy at 600 vehicles, less than the rule that waits for a free charger",
+   "conditions": "the capacity test's setting under the plan on 30-minute slots, four fortnights with three of its ten seeds; the rule that waits is read from E23 on the same fortnights and seeds",
+   "source": "E29, data/derived/e29_steer.json",
+   "says": [
+    "9.8%"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "fleet_mix",
+   "carried_in_every_fortnight_by_share": {
+    "0": 650,
+    "0.4": 675,
+    "0.7": 675,
+    "1": 700
+   },
+   "carried_in_every_fortnight_by_share_with_more_energy": {
+    "0": 575,
+    "0.4": 600,
+    "0.7": 625,
+    "1": 650
+   },
+   "always_on_kw_moves_an_all_ojai_fleet": {
+    "1.5": 775,
+    "2.5": 600
+   },
+   "range_first_rule_carries": 675,
+   "figures": [
+    "575",
+    "600",
+    "625",
+    "650",
+    "675",
+    "700",
+    "725",
+    "775",
+    "0%",
+    "40%",
+    "60%",
+    "70%",
+    "100%"
+   ],
+   "unit": "vehicles one feeder carries in every fortnight, by the share of Ojai in the fleet",
+   "conditions": "the capacity test's setting and the rule that waits, four fortnights with ten seeds (E30, E32) or three (E31); the share of Ojai at 0%, 40%, 70% and 100%, at the estimate and with 10% more energy",
+   "source": "E30 to E32, data/derived/e30_mix.json, e31_new_vehicle.json, e32_range.json",
+   "says": [
+    "an all-I-PACE fleet carries 575",
+    "40% Ojai or more"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "chargers_and_feeders",
+   "carried_in_every_fortnight_by_design": {
+    "all_60_1": 675,
+    "all_150_1": 675,
+    "half_60_1": null,
+    "half_150_1": 625,
+    "mixed_kept_for_ojai_1": 675,
+    "mixed_fastest_free_1": 675,
+    "all_60_2": 1350,
+    "all_150_2": 1350,
+    "half_60_2": null,
+    "half_150_2": 1250,
+    "mixed_kept_for_ojai_2": 1350,
+    "mixed_fastest_free_2": 1350
+   },
+   "planned_on_two_feeders": 1200,
+   "ojai_minutes_on_charger_at_60_and_150_kw": [
+    81.0,
+    67.0
+   ],
+   "fast_chargers_cost_more_a_year": 405000.0,
+   "figures": [
+    "1,250 vehicles",
+    "1,350 vehicles",
+    "625 vehicles",
+    "675 vehicles",
+    "1,200 vehicles",
+    "81 minutes",
+    "67 minutes",
+    "81.5 minutes",
+    "87 minutes",
+    "$405,000",
+    "60 kW",
+    "150 kW"
+   ],
+   "unit": "vehicles carried in every fortnight by charger design and feeder count, at the 60/40 mix",
+   "conditions": "the capacity test's setting and the rule that waits at 40% Ojai, four fortnights with three seeds; E33 at the estimate on one feeder and two, E34 on two feeders with 10% more energy use",
+   "source": "E33 and E34, data/derived/e33_chargers.json, e34_two_feeders.json",
+   "says": [
+    "1,200 on two feeders"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "site_planner",
+   "arithmetic": 658,
+   "carried": {
+    "as entered": 675,
+    "10% more energy on the road": 600,
+    "systems on while parked": 625
+   },
+   "planned": 600,
+   "changes": {
+    "call a vehicle in whether or not a charger is free": null,
+    "feed the emptiest vehicle first": 575,
+    "a quarter more chargers": 675,
+    "a quarter more people and bays": 675
+   },
+   "carried_on_other_demand": {
+    "shape_chicago": 675,
+    "shape_new_york": 675,
+    "shape_san_francisco_hourly": 675
+   },
+   "figures": [
+    "0 vehicles added by a quarter more chargers",
+    "12 fortnights in three cities"
+   ],
+   "unit": "vehicles: the planner's arithmetic for East Oakland, and the largest fleet carried with an operating rule taken away",
+   "conditions": "`depot-twin plan` on sites/east_oakland.toml and sites/shape_*.toml: four windows a site, two draws a window, a search in steps of 25, carried in every window. A check of the planner against the study and of the fleet against other demand, with no bars",
+   "source": "sites/plans/*.json",
+   "says": [
+    "658 vehicles",
+    "575 vehicles"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "what_the_runs_are_worth",
+   "share_of_variance_between_fortnights": [
+    0.98,
+    0.998
+   ],
+   "runs_worth": [
+    4.0,
+    4.1
+   ],
+   "figures": [
+    "about 4 independent runs"
+   ],
+   "unit": "how many independent runs the forty runs of a capacity figure are worth",
+   "conditions": "a one-way split of the spread of rides served between the fortnight replayed and the draw within it, at every fleet and rule where rides served moves; each fortnight is scaled to the same rides a vehicle a day, and all four are from March to May 2024 in San Francisco",
+   "source": "spread study, data/derived/capacity_spread.json",
+   "says": [
+    "four fortnights"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "area_today",
+   "low": 241,
+   "high": 280,
+   "unit": "vehicles the 20 km area would keep busy today",
+   "conditions": "San Francisco's rides a resident, as the average of the last four quarters and as the latest quarter, applied to the East Bay's residents at 25 rides a vehicle a day; an upper reading, with no adjustment for lower density",
+   "source": "E21, data/derived/e21_demand.json",
+   "says": [
+    "241 to 280 vehicles"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "plan_energy_saving",
+   "value": 0.1908,
+   "low": 0.1767,
+   "high": 0.2002,
+   "unit": "energy cost a kWh, the hourly plan less the threshold rule",
+   "conditions": "500 vehicles, rides served level; the cadence setting E22 chose, each fortnight replayed until the fleet settles and its last week scored; median and 10th to 90th percentile of 4 fortnights by 10 draws",
+   "source": "E23, data/derived/e23_capacity.json",
+   "says": [
+    "19.1%",
+    "17.7% to 20.0%"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "forecast_one_hour",
+   "figures": [
+    "5.4% for the pretrained model",
+    "0.45 points ahead",
+    "6.2% for an average of past weeks scaled by the day so far",
+    "0.3 points ahead of it in Chicago",
+    "about 2 points ahead of it in New York",
+    "90% range"
+   ],
+   "against_a_stronger_naive_forecast": {
+    "chicago": {
+     "last_week_less_baseline": {
+      "mean": 0.0245,
+      "low": 0.0184,
+      "high": 0.0309,
+      "median": 0.017,
+      "weeks_the_model_is_better": 0,
+      "weeks": 26
+     },
+     "trained_here_less_baseline": {
+      "mean": -0.0033,
+      "low": -0.0067,
+      "high": -0.0002,
+      "median": -0.0015,
+      "weeks_the_model_is_better": 15,
+      "weeks": 26
+     },
+     "pretrained_less_baseline": {
+      "mean": -0.0078,
+      "low": -0.0106,
+      "high": -0.0055,
+      "median": -0.0054,
+      "weeks_the_model_is_better": 24,
+      "weeks": 26
+     },
+     "baseline": {
+      "mean": 0.0618,
+      "low": 0.0578,
+      "high": 0.0664
+     }
+    },
+    "nyc_ridehail": {
+     "last_week_less_baseline": {
+      "mean": 0.0277,
+      "low": 0.0153,
+      "high": 0.0414,
+      "median": 0.021,
+      "weeks_the_model_is_better": 3,
+      "weeks": 26
+     },
+     "trained_here_less_baseline": {
+      "mean": -0.0198,
+      "low": -0.0316,
+      "high": -0.0096,
+      "median": -0.0144,
+      "weeks_the_model_is_better": 23,
+      "weeks": 26
+     },
+     "pretrained_less_baseline": {
+      "mean": -0.0296,
+      "low": -0.0408,
+      "high": -0.0194,
+      "median": -0.0161,
+      "weeks_the_model_is_better": 26,
+      "weeks": 26
+     },
+     "baseline": {
+      "mean": 0.0898,
+      "low": 0.0769,
+      "high": 0.1043
+     }
+    },
+    "nyc_yellow": {
+     "last_week_less_baseline": {
+      "mean": 0.0396,
+      "low": 0.0259,
+      "high": 0.0541,
+      "median": 0.0352,
+      "weeks_the_model_is_better": 4,
+      "weeks": 26
+     },
+     "trained_here_less_baseline": {
+      "mean": -0.0206,
+      "low": -0.0322,
+      "high": -0.01,
+      "median": -0.0135,
+      "weeks_the_model_is_better": 22,
+      "weeks": 26
+     },
+     "pretrained_less_baseline": {
+      "mean": -0.034,
+      "low": -0.0441,
+      "high": -0.0245,
+      "median": -0.0258,
+      "weeks_the_model_is_better": 25,
+      "weeks": 26
+     },
+     "baseline": {
+      "mean": 0.1112,
+      "low": 0.0987,
+      "high": 0.1248
+     }
+    }
+   },
+   "trained_here": {
+    "mean": 0.0585,
+    "low": 0.0564,
+    "high": 0.0609
+   },
+   "same_hour_last_week": {
+    "mean": 0.0862,
+    "low": 0.0793,
+    "high": 0.0939
+   },
+   "pretrained": {
+    "mean": 0.054,
+    "low": 0.0519,
+    "high": 0.0564
+   },
+   "pretrained_less_trained_here": {
+    "mean": -0.0045,
+    "low": -0.0058,
+    "high": -0.0032
+   },
+   "unit": "total absolute error over total rides, one hour ahead, mean of weekly figures",
+   "conditions": "Chicago ride-hail, 26 weeks each forecast from the days before it; ranges are the 5th to 95th percentile of the mean when whole weeks are resampled",
+   "source": "E24, data/derived/e24_backtest.json",
+   "says": [
+    "5.9%",
+    "8.6%"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  },
+  {
+   "claim": "fleet_cost_share",
+   "figures": [
+    "3.7% of revenue is energy",
+    "under 4%"
+   ],
+   "value": 0.5373,
+   "energy_share_of_revenue": 0.037,
+   "unit": "share of fare revenue spent on owning and running the vehicles",
+   "conditions": "600 vehicles on one feeder, the account of the capacity test's runs; both inputs are assumed ($60,000 a vehicle a year and $100 a vehicle a day) and have no public source",
+   "source": "account study on E23, data/derived/account_study.json",
+   "says": [
+    "54%"
+   ],
+   "stated_in": [
+    "docs/BRIEF.md"
+   ]
+  }
+ ],
+ "code": {
+  "driver": "e610992df2ca",
+  "upstream": "12912eb9147a"
+ }
+}

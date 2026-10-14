@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050f1e" />
+    <title>Depot twin: how many robotaxis one grid connection carries</title>
+    <meta name="description" content="How many vehicles and rides one grid connection carries at a robotaxi depot, and which rules to change first. A digital twin of a hypothetical depot on a real East Oakland parcel, built on public data." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Depot twin: plan one feeder for 600 vehicles" />
+    <meta property="og:description" content="A digital twin of a hypothetical robotaxi depot on a real East Oakland parcel. The short version reads in 90 seconds; the full twin runs in your browser." />
+    <meta property="og:url" content="https://yannickyamo.github.io/depot-twin/" />
+    <meta property="og:image" content="https://yannickyamo.github.io/depot-twin/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://yannickyamo.github.io/depot-twin/preview.png" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='1' width='10' height='14' rx='2' fill='%23050f1e'/%3E%3Crect x='4.5' y='7' width='7' height='6.5' rx='1' fill='%2300e89d'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="views switch master" role="radiogroup" aria-label="Version">
+        <button type="button" id="view-short" role="radio" aria-checked="true">In 90 seconds</button>
+        <button type="button" id="view-full" role="radio" aria-checked="false">The full twin</button>
+      </div>
+      <h1>How many robotaxis can one grid connection carry?</h1>
+      <p id="lede"><span id="lede-text">The short version: the decision, the answer and what to do first.</span> <span id="answer" class="plan-chip" hidden></span></p>
+      <p class="standing">An independent project built on public data. Not affiliated with or endorsed by Waymo.</p>
+      <div class="modes" role="tablist" aria-label="The full twin" hidden>
+        <button id="mode-play" role="tab" aria-controls="depot-home" aria-selected="true">Depot</button>
+        <button id="mode-outcome" role="tab" aria-controls="impact" aria-selected="false">Decisions</button>
+        <button id="mode-hood" role="tab" aria-controls="hood" aria-selected="false">Under the hood</button>
+      </div>
+    </header>
+
+    <main>
+    <section id="brief" class="workbench brief" aria-label="The short version"></section>
+    <section id="impact" role="tabpanel" class="workbench impact" aria-label="The decisions, each with and without" hidden></section>
+    <section id="hood" role="tabpanel" class="workbench hood" aria-label="Under the hood" hidden>
+      <details class="fold hood-part" id="hood-model">
+        <summary><span class="hood-name"><b>Forecasts</b><small id="hood-model-says">How well rides are forecast, and what a better forecast changes at the depot.</small></span></summary>
+        <div class="hood-body">
+          <div id="workbench"></div>
+          <div id="facts"></div>
+        </div>
+      </details>
+      <details class="fold hood-part" id="hood-money">
+        <summary><span class="hood-name"><b>The account</b><small id="hood-money-says">Fares less every cost, design by design. It ranks designs. It isn't a profit forecast.</small></span></summary>
+        <div class="hood-body">
+          <div id="worth" class="worth"></div>
+          <div id="money"></div>
+        </div>
+      </details>
+      <details class="fold hood-part" id="hood-replay">
+        <summary><span class="hood-name"><b>A recorded run</b><small id="hood-replay-says">The full model on real San Francisco days, replayed step by step.</small></span></summary>
+        <div class="hood-body" id="replay-home"></div>
+      </details>
+      <p class="hood-more">The work in prose: <a href="story.html">the story</a> and <a href="readme.html">the README</a>.</p>
+    </section>
+
+    <div id="depot-home" role="tabpanel" aria-label="The depot and its settings">
+    <div class="bench" hidden>
+      <div class="main" id="depot-panel">
+        <div id="watching" class="watching" hidden></div>
+        <section class="stage" aria-label="The depot">
+          <canvas id="floor" width="1040" height="560" role="img" aria-label="Plan of the depot: vehicles on the road, driving in, queueing, on chargers, being cleaned and driving out"></canvas>
+          <div id="tip" class="tip" hidden></div>
+          <canvas id="pulse" width="1040" height="170" role="img" aria-label="Arrivals at the depot every five minutes, and grid draw against what the site may use, over the last day"></canvas>
+          <div class="transport">
+            <button id="play" class="primary">Pause</button>
+            <button id="reset">Start again</button>
+            <div class="dial" role="radiogroup" aria-label="Speed" id="speed">
+            <button type="button" role="radio" aria-checked="true" data-speed="1">1×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="2">2×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="5">5×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="20">20×</button>
+            <button type="button" role="radio" aria-checked="false" data-speed="60">60×</button>
+          </div>
+            <label class="scrub" id="scrub-box" hidden>Move through the run
+              <input id="scrub" type="range" min="0" max="100" value="0" />
+            </label>
+            <output id="clock" aria-live="off"></output>
+          </div>
+        </section>
+        <section id="mpc" class="chain" aria-label="The plan, hour by hour" hidden>
+          <h2>The plan, hour by hour</h2>
+          <p class="wb-note">Every hour the controller draws a plan for the next 24 hours, acts on its first hour, and draws it again an hour later from where the fleet then stands. This is that plan as it stands now, over the plans that came before it.</p>
+          <dl id="plan-figures" class="readouts four"></dl>
+          <div class="charts">
+            <figure>
+              <figcaption>Vehicles the plan calls in, each coming hour</figcaption>
+              <canvas id="plan-visits" width="1040" height="220" role="img" aria-label="Visits the plan calls for in each of the next 24 hours"></canvas>
+              <p class="probe">Bars are the plan in force. Gray lines are the plans made in the hours before, lined up by the hour they were about. Dark marks are the arrivals that came.</p>
+            </figure>
+            <figure>
+              <figcaption>Vehicles the plan expects on the road</figcaption>
+              <canvas id="plan-road" width="1040" height="220" role="img" aria-label="Vehicles on the road as the plan expects and as they are"></canvas>
+              <p class="probe">The dashed line is what the plan expects hour by hour; the short red line is what it promised for this hour; blue is what the fleet has done since the plan was made.</p>
+            </figure>
+          </div>
+          <h2 id="compare-head">The same days with a fixed threshold instead</h2>
+          <div id="compare"></div>
+          <p class="wb-note" id="compare-note"></p>
+        </section>
+
+        <section class="chain" aria-label="Vehicles in the depot, by station">
+          <details id="chain-open" class="chain-open">
+            <summary aria-label="Every vehicle through the depot, the list by station"><h2>Every vehicle through the depot</h2><span class="hint" aria-hidden="true"></span></summary>
+            <div class="chain-body">
+              <div id="chain" aria-live="off"></div>
+              <div id="followed" class="followed"></div>
+            </div>
+          </details>
+        </section>
+
+        <section class="charts">
+          <figure>
+            <figcaption>Rides offered and rides served, per hour</figcaption>
+            <canvas id="rides" width="1040" height="220" role="img" aria-label="Rides offered and served per hour"></canvas>
+            <p class="probe" id="rides-probe">Point at the chart to read an hour.</p>
+          </figure>
+          <figure>
+            <figcaption>Vehicles on the road</figcaption>
+            <canvas id="road" width="1040" height="220" role="img" aria-label="Vehicles on the road over time"></canvas>
+            <p class="probe" id="road-probe">Point at the chart to read an hour.</p>
+          </figure>
+          <figure>
+            <figcaption>Rides in the coming hour: forecast, and what came</figcaption>
+            <canvas id="outlook" width="1040" height="220" role="img" aria-label="Forecast of rides for each coming hour against the rides that came"></canvas>
+            <p class="probe" id="outlook-probe"></p>
+          </figure>
+          <figure>
+            <figcaption>The depot's draw against the California grid</figcaption>
+            <canvas id="strain" width="1040" height="220" role="img" aria-label="California grid net demand with the depot's power draw beneath it"></canvas>
+            <p class="probe" id="strain-probe"></p>
+          </figure>
+        </section>
+      </div>
+
+      <aside class="side">
+        <dl class="readouts" id="readouts"></dl>
+        <div id="alerts" class="alerts"><div id="alerts-said" class="said" aria-live="polite"></div><div id="alerts-now" class="said"></div></div>
+        <details class="fold small types-fold" id="types-fold"><summary>By vehicle type</summary><div id="types"></div></details>
+        <section id="demand-box" class="controls demand" aria-label="Where the rides come from" hidden></section>
+        <form id="controls" class="controls" aria-label="The depot's settings"></form>
+        <div id="replay-box" class="controls" hidden>
+          <label>Recorded run
+            <select id="replay-pick" aria-label="Which recorded run to play"></select>
+          </label>
+          <p id="replay-note"></p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="colophon" hidden>
+      <details class="fold">
+        <summary>What is running, and on what data</summary>
+        <table id="running"></table>
+        <p id="mode-note"></p>
+      </details>
+    </div>
+    </div>
+    </main>
+    <footer class="independent">
+      <p>Method, sources and every test are in the repository; <a href="readme.html">the README</a> is rendered here.</p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

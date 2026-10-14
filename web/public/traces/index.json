@@ -1,0 +1,9 @@
+{
+  "runs": [
+    {"file": "traces/sample.json", "name": "The plan, 500 vehicles, one feeder", "fleet": 500, "compare": "traces/threshold.json", "note": "The day-ahead plan told the price of energy, with in-order feeding, one long visit a day. Three days."},
+    {"file": "traces/threshold.json", "name": "A fixed threshold, 500 vehicles", "fleet": 500, "compare": null, "note": "Called in at 20% charge, in-order feeding. The same days. Three days."},
+    {"file": "traces/threshold_emptiest.json", "name": "A fixed threshold, emptiest vehicle fed first, 500 vehicles", "fleet": 500, "compare": null, "note": "The power rule the project found to be the wrong one, at a size the feeder still carries. Three days."},
+    {"file": "traces/plan_1000.json", "name": "The plan, 1,000 vehicles, one feeder", "fleet": 1000, "compare": "traces/threshold_1000.json", "note": "The site short of energy: the grid at its limit, vehicles waiting for a charger. At this size the low-battery floor, not the plan, calls most vehicles in. Three days."},
+    {"file": "traces/threshold_1000.json", "name": "A fixed threshold, 1,000 vehicles", "fleet": 1000, "compare": null, "note": "The same days and size with no plan. Three days."}
+  ]
+}

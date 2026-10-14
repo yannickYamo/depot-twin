@@ -1,0 +1,697 @@
+{
+  "start": "2024-04-15",
+  "rows": [
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.771,
+      "grid_use": 0.2803,
+      "grid_variation": 0.5539,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7895,
+      "grid_use": 0.5865,
+      "grid_variation": 0.6771,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8134,
+      "grid_use": 0.7297,
+      "grid_variation": 0.5658,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8128,
+      "grid_use": 0.8527,
+      "grid_variation": 0.3793,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 0.9949,
+      "on_road_when_busiest": 0.6817,
+      "grid_use": 0.9038,
+      "grid_variation": 0.2897,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.9557,
+      "on_road_when_busiest": 0.5835,
+      "grid_use": 0.9313,
+      "grid_variation": 0.2357,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.8271,
+      "on_road_when_busiest": 0.431,
+      "grid_use": 0.953,
+      "grid_variation": 0.1905,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.7164,
+      "on_road_when_busiest": 0.3414,
+      "grid_use": 0.9711,
+      "grid_variation": 0.1431,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.5884,
+      "on_road_when_busiest": 0.2517,
+      "grid_use": 0.9822,
+      "grid_variation": 0.1107,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "headroom",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.4558,
+      "on_road_when_busiest": 0.1883,
+      "grid_use": 0.9963,
+      "grid_variation": 0.0466,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8569,
+      "grid_use": 0.3087,
+      "grid_variation": 0.2991,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8589,
+      "grid_use": 0.6172,
+      "grid_variation": 0.2377,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8587,
+      "grid_use": 0.7702,
+      "grid_variation": 0.21,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8629,
+      "grid_use": 0.9178,
+      "grid_variation": 0.1403,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 0.9987,
+      "on_road_when_busiest": 0.8026,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.9797,
+      "on_road_when_busiest": 0.6499,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.8756,
+      "on_road_when_busiest": 0.4775,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.7592,
+      "on_road_when_busiest": 0.3694,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.621,
+      "on_road_when_busiest": 0.2784,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder",
+      "rule": "heartbeat",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.4676,
+      "on_road_when_busiest": 0.1947,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.771,
+      "grid_use": 0.2803,
+      "grid_variation": 0.5539,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7719,
+      "grid_use": 0.563,
+      "grid_variation": 0.5068,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7648,
+      "grid_use": 0.6968,
+      "grid_variation": 0.4437,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7734,
+      "grid_use": 0.8655,
+      "grid_variation": 0.2841,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7796,
+      "grid_use": 0.9821,
+      "grid_variation": 0.0611,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.982,
+      "on_road_when_busiest": 0.6353,
+      "grid_use": 0.9912,
+      "grid_variation": 0.0412,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.8526,
+      "on_road_when_busiest": 0.4573,
+      "grid_use": 0.9951,
+      "grid_variation": 0.0309,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.7334,
+      "on_road_when_busiest": 0.3552,
+      "grid_use": 0.997,
+      "grid_variation": 0.0241,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.5966,
+      "on_road_when_busiest": 0.2482,
+      "grid_use": 0.9989,
+      "grid_variation": 0.0148,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "headroom",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.4597,
+      "on_road_when_busiest": 0.1944,
+      "grid_use": 0.9998,
+      "grid_variation": 0.0049,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8569,
+      "grid_use": 0.3087,
+      "grid_variation": 0.2991,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8589,
+      "grid_use": 0.6173,
+      "grid_variation": 0.2373,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8607,
+      "grid_use": 0.7724,
+      "grid_variation": 0.2115,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8731,
+      "grid_use": 0.9285,
+      "grid_variation": 0.1291,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 0.9987,
+      "on_road_when_busiest": 0.8027,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 0.9797,
+      "on_road_when_busiest": 0.6497,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 0.8757,
+      "on_road_when_busiest": 0.4779,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 0.7588,
+      "on_road_when_busiest": 0.3681,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.6213,
+      "on_road_when_busiest": 0.2787,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "one_feeder_with_buffer",
+      "rule": "heartbeat",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.4686,
+      "on_road_when_busiest": 0.1955,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.771,
+      "grid_use": 0.1401,
+      "grid_variation": 0.5539,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7719,
+      "grid_use": 0.2809,
+      "grid_variation": 0.5337,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7648,
+      "grid_use": 0.3456,
+      "grid_variation": 0.5511,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7691,
+      "grid_use": 0.4202,
+      "grid_variation": 0.5497,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7692,
+      "grid_use": 0.4866,
+      "grid_variation": 0.6556,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.7858,
+      "grid_use": 0.5847,
+      "grid_variation": 0.6961,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8134,
+      "grid_use": 0.7315,
+      "grid_variation": 0.5662,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8071,
+      "grid_use": 0.853,
+      "grid_variation": 0.3802,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.9784,
+      "on_road_when_busiest": 0.6279,
+      "grid_use": 0.9177,
+      "grid_variation": 0.2624,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "headroom",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.8286,
+      "on_road_when_busiest": 0.4349,
+      "grid_use": 0.9568,
+      "grid_variation": 0.1792,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 200,
+      "chargers": 27,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8569,
+      "grid_use": 0.1544,
+      "grid_variation": 0.2991,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 400,
+      "chargers": 53,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8582,
+      "grid_use": 0.3085,
+      "grid_variation": 0.2439,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 500,
+      "chargers": 66,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8592,
+      "grid_use": 0.3856,
+      "grid_variation": 0.2383,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 600,
+      "chargers": 80,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8611,
+      "grid_use": 0.4624,
+      "grid_variation": 0.2381,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 700,
+      "chargers": 93,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8598,
+      "grid_use": 0.5395,
+      "grid_variation": 0.2288,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 800,
+      "chargers": 106,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.8598,
+      "grid_use": 0.6176,
+      "grid_variation": 0.2166,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 1000,
+      "chargers": 132,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.859,
+      "grid_use": 0.771,
+      "grid_variation": 0.1944,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 1200,
+      "chargers": 159,
+      "rides_served_share": 1.0,
+      "on_road_when_busiest": 0.863,
+      "grid_use": 0.9198,
+      "grid_variation": 0.1303,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 1500,
+      "chargers": 198,
+      "rides_served_share": 0.9922,
+      "on_road_when_busiest": 0.7202,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    },
+    {
+      "option": "two_feeders",
+      "rule": "heartbeat",
+      "size": 2000,
+      "chargers": 264,
+      "rides_served_share": 0.8761,
+      "on_road_when_busiest": 0.4782,
+      "grid_use": 1.0,
+      "grid_variation": 0.0,
+      "stranded": 0.0
+    }
+  ],
+  "limits": {
+    "one_feeder_headroom": {
+      "serves_99pct_up_to": 700,
+      "serves_95pct_up_to": 800
+    },
+    "one_feeder_heartbeat": {
+      "serves_99pct_up_to": 700,
+      "serves_95pct_up_to": 800
+    },
+    "one_feeder_with_buffer_headroom": {
+      "serves_99pct_up_to": 700,
+      "serves_95pct_up_to": 800
+    },
+    "one_feeder_with_buffer_heartbeat": {
+      "serves_99pct_up_to": 700,
+      "serves_95pct_up_to": 800
+    },
+    "two_feeders_headroom": {
+      "serves_99pct_up_to": 1200,
+      "serves_95pct_up_to": 1500
+    },
+    "two_feeders_heartbeat": {
+      "serves_99pct_up_to": 1500,
+      "serves_95pct_up_to": 1500
+    }
+  },
+  "run": "2026-10-15",
+  "code": {
+    "sim": "510ce2129e59",
+    "forecast": "bc107405120f",
+    "driver": "70d203a93f49"
+  }
+}

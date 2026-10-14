@@ -1,0 +1,104 @@
+{
+  "eval": "E10",
+  "start": "2024-05-13",
+  "seeds": [
+    311,
+    312,
+    313
+  ],
+  "table": {
+    "sound_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "sound_1000": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "sound_guarded_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "sound_guarded_1000": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "fault_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "fault_1000": {
+      "served": 0.8869,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "fault_guarded_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 3,
+      "hours_to_fall_back_worst": 8.0
+    },
+    "fault_guarded_1000": {
+      "served": 0.8748,
+      "stranded": 0.0,
+      "runs_that_fell_back": 3,
+      "hours_to_fall_back_worst": 8.0
+    },
+    "threshold_500": {
+      "served": 1.0,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    },
+    "threshold_1000": {
+      "served": 0.8893,
+      "stranded": 0.0,
+      "runs_that_fell_back": 0,
+      "hours_to_fall_back_worst": null
+    }
+  },
+  "false_trips_on_the_curves": {
+    "size": 600,
+    "seeds": [
+      331,
+      332,
+      333
+    ],
+    "window_hours": 12,
+    "trip_share": 0.6666666666666666,
+    "bound_broken_share_by_fortnight": {
+      "2024-03-18": 0.1181,
+      "2024-04-15": 0.12,
+      "2024-04-29": 0.1706,
+      "2024-05-13": 0.1081
+    },
+    "trips_by_fortnight": {
+      "2024-03-18": 0,
+      "2024-04-15": 0,
+      "2024-04-29": 0,
+      "2024-05-13": 0
+    }
+  },
+  "bars": {
+    "1_no_false_alarm": true,
+    "2_falls_back_within_12_hours_every_run": true,
+    "3_guarded_serves_at_least_as_many_under_the_fault": false
+  },
+  "run": "2026-10-15",
+  "code": {
+    "sim": "510ce2129e59",
+    "forecast": "bc107405120f",
+    "driver": "70d203a93f49"
+  }
+}

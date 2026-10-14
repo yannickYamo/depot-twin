@@ -1,0 +1,74 @@
+{
+  "depot_overnight_example": {
+    "vehicles": 60.0,
+    "finished": 60.0,
+    "on_time_share": 0.816667,
+    "turnaround_mean_min": 209.377133,
+    "turnaround_p95_min": 368.987994,
+    "queue_wait_mean_min": 0.0,
+    "energy_delivered_kwh": 3173.343611,
+    "grid_energy_kwh": 3460.791356,
+    "peak_grid_kw": 570.0,
+    "vehicles_per_hour": 2.112387
+  },
+  "fleet_threshold_lowest_first": {
+    "rides_served_share": 1.0,
+    "available_at_peak_share": 0.863542,
+    "miles_per_vehicle_day": 164.1075,
+    "kwh_per_vehicle_day": 98.568,
+    "depot_visits_per_vehicle_day": 1.525,
+    "depot_turnaround_mean_min": 77.069252,
+    "depot_peak_grid_kw": 1032.258065,
+    "stranded": 0.0
+  },
+  "fleet_headroom_lowest_first": {
+    "rides_served_share": 0.998552,
+    "available_at_peak_share": 0.815278,
+    "miles_per_vehicle_day": 170.971123,
+    "kwh_per_vehicle_day": 99.824387,
+    "depot_visits_per_vehicle_day": 2.916667,
+    "depot_turnaround_mean_min": 54.933237,
+    "depot_peak_grid_kw": 1032.258065,
+    "stranded": 0.0
+  },
+  "fleet_plan_lowest_first": {
+    "rides_served_share": 0.999477,
+    "available_at_peak_share": 0.861111,
+    "miles_per_vehicle_day": 167.062101,
+    "kwh_per_vehicle_day": 99.371716,
+    "depot_visits_per_vehicle_day": 2.070833,
+    "depot_turnaround_mean_min": 59.813142,
+    "depot_peak_grid_kw": 992.374309,
+    "stranded": 0.0
+  },
+  "fleet_threshold_in_order_power_short": {
+    "rides_served_share": 0.822546,
+    "available_at_peak_share": 0.426042,
+    "miles_per_vehicle_day": 122.06692,
+    "kwh_per_vehicle_day": 68.761143,
+    "depot_visits_per_vehicle_day": 1.183333,
+    "depot_turnaround_mean_min": 587.929245,
+    "depot_peak_grid_kw": 332.5,
+    "stranded": 0.0
+  },
+  "fleet_threshold_lowest_first_power_short": {
+    "rides_served_share": 0.767507,
+    "available_at_peak_share": 0.398958,
+    "miles_per_vehicle_day": 113.739928,
+    "kwh_per_vehicle_day": 64.049096,
+    "depot_visits_per_vehicle_day": 1.1,
+    "depot_turnaround_mean_min": 468.645833,
+    "depot_peak_grid_kw": 332.5,
+    "stranded": 0.0
+  },
+  "fleet_heartbeat_replayed_demand": {
+    "rides_served_share": 1.0,
+    "available_at_peak_share": 0.853704,
+    "miles_per_vehicle_day": 163.305833,
+    "kwh_per_vehicle_day": 92.382312,
+    "depot_visits_per_vehicle_day": 1.583333,
+    "depot_turnaround_mean_min": 74.593496,
+    "depot_peak_grid_kw": 570.0,
+    "stranded": 0.0
+  }
+}
